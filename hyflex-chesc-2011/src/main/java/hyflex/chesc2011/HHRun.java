@@ -48,6 +48,7 @@ public class HHRun {
 		 * LeanGIHH
 		 * PearlHunter
 		 * EPH
+     * ISEA
 		 */
 		final String AlgorithmName = args[0];
 		
