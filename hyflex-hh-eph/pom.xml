@@ -13,4 +13,29 @@
 
     <name>Hyflex HH EPH</name>
 
+    <repositories>
+        <repository>
+            <id>hyflex-local-repo</id>
+            <url>file://${project.basedir}/hyflex/lib/repository</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>hyflex</groupId>
+            <artifactId>chesc-ps</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>hyflex</groupId>
+            <artifactId>chesc-fixed-no-ps</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>jcommander</artifactId>
+            <version>1.78</version>
+        </dependency>
+    </dependencies>
+
 </project>
