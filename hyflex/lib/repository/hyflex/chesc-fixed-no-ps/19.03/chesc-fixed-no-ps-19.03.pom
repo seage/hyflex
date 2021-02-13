@@ -4,6 +4,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>hyflex</groupId>
   <artifactId>chesc-fixed-no-ps</artifactId>
-  <version>1.0</version>
+  <version>19.03</version>
   <description>POM was created from install:install-file</description>
 </project>
