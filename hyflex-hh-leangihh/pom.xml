@@ -24,12 +24,12 @@
         <dependency>
             <groupId>hyflex</groupId>
             <artifactId>chesc-ps</artifactId>
-            <version>19.03</version>
+            <version>2019.03.17</version>
         </dependency>
         <dependency>
             <groupId>hyflex</groupId>
             <artifactId>chesc-fixed-no-ps</artifactId>
-            <version>19.03</version>
+            <version>2019.03.17</version>
         </dependency>
     </dependencies>
 
