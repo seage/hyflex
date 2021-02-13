@@ -33,6 +33,35 @@
       <artifactId>chesc-fixed-no-ps</artifactId>
       <version>1.0</version>
     </dependency>
+
+    <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>hyflex-hh-eph</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+    <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>hyflex-hh-isea</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+    <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>hyflex-hh-leangihh</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+    <dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>hyflex-hh-pearlhunter</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
   </dependencies>
 
   <build>

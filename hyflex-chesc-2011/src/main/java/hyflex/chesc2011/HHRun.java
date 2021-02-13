@@ -12,9 +12,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-// import org.seage.hyflex.EPH.EPH;
-// import org.seage.hyflex.LeanGIHH.LeanGIHH;
-// import org.seage.hyflex.PearlHunter.PearlHunter;
+import fr.lalea.eph.EPH;
+import kubalik.EvoCOPHyperHeuristic;
+import leangihh.LeanGIHH;
+import pearlhunter.PearlHunter;
 
 import AbstractClasses.HyperHeuristic;
 import AbstractClasses.ProblemDomain;
@@ -92,12 +93,14 @@ public class HHRun {
 
 	private static HyperHeuristic createAlgorithm(String AlgorithmName, long seed) {
 		switch(AlgorithmName) {
-			// case "LeanGIHH":
-			// 	return new LeanGIHH(seed);
-			// case "PearlHunter":
-			// 	return new PearlHunter(seed);
-			// case "EPH":
-			// 	return new EPH(seed);
+			case "LeanGIHH":
+				return new LeanGIHH(seed);
+			case "PearlHunter":
+				return new PearlHunter(seed);
+			case "EPH":
+				return new EPH(seed);
+      case "ISEA":
+				return new EvoCOPHyperHeuristic(seed);
 			default:
 				System.out.println("ERROR, " + AlgorithmName + " INVALID INPUT");
 				return null;
