@@ -12,5 +12,67 @@
     <packaging>jar</packaging>
 
     <name>Hyflex CHeSC 2011</name>
+    <url>http://www.asap.cs.nott.ac.uk/external/chesc2011</url>
 
+
+  <repositories>
+    <repository>
+      <id>hyflex-local-repo</id>
+      <url>file://${project.basedir}/hyflex/lib/repository</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>hyflex</groupId>
+      <artifactId>chesc-ps</artifactId>
+      <version>1.0</version>
+    </dependency>
+    <dependency>
+      <groupId>hyflex</groupId>
+      <artifactId>chesc-fixed-no-ps</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.2</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${project.build.directory}/lib
+              </outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <!-- <classpathPrefix>lib</classpathPrefix> -->
+              <classpathLayoutType>custom</classpathLayoutType>
+              <customClasspathLayout>lib/$${artifact.artifactId}-$${artifact.version}$${dashClassifier?}.$${artifact.extension}</customClasspathLayout>
+              <mainClass>
+                hyflex.HHRun
+              </mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

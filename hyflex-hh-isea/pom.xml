@@ -13,4 +13,23 @@
 
     <name>Hyflex HH ISEA</name>
 
+    <repositories>
+        <repository>
+          <id>hyflex-local-repo</id>
+          <url>file://${project.basedir}/hyflex/lib/repository</url>
+        </repository>
+      </repositories>
+    
+      <dependencies>
+        <dependency>
+          <groupId>hyflex</groupId>
+          <artifactId>chesc-ps</artifactId>
+          <version>1.0</version>
+        </dependency>
+        <dependency>
+          <groupId>hyflex</groupId>
+          <artifactId>chesc-fixed-no-ps</artifactId>
+          <version>1.0</version>
+        </dependency>
+      </dependencies>
 </project>
