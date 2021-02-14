@@ -50,6 +50,13 @@
 		</dependency>
     <dependency>
 			<groupId>${project.groupId}</groupId>
+			<artifactId>hyflex-hh-gihh</artifactId>
+			<version>${project.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+    <dependency>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>hyflex-hh-leangihh</artifactId>
 			<version>${project.version}</version>
 			<type>jar</type>

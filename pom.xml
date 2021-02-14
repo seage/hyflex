@@ -13,6 +13,7 @@
     <modules>
         <module>hyflex-chesc-2011</module>
         <module>hyflex-hh-eph</module>
+        <module>hyflex-hh-gihh</module>
         <module>hyflex-hh-isea</module>
         <module>hyflex-hh-leangihh</module>
         <module>hyflex-hh-pearlhunter</module>

@@ -17,6 +17,10 @@ import kubalik.EvoCOPHyperHeuristic;
 import leangihh.LeanGIHH;
 import pearlhunter.PearlHunter;
 
+import be.kuleuven.kahosl.acceptance.AcceptanceCriterionType;
+import be.kuleuven.kahosl.hyperheuristic.GIHH;
+import be.kuleuven.kahosl.selection.SelectionMethodType;
+
 import AbstractClasses.HyperHeuristic;
 import AbstractClasses.ProblemDomain;
 import SAT.SAT;
@@ -45,12 +49,13 @@ public class HHRun {
 		/**
 		 * Hyper heuristic to use
 		 * ----------------------
+     * GIHH (the winner)
 		 * LeanGIHH
 		 * PearlHunter
 		 * EPH
      * ISEA
 		 */
-		final String AlgorithmName = args[0];
+		final String algorithmName = args[0];
 		
 		/**
 		 * Problems
@@ -73,7 +78,7 @@ public class HHRun {
 
 		for (int i = 0; i < instances.get(ProblemName).length; i++){
 			ProblemDomain problem = HHRun.createProblem(ProblemName, seed);
-			HyperHeuristic algorithm = HHRun.createAlgorithm(AlgorithmName, seed);
+			HyperHeuristic algorithm = HHRun.createAlgorithm(problem, algorithmName, seed, T_ALLOWED);
 			
 			int instanceIx = instances.get(ProblemName)[i];
 
@@ -92,8 +97,16 @@ public class HHRun {
 		System.out.println(output);
 	}
 
-	private static HyperHeuristic createAlgorithm(String AlgorithmName, long seed) {
+	private static HyperHeuristic createAlgorithm(ProblemDomain problem, String AlgorithmName, long seed, long timeout) {
 		switch(AlgorithmName) {
+      case "GIHH":
+				return new GIHH(
+            seed, 
+            problem.getNumberOfHeuristics(), 
+            timeout,
+            "gihh",
+            SelectionMethodType.AdaptiveLimitedLAassistedDHSMentorSTD, 
+            AcceptanceCriterionType.AdaptiveIterationLimitedListBasedTA);
 			case "LeanGIHH":
 				return new LeanGIHH(seed);
 			case "PearlHunter":

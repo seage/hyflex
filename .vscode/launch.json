@@ -9,7 +9,7 @@
       "name": "Launch HHRun",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.HHRun",
-      "args": ["ISEA", "TSP", "10"]
+      "args": ["GIHH", "TSP", "10"]
     },
   ]
 }
