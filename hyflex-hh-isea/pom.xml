@@ -9,7 +9,7 @@
     <artifactId>hyflex-hh-isea</artifactId>
     <packaging>jar</packaging>
 
-    <name>Hyflex HH ISEA</name>
+    <name>HyFlex HH ISEA</name>
 
     <repositories>
         <repository>

@@ -11,7 +11,7 @@
     <artifactId>hyflex-hh-eph</artifactId>
     <packaging>jar</packaging>
 
-    <name>Hyflex HH EPH</name>
+    <name>HyFlex HH EPH</name>
 
     <repositories>
         <repository>

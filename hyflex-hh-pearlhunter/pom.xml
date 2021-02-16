@@ -11,7 +11,7 @@
     <artifactId>hyflex-hh-pearlhunter</artifactId>
     <packaging>jar</packaging>
 
-    <name>Hyflex HH PearlHunter</name>
+    <name>HyFlex HH PearlHunter</name>
     
     <repositories>
         <repository>

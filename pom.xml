@@ -8,7 +8,7 @@
     <artifactId>hyflex</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>Hyflex Parent Project</name>
+    <name>HyFlex Parent Project</name>
 
     <modules>
         <module>hyflex-chesc-2011</module>

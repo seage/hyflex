@@ -9,7 +9,7 @@
     <artifactId>hyflex-hh-gihh</artifactId>
     <packaging>jar</packaging>
 
-    <name>Hyflex HH GIHH</name>
+    <name>HyFlex HH GIHH</name>
 
     <repositories>
         <repository>

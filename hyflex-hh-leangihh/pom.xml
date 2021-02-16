@@ -11,7 +11,7 @@
     <artifactId>hyflex-hh-leangihh</artifactId>
     <packaging>jar</packaging>
 
-    <name>Hyflex HH LeanGIHH</name>
+    <name>HyFlex HH LeanGIHH</name>
 
     <repositories>
         <repository>
