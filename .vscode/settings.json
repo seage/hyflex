@@ -1,0 +1,10 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.dependency.packagePresentation": "flat",
+    "java.dependency.syncWithFolderExplorer": true,
+    "java.checkstyle.configuration": "/google_checks.xml",
+    "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+    "java.format.enabled": true,
+    "java.format.settings.profile": "GoogleStyle",
+    "maven.pomfile.autoUpdateEffectivePOM": true
+  }
