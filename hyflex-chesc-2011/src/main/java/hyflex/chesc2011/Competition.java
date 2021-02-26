@@ -8,17 +8,56 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
+
 
 
 public class Competition {
-  private static long  time = 5000;
-  private static long  currentTimeMillis = System.currentTimeMillis();
+  private static long             time              = 5000;
+  private static long             currentTimeMillis = System.currentTimeMillis();
+  final CompetitionParameters     mainArgs          = new CompetitionParameters();
 
   /**
    * Main method is used for testing each algorithm on all problem domains and instances.
    * @param args input parameters
   */
   public static void main(String [] args) {
+    Competition competition = new Competition();
+
+    competition.handleInputArgs(args);
+
+    System.out.println(competition.mainArgs);
+
+    //competition.run(args);
+  }
+
+  void handleInputArgs(String [] args) {
+    JCommander jcommander = new JCommander(mainArgs);
+    jcommander.setProgramName("competition");
+
+    try {
+      jcommander.parse(args);
+    } catch (ParameterException e) {
+      System.out.println(e.getMessage());
+      showUsage(jcommander);
+    }
+
+    if (mainArgs.isHelp()) {
+      showUsage(jcommander);
+    }
+  }
+
+  public void showUsage(JCommander jcommander) {
+    jcommander.usage();
+    System.exit(0);
+  }
+
+  /**
+   * .
+   * @param args input parameters
+   */
+  public void run(String [] args) {
     if (args[0].matches("\\d+") == false) {
       System.out.println("ERROR, wrong number format");
       return;

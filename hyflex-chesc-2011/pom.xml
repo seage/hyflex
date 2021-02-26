@@ -11,7 +11,7 @@
     <artifactId>hyflex-chesc-2011</artifactId>
     <packaging>jar</packaging>
 
-    <name>HyFlex CHeSC 2011</name>
+    <name>HyFlex CHeSC 2011</name> 
     <url>http://www.asap.cs.nott.ac.uk/external/chesc2011</url>
 
 
@@ -69,6 +69,12 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+
+    <dependency>
+      <groupId>com.beust</groupId>
+      <artifactId>jcommander</artifactId>
+      <version>1.78</version>
+    </dependency>
   </dependencies>
 
   <build>
