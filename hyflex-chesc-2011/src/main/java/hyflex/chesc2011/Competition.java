@@ -1,16 +1,17 @@
 package hyflex.chesc2011;
 
-import java.io.File;
+// JComander libraries
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.ParameterException;
 // Java libraries
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterException;
-
+import java.util.List;
 
 
 public class Competition {
@@ -27,9 +28,7 @@ public class Competition {
 
     competition.handleInputArgs(args);
 
-    System.out.println(competition.mainArgs);
-
-    //competition.run(args);
+    competition.run();
   }
 
   void handleInputArgs(String [] args) {
@@ -54,23 +53,16 @@ public class Competition {
   }
 
   /**
-   * .
-   * @param args input parameters
+   * Method is used for testing each algorithm on all problem domains and instances.
    */
-  public void run(String [] args) {
-    if (args[0].matches("\\d+") == false) {
-      System.out.println("ERROR, wrong number format");
-      return;
-    }
-    if (args[1].matches("\\d+") == false) {
-      System.out.println("ERROR, wrong number format");
-      return;
-    }
+  public void run() {
+    long timeout                    = mainArgs.time;
+    int algRuns                     = mainArgs.runs;
+    List<String> inputAlgorithmIDs  = mainArgs.algorithms;
 
-    long timeout                = Long.parseLong(args[0]);
-    int algRuns                 = Integer.parseInt(args[1]);
-    String[] inputAlgorithmIDs  = Arrays.asList(args)
-    .subList(2, args.length).toArray(new String[0]);
+    System.out.println(timeout);
+    System.out.println(algRuns);
+    System.out.println(inputAlgorithmIDs);
 
     String  [] algorithmIDs = {
       "GIHH",

@@ -17,11 +17,11 @@ public class CompetitionParameters {
   @Parameter(names = {"-t", "--timetout"},
       required = true,
       description = "Numer represents timeout for algorithm run on one instance")
-  private Long time;
+  public Long time;
 
   @Parameter(names = {"-r", "--runs"},
       description = "Number of repeat of algorithm on one instance")
-  private Integer runs = 31;
+  public Integer runs = 31;
 
   @Parameter(names = {"-a", "--algorithms"},
       required = true,
