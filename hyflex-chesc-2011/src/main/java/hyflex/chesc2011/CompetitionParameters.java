@@ -16,17 +16,17 @@ public class CompetitionParameters {
   
   @Parameter(names = {"-t", "--timetout"},
       required = true,
-      description = "Numer represents timeout for hyper-heuristics run on one instance")
+      description = "The numer represents timeout for hyper-heuristics run on one instance")
   public Long time;
 
   @Parameter(names = {"-r", "--runs"},
-      description = "Number of trials of hyper-heuristics on one instance")
+      description = "The number of trials of hyper-heuristics on one instance")
   public Integer runs = 31;
 
   @Parameter(names = {"-h", "--hyperheurictics"},
       required = true,
       variableArity = true,
-      description = "Name of hyper-heuristics to be used in competition")
+      description = "Names of hyper-heuristics to be used in competition")
   public List<String> hyperheurictics = new ArrayList<>();
 
   public boolean isHelp() {
