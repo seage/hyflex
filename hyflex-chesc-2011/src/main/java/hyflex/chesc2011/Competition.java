@@ -33,7 +33,7 @@ public class Competition {
 
   void handleInputArgs(String [] args) {
     JCommander jcommander = new JCommander(mainArgs);
-    jcommander.setProgramName("competition");
+    jcommander.setProgramName("CHeSC 2011 competition");
 
     try {
       jcommander.parse(args);
