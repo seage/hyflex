@@ -23,11 +23,11 @@ public class CompetitionParameters {
       description = "Number of repeat of algorithm on one instance")
   public Integer runs = 31;
 
-  @Parameter(names = {"-a", "--algorithms"},
+  @Parameter(names = {"-h", "--hyperheurictics"},
       required = true,
       variableArity = true,
       description = "Name of hyper-heuristics to be used in competition")
-  public List<String> algorithms = new ArrayList<>();
+  public List<String> hyperheurictics = new ArrayList<>();
 
   public boolean isHelp() {
     return help;
@@ -38,6 +38,6 @@ public class CompetitionParameters {
     return    "\nhelp"       + help
             + "\ntime"       + time
             + "\nruns"       + runs 
-            + "\nalgorithms" + algorithms;
+            + "\nalgorithms" + hyperheurictics;
   }
 }

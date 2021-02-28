@@ -58,7 +58,7 @@ public class Competition {
   public void run() {
     long timeout                    = mainArgs.time;
     int algRuns                     = mainArgs.runs;
-    List<String> inputAlgorithmIDs  = mainArgs.algorithms;
+    List<String> inputAlgorithmIDs  = mainArgs.hyperheurictics;
 
     System.out.println(timeout);
     System.out.println(algRuns);
