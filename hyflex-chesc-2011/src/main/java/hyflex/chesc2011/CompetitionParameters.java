@@ -19,9 +19,9 @@ public class CompetitionParameters {
       description = "Numer represents timeout for algorithm run on one instance")
   public Long time;
 
-  @Parameter(names = {"-r", "--runs"},
-      description = "Number of repeat of algorithm on one instance")
-  public Integer runs = 31;
+  @Parameter(names = {"-t", "--trials"},
+      description = "Number of trials of algorithm on one instance")
+  public Integer trials = 31;
 
   @Parameter(names = {"-h", "--hyperheurictics"},
       required = true,
@@ -35,9 +35,9 @@ public class CompetitionParameters {
 
   @Override
   public String toString() {
-    return    "\nhelp"       + help
-            + "\ntime"       + time
-            + "\nruns"       + runs 
-            + "\nalgorithms" + hyperheurictics;
+    return    "\nhelp"            + help
+            + "\ntime"            + time
+            + "\ntrials"          + trials 
+            + "\nhyperheurictics" + hyperheurictics;
   }
 }
