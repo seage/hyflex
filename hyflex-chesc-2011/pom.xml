@@ -107,7 +107,7 @@
               <classpathLayoutType>custom</classpathLayoutType>
               <customClasspathLayout>lib/$${artifact.artifactId}-$${artifact.version}$${dashClassifier?}.$${artifact.extension}</customClasspathLayout>
               <mainClass>
-                hyflex.HHRun
+                hyflex.chesc2011.Competition
               </mainClass>
             </manifest>
           </archive>
