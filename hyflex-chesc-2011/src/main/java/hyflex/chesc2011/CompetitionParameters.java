@@ -14,9 +14,9 @@ public class CompetitionParameters {
       description = "Displays this help information")
   private boolean help;
   
-  @Parameter(names = {"-t", "--timetout"},
+  @Parameter(names = {"-t", "--timeout"},
       required = true,
-      description = "The numer represents timeout in miliseconds "
+      description = "The number represents timeout in milliseconds "
       + "for hyper-heuristics run on one instance"
       + "\n numer should be a positive integer")
   public Long time;
@@ -26,7 +26,7 @@ public class CompetitionParameters {
       + "number should be a positive ingeger")
   public Integer runs = 31;
 
-  @Parameter(names = {"-h", "--hyperheurictics"},
+  @Parameter(names = {"-h", "--hyperheuristics"},
       required = true,
       variableArity = true,
       description = "Names of hyper-heuristics to be used in competition" 
