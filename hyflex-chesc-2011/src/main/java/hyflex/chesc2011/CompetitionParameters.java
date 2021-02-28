@@ -19,7 +19,7 @@ public class CompetitionParameters {
       description = "The number represents timeout in milliseconds "
       + "for hyper-heuristics run on one instance"
       + "\n numer should be a positive integer")
-  public Long time;
+  public Long timeout;
 
   @Parameter(names = {"-r", "--runs"},
       description = "The number of trials of hyper-heuristics on one instance"
@@ -40,7 +40,7 @@ public class CompetitionParameters {
   @Override
   public String toString() {
     return    "\nhelp"            + help
-            + "\ntime"            + time
+            + "\ntimeout"            + timeout
             + "\nruns"            + runs 
             + "\nhyperheurictics" + hyperheurictics;
   }

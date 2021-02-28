@@ -11,12 +11,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 
 public class Competition {
-  private static long             time              = 5000;
-  private static long             currentTimeMillis = System.currentTimeMillis();
+  private long                    currentTimeMillis = System.currentTimeMillis();
   final CompetitionParameters     mainArgs          = new CompetitionParameters();
 
   /**
@@ -56,14 +54,6 @@ public class Competition {
    * Method is used for testing each algorithm on all problem domains and instances.
    */
   public void run() {
-    long timeout                    = mainArgs.time;
-    int algRuns                     = mainArgs.runs;
-    List<String> inputAlgorithmIDs  = mainArgs.hyperheurictics;
-
-    System.out.println(timeout);
-    System.out.println(algRuns);
-    System.out.println(inputAlgorithmIDs);
-
     String  [] algorithmIDs = {
       "GIHH",
       "LeanGIHH",
@@ -81,14 +71,11 @@ public class Competition {
       "VRP"
     };
 
-    //set time
-    time = timeout;
-
     //make output folder
     makeFolder();
 
     //run hyper-herutistic on all problem domains
-    for (String algorithmID: inputAlgorithmIDs) {
+    for (String algorithmID: mainArgs.hyperheurictics) {
       if (!Arrays.asList(algorithmIDs).contains(algorithmID)) {
         System.out.println("ERROR, wrong algorithm name " + algorithmID);
         continue;
@@ -96,7 +83,7 @@ public class Competition {
       ArrayList<ArrayList<Double>> results = new ArrayList<ArrayList<Double>>();
 
       for (String problemID: problemIDs) {
-        results.add(run(algorithmID, problemID, algRuns));
+        results.add(run(algorithmID, problemID, mainArgs.runs, mainArgs.timeout));
       }
       System.out.println(results);
       makeCard(results, algorithmID);
@@ -108,14 +95,19 @@ public class Competition {
    * @param algorithmID name of given hyper-heuristic algorihtm
    * @return            ArrayList with median values of received results
    */
-  public static ArrayList<Double> run(String algorithmID, String problemID, int algRuns) {
+  public ArrayList<Double> run(
+      String algorithmID, 
+      String problemID, 
+      Integer algRuns, 
+      Long timeout
+  ) {
     int     [] instanceIDs  = {0, 1, 2, 3, 4};
     ArrayList<Double> resultsMedian = new ArrayList<Double>();
 
     for (int instanceID: instanceIDs) {
       resultsMedian.add(
                     getMedian(
-                        runCompetition(algorithmID, problemID, instanceID, algRuns)
+                        runCompetition(algorithmID, problemID, instanceID, algRuns, timeout)
                     )
       );
     }
@@ -149,7 +141,7 @@ public class Competition {
   /**
    * Method creates a folder where is stored the output of program run.
    */
-  public static void makeFolder() {
+  public void makeFolder() {
     try {
       File       theDir             = new File(
           "output/results/" + currentTimeMillis + "/"
@@ -166,7 +158,7 @@ public class Competition {
    * @param arrays      array of arrays with results
    * @param algorithmID name of given hyper-heuristic algorithm
    */
-  public static void makeCard(ArrayList<ArrayList<Double>> arrays, String algorithmID) {    
+  public void makeCard(ArrayList<ArrayList<Double>> arrays, String algorithmID) {    
     try (
             FileWriter fwriter = new FileWriter(
               "output/results/" + currentTimeMillis + "/" + algorithmID + ".txt"
@@ -195,17 +187,18 @@ public class Competition {
    * @param algRuns     number of runs per problem instance
    * @return            ArrayList with result for each run
    */
-  public static ArrayList<Double> runCompetition(
+  public ArrayList<Double> runCompetition(
       String  algorithmID, 
       String  problemID, 
-      int     instanceID,
-      int     algRuns
+      Integer instanceID,
+      Integer algRuns,
+      Long    timeout
   ) {
     CompetitionRunner r = new CompetitionRunner(
         algorithmID, 
         problemID, 
         instanceID, 
-        time, 
+        timeout, 
         algRuns
       );
     r.start();
