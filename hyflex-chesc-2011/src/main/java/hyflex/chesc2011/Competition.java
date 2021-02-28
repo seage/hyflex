@@ -53,7 +53,7 @@ public class Competition {
   /**
    * Method is used for testing each algorithm on all problem domains and instances.
    */
-  public void run() {
+  public void run() throws Exception {
     String  [] algorithmIDs = {
       "GIHH",
       "LeanGIHH",
@@ -100,7 +100,7 @@ public class Competition {
       String problemID, 
       Integer algRuns, 
       Long timeout
-  ) {
+  ) throws Exception {
     int     [] instanceIDs  = {0, 1, 2, 3, 4};
     ArrayList<Double> resultsMedian = new ArrayList<Double>();
 
@@ -120,37 +120,27 @@ public class Competition {
    * @param array array of double numbers
    * @returns
    */
-  public static Double getMedian(ArrayList<Double> array) {
+  public static Double getMedian(ArrayList<Double> array) throws Exception {
     int middle = 0;
-
-    try {
-      if (array.size() == 1) {
-        return array.get(0);
-      }
-      Collections.sort(array);
-      middle = array.size() / 2;
-      middle = middle > 0 && middle % 2 == 0 ? middle - 1 : middle;
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-      System.exit(0);
+    
+    if (array.size() == 1) {
+      return array.get(0);
     }
-
+    Collections.sort(array);
+    middle = array.size() / 2;
+    middle = middle > 0 && middle % 2 == 0 ? middle - 1 : middle;
+    
     return array.get(middle);
   }
 
   /**
    * Method creates a folder where is stored the output of program run.
    */
-  public void makeFolder() {
-    try {
-      File       theDir             = new File(
-          "output/results/" + currentTimeMillis + "/"
-      );
-      theDir.mkdirs();
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-      System.exit(0);
-    }
+  public void makeFolder() throws Exception {
+    File       theDir             = new File(
+        "output/results/" + currentTimeMillis + "/"
+    );
+    theDir.mkdirs();
   }
 
   /**
@@ -158,25 +148,24 @@ public class Competition {
    * @param arrays      array of arrays with results
    * @param algorithmID name of given hyper-heuristic algorithm
    */
-  public void makeCard(ArrayList<ArrayList<Double>> arrays, String algorithmID) {    
-    try (
-            FileWriter fwriter = new FileWriter(
-              "output/results/" + currentTimeMillis + "/" + algorithmID + ".txt"
-            );
-            PrintWriter printer = new PrintWriter(fwriter);
-        ) {
-      String line = "";
-      for (ArrayList<Double> array: arrays) {
-        line = "";
-        for (Double median: array) {
-          line += median + ", ";
-        }
-        printer.println(line.substring(0, line.length() - 2));
+  public void makeCard(
+      ArrayList<ArrayList<Double>> arrays, 
+      String algorithmID
+  ) throws IOException {
+    FileWriter fwriter = new FileWriter(
+        "output/results/" + currentTimeMillis + "/" + algorithmID + ".txt"
+    );
+    PrintWriter printer = new PrintWriter(fwriter);
+    String line = "";
+    for (ArrayList<Double> array: arrays) {
+      line = "";
+      for (Double median: array) {
+        line += median + ", ";
       }
-    } catch (IOException e) {
-      System.err.println(e.getMessage());
-      System.exit(0);
+      printer.println(line.substring(0, line.length() - 2));
     }
+    printer.close();
+    fwriter.close();
   }
 
   /**
