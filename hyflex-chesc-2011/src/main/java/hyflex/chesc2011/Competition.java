@@ -57,11 +57,11 @@ public class Competition {
    */
   public void run() {
     long timeout                    = mainArgs.time;
-    int algTrials                     = mainArgs.trials;
+    int algRuns                     = mainArgs.runs;
     List<String> inputAlgorithmIDs  = mainArgs.hyperheurictics;
 
     System.out.println(timeout);
-    System.out.println(algTrials);
+    System.out.println(algRuns);
     System.out.println(inputAlgorithmIDs);
 
     String  [] algorithmIDs = {
@@ -96,7 +96,7 @@ public class Competition {
       ArrayList<ArrayList<Double>> results = new ArrayList<ArrayList<Double>>();
 
       for (String problemID: problemIDs) {
-        results.add(run(algorithmID, problemID, algTrials));
+        results.add(run(algorithmID, problemID, algRuns));
       }
       System.out.println(results);
       makeCard(results, algorithmID);
@@ -108,14 +108,14 @@ public class Competition {
    * @param algorithmID name of given hyper-heuristic algorihtm
    * @return            ArrayList with median values of received results
    */
-  public static ArrayList<Double> run(String algorithmID, String problemID, int algTrials) {
+  public static ArrayList<Double> run(String algorithmID, String problemID, int algRuns) {
     int     [] instanceIDs  = {0, 1, 2, 3, 4};
     ArrayList<Double> resultsMedian = new ArrayList<Double>();
 
     for (int instanceID: instanceIDs) {
       resultsMedian.add(
                     getMedian(
-                        runCompetition(algorithmID, problemID, instanceID, algTrials)
+                        runCompetition(algorithmID, problemID, instanceID, algRuns)
                     )
       );
     }
@@ -192,21 +192,21 @@ public class Competition {
    * @param algorithmID name of given hyper-heuristic
    * @param problemID   name of given problem domain
    * @param instanceID  name of given problem domain instance
-   * @param algTrials     number of runs per problem instance
+   * @param algRuns     number of runs per problem instance
    * @return            ArrayList with result for each run
    */
   public static ArrayList<Double> runCompetition(
       String  algorithmID, 
       String  problemID, 
       int     instanceID,
-      int     algTrials
+      int     algRuns
   ) {
     CompetitionRunner r = new CompetitionRunner(
         algorithmID, 
         problemID, 
         instanceID, 
         time, 
-        algTrials
+        algRuns
       );
     r.start();
     try {

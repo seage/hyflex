@@ -9,19 +9,19 @@ import java.util.List;
 @Parameters(separators = "=")
 public class CompetitionParameters {
 
-  @Parameter(names = {"-h", "--help"},
+  @Parameter(names = {"--help"},
       help = true,
       description = "Displays help informations")
   private boolean help;
   
   @Parameter(names = {"-t", "--timetout"},
       required = true,
-      description = "Numer represents timeout for algorithm run on one instance")
+      description = "Numer represents timeout for hyper-heuristics run on one instance")
   public Long time;
 
-  @Parameter(names = {"-t", "--trials"},
-      description = "Number of trials of algorithm on one instance")
-  public Integer trials = 31;
+  @Parameter(names = {"-r", "--runs"},
+      description = "Number of trials of hyper-heuristics on one instance")
+  public Integer runs = 31;
 
   @Parameter(names = {"-h", "--hyperheurictics"},
       required = true,
@@ -37,7 +37,7 @@ public class CompetitionParameters {
   public String toString() {
     return    "\nhelp"            + help
             + "\ntime"            + time
-            + "\ntrials"          + trials 
+            + "\nruns"            + runs 
             + "\nhyperheurictics" + hyperheurictics;
   }
 }
