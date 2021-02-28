@@ -22,32 +22,32 @@ public class Competition {
    * @param args input parameters
   */
   public static void main(String [] args) {
-    Competition competition = new Competition();
-
-    competition.handleInputArgs(args);
-
-    competition.run();
-  }
-
-  void handleInputArgs(String [] args) {
-    JCommander jcommander = new JCommander(mainArgs);
-    jcommander.setProgramName("CHeSC 2011 competition");
-
+    
     try {
-      jcommander.parse(args);
+      Competition competition = new Competition();
+      competition.handleInputArgs(args);
+      competition.run();  
     } catch (ParameterException e) {
-      System.out.println(e.getMessage());
-      showUsage(jcommander);
-    }
-
-    if (mainArgs.isHelp()) {
-      showUsage(jcommander);
+      System.out.println(e.getMessage());      
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 
-  public void showUsage(JCommander jcommander) {
-    jcommander.usage();
-    System.exit(0);
+  void handleInputArgs(String [] args) throws ParameterException {
+    JCommander jcommander = new JCommander(mainArgs);
+  
+    try {
+      jcommander.setProgramName("CHeSC 2011 competition");
+      jcommander.parse(args);
+      if (mainArgs.isHelp()) {
+        jcommander.usage();
+        throw new ParameterException("");
+      }
+    } catch (ParameterException e) {      
+      jcommander.usage();
+      throw e;
+    }
   }
 
   /**
