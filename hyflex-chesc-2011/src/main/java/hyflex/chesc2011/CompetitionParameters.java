@@ -18,18 +18,18 @@ public class CompetitionParameters {
       required = true,
       description = "The number represents timeout in milliseconds "
       + "for hyper-heuristics run on one instance"
-      + "\n numer should be a positive integer")
+      + "numer should be a positive integer")
   public Long timeout;
 
   @Parameter(names = {"-r", "--runs"},
-      description = "The number of trials of hyper-heuristics on one instance"
+      description = "The number of trials of hyper-heuristics on one instance "
       + "number should be a positive ingeger")
   public Integer runs = 31;
 
   @Parameter(names = {"-h", "--hyperheuristics"},
       required = true,
       variableArity = true,
-      description = "Names of hyper-heuristics to be used in competition" 
+      description = "Names of hyper-heuristics to be used in competition " 
       + "available values are: GIHH, LeanGIHH, EPH, PearlHunter, ISEA")
   public List<String> hyperheurictics;
 
