@@ -11,7 +11,7 @@ public class CompetitionParameters {
 
   @Parameter(names = {"--help"},
       help = true,
-      description = "Displays help informations")
+      description = "Displays this help information")
   private boolean help;
   
   @Parameter(names = {"-t", "--timetout"},
