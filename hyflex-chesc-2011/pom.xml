@@ -13,7 +13,6 @@
     <name>HyFlex CHeSC 2011</name> 
     <url>http://www.asap.cs.nott.ac.uk/external/chesc2011</url>
 
-
   <repositories>
     <repository>
       <id>hyflex-local-repo</id>
