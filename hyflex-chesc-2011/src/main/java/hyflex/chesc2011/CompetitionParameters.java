@@ -31,7 +31,7 @@ public class CompetitionParameters {
       variableArity = true,
       description = "Names of hyper-heuristics to be used in competition" 
       + "available values are: GIHH, LeanGIHH, EPH, PearlHunter, ISEA")
-  public List<String> hyperheurictics = new ArrayList<>();
+  public List<String> hyperheurictics;
 
   public boolean isHelp() {
     return help;
