@@ -90,9 +90,9 @@ public class Competition {
       throws Exception {
     List<Double> resultsMedian = new ArrayList<Double>();
 
-    for (int instance = 0; instance <= 4; instance++) {
+    for (int instanceIx = 0; instanceIx <= 4; instanceIx++) {
       List<Double> instanceResults = 
-          runCompetition(algorithmID, problemID, instance, algRuns, timeout);
+          runCompetition(algorithmID, problemID, instanceIx, algRuns, timeout);
       Double median = getMedianFromInstanceResults(instanceResults);
       resultsMedian.add(median);
     }
@@ -147,18 +147,18 @@ public class Competition {
    * 
    * @param algorithmID name of given hyper-heuristic
    * @param problemID name of given problem domain
-   * @param instanceID name of given problem domain instance
+   * @param instanceIx name of given problem domain instance
    * @param algRuns number of runs per problem instance
    * @return ArrayList with result for each run
    */
   public ArrayList<Double> runCompetition(
       String algorithmID,
       String problemID, 
-      Integer instanceID,
+      Integer instanceIx,
       Integer algRuns, 
       Long timeout) {
     CompetitionRunner r =
-        new CompetitionRunner(algorithmID, problemID, instanceID, timeout, algRuns);
+        new CompetitionRunner(algorithmID, problemID, instanceIx, timeout, algRuns);
     r.start();
     try {
       r.join();
