@@ -80,7 +80,7 @@ public class Competition {
     }
   }
 
-  /**
+  /** 
    * Method is used for testing all instances of problem domain on given algorithm.
    * 
    * @param algorithmID name of given hyper-heuristic algorihtm
@@ -92,8 +92,9 @@ public class Competition {
     List<Double> resultsMedian = new ArrayList<Double>();
 
     for (int instanceID : instanceIDs) {
-      List<Double> results = runCompetition(algorithmID, problemID, instanceID, algRuns, timeout);
-      Double median = getMedianFromResults(results);
+      List<Double> instanceResults = 
+          runCompetition(algorithmID, problemID, instanceID, algRuns, timeout);
+      Double median = getMedianFromInstanceResults(instanceResults);
       resultsMedian.add(median);
     }
 
@@ -103,20 +104,20 @@ public class Competition {
   /**
    * Method returns the median of given array.
    * 
-   * @param results array of double numbers
+   * @param instanceResults array of double numbers
    * @returns
    */
-  public static Double getMedianFromResults(List<Double> results) throws Exception {
+  public static Double getMedianFromInstanceResults(List<Double> instanceResults) throws Exception {
     int middle = 0;
 
-    if (results.size() == 1) {
-      return results.get(0);
+    if (instanceResults.size() == 1) {
+      return instanceResults.get(0);
     }
-    Collections.sort(results);
-    middle = results.size() / 2;
+    Collections.sort(instanceResults);
+    middle = instanceResults.size() / 2;
     middle = middle > 0 && middle % 2 == 0 ? middle - 1 : middle;
 
-    return results.get(middle);
+    return instanceResults.get(middle);
   }
 
   /**
