@@ -152,20 +152,21 @@ public class Competition {
       ArrayList<ArrayList<Double>> arrays, 
       String algorithmID
   ) throws IOException {
-    FileWriter fwriter = new FileWriter(
-        "output/results/" + currentTimeMillis + "/" + algorithmID + ".txt"
-    );
-    PrintWriter printer = new PrintWriter(fwriter);
-    String line = "";
-    for (ArrayList<Double> array: arrays) {
-      line = "";
-      for (Double median: array) {
-        line += median + ", ";
+    try (
+        FileWriter fwriter = new FileWriter(
+            "output/results/" + currentTimeMillis + "/" + algorithmID + ".txt"
+        );
+        PrintWriter printer = new PrintWriter(fwriter);
+    ) {
+      String line = "";
+      for (ArrayList<Double> array: arrays) {
+        line = "";
+        for (Double median: array) {
+          line += median + ", ";
+        }
+        printer.println(line.substring(0, line.length() - 2));
       }
-      printer.println(line.substring(0, line.length() - 2));
     }
-    printer.close();
-    fwriter.close();
   }
 
   /**
