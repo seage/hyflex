@@ -121,7 +121,7 @@ public class Competition {
 
   /**
    * Method creates a file with given results.
-   * File is representing competition card for each competitor.
+   * File represents competition card for each competitor.
    * 
    * @param results array of arrays with results
    * @param algorithmID name of given hyper-heuristic algorithm
