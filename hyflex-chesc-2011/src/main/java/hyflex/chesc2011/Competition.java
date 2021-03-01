@@ -88,10 +88,9 @@ public class Competition {
    */
   public List<Double> runAlg(String algorithmID, String problemID, Integer algRuns, Long timeout)
       throws Exception {
-    int[] instanceIDs = {0, 1, 2, 3, 4};
     List<Double> resultsMedian = new ArrayList<Double>();
-
-    for (int instanceID : instanceIDs) {
+    
+    for (int instanceID = 0; instanceID <= 4; instanceID++) {
       List<Double> instanceResults = 
           runCompetition(algorithmID, problemID, instanceID, algRuns, timeout);
       Double median = getMedianFromInstanceResults(instanceResults);
