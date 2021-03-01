@@ -73,10 +73,10 @@ public class Competition {
       List<List<Double>> results = new ArrayList<List<Double>>();
 
       for (String problemID : problemIDs) {
-        results.add(run(algorithmID, problemID, mainArgs.runs, mainArgs.timeout));
+        results.add(runAlg(algorithmID, problemID, mainArgs.runs, mainArgs.timeout));
       }
       System.out.println(results);
-      makeCard(results, algorithmID);
+      makeResultsCard(results, algorithmID);
     }
   }
 
@@ -86,7 +86,7 @@ public class Competition {
    * @param algorithmID name of given hyper-heuristic algorihtm
    * @return ArrayList with median values of received results
    */
-  public List<Double> run(String algorithmID, String problemID, Integer algRuns, Long timeout)
+  public List<Double> runAlg(String algorithmID, String problemID, Integer algRuns, Long timeout)
       throws Exception {
     int[] instanceIDs = {0, 1, 2, 3, 4};
     List<Double> resultsMedian = new ArrayList<Double>();
@@ -120,12 +120,13 @@ public class Competition {
   }
 
   /**
-   * Method prints the content of a given array into a file.
+   * Method creates a file with given results.
+   * File is representing competition card for each competitor.
    * 
-   * @param results      array of arrays with results
+   * @param results array of arrays with results
    * @param algorithmID name of given hyper-heuristic algorithm
    */
-  public void makeCard(List<List<Double>> results, String algorithmID) throws IOException {
+  public void makeResultsCard(List<List<Double>> results, String algorithmID) throws IOException {
     try (
         FileWriter fwriter =
             new FileWriter("output/results/" + currentTimeMillis + "/" + algorithmID + ".txt");
@@ -145,9 +146,9 @@ public class Competition {
    * Method runs CompetitionRunner on given algorithm and instance of problem domain, specific time.
    * 
    * @param algorithmID name of given hyper-heuristic
-   * @param problemID   name of given problem domain
-   * @param instanceID  name of given problem domain instance
-   * @param algRuns     number of runs per problem instance
+   * @param problemID name of given problem domain
+   * @param instanceID name of given problem domain instance
+   * @param algRuns number of runs per problem instance
    * @return ArrayList with result for each run
    */
   public ArrayList<Double> runCompetition(
