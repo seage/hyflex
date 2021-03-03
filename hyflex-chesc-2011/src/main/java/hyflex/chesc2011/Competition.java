@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 public class Competition {
@@ -18,6 +19,8 @@ public class Competition {
   private static final String[] problemIDs = {
     "SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP"
   };
+  
+  final String defaultDirectory = "./output/results";
   
   /**
    * Method is used for testing each algorithm on all problem domains and instances.
@@ -31,8 +34,9 @@ public class Competition {
     }
     
     // create output folder
-    String resultsDir = (System.getenv("RESULTS_DIR") != null) 
-        ? System.getenv("RESULTS_DIR") : "./output/results";
+    final String resultsDir = Optional.ofNullable(
+        System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
+
 
     new File(resultsDir + "/" + Long.toString(id) + "/").mkdirs();
 
@@ -105,8 +109,9 @@ public class Competition {
    */
   public void makeResultsCard(
       List<List<Double>> results, String algorithmID, Long id) throws IOException {
-    String resultsDir = (System.getenv("RESULTS_DIR") != null) 
-        ? System.getenv("RESULTS_DIR") : "./output/results";
+    
+    final String resultsDir = Optional.ofNullable(
+            System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
     try (
         FileWriter fwriter =
             new FileWriter(resultsDir + "/" + Long.toString(id) + "/" + algorithmID + ".txt");

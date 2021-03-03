@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Optional;
 
 /*
  * @author Dr Matthew Hyde
@@ -58,14 +59,15 @@ import java.util.Collections;
  */
 
 public class BenchmarkCalculator {
+  final String defaultDirectory = "./output/results";
 
   /**
    * Method runs benchmarking.
    * Returns leaderboard based on given hyper-heuristics results.
    */
   public void run(Long id) throws Exception {
-    String resultsDir = (System.getenv("RESULTS_DIR") != null) 
-        ? System.getenv("RESULTS_DIR") : "./output/results";
+    final String resultsDir = Optional.ofNullable(
+        System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
       
     int domains = 6;
     int numberOfInstances = 5;
