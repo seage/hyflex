@@ -24,7 +24,7 @@ public class CompetitionRunCommand extends Command {
       + "numer should be a positive integer")
   public Long timeout;
 
-  @Parameter(names = {"-r", "--runs"},
+  @Parameter(names = {"-n", "--runs"},
       description = "The number of trials of hyper-heuristics on one instance "
       + "number should be a positive ingeger")
   public Integer runs = 31;
