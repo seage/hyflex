@@ -19,8 +19,8 @@ public class Launcher {
   private boolean help;
 
   /**
-   * .
-   * @param args d
+   * Method process user input and decides what command should be run.
+   * @param args user input
    */
   public static void main(String[] args) {
     try {

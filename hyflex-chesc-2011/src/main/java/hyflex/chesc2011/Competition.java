@@ -1,15 +1,5 @@
 package hyflex.chesc2011;
 
-// JComander libraries
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterException;
-
-// HyFlex command classes
-import hyflex.chesc2011.launcher.Launcher;
-import hyflex.chesc2011.launcher.commands.Command;
-import hyflex.chesc2011.launcher.commands.CompetitionEvaluateCommand;
-import hyflex.chesc2011.launcher.commands.CompetitionRunCommand;
-
 // Java libraries
 import java.io.File;
 import java.io.FileWriter;
@@ -18,10 +8,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map.Entry;
 
 
 public class Competition {
@@ -33,40 +20,7 @@ public class Competition {
   };
 
   private long currentTimeMillis;
-  //final CompetitionParameters mainArgs = new CompetitionParameters();
-
-  /**
-   * Main method is used for testing each algorithm on all problem domains and instances.
-   * 
-   * @param args input parameters
-   */
-  public static void main(String[] args) {
-    try {
-      Competition competition = new Competition();
-      competition.handleInputArgs(args);
-    } catch (ParameterException e) {
-      System.out.println(e.getMessage());
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  void handleInputArgs(String[] args) throws Exception {
-    HashMap<String, Command> commands = new LinkedHashMap<>();
-    commands.put("competition-run", new CompetitionRunCommand());
-    commands.put("competition-evaluate", new CompetitionEvaluateCommand());
-
-    Launcher launcher = new Launcher();
-    JCommander jc = new JCommander(launcher);
-
-    for (Entry<String, Command> e : commands.entrySet()) {
-      jc.addCommand(e.getKey(), e.getValue());
-    }
-
-    jc.parse(args);
-    System.out.println("here");
-  }
-
+  
   /**
    * Method is used for testing each algorithm on all problem domains and instances.
    */
