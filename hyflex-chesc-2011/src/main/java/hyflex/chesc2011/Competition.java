@@ -58,9 +58,7 @@ public class Competition {
       CompetitionRunner r =
           new CompetitionRunner(algorithmID, problemID, instanceIx, timeout, algRuns);
       // run the competition
-      r.start();
-      // wait for the end of competition
-      r.join();
+      r.run();
 
       Double median = getMedianFromInstanceResults(r.getResults());
       resultsMedian.add(median);
