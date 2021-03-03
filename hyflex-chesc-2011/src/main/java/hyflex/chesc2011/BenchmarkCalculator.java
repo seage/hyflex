@@ -66,14 +66,14 @@ public class BenchmarkCalculator {
    * Returns leaderboard based on given hyper-heuristics results.
    */
   public void run(Long id) throws Exception {
-    final String resultsDir = Optional.ofNullable(
+    final String resultsDirPath = Optional.ofNullable(
         System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
       
     int domains = 6;
     int numberOfInstances = 5;
 
-    File dir = new File(resultsDir);
-    String[] directories = dir.list(new FilenameFilter() {
+    File resultsDir = new File(resultsDirPath);
+    String[] directories = resultsDir.list(new FilenameFilter() {
       @Override
       public boolean accept(File current, String name) {
         return new File(current, name).isDirectory();
@@ -89,7 +89,7 @@ public class BenchmarkCalculator {
 
     for (String directory: directories) {
 
-      String pathToSubmitted = resultsDir + "/" + directory;
+      String pathToSubmitted = resultsDirPath + "/" + directory;
 
       File dir = new File(pathToSubmitted); 
       String[] children = dir.list();     
