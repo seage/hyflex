@@ -72,8 +72,8 @@ public class BenchmarkCalculator {
     int domains = 6;
     int numberOfInstances = 5;
 
-    File sfile = new File("." + resultsDir);
-    String[] directories = sfile.list(new FilenameFilter() {
+    File dir = new File(resultsDir);
+    String[] directories = dir.list(new FilenameFilter() {
       @Override
       public boolean accept(File current, String name) {
         return new File(current, name).isDirectory();
@@ -89,7 +89,7 @@ public class BenchmarkCalculator {
 
     for (String directory: directories) {
 
-      String pathToSubmitted = "." + resultsDir + "/" + directory;
+      String pathToSubmitted = resultsDir + "/" + directory;
 
       File dir = new File(pathToSubmitted); 
       String[] children = dir.list();     
