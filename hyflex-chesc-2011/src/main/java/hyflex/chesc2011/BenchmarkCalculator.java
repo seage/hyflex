@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 /*
  * @author Dr Matthew Hyde
@@ -62,7 +64,7 @@ public class BenchmarkCalculator {
    * Method runs benchmarking.
    * Returns leaderboard based on given hyper-heuristics results.
    */
-  public void run() throws Exception {
+  public void run(String resultsFolder) throws Exception {
 
     int domains = 6;
     int numberOfInstances = 5;
@@ -74,6 +76,13 @@ public class BenchmarkCalculator {
         return new File(current, name).isDirectory();
       }
     });
+
+    if (Arrays.asList(directories).contains(resultsFolder)) {
+      directories = new String[]{resultsFolder};
+    } else if (resultsFolder != "") {
+      System.out.println("Error, folder doesn't exist.");
+      return;
+    }
 
     for (String directory: directories) {
 

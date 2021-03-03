@@ -29,6 +29,10 @@ public class CompetitionRunCommand extends Command {
       + "number should be a positive ingeger")
   public Integer runs = 31;
 
+  @Parameter(names = {"-f", "--folder"},
+      description = "The name of the results folder")
+  public String folder = Long.toString(System.currentTimeMillis());
+
   @Parameter(names = {"-h", "--hyperheuristics"},
       required = true,
       variableArity = true,
@@ -51,6 +55,6 @@ public class CompetitionRunCommand extends Command {
 
   @Override
   public void performCommand() throws Exception {
-    new Competition().run(hyperheurictics, timeout, runs);
+    new Competition().run(hyperheurictics, timeout, runs, folder);
   }
 }

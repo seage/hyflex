@@ -18,15 +18,14 @@ public class Competition {
   private static final String[] problemIDs = {
     "SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP"
   };
-
-  private long currentTimeMillis;
   
   /**
    * Method is used for testing each algorithm on all problem domains and instances.
    */
-  public void run(List<String> hyperheurictics, long timeout, int runs) throws Exception {
+  public void run(
+      List<String> hyperheurictics, long timeout, int runs, String resultsFolder) throws Exception {
     // create output folder
-    new File("output/results/" + currentTimeMillis + "/").mkdirs();
+    new File("output/results/" + resultsFolder + "/").mkdirs();
 
     // run hyper-herutistic on all problem domains
     for (String algorithmID : hyperheurictics) {
@@ -40,7 +39,7 @@ public class Competition {
         results.add(runAlg(algorithmID, problemID, runs, timeout));
       }
       System.out.println(results);
-      makeResultsCard(results, algorithmID);
+      makeResultsCard(results, algorithmID, resultsFolder);
     }
   }
 
@@ -93,10 +92,11 @@ public class Competition {
    * @param results array of arrays with results
    * @param algorithmID name of given hyper-heuristic algorithm
    */
-  public void makeResultsCard(List<List<Double>> results, String algorithmID) throws IOException {
+  public void makeResultsCard(
+      List<List<Double>> results, String algorithmID, String resultsFolder) throws IOException {
     try (
         FileWriter fwriter =
-            new FileWriter("output/results/" + currentTimeMillis + "/" + algorithmID + ".txt");
+            new FileWriter("output/results/" + resultsFolder + "/" + algorithmID + ".txt");
         PrintWriter printer = new PrintWriter(fwriter);) {
       String line = "";
       for (List<Double> array : results) {
