@@ -59,11 +59,10 @@ import java.util.Collections;
 public class BenchmarkCalculator {
 
   /**
-   * Main method of this class, runs benchmarking.
+   * Method runs benchmarking.
    * Returns leaderboard based on given hyper-heuristics results.
-   * @param argv given arguments.
    */
-  public static void main(String[] argv) {
+  public void run() throws Exception {
 
     int domains = 6;
     int numberOfInstances = 5;

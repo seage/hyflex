@@ -1,8 +1,5 @@
 package hyflex.chesc2011;
 
-// JComander libraries
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.ParameterException;
 // Java libraries
 import java.io.File;
 import java.io.FileWriter;
@@ -23,49 +20,16 @@ public class Competition {
   };
 
   private long currentTimeMillis;
-  final CompetitionParameters mainArgs = new CompetitionParameters();
-
-  /**
-   * Main method is used for testing each algorithm on all problem domains and instances.
-   * 
-   * @param args input parameters
-   */
-  public static void main(String[] args) {
-    try {
-      Competition competition = new Competition();
-      competition.handleInputArgs(args);
-      competition.run();
-    } catch (ParameterException e) {
-      System.out.println(e.getMessage());
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  void handleInputArgs(String[] args) throws ParameterException {
-    JCommander jcommander = new JCommander(mainArgs);
-    try {
-      jcommander.setProgramName("CHeSC 2011 competition");
-      jcommander.parse(args);
-      if (mainArgs.isHelp()) {
-        jcommander.usage();
-        throw new ParameterException("");
-      }
-    } catch (ParameterException e) {
-      jcommander.usage();
-      throw e;
-    }
-  }
-
+  
   /**
    * Method is used for testing each algorithm on all problem domains and instances.
    */
-  public void run() throws Exception {
+  public void run(List<String> hyperheurictics, long timeout, int runs) throws Exception {
     // create output folder
     new File("output/results/" + currentTimeMillis + "/").mkdirs();
 
     // run hyper-herutistic on all problem domains
-    for (String algorithmID : mainArgs.hyperheurictics) {
+    for (String algorithmID : hyperheurictics) {
       if (!Arrays.asList(algorithmIDs).contains(algorithmID)) {
         System.out.println("ERROR, wrong algorithm name " + algorithmID);
         continue;
@@ -73,7 +37,7 @@ public class Competition {
       List<List<Double>> results = new ArrayList<List<Double>>();
 
       for (String problemID : problemIDs) {
-        results.add(runAlg(algorithmID, problemID, mainArgs.runs, mainArgs.timeout));
+        results.add(runAlg(algorithmID, problemID, runs, timeout));
       }
       System.out.println(results);
       makeResultsCard(results, algorithmID);
@@ -91,9 +55,12 @@ public class Competition {
     List<Double> resultsMedian = new ArrayList<Double>();
 
     for (int instanceIx = 0; instanceIx <= 4; instanceIx++) {
-      List<Double> instanceResults = 
-          runCompetition(algorithmID, problemID, instanceIx, algRuns, timeout);
-      Double median = getMedianFromInstanceResults(instanceResults);
+      CompetitionRunner r =
+          new CompetitionRunner(algorithmID, problemID, instanceIx, timeout, algRuns);
+      // run the competition
+      r.run();
+
+      Double median = getMedianFromInstanceResults(r.getResults());
       resultsMedian.add(median);
     }
 
@@ -140,32 +107,5 @@ public class Competition {
         printer.println(line.substring(0, line.length() - 2));
       }
     }
-  }
-
-  /**
-   * Method runs CompetitionRunner on given algorithm and instance of problem domain, specific time.
-   * 
-   * @param algorithmID name of given hyper-heuristic
-   * @param problemID name of given problem domain
-   * @param instanceIx name of given problem domain instance
-   * @param algRuns number of runs per problem instance
-   * @return ArrayList with result for each run
-   */
-  public ArrayList<Double> runCompetition(
-      String algorithmID,
-      String problemID, 
-      Integer instanceIx,
-      Integer algRuns, 
-      Long timeout) {
-    CompetitionRunner r =
-        new CompetitionRunner(algorithmID, problemID, instanceIx, timeout, algRuns);
-    r.start();
-    try {
-      r.join();
-    } catch (InterruptedException e) {
-      System.out.println(e);
-      System.exit(0);
-    }
-    return r.getResults();
   }
 }

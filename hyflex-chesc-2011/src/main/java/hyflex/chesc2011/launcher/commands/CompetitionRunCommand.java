@@ -1,19 +1,22 @@
-package hyflex.chesc2011;
+package hyflex.chesc2011.launcher.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
-import java.util.ArrayList;
+import hyflex.chesc2011.Competition;
+
 import java.util.List;
 
-@Parameters(separators = "=")
-public class CompetitionParameters {
 
+
+@Parameters(commandDescription = "Perform the Competition tasks on given hyper-heuristic")
+public class CompetitionRunCommand extends Command {
+    
   @Parameter(names = {"--help"},
       help = true,
       description = "Displays this help information")
   private boolean help;
-  
+
   @Parameter(names = {"-t", "--timeout"},
       required = true,
       description = "The number represents timeout in milliseconds "
@@ -21,7 +24,7 @@ public class CompetitionParameters {
       + "numer should be a positive integer")
   public Long timeout;
 
-  @Parameter(names = {"-r", "--runs"},
+  @Parameter(names = {"-n", "--runs"},
       description = "The number of trials of hyper-heuristics on one instance "
       + "number should be a positive ingeger")
   public Integer runs = 31;
@@ -39,9 +42,15 @@ public class CompetitionParameters {
 
   @Override
   public String toString() {
-    return    "\nhelp"            + help
-            + "\ntimeout"            + timeout
-            + "\nruns"            + runs 
-            + "\nhyperheurictics" + hyperheurictics;
+    return ""   
+      + "\nhelp" + help
+      + "\ntimeout" + timeout
+      + "\nruns" + runs 
+      + "\nhyperheurictics" + hyperheurictics;
+  }
+
+  @Override
+  public void performCommand() throws Exception {
+    new Competition().run(hyperheurictics, timeout, runs);
   }
 }
