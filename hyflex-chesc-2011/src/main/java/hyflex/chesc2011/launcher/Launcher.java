@@ -24,8 +24,6 @@ public class Launcher {
    */
   public static void main(String[] args) {
     try {
-      
-      System.out.println("here");
       HashMap<String, Command> commands = new LinkedHashMap<>();
       commands.put("competition-run", new CompetitionRunCommand());
       commands.put("competition-evaluate", new CompetitionEvaluateCommand());
