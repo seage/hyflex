@@ -55,9 +55,14 @@ public class Competition {
     List<Double> resultsMedian = new ArrayList<Double>();
 
     for (int instanceIx = 0; instanceIx <= 4; instanceIx++) {
-      List<Double> instanceResults = 
-          runCompetition(algorithmID, problemID, instanceIx, algRuns, timeout);
-      Double median = getMedianFromInstanceResults(instanceResults);
+      CompetitionRunner r =
+          new CompetitionRunner(algorithmID, problemID, instanceIx, timeout, algRuns);
+      // run the competition
+      r.start();
+      // wait for the end of competition
+      r.join();
+
+      Double median = getMedianFromInstanceResults(r.getResults());
       resultsMedian.add(median);
     }
 
@@ -104,32 +109,5 @@ public class Competition {
         printer.println(line.substring(0, line.length() - 2));
       }
     }
-  }
-
-  /**
-   * Method runs CompetitionRunner on given algorithm and instance of problem domain, specific time.
-   * 
-   * @param algorithmID name of given hyper-heuristic
-   * @param problemID name of given problem domain
-   * @param instanceIx name of given problem domain instance
-   * @param algRuns number of runs per problem instance
-   * @return ArrayList with result for each run
-   */
-  public ArrayList<Double> runCompetition(
-      String algorithmID,
-      String problemID, 
-      Integer instanceIx,
-      Integer algRuns, 
-      Long timeout) {
-    CompetitionRunner r =
-        new CompetitionRunner(algorithmID, problemID, instanceIx, timeout, algRuns);
-    r.start();
-    try {
-      r.join();
-    } catch (InterruptedException e) {
-      System.out.println(e);
-      System.exit(0);
-    }
-    return r.getResults();
   }
 }
