@@ -15,9 +15,9 @@ public class CompetitionEvaluateCommand extends Command {
       description = "Displays this help information")
   private boolean help;
 
-  @Parameter(names = {"-f", "--folder"},
+  @Parameter(names = {"--id"},
       description = "The name of the results folder")
-  public String folder = "";
+  public Long id = Long.parseLong("0");
 
 
   public boolean isHelp() {
@@ -31,6 +31,6 @@ public class CompetitionEvaluateCommand extends Command {
 
   @Override
   public void performCommand() throws Exception {
-    new BenchmarkCalculator().run(folder);
+    new BenchmarkCalculator().run(id);
   }
 }

@@ -23,9 +23,20 @@ public class Competition {
    * Method is used for testing each algorithm on all problem domains and instances.
    */
   public void run(
-      List<String> hyperheurictics, long timeout, int runs, String resultsFolder) throws Exception {
+      List<String> hyperheurictics, long timeout, int runs, Long id) throws Exception {
+    // check if user defined output folder
+    if (id == 0) {
+      // create new folder for results
+      id = System.currentTimeMillis();
+    }
+    
     // create output folder
-    new File("output/results/" + resultsFolder + "/").mkdirs();
+    String resultsDir = (System.getenv("RESULTS_DIR") != null) 
+        ? System.getenv("RESULTS_DIR") : "./output/results";
+
+    new File(resultsDir + "/" + Long.toString(id) + "/").mkdirs();
+
+    System.out.println(resultsDir);
 
     // run hyper-herutistic on all problem domains
     for (String algorithmID : hyperheurictics) {
@@ -39,7 +50,7 @@ public class Competition {
         results.add(runAlg(algorithmID, problemID, runs, timeout));
       }
       System.out.println(results);
-      makeResultsCard(results, algorithmID, resultsFolder);
+      makeResultsCard(results, algorithmID, id);
     }
   }
 
@@ -93,10 +104,12 @@ public class Competition {
    * @param algorithmID name of given hyper-heuristic algorithm
    */
   public void makeResultsCard(
-      List<List<Double>> results, String algorithmID, String resultsFolder) throws IOException {
+      List<List<Double>> results, String algorithmID, Long id) throws IOException {
+    String resultsDir = (System.getenv("RESULTS_DIR") != null) 
+        ? System.getenv("RESULTS_DIR") : "./output/results";
     try (
         FileWriter fwriter =
-            new FileWriter("output/results/" + resultsFolder + "/" + algorithmID + ".txt");
+            new FileWriter(resultsDir + "/" + Long.toString(id) + "/" + algorithmID + ".txt");
         PrintWriter printer = new PrintWriter(fwriter);) {
       String line = "";
       for (List<Double> array : results) {

@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 
 /*
  * @author Dr Matthew Hyde
@@ -64,12 +63,14 @@ public class BenchmarkCalculator {
    * Method runs benchmarking.
    * Returns leaderboard based on given hyper-heuristics results.
    */
-  public void run(String resultsFolder) throws Exception {
-
+  public void run(Long id) throws Exception {
+    String resultsDir = (System.getenv("RESULTS_DIR") != null) 
+        ? System.getenv("RESULTS_DIR") : "./output/results";
+      
     int domains = 6;
     int numberOfInstances = 5;
 
-    File sfile = new File("./output/results/");
+    File sfile = new File("." + resultsDir);
     String[] directories = sfile.list(new FilenameFilter() {
       @Override
       public boolean accept(File current, String name) {
@@ -77,16 +78,16 @@ public class BenchmarkCalculator {
       }
     });
 
-    if (Arrays.asList(directories).contains(resultsFolder)) {
-      directories = new String[]{resultsFolder};
-    } else if (resultsFolder != "") {
+    if (Arrays.asList(directories).contains(Long.toString(id))) {
+      directories = new String[]{Long.toString(id)};
+    } else if (Long.toString(id) != "") {
       System.out.println("Error, folder doesn't exist.");
       return;
     }
 
     for (String directory: directories) {
 
-      String pathToSubmitted = "./output/results/" + directory;
+      String pathToSubmitted = "." + resultsDir + "/" + directory;
 
       File dir = new File(pathToSubmitted); 
       String[] children = dir.list();     
