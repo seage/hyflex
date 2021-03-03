@@ -1,0 +1,58 @@
+package hyflex.chesc2011.launcher;
+
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
+
+import hyflex.chesc2011.launcher.commands.Command;
+import hyflex.chesc2011.launcher.commands.CompetitionEvaluateCommand;
+import hyflex.chesc2011.launcher.commands.CompetitionRunCommand;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+
+
+
+public class Launcher {
+  @Parameter(names = "--help", help = true)
+  private boolean help;
+
+  /**
+   * .
+   * @param args d
+   */
+  public static void main(String[] args) {
+    try {
+      
+      System.out.println("here");
+      HashMap<String, Command> commands = new LinkedHashMap<>();
+      commands.put("competition-run", new CompetitionRunCommand());
+      commands.put("competition-evaluate", new CompetitionEvaluateCommand());
+
+      Launcher launcher = new Launcher();
+      JCommander jc = new JCommander(launcher);
+      for (Entry<String, Command> e : commands.entrySet()) {
+        jc.addCommand(e.getKey(), e.getValue());
+      }
+      jc.parse(args);
+      
+      if (args.length == 0 || launcher.help) {
+        jc.usage();
+        return;
+      }
+      launcher.run(commands.get(jc.getParsedCommand()));
+    } catch (ParameterException ex) {
+      System.out.println(ex.getMessage());
+      System.out.println("Try to use --help");
+    } catch (Exception ex) {
+      System.out.println(ex.getMessage());
+    }
+  }
+
+  private void run(Command cmd) throws Exception {
+    System.out.println("Hyflex running ...");
+    cmd.performCommand();
+    System.out.println("Hyflex finished ...");
+  }
+}
