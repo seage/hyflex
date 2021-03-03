@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 public class Competition {
@@ -18,15 +19,28 @@ public class Competition {
   private static final String[] problemIDs = {
     "SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP"
   };
-
-  private long currentTimeMillis;
+  
+  final String defaultDirectory = "./output/results";
   
   /**
    * Method is used for testing each algorithm on all problem domains and instances.
    */
-  public void run(List<String> hyperheurictics, long timeout, int runs) throws Exception {
+  public void run(
+      List<String> hyperheurictics, long timeout, int runs, Long id) throws Exception {
+    // check if user defined output folder
+    if (id == 0) {
+      // create new folder for results
+      id = System.currentTimeMillis();
+    }
+    
     // create output folder
-    new File("output/results/" + currentTimeMillis + "/").mkdirs();
+    final String resultsDir = Optional.ofNullable(
+        System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
+
+
+    new File(resultsDir + "/" + Long.toString(id) + "/").mkdirs();
+
+    System.out.println(resultsDir);
 
     // run hyper-herutistic on all problem domains
     for (String algorithmID : hyperheurictics) {
@@ -40,7 +54,7 @@ public class Competition {
         results.add(runAlg(algorithmID, problemID, runs, timeout));
       }
       System.out.println(results);
-      makeResultsCard(results, algorithmID);
+      makeResultsCard(results, algorithmID, id);
     }
   }
 
@@ -93,10 +107,14 @@ public class Competition {
    * @param results array of arrays with results
    * @param algorithmID name of given hyper-heuristic algorithm
    */
-  public void makeResultsCard(List<List<Double>> results, String algorithmID) throws IOException {
+  public void makeResultsCard(
+      List<List<Double>> results, String algorithmID, Long id) throws IOException {
+    
+    final String resultsDir = Optional.ofNullable(
+            System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
     try (
         FileWriter fwriter =
-            new FileWriter("output/results/" + currentTimeMillis + "/" + algorithmID + ".txt");
+            new FileWriter(resultsDir + "/" + Long.toString(id) + "/" + algorithmID + ".txt");
         PrintWriter printer = new PrintWriter(fwriter);) {
       String line = "";
       for (List<Double> array : results) {

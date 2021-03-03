@@ -6,7 +6,9 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Optional;
 
 /*
  * @author Dr Matthew Hyde
@@ -57,27 +59,37 @@ import java.util.Collections;
  */
 
 public class BenchmarkCalculator {
+  final String defaultDirectory = "./output/results";
 
   /**
    * Method runs benchmarking.
    * Returns leaderboard based on given hyper-heuristics results.
    */
-  public void run() throws Exception {
-
+  public void run(Long id) throws Exception {
+    final String resultsDirPath = Optional.ofNullable(
+        System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
+      
     int domains = 6;
     int numberOfInstances = 5;
 
-    File sfile = new File("./output/results/");
-    String[] directories = sfile.list(new FilenameFilter() {
+    File resultsDir = new File(resultsDirPath);
+    String[] directories = resultsDir.list(new FilenameFilter() {
       @Override
       public boolean accept(File current, String name) {
         return new File(current, name).isDirectory();
       }
     });
 
+    if (Arrays.asList(directories).contains(Long.toString(id))) {
+      directories = new String[]{Long.toString(id)};
+    } else if (Long.toString(id) != "") {
+      System.out.println("Error, folder doesn't exist.");
+      return;
+    }
+
     for (String directory: directories) {
 
-      String pathToSubmitted = "./output/results/" + directory;
+      String pathToSubmitted = resultsDirPath + "/" + directory;
 
       File dir = new File(pathToSubmitted); 
       String[] children = dir.list();     
