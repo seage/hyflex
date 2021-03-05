@@ -1,7 +1,6 @@
 #!/bin/bash
 
-#Pull the latest code from origin
-git pull origin master
+cd $(dirname "$0")
 
 #Build the project
-mvn clean package
+mvn -f ../pom.xml clean package
