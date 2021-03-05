@@ -3,14 +3,16 @@
 
 runAllHyperHeuristics(){
     cd ..
-    
+    #Create directory for output of processes
+    mkdir log
+
     #All hyper-heuristics names
     hhIDs="GIHH LeanGIHH PearlHunter EPH ISEA"
 
     #Run all hyper-heuristics in parallel
     for hhID in $hhIDs
     do
-        java -jar hyflex-chesc-2011/target/hyflex-chesc-2011-1.0.jar $@ --hyperheuristics $hhID > /dev/null 2> /dev/null &
+        java -jar hyflex-chesc-2011/target/hyflex-chesc-2011-1.0.jar $@ --hyperheuristics $hhID > log/${hhID}_log.txt 2> log/${hhID}_err.txt &
     done
 }
 
