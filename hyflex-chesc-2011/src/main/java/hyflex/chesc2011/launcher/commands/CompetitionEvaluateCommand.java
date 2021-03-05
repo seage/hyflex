@@ -17,7 +17,7 @@ public class CompetitionEvaluateCommand extends Command {
 
   @Parameter(names = {"--id"},
       description = "The name of the results folder")
-  public Long id = Long.parseLong("0");
+  public String id = "";
 
 
   public boolean isHelp() {
