@@ -4,7 +4,7 @@
 runAllHyperHeuristics(){
     cd ..
     #Create directory for output of processes
-    mkdir log
+    mkdir log 2> /dev/null
 
     #All hyper-heuristics names
     hhIDs="GIHH LeanGIHH PearlHunter EPH ISEA"
