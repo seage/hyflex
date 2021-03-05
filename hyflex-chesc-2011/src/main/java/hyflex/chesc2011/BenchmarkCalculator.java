@@ -71,7 +71,8 @@ public class BenchmarkCalculator {
         System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
 
     File resultsDir = new File(resultsDirPath);
-    
+
+    //get all subdrectories from the results directory
     String[] directories = resultsDir.list(new FilenameFilter() {
       @Override
       public boolean accept(File current, String name) {
@@ -91,6 +92,7 @@ public class BenchmarkCalculator {
       throw new Exception("WARNING, directory " + defaultDirectory + "/" + id + " doesn't exists.");
     }
 
+    //the main part of the evaluation
     int domains = 6;
     int numberOfInstances = 5;
     for (String directory: directories) {
