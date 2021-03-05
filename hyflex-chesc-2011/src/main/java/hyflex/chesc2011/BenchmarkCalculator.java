@@ -59,7 +59,7 @@ import java.util.Optional;
  */
 
 public class BenchmarkCalculator {
-  final String defaultDirectory = "./output/results";
+  final String defaultDirectory = "./results";
 
   /**
    * Method runs benchmarking.

@@ -20,7 +20,7 @@ public class Competition {
     "SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP"
   };
   
-  final String defaultDirectory = "./output/results";
+  final String defaultDirectory = "./results";
   
   /**
    * Method is used for testing each algorithm on all problem domains and instances.
