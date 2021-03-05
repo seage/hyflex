@@ -65,14 +65,13 @@ public class BenchmarkCalculator {
    * Method runs benchmarking.
    * Returns leaderboard based on given hyper-heuristics results.
    */
-  public void run(Long id) throws Exception {
+  public void run(String id) throws Exception {
+    //get the path to results folder
     final String resultsDirPath = Optional.ofNullable(
         System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
-      
-    int domains = 6;
-    int numberOfInstances = 5;
 
     File resultsDir = new File(resultsDirPath);
+    
     String[] directories = resultsDir.list(new FilenameFilter() {
       @Override
       public boolean accept(File current, String name) {
@@ -80,13 +79,20 @@ public class BenchmarkCalculator {
       }
     });
 
-    if (Arrays.asList(directories).contains(Long.toString(id))) {
-      directories = new String[]{Long.toString(id)};
-    } else if (Long.toString(id) != "") {
-      System.out.println("Error, folder doesn't exist.");
-      return;
+    //does results directory exists
+    if (directories == null) {
+      throw new Exception("WARNING, directory " + defaultDirectory + " doesn't exists.");
     }
 
+    //is id directory in results folder
+    if (Arrays.asList(directories).contains(id)) {
+      directories = new String[]{id};
+    } else if (id != "") {
+      throw new Exception("WARNING, directory " + defaultDirectory + "/" + id + " doesn't exists.");
+    }
+
+    int domains = 6;
+    int numberOfInstances = 5;
     for (String directory: directories) {
 
       String pathToSubmitted = resultsDirPath + "/" + directory;
@@ -97,7 +103,7 @@ public class BenchmarkCalculator {
       int hyperheuristics = 0;
       double[][][] submittedscores = null;
       if (children == null) { 
-        System.out.println("there are no files in the submitted directory");
+        System.out.println("There are no files in the submitted directory");
       } else {
         hyperheuristics = children.length;
         hhnames = new String[children.length];
