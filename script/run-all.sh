@@ -2,13 +2,12 @@
 
 
 runAllHyperHeuristics(){
-    cd ..
     #Create directory for output of processes
     mkdir -p results/log 2> /dev/null
 
     #All hyper-heuristics names
     hhIDs="GIHH LeanGIHH PearlHunter EPH ISEA"
-
+    
     #Run all hyper-heuristics in parallel
     for hhID in $hhIDs
     do
@@ -17,9 +16,10 @@ runAllHyperHeuristics(){
 }
 
 cd $(dirname "$0")
+cd ..
 
 #Test if project jar exists
-if [ ! -f ../hyflex-chesc-2011/target/hyflex-chesc-2011*.jar ]; then
+if [ ! -f ./hyflex-chesc-2011/target/hyflex-chesc-2011*.jar ]; then
     echo "Project needs to be compiled!"
     exit
 fi
@@ -47,7 +47,8 @@ if [[ $@ == *"competition-run"* ]]; then
 
     #Find the highest directory id
     maxId=0
-    idDirs=$(find  ../results/ -type d -name "[0-9]*" -exec basename \{} \; 2>/dev/null > /dev/null)
+    idDirs=$(find  ./results/ -type d -name "[0-9]*" -exec basename \{} \; 2>/dev/null)
+
     if [ $? == 0 ]; then 
         for idDir in $idDirs
         do
