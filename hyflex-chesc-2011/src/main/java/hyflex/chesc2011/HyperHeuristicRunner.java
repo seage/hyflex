@@ -24,9 +24,11 @@ import java.util.List;
 
 import kubalik.EvoCOPHyperHeuristic;
 import leangihh.LeanGIHH;
+
 import pearlhunter.PearlHunter;
 
 import travelingSalesmanProblem.TSP;
+import PersonnelScheduling.PersonnelScheduling;
 
 public class HyperHeuristicRunner {
   /**
@@ -64,14 +66,21 @@ public class HyperHeuristicRunner {
      * -----------------
      * SAT
      * TSP
+     * PersonnelScheduling
      */
     final String ProblemName = args[1];
     
-    int[] sat = {3,5,4,10,11};
-    int[] tsp = {0,8,2,7,6};
+    final int[] sat = {3,5,4,10,11};
+    // final int[] bp  = {7,1,9,10,11};
+    final int[] ps  = {5,9,8,10,11};
+    // final int[] fs  = {1,8,3,10,11};
+    final int[] tsp = {0,8,2,7,6};
+    // final int[] vrp = {6,2,5,1,9};
+
     HashMap<String, int[]> instances = new HashMap<>();
     instances.put("SAT", sat);
     instances.put("TSP", tsp);
+    instances.put("PersonnelScheduling", ps);
 
     //time we're allowed to optimize (600000ms = 10min)
     final long timeAllowed = Integer.parseInt(args[2]) * 1000;
@@ -137,6 +146,8 @@ public class HyperHeuristicRunner {
         return new SAT(seed);
       case "TSP":
         return new TSP(seed);
+      case "PersonnelScheduling":
+        return new PersonnelScheduling(seed);
       default:
         System.out.println("ERROR, " + problemName + " INVALID INPUT");
         return null;

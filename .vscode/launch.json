@@ -6,10 +6,10 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch HHRun",
+      "name": "Launch HyperHeuristicRunner",
       "request": "launch",
-      "mainClass": "hyflex.chesc2011.HHRun",
-      "args": ["GIHH", "TSP", "10"]
+      "mainClass": "hyflex.chesc2011.HyperHeuristicRunner",
+      "args": ["ISEA", "PersonnelScheduling", "120"]
     },
   ]
 }
