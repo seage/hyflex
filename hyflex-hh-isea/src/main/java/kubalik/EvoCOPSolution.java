@@ -474,25 +474,51 @@ public class EvoCOPSolution {
         EvoCOPHyFlexManager.current_obj_function_values[0] = EvoCOPHyFlexManager.current_obj_function_values[3];
 
         do{
+            /**
+             * Following integer is used as indicator of the infinite loop
+             */
+            int j = 0;
             //--- 1a. zmen ohodnocovaci reseni solutionMemory[0]
             if(generator.nextInt(EvoCOPHyFlexManager.ruinRate + EvoCOPHyFlexManager.mutationRate) < EvoCOPHyFlexManager.ruinRate){
                 //--- nejdrvi se zkusi ruin-recreate
                 if(EvoCOPHyFlexManager.ruin_recreate_heuristics != null){
+                    
+                    /**
+                     * Following integer is used as indicator of the infinite loop
+                     */
+                    int i = 0;
+
                     do{
                         int name = EvoCOPHyFlexManager.ruin_recreate_heuristics[generator.nextInt(EvoCOPHyFlexManager.ruin_recreate_heuristics.length)];
                         EvoCOPHyFlexManager.problem.setIntensityOfMutation(EvoCOPHyFlexManager.startRecreate + EvoCOPHyFlexManager.addRecreate*generator.nextDouble() );
                         EvoCOPHyFlexManager.current_obj_function_values[0] = EvoCOPHyFlexManager.problem.applyHeuristic(name, 0, 1);
+                        
+                        if (i >= 100){
+                            break;
+                        }
+                        i++;
                     }while(EvoCOPHyFlexManager.problem.compareSolutions(0, 1) == true);
                     EvoCOPHyFlexManager.problem.copySolution(1, 0);
                 }
                 //--- potom se zkusi mutace
                 else if(EvoCOPHyFlexManager.mutation_heuristics != null)
                 {
+
+                    /**
+                     * Following integer is used as indicator of the infinite loop
+                     */
+                    int i = 0;
+
                     do{
                         //--- proved mutaci
                         int name = EvoCOPHyFlexManager.mutation_heuristics[generator.nextInt(EvoCOPHyFlexManager.mutation_heuristics.length)];
                         EvoCOPHyFlexManager.problem.setIntensityOfMutation(EvoCOPHyFlexManager.startMutation + EvoCOPHyFlexManager.addMutation*generator.nextDouble());
                         EvoCOPHyFlexManager.current_obj_function_values[0] = EvoCOPHyFlexManager.problem.applyHeuristic(name, 0, 1);
+
+                        if (i >= 100){
+                            break;
+                        }
+                        i++;
                     }while(EvoCOPHyFlexManager.problem.compareSolutions(0, 1) == true);
                     EvoCOPHyFlexManager.problem.copySolution(1, 0);   //--- nastav zmenene ohodnocovaci reseni
                 }
@@ -502,20 +528,41 @@ public class EvoCOPSolution {
                 //--- nejdrvi se zkusi mutace
                 if(EvoCOPHyFlexManager.mutation_heuristics != null)
                 {
+                    /**
+                     * Following integer is used as indicator of the infinite loop
+                     */
+                    int i = 0;
+
                     do{
                         int name = EvoCOPHyFlexManager.mutation_heuristics[generator.nextInt(EvoCOPHyFlexManager.mutation_heuristics.length)];
                         EvoCOPHyFlexManager.problem.setIntensityOfMutation(EvoCOPHyFlexManager.startMutation + EvoCOPHyFlexManager.addMutation*generator.nextDouble());
                         EvoCOPHyFlexManager.current_obj_function_values[0] = EvoCOPHyFlexManager.problem.applyHeuristic(name, 0, 1);
+
+                        if (i >= 100){
+                            break;
+                        }
+                        i++;
                     }while(EvoCOPHyFlexManager.problem.compareSolutions(0, 1) == true);
                     EvoCOPHyFlexManager.problem.copySolution(1, 0);   //--- nastav zmenene ohodnocovaci reseni
                 }
                 //--- potom se zkusi ruin-recreate
                 else if(EvoCOPHyFlexManager.ruin_recreate_heuristics != null)
                 {
+
+                    /**
+                     * Following integer is used as indicator of the infinite loop
+                     */
+                    int i = 0;
+
                     do{
                         int name = EvoCOPHyFlexManager.ruin_recreate_heuristics[generator.nextInt(EvoCOPHyFlexManager.ruin_recreate_heuristics.length)];
                         EvoCOPHyFlexManager.problem.setIntensityOfMutation(EvoCOPHyFlexManager.startRecreate + EvoCOPHyFlexManager.addRecreate*generator.nextDouble() );
                         EvoCOPHyFlexManager.current_obj_function_values[0] = EvoCOPHyFlexManager.problem.applyHeuristic(name, 0, 1);
+
+                        if (i >= 100){
+                            break;
+                        }
+                        i++;
                     }while(EvoCOPHyFlexManager.problem.compareSolutions(0, 1) == true);
                     EvoCOPHyFlexManager.problem.copySolution(1, 0);   //--- nastav zmenene ohodnocovaci reseni
                 }
@@ -527,6 +574,11 @@ public class EvoCOPSolution {
 //                    EvoCOPHyFlexManager.current_obj_function_values[0] = EvoCOPHyFlexManager.problem.applyHeuristic(name, 0, 0);
 //                }
             }
+
+            if (j >= 100){
+                break;
+            }
+            j++;
         }while(EvoCOPHyFlexManager.problem.compareSolutions(0, 3) == true); //--- Nove ohodnocovaci reseni
                                                                              //--- je stejne jako best-so-far
         //--- 2. zmen doposud nejlepsi reseni solutionMemory[2]
