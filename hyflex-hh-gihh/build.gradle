@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'hyflex'
+version = '1.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "file://$projectDir/../hyflex-lib/repository"
+    }
+}
+
+dependencies {
+    // Use JUnit Jupiter API for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
+
+    // Use JUnit Jupiter Engine for testing.
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    implementation group: 'com.thoughtworks.xstream', name: 'xstream', version: '1.4.15'
+
+    implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
+    implementation group: 'hyflex', name: 'chesc-fixed-no-ps', version: '2019.03.17'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            exclude '**/be/kuleuven/kahosl/jppf/CHClient.java'
+            exclude '**/be/kuleuven/kahosl/jppf/CHTask.java'
+       }
+   }
+}
