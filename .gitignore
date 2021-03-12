@@ -12,10 +12,7 @@ results/
 
 .classpath
 .project
-.gradle
-
-**/*.properties
-*.versionsBackup
 
 hyflex-*/**/.settings
 hyflex-*/**/.checkstyle
+hyflex-*/**/*.properties
