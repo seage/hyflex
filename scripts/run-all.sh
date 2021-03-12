@@ -2,7 +2,7 @@
 
 
 runAllHyperHeuristics(){
-    #Create directory for output of processes
+    # Create directory for output of processes
     mkdir -p results/log 2> /dev/null
 
     #All hyper-heuristics names
@@ -11,27 +11,27 @@ runAllHyperHeuristics(){
     #Run all hyper-heuristics in parallel
     for hhID in $hhIDs
     do
-        java -jar hyflex-chesc-2011/target/hyflex-chesc-2011-1.0.jar $@ --hyperheuristics $hhID > results/log/${hhID}_log.txt 2> results/log/${hhID}_err.txt &
+        ./hyflex-chesc-2011/build/install/hyflex-chesc-2011/bin/hyflex-chesc-2011 $@ --hyperheuristics $hhID > results/log/${hhID}_log.txt 2> results/log/${hhID}_err.txt &
     done
 }
 
 cd $(dirname "$0")
 cd ..
 
-#Test if project jar exists
-if [ ! -f ./hyflex-chesc-2011/target/hyflex-chesc-2011*.jar ]; then
+# Test if project jar exists
+if [ ! -f hyflex-chesc-2011/build/install/hyflex-chesc-2011/lib/hyflex-chesc-2011.jar ]; then
     echo "Project needs to be compiled!"
     exit
 fi
 
-#Evaluate competition
+# Evaluate competition
 if [[ $@ == *"competition-evaluate"* ]]; then
     echo "Use run.sh instead."
     exit
 fi
 
 
-#Run competition
+# Run competition
 if [[ $@ == *"competition-run"* ]]; then
     #Is hh set by user
     if [[ $@ == *"-h"* || $@ == *"--hyperheuristics"* ]]; then
@@ -39,13 +39,13 @@ if [[ $@ == *"competition-run"* ]]; then
         exit
     fi
 
-    #Is id defined by the user
+    # Is id defined by the user
     if [[ $@ == *"--id"* ]]; then
         runAllHyperHeuristics $@
         exit
     fi
 
-    #Find the highest directory id
+    # Find the highest directory id
     maxId=0
     idDirs=$(find  ./results/ -type d -name "[0-9]*" -exec basename \{} \; 2>/dev/null)
 
