@@ -1,84 +1,15 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
-            "name": "Launch HyperHeuristicRunner",
-            "request": "launch",
-            "mainClass": "hyflex.chesc2011.HyperHeuristicRunner",
-            "projectName": "hyflex-chesc-2011"
-        },
-        {
-            "type": "java",
-            "name": "Launch ScoreCalculator",
-            "request": "launch",
-            "mainClass": "hyflex.chesc2011.ScoreCalculator",
-            "projectName": "hyflex-chesc-2011"
-        },
-        {
-            "type": "java",
-            "name": "Launch ExampleRun1",
-            "request": "launch",
-            "mainClass": "hyflex.chesc2011.example.ExampleRun1",
-            "projectName": "hyflex-chesc-2011"
-        },
-        {
-            "type": "java",
-            "name": "Launch ExampleRun2",
-            "request": "launch",
-            "mainClass": "hyflex.chesc2011.example.ExampleRun2",
-            "projectName": "hyflex-chesc-2011"
-        },
-        {
-            "type": "java",
-            "name": "Launch Launcher",
-            "request": "launch",
-            "mainClass": "hyflex.chesc2011.launcher.Launcher",
-            "projectName": "hyflex-chesc-2011"
-        },
-        {
-            "type": "java",
-            "name": "Launch EphCommand",
-            "request": "launch",
-            "mainClass": "fr.lalea.eph.EphCommand",
-            "projectName": "hyflex-hh-eph"
-        },
-        {
-            "type": "java",
-            "name": "Launch ExampleRun",
-            "request": "launch",
-            "mainClass": "be.kuleuven.kahosl.hyperheuristic.ExampleRun",
-            "projectName": "hyflex-hh-gihh"
-        },
-        {
-            "type": "java",
-            "name": "Launch GIHHCompleteRun",
-            "request": "launch",
-            "mainClass": "be.kuleuven.kahosl.hyperheuristic.GIHHCompleteRun",
-            "projectName": "hyflex-hh-gihh"
-        },
-        {
-            "type": "java",
-            "name": "Launch EvoCOPRun",
-            "request": "launch",
-            "mainClass": "kubalik.EvoCOPRun",
-            "projectName": "hyflex-hh-isea"
-        },
-        {
-            "type": "java",
-            "name": "Launch ExampleRun(1)",
-            "request": "launch",
-            "mainClass": "leangihh.ExampleRun",
-            "projectName": "hyflex-hh-leangihh"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch HyperHeuristicRunner",
+      "request": "launch",
+      "mainClass": "hyflex.chesc2011.HyperHeuristicRunner",
+      "args": ["ISEA", "PersonnelScheduling", "120"]
+    },
+  ]
 }

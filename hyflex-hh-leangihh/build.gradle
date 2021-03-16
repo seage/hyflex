@@ -1,18 +1,2 @@
-// plugins {
-//     id 'java-library'
-// }
-
-// group = 'hyflex'
-// version = '1.0'
-
-// repositories {
-//     mavenCentral()
-//     maven {
-//         url "file://$projectDir/../hyflex-lib/repository"
-//     }
-// }
-
 dependencies {
-    // implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
-    // implementation group: 'hyflex', name: 'chesc-fixed-no-ps', version: '2019.03.17'
 }
