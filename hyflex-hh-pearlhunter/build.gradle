@@ -1,24 +1,18 @@
-plugins {
-    id 'java-library'
-}
+// plugins {
+//     id 'java-library'
+// }
 
-group = 'hyflex'
-version = '1.0'
+// group = 'hyflex'
+// version = '1.0'
 
-repositories {
-    mavenCentral()
-    maven {
-        url "file://$projectDir/../hyflex-lib/repository"
-    }
-}
+// repositories {
+//     mavenCentral()
+//     maven {
+//         url "file://$projectDir/../hyflex-lib/repository"
+//     }
+// }
 
 dependencies {
-    // Use JUnit Jupiter API for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.2'
-
-    // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-
-    implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
-    implementation group: 'hyflex', name: 'chesc-fixed-no-ps', version: '2019.03.17'
+    // implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
+    // implementation group: 'hyflex', name: 'chesc-fixed-no-ps', version: '2019.03.17'
 }
