@@ -19,7 +19,7 @@ public class CompetitionRunCommand extends Command {
 
   @Parameter(names = {"-t", "--timeout"},
       required = true,
-      description = "The number represents timeout in milliseconds "
+      description = "The number represents timeout in seconds "
       + "for hyper-heuristics run on one instance"
       + "numer should be a positive integer")
   public Long timeout;
@@ -55,6 +55,6 @@ public class CompetitionRunCommand extends Command {
 
   @Override
   public void performCommand() throws Exception {
-    new Competition().run(hyperheurictics, timeout, runs, id);
+    new Competition().run(hyperheurictics, timeout * 1000, runs, id);
   }
 }

@@ -396,6 +396,8 @@ public class AdaptiveIterationLimitedListBasedTA extends AcceptanceCriterion {
 		
 		listLength = (int)(Vars.aillaListSize/2)+(int)(((int)(Vars.aillaListSize/2)+1)*(timeFactor*timeFactor*timeFactor));
 		
+		if (listLength < 1) return;
+
 		int tempBestListSize = bestFitnessList.size();
 		if(listLength < tempBestListSize){
 			for(int i = tempBestListSize; i > listLength; i--){

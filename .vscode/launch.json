@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch the Launcher",
+      "request": "launch",
+      "mainClass": "hyflex.chesc2011.launcher.Launcher",
+      "args": ["competition-run", "-h", "GIHH", "-n", "1", "-t", "1"]
+    },
+    {
+      "type": "java",
       "name": "Launch HyperHeuristicRunner",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.HyperHeuristicRunner",
