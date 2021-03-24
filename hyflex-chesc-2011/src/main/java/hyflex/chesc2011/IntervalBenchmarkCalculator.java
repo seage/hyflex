@@ -59,7 +59,8 @@ public class IntervalBenchmarkCalculator {
       IntervalBenchmarkCalculator ibc = new IntervalBenchmarkCalculator();
       ibc.run("1");
     } catch (Exception e) {
-      System.err.println(e.getStackTrace());
+      System.out.println("error");
+      System.out.println(e.getStackTrace());
     }
   }
 
@@ -92,7 +93,12 @@ public class IntervalBenchmarkCalculator {
     int filesNumber = resFiles.length;
 
     for (String fileName : resFiles) {
-      // todo
+      System.out.println(resultsPath + "/" + id + "/" + fileName);
+      HashMap<String, HashMap<String, Double>> hm = loadCard(
+          resultsPath + "/" + id + "/" + fileName);
+
+      System.out.println(hm.values());
+      
     }
   }
 
@@ -100,9 +106,42 @@ public class IntervalBenchmarkCalculator {
     return new File(path).exists();
   }
 
-  private HashMap<String, HashMap<String, Integer>> loadCard(String path) throws Exception{
+  private HashMap<String, HashMap<String, Double>> loadCard(String path) 
+      throws Exception {
+    HashMap<String, HashMap<String, Double>> results = new HashMap<>();
+    
+    Scanner scanner = new Scanner(new File(path)).useDelimiter("\n");
 
-    return null;
+    for (String problemId : problems) {
+      System.out.println(problemId);
+      
+      if (scanner.hasNextLine() == false) {
+        scanner.close();
+        throw new Exception("Not enough lines in " + path + " file.");
+      }
+
+      HashMap<String, Double> result = new HashMap<>();
+
+      Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ");
+
+      for (String instanceId: cardInstances.get(problemId)) {
+        System.out.println(instanceId);
+
+
+        if (line.hasNextLine() == false) {
+          line.close();
+          throw new Exception("Not enough instances results in " + path + " file.");
+        }
+        
+        result.put(instanceId, Double.parseDouble(line.next()));
+      }
+
+      line.close();
+      results.put(problemId, result);
+    }
+    scanner.close();
+
+    return results;
   }
 
   private HashMap<String, List<Integer>> readXmlFile(String path) throws Exception {
@@ -134,7 +173,8 @@ public class IntervalBenchmarkCalculator {
     return results;
   }
 
-  private Double getMetric(double worst, double best, double current) throws Exception {
+  private Double getMetric(double worst, double best, double current) 
+      throws Exception {
     return mapToInterval(worst, best, intervalFrom, intervalTo, current);
   }
 
