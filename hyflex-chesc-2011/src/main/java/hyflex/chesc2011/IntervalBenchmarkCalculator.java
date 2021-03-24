@@ -17,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -26,6 +28,7 @@ import java.util.Optional;
 
 public class IntervalBenchmarkCalculator {
   String resultsPath = "./results";
+  String metadataPath = "./hyflex-chesc-2011/src/main/resources/hyflex/hyflex-chesc-2011";
 
   final int intervalFrom = 0;
   final int intervalTo = 1000;
@@ -55,43 +58,18 @@ public class IntervalBenchmarkCalculator {
   }
 
   public void run(String id) throws Exception{
-    if (isIdThere(id) == false) {
+    if (doesDirExists(resultsPath + "/" + id) == false) {
+      return;
+    }
+    if (doesDirExists(metadataPath) == false) {
       return;
     }
 
 
   }
 
-  private Boolean isIdThere(String id) {
-    //get the path to results folder
-    final String resultsDirPath = Optional.ofNullable(
-        System.getenv("RESULTS_DIR")).orElse(resultsPath);
-    
-    File resultsDir = new File(resultsDirPath);
-
-    //get all subdrectories from the results directory
-    String[] directories = resultsDir.list(new FilenameFilter() {
-      @Override
-      public boolean accept(File current, String name) {
-        return new File(current, name).isDirectory();
-      }
-    });
-
-    //does results directory exists
-    if (directories == null) {
-      System.out.println("WARNING, directory " + resultsPath + " doesn't exists.");
-      return false;
-    }
-
-    //is id directory in results folder
-    if (Arrays.asList(directories).contains(id)) {
-      directories = new String[]{id};
-    } else if (id != "") {
-      System.out.println("WARNING, directory " + resultsPath + "/" + id + " doesn't exists.");
-      return false;
-    }
-
-    return true;
+  private Boolean doesDirExists(String path) {
+    return new File(path).exists();
   }
 
   private HashMap<String, List<Integer>> loadCard(String path) throws Exception{
