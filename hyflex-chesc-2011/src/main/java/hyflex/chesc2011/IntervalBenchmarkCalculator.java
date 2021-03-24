@@ -192,13 +192,13 @@ public class IntervalBenchmarkCalculator {
           continue;
         }
 
-        System.out.println(element.getAttribute("optimum"));
-        System.out.println(element.getAttribute("random"));
+        // System.out.println(element.getAttribute("optimum"));
+        // System.out.println(element.getAttribute("random"));
 
-        // results.put(element.getAttribute("id"), new ArrayList<Integer>(Arrays.asList(
-        //     Integer.parseInt(element.getAttribute("random")), 
-        //     Integer.parseInt(element.getAttribute("optimum"))
-        // )));
+        results.put(element.getAttribute("id"), new ArrayList<Integer>(Arrays.asList(
+            Integer.parseInt(element.getAttribute("optimum")), 
+            Integer.parseInt(element.getAttribute("random"))
+        )));
       }    
     }
 
