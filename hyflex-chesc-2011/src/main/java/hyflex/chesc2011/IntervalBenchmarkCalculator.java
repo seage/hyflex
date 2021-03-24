@@ -46,24 +46,26 @@ public class IntervalBenchmarkCalculator {
   private HashMap<String, List<Integer>> readXmlFile(String path) throws Exception {
     HashMap<String, List<Integer>> results = new HashMap<String, List<Integer>>();
 
-    File inputFile = new File("input.txt");
-    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder dbBuilder = dbFactory.newDocumentBuilder();
-    Document doc = dbBuilder.parse(inputFile);
+    // Load the input file
+    File inputFile = new File(path);
+    // Read the input file
+    Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputFile);
     doc.getDocumentElement().normalize();
 
-    NodeList nList = doc.getElementsByTagName("Instance");
+    // Get all instances from the file
+    NodeList nodeList = doc.getElementsByTagName("Instance");
     
-    for (int temp = 0; temp < nList.getLength(); temp++) {
-      Node nNode = nList.item(temp);
+    // For each instance stores its values into a hash map
+    for (int temp = 0; temp < nodeList.getLength(); temp++) {
+      Node node = nodeList.item(temp);
       
-      if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-        Element eElement = (Element) nNode;
+      if (node.getNodeType() == Node.ELEMENT_NODE) {
+        Element element = (Element) node;
 
-        results.put(eElement.getAttribute("id"), Arrays.asList(
-            Integer.parseInt(eElement.getAttribute("worst")), 
-            Integer.parseInt(eElement.getAttribute("optimum"))
-        ));
+        results.put(element.getAttribute("id"), new ArrayList<Integer>(Arrays.asList(
+            Integer.parseInt(element.getAttribute("random")), 
+            Integer.parseInt(element.getAttribute("optimum"))
+        )));
       }    
     }
 
