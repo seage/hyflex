@@ -19,8 +19,11 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.StringCharacterIterator;
 import java.util.Collections;
 import java.util.Optional;
+
+import java.util.Scanner;
 
 /*
  * @author David Omrai
@@ -29,6 +32,8 @@ import java.util.Optional;
 public class IntervalBenchmarkCalculator {
   String resultsPath = "./results";
   String metadataPath = "./hyflex-chesc-2011/src/main/resources/hyflex/hyflex-chesc-2011";
+
+  String[] problems = {"SAT", "TSP"};
 
   final int intervalFrom = 0;
   final int intervalTo = 1000;
@@ -45,34 +50,57 @@ public class IntervalBenchmarkCalculator {
   };
 
   public static void main(String[] args){
-    if (args.length <= 0) {
-      return;
-    }
+    // Uncomment when its finished
+    // if (args.length <= 0) {
+    //   return;
+    // }
 
     try {
       IntervalBenchmarkCalculator ibc = new IntervalBenchmarkCalculator();
-      ibc.run(args[0]);
+      ibc.run("1");
     } catch (Exception e) {
       System.err.println(e.getStackTrace());
     }
   }
 
   public void run(String id) throws Exception{
+    System.out.println("run");
     if (doesDirExists(resultsPath + "/" + id) == false) {
       return;
     }
+    System.out.println("results are there");
     if (doesDirExists(metadataPath) == false) {
       return;
     }
+    System.out.println("metadata are there");
 
+    HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
 
+    File resDir = new File(resultsPath + "/" + id);
+    String[] resFiles = resDir.list(new FilenameFilter() {
+      @Override
+      public boolean accept(File current, String name) {
+        return new File(current, name).isFile();
+      }
+    });
+
+    if (resFiles == null) {
+      System.out.println("There are no files inside " + resultsPath + "/" + id + " directory");
+      return;
+    }
+
+    int filesNumber = resFiles.length;
+
+    for (String fileName : resFiles) {
+      // todo
+    }
   }
 
   private Boolean doesDirExists(String path) {
     return new File(path).exists();
   }
 
-  private HashMap<String, List<Integer>> loadCard(String path) throws Exception{
+  private HashMap<String, HashMap<String, Integer>> loadCard(String path) throws Exception{
 
     return null;
   }
