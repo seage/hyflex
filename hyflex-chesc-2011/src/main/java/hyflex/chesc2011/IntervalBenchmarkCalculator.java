@@ -13,6 +13,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Optional;
 
 /*
  * @author David Omrai
@@ -26,19 +32,69 @@ public class IntervalBenchmarkCalculator {
 
   @SuppressWarnings("serial")
   HashMap<String, List<String>> cardInstances = new HashMap<String, List<String>>() {{
-        put("SAT", new ArrayList<>(Arrays.asList("3", "5", "4", "10", "11")));
-        put("TSP", new ArrayList<>(Arrays.asList("0", "8", "2", "7", "6")));
+        put("SAT", new ArrayList<>(
+            Arrays.asList(
+            "hyflex-sat-3", "hyflex-sat-5", "hyflex-sat-4", "hyflex-sat-10", "hyflex-sat-11")));
+        put("TSP", new ArrayList<>(
+            Arrays.asList(
+              "hyflex-tsp-0", "hyflex-tsp-8", "hyflex-tsp-2", "hyflex-tsp-7", "hyflex-tsp-6")));
     }
   };
 
   public static void main(String[] args){
+    if (args.length <= 0) {
+      return;
+    }
+
+    try {
+      IntervalBenchmarkCalculator ibc = new IntervalBenchmarkCalculator();
+      ibc.run(args[0]);
+    } catch (Exception e) {
+      System.err.println(e.getStackTrace());
+    }
   }
 
-  public void run(String id){
+  public void run(String id) throws Exception{
+    if (isIdThere(id) == false) {
+      return;
+    }
+
 
   }
 
-  private HashMap<String, List<Integer>> loadCard(String path) {
+  private Boolean isIdThere(String id) {
+    //get the path to results folder
+    final String resultsDirPath = Optional.ofNullable(
+        System.getenv("RESULTS_DIR")).orElse(resultsPath);
+    
+    File resultsDir = new File(resultsDirPath);
+
+    //get all subdrectories from the results directory
+    String[] directories = resultsDir.list(new FilenameFilter() {
+      @Override
+      public boolean accept(File current, String name) {
+        return new File(current, name).isDirectory();
+      }
+    });
+
+    //does results directory exists
+    if (directories == null) {
+      System.out.println("WARNING, directory " + resultsPath + " doesn't exists.");
+      return false;
+    }
+
+    //is id directory in results folder
+    if (Arrays.asList(directories).contains(id)) {
+      directories = new String[]{id};
+    } else if (id != "") {
+      System.out.println("WARNING, directory " + resultsPath + "/" + id + " doesn't exists.");
+      return false;
+    }
+
+    return true;
+  }
+
+  private HashMap<String, List<Integer>> loadCard(String path) throws Exception{
 
     return null;
   }
@@ -72,12 +128,13 @@ public class IntervalBenchmarkCalculator {
     return results;
   }
 
-  private Double getMetric(double worst, double best, double current){
+  private Double getMetric(double worst, double best, double current) throws Exception {
     return mapToInterval(worst, best, intervalFrom, intervalTo, current);
   }
 
   private double mapToInterval(
-      double sourceFrom, double sourceTo, double mapFrom, double mapTo, double value) {
+      double sourceFrom, double sourceTo, double mapFrom, double mapTo, double value)
+      throws Exception {
     return mapFrom + ((mapTo - mapFrom) / (sourceTo - sourceTo)) * (value - sourceFrom);
   }
 }
