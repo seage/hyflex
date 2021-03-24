@@ -64,16 +64,18 @@ public class IntervalBenchmarkCalculator {
     }
   }
 
-  public void run(String id) throws Exception{
-    System.out.println("run");
+  /**
+   * .
+   * @param id .
+   */
+  public void run(String id) throws Exception {
     if (doesDirExists(resultsPath + "/" + id) == false) {
       return;
     }
-    System.out.println("results are there");
+    
     if (doesDirExists(metadataPath) == false) {
       return;
     }
-    System.out.println("metadata are there");
 
     HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
 
@@ -92,14 +94,32 @@ public class IntervalBenchmarkCalculator {
 
     int filesNumber = resFiles.length;
 
+    HashMap<String, HashMap<String, List<Integer>>> metadata = loadMetadata();
+
+
     for (String fileName : resFiles) {
-      System.out.println(resultsPath + "/" + id + "/" + fileName);
       HashMap<String, HashMap<String, Double>> hm = loadCard(
           resultsPath + "/" + id + "/" + fileName);
+
+      
+      for (String problemId: problems){
+        
+      }
 
       System.out.println(hm.values());
       
     }
+  }
+
+  private HashMap<String, HashMap<String, List<Integer>>> loadMetadata() throws Exception {
+    HashMap<String, HashMap<String, List<Integer>>> results = new HashMap<>();
+
+    for (String problemId: problems) {
+      results.put(
+          problemId, readXmlFile(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml"));
+    }
+
+    return results;
   }
 
   private Boolean doesDirExists(String path) {
@@ -127,7 +147,6 @@ public class IntervalBenchmarkCalculator {
       for (String instanceId: cardInstances.get(problemId)) {
         System.out.println(instanceId);
 
-
         if (line.hasNextLine() == false) {
           line.close();
           throw new Exception("Not enough instances results in " + path + " file.");
@@ -143,6 +162,7 @@ public class IntervalBenchmarkCalculator {
 
     return results;
   }
+
 
   private HashMap<String, List<Integer>> readXmlFile(String path) throws Exception {
     HashMap<String, List<Integer>> results = new HashMap<String, List<Integer>>();
