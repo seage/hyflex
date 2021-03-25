@@ -91,7 +91,7 @@ public class IntervalBenchmarkCalculator {
 
     HashMap<String, HashMap<String, List<Integer>>> metadata = loadMetadata();
 
-    HashMap<String, HashMap<String, Double>> results = new HashMap<>();
+    HashMap<String, HashMap<String, HashMap<String, Double>>> results = new HashMap<>();
 
     for (String fileName : resFiles) {
       HashMap<String, HashMap<String, Double>> hm = loadCard(
@@ -101,24 +101,28 @@ public class IntervalBenchmarkCalculator {
         continue;
       }
 
-      // todo store results into a results map
+      HashMap<String, HashMap<String, Double>> probRes = new HashMap<>();
 
       for (String problemId: problems) {
         
+        HashMap<String, Double> instRes = new HashMap<>();
+
         for (String instanceId: cardInstances.get(problemId)) {
           System.out.println(problemId + " " + instanceId);
-
-          // System.out.println(metadata.get(problemId).get(instanceId).get(0));
-          // System.out.println(metadata.get(problemId).get(instanceId).get(1));
-          // System.out.println(hm.get(problemId).get(instanceId));
-          System.out.println(getMetric(
-              metadata.get(problemId).get(instanceId).get(0),
-              metadata.get(problemId).get(instanceId).get(1),
-              hm.get(problemId).get(instanceId)
-          ));
+          instRes.put(
+              instanceId, 
+              getMetric(
+                metadata.get(problemId).get(instanceId).get(0),
+                metadata.get(problemId).get(instanceId).get(1),
+                hm.get(problemId).get(instanceId)
+              )
+          );
         }
-        
+
+        probRes.put(problemId, instRes);
       }
+      
+      results.put(fileName, probRes);
     }
   }
 
