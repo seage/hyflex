@@ -8,9 +8,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
-
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,6 +26,7 @@ import org.w3c.dom.NodeList;
 public class IntervalBenchmarkCalculator {
   String resultsPath = "./results";
   String metadataPath = "./hyflex-chesc-2011/src/main/resources/hyflex/hyflex-chesc-2011";
+  String resultsXmlFile = "./results.xml";
 
   String[] problems = {"SAT", "TSP"};
 
@@ -33,7 +37,7 @@ public class IntervalBenchmarkCalculator {
   HashMap<String, List<String>> cardInstances = new HashMap<String, List<String>>() {{
         put("SAT", new ArrayList<>(
             Arrays.asList(
-            "hyflex-sat-3", "hyflex-sat-5", "hyflex-sat-4", "hyflex-sat-10", "hyflex-sat-11")));
+              "hyflex-sat-3", "hyflex-sat-5", "hyflex-sat-4", "hyflex-sat-10", "hyflex-sat-11")));
         put("TSP", new ArrayList<>(
             Arrays.asList(
               "hyflex-tsp-0", "hyflex-tsp-8", "hyflex-tsp-2", "hyflex-tsp-7", "hyflex-tsp-6")));
@@ -124,6 +128,8 @@ public class IntervalBenchmarkCalculator {
       
       results.put(fileName, probRes);
     }
+
+    makeXmlFile(results);
   }
 
   private HashMap<String, HashMap<String, List<Integer>>> loadMetadata() throws Exception {
@@ -159,7 +165,6 @@ public class IntervalBenchmarkCalculator {
       Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ");
 
       for (String instanceId: cardInstances.get(problemId)) {
-        // System.out.println(instanceId);
 
         if (line.hasNextLine() == false) {
           line.close();
@@ -181,7 +186,6 @@ public class IntervalBenchmarkCalculator {
 
   private HashMap<String, List<Integer>> readXmlFile(String path) throws Exception {
     HashMap<String, List<Integer>> results = new HashMap<String, List<Integer>>();
-    // System.out.println(path);
     // Load the input file
     File inputFile = new File(path);
     // Read the input file
@@ -213,6 +217,46 @@ public class IntervalBenchmarkCalculator {
       }    
     }
     return results;
+  }
+
+  private void makeXmlFile(HashMap<String, HashMap<String, HashMap<String, Double>>> results) 
+      throws Exception {
+    DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+    Document document = documentBuilder.newDocument();
+
+    // root element
+    Element root = document.createElement("results");
+    document.appendChild(root);
+
+    for (String hhId: results.keySet()) {
+      Element algorithm = document.createElement("algorithm");
+      algorithm.setAttribute("name", hhId);
+
+      for (String problemId: results.get(hhId).keySet()) {
+        Element problem = document.createElement("problem");
+        problem.setAttribute("name", problemId);
+
+        for (String isntanceId: results.get(hhId).get(problemId).keySet()) {
+          Element instance = document.createElement("instance");
+          instance.setAttribute(
+              isntanceId, Double.toString(results.get(hhId).get(problemId).get(isntanceId)));
+          
+          problem.appendChild(instance);
+        }
+        algorithm.appendChild(problem);
+      }
+      root.appendChild(algorithm);
+    }
+
+
+    // create the xml file
+    //transform the DOM Object to an XML File
+    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+    Transformer transformer = transformerFactory.newTransformer();
+    DOMSource domSource = new DOMSource(document);
+    StreamResult streamResult = new StreamResult(new File(resultsXmlFile));
+
   }
 
   private Boolean doesDirExists(String path) {
