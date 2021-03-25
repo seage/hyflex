@@ -237,13 +237,18 @@ public class IntervalBenchmarkCalculator {
         Element problem = document.createElement("problem");
         problem.setAttribute("name", problemId);
 
+        double instancesSum = 0;
         for (String isntanceId: results.get(hhId).get(problemId).keySet()) {
           Element instance = document.createElement("instance");
           instance.setAttribute(
               isntanceId, Double.toString(results.get(hhId).get(problemId).get(isntanceId)));
           
+          instancesSum += results.get(hhId).get(problemId).get(isntanceId);
+          
           problem.appendChild(instance);
         }
+        problem.setAttribute(
+            "avg", Double.toString(instancesSum / results.get(hhId).get(problemId).size()));
         algorithm.appendChild(problem);
       }
       root.appendChild(algorithm);
@@ -256,6 +261,8 @@ public class IntervalBenchmarkCalculator {
     Transformer transformer = transformerFactory.newTransformer();
     DOMSource domSource = new DOMSource(document);
     StreamResult streamResult = new StreamResult(new File(resultsXmlFile));
+
+    transformer.transform(domSource, streamResult);
 
   }
 
