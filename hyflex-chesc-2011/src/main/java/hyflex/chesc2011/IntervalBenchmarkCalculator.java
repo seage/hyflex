@@ -1,29 +1,20 @@
 package hyflex.chesc2011;
 
 import java.io.File;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.DocumentBuilder;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
-import org.w3c.dom.Element;
+import java.io.FilenameFilter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FilenameFilter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.text.StringCharacterIterator;
-import java.util.Collections;
-import java.util.Optional;
-
 import java.util.Scanner;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 /*
  * @author David Omrai
@@ -49,7 +40,11 @@ public class IntervalBenchmarkCalculator {
     }
   };
 
-  public static void main(String[] args){
+  /**
+   * .
+   * @param args .
+   */
+  public static void main(String[] args) {
     // Uncomment when its finished
     // if (args.length <= 0) {
     //   return;
@@ -77,7 +72,7 @@ public class IntervalBenchmarkCalculator {
       return;
     }
 
-    HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
+    //HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
 
     File resDir = new File(resultsPath + "/" + id);
     String[] resFiles = resDir.list(new FilenameFilter() {
@@ -92,9 +87,11 @@ public class IntervalBenchmarkCalculator {
       return;
     }
 
-    int filesNumber = resFiles.length;
+    //int filesNumber = resFiles.length;
 
     HashMap<String, HashMap<String, List<Integer>>> metadata = loadMetadata();
+
+    HashMap<String, HashMap<String, Double>> results = new HashMap<>();
 
     for (String fileName : resFiles) {
       HashMap<String, HashMap<String, Double>> hm = loadCard(
@@ -104,7 +101,9 @@ public class IntervalBenchmarkCalculator {
         continue;
       }
 
-      for (String problemId: problems){
+      // todo store results into a results map
+
+      for (String problemId: problems) {
         
         for (String instanceId: cardInstances.get(problemId)) {
           System.out.println(problemId + " " + instanceId);
@@ -134,9 +133,7 @@ public class IntervalBenchmarkCalculator {
     return results;
   }
 
-  private Boolean doesDirExists(String path) {
-    return new File(path).exists();
-  }
+  
 
   private HashMap<String, HashMap<String, Double>> loadCard(String path)
       throws Exception {
@@ -205,17 +202,17 @@ public class IntervalBenchmarkCalculator {
           continue;
         }
 
-        // System.out.println(element.getAttribute("optimum"));
-        // System.out.println(element.getAttribute("random"));
-
         results.put(element.getAttribute("id"), new ArrayList<Integer>(Arrays.asList(
             Integer.parseInt(element.getAttribute("optimum")), 
             Integer.parseInt(element.getAttribute("random"))
         )));
       }    
     }
-
     return results;
+  }
+
+  private Boolean doesDirExists(String path) {
+    return new File(path).exists();
   }
 
   private Boolean isInteger(String text) {
