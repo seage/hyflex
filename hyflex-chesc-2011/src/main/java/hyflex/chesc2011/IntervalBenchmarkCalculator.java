@@ -112,7 +112,6 @@ public class IntervalBenchmarkCalculator {
         HashMap<String, Double> instRes = new HashMap<>();
 
         for (String instanceId: cardInstances.get(problemId)) {
-          System.out.println(problemId + " " + instanceId);
           instRes.put(
               instanceId, 
               getMetric(
