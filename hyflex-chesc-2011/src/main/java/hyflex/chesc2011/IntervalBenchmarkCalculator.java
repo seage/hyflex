@@ -31,8 +31,8 @@ public class IntervalBenchmarkCalculator {
 
   String[] problems = {"SAT", "TSP"};
 
-  final double intervalFrom = 0.0;
-  final double intervalTo = 1.0;
+  public final double intervalFrom = 0.0;
+  public final double intervalTo = 1.0;
 
   @SuppressWarnings("serial")
   HashMap<String, List<String>> cardInstances = new HashMap<String, List<String>>() {{
@@ -122,14 +122,6 @@ public class IntervalBenchmarkCalculator {
               "size", (double)metadata.get(problemId).get(instanceId).get("size"));
           
           instRes.put(instanceId, instance);
-          // instRes.put(
-          //     instanceId, 
-          //     getMetric(
-          //       metadata.get(problemId).get(instanceId).get("random"),
-          //       metadata.get(problemId).get(instanceId).get("optimum"),
-          //       hm.get(problemId).get(instanceId)
-          //     )
-          // );
         }
 
         probRes.put(problemId, instRes);
@@ -141,19 +133,6 @@ public class IntervalBenchmarkCalculator {
     makeXmlFile(results);
   }
 
-  private HashMap<String, HashMap<String, HashMap<String, Integer>>> loadMetadata() 
-      throws Exception {
-    HashMap<String, HashMap<String, HashMap<String, Integer>>> results = new HashMap<>();
-
-    for (String problemId: problems) {
-      results.put(
-          problemId, readXmlFile(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml"));
-    }
-
-    return results;
-  }
-
-  
 
   private HashMap<String, HashMap<String, Double>> loadCard(String path)
       throws Exception {
@@ -287,7 +266,6 @@ public class IntervalBenchmarkCalculator {
       root.appendChild(algorithm);
     }
 
-
     // create the xml file
     //transform the DOM Object to an XML File
     TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -296,7 +274,18 @@ public class IntervalBenchmarkCalculator {
     StreamResult streamResult = new StreamResult(new File(resultsXmlFile));
 
     transformer.transform(domSource, streamResult);
+  }
 
+  private HashMap<String, HashMap<String, HashMap<String, Integer>>> loadMetadata() 
+      throws Exception {
+    HashMap<String, HashMap<String, HashMap<String, Integer>>> results = new HashMap<>();
+
+    for (String problemId: problems) {
+      results.put(
+          problemId, readXmlFile(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml"));
+    }
+
+    return results;
   }
 
   private Boolean doesDirExists(String path) {
