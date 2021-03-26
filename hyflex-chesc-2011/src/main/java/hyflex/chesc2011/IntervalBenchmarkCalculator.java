@@ -306,29 +306,31 @@ public class IntervalBenchmarkCalculator {
 
   /**
    * .
-   * @param worst .
-   * @param best .
-   * @param current .
+   * @param upperBound The value of random generator.
+   * @param lowerBound The optimal value.
+   * @param current Input value for metric.
    * @return
    */
-  public double getMetric(double worst, double best, double current) 
+  public double getMetric(double upperBound, double lowerBound, double current) 
       throws Exception {
-    if (worst < 0 || best < 0 || current < 0) {
+    if (upperBound < 0 || lowerBound < 0 || current < 0) {
       throw new Exception("Bad input values - input parameter < 0");
     }
-    if (worst < best) {
-      throw new Exception("Bad input values - worst < best");
+    if (upperBound < lowerBound) {
+      throw new Exception("Bad input values - upperBound < lowerBound");
     }
-    if (current < best || current > worst) {
+    if (current < lowerBound || current > upperBound) {
       throw new Exception("Bad input values - current is not from interval");
     }
 
-    return intervalTo - (mapToInterval(best, worst, intervalFrom, intervalTo, current));
+    return intervalTo - (mapToInterval(lowerBound, upperBound, intervalFrom, intervalTo, current));
   }
 
   private double mapToInterval(
-      double sourceFrom, double sourceTo, double mapFrom, double mapTo, double value)
+      double lowerBound, 
+      double upperBound, double intervalLower, double intervalUpper, double value)
       throws Exception {
-    return mapFrom + ((mapTo - mapFrom) / (sourceTo - sourceFrom)) * (value - sourceFrom);
+    return intervalLower 
+      + ((intervalUpper - intervalLower) / (upperBound - lowerBound)) * (value - lowerBound);
   }
 }
