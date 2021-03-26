@@ -1,3 +1,7 @@
+/**
+ * @author David Omrai
+ */
+
 package hyflex.chesc2011.launcher;
 
 import com.beust.jcommander.JCommander;

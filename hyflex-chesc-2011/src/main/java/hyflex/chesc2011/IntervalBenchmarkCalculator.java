@@ -1,3 +1,7 @@
+/**
+ * @author David Omrai
+ */
+
 package hyflex.chesc2011;
 
 import java.io.File;
@@ -19,9 +23,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-/*
- * @author David Omrai
- */
 
 public class IntervalBenchmarkCalculator {
   String resultsPath = "./results";
@@ -30,8 +31,8 @@ public class IntervalBenchmarkCalculator {
 
   String[] problems = {"SAT", "TSP"};
 
-  final int intervalFrom = 0;
-  final int intervalTo = 1;
+  final double intervalFrom = 0.0;
+  final double intervalTo = 1.0;
 
   @SuppressWarnings("serial")
   HashMap<String, List<String>> cardInstances = new HashMap<String, List<String>>() {{
@@ -311,10 +312,23 @@ public class IntervalBenchmarkCalculator {
     }
   }
 
-  private double getMetric(int worst, int best, double current) 
+  /**
+   * .
+   * @param worst .
+   * @param best .
+   * @param current .
+   * @return
+   */
+  public double getMetric(int worst, int best, double current) 
       throws Exception {
     if (worst < 0 || best < 0 || current < 0) {
-      throw new Exception("Bad input values");
+      throw new Exception("Bad input values - input parameter < 0");
+    }
+    if (worst < best) {
+      throw new Exception("Bad input values - worst < best");
+    }
+    if (current < best || current > worst) {
+      throw new Exception("Bad input values - current is not from interval");
     }
 
     return intervalTo - (mapToInterval(best, worst, intervalFrom, intervalTo, current));

@@ -1,3 +1,7 @@
+/**
+ * @author David Omrai
+ */
+
 package hyflex.chesc2011.launcher.commands;
 
 import com.beust.jcommander.Parameter;
