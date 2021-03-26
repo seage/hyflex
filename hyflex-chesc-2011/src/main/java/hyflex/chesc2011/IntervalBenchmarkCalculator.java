@@ -192,13 +192,13 @@ public class IntervalBenchmarkCalculator {
         Element element = (Element) node;
 
         
-        if (isInteger(element.getAttribute("optimum")) == false) {
+        if (isDouble(element.getAttribute("optimum")) == false) {
           continue;
         }
-        if (isInteger(element.getAttribute("random")) == false) {
+        if (isDouble(element.getAttribute("random")) == false) {
           continue;
         }
-        if (isInteger(element.getAttribute("size")) == false) {
+        if (isDouble(element.getAttribute("size")) == false) {
           continue;
         }
 
@@ -292,9 +292,9 @@ public class IntervalBenchmarkCalculator {
     return new File(path).exists();
   }
 
-  private Boolean isInteger(String text) {
+  private Boolean isDouble(String text) {
     try {
-      Integer.parseInt(text);
+      Double.parseDouble(text);
       return true;
     } catch (NumberFormatException e) {
       return false;
