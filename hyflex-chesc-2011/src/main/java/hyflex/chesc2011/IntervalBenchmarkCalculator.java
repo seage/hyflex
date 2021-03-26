@@ -91,11 +91,10 @@ public class IntervalBenchmarkCalculator {
       return;
     }
 
-    //int filesNumber = resFiles.length;
+    HashMap<String, HashMap<String,HashMap<String, Integer>>> metadata = loadMetadata();
 
-    HashMap<String, HashMap<String, List<Integer>>> metadata = loadMetadata();
-
-    HashMap<String, HashMap<String, HashMap<String, Double>>> results = new HashMap<>();
+    HashMap<String, 
+        HashMap<String, HashMap<String, HashMap<String, Double>>>> results = new HashMap<>();
 
     for (String fileName : resFiles) {
       HashMap<String, HashMap<String, Double>> hm = loadCard(
@@ -105,21 +104,31 @@ public class IntervalBenchmarkCalculator {
         continue;
       }
 
-      HashMap<String, HashMap<String, Double>> probRes = new HashMap<>();
+      HashMap<String, HashMap<String, HashMap<String, Double>>> probRes = new HashMap<>();
 
       for (String problemId: problems) {
         
-        HashMap<String, Double> instRes = new HashMap<>();
+        HashMap<String, HashMap<String, Double>> instRes = new HashMap<>();
 
         for (String instanceId: cardInstances.get(problemId)) {
-          instRes.put(
-              instanceId, 
-              getMetric(
-                metadata.get(problemId).get(instanceId).get(0),
-                metadata.get(problemId).get(instanceId).get(1),
-                hm.get(problemId).get(instanceId)
-              )
-          );
+          HashMap<String, Double> instance = new HashMap<>();
+          instance.put("metric", getMetric(
+              metadata.get(problemId).get(instanceId).get("random"),
+              metadata.get(problemId).get(instanceId).get("optimum"),
+              hm.get(problemId).get(instanceId)
+          ));
+          instance.put(
+              "size", (double)(metadata.get(problemId).get(instanceId).get("size")));
+          
+          instRes.put(instanceId, instance);
+          // instRes.put(
+          //     instanceId, 
+          //     getMetric(
+          //       metadata.get(problemId).get(instanceId).get("random"),
+          //       metadata.get(problemId).get(instanceId).get("optimum"),
+          //       hm.get(problemId).get(instanceId)
+          //     )
+          // );
         }
 
         probRes.put(problemId, instRes);
@@ -131,8 +140,9 @@ public class IntervalBenchmarkCalculator {
     makeXmlFile(results);
   }
 
-  private HashMap<String, HashMap<String, List<Integer>>> loadMetadata() throws Exception {
-    HashMap<String, HashMap<String, List<Integer>>> results = new HashMap<>();
+  private HashMap<String, HashMap<String, HashMap<String, Integer>>> loadMetadata() 
+      throws Exception {
+    HashMap<String, HashMap<String, HashMap<String, Integer>>> results = new HashMap<>();
 
     for (String problemId: problems) {
       results.put(
@@ -183,8 +193,8 @@ public class IntervalBenchmarkCalculator {
   }
 
 
-  private HashMap<String, List<Integer>> readXmlFile(String path) throws Exception {
-    HashMap<String, List<Integer>> results = new HashMap<String, List<Integer>>();
+  private HashMap<String, HashMap<String, Integer>> readXmlFile(String path) throws Exception {
+    HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
     // Load the input file
     File inputFile = new File(path);
     // Read the input file
@@ -208,17 +218,28 @@ public class IntervalBenchmarkCalculator {
         if (isInteger(element.getAttribute("random")) == false) {
           continue;
         }
+        if (isInteger(element.getAttribute("size")) == false) {
+          continue;
+        }
 
-        results.put(element.getAttribute("id"), new ArrayList<Integer>(Arrays.asList(
-            Integer.parseInt(element.getAttribute("optimum")), 
-            Integer.parseInt(element.getAttribute("random"))
-        )));
+        HashMap<String, Integer> result = new HashMap<>();
+
+        result.put("optimum", Integer.parseInt(element.getAttribute("optimum")));
+        result.put("random", Integer.parseInt(element.getAttribute("random")));
+        result.put("size", Integer.parseInt(element.getAttribute("size")));
+
+        results.put(element.getAttribute("id"), result);
+        // results.put(element.getAttribute("id"), new ArrayList<Integer>(Arrays.asList(
+        //     Integer.parseInt(element.getAttribute("optimum")), 
+        //     Integer.parseInt(element.getAttribute("random"))
+        // )));
       }    
     }
     return results;
   }
 
-  private void makeXmlFile(HashMap<String, HashMap<String, HashMap<String, Double>>> results) 
+  private void makeXmlFile(HashMap<String, 
+      HashMap<String, HashMap<String, HashMap<String, Double>>>> results) 
       throws Exception {
     DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -236,20 +257,32 @@ public class IntervalBenchmarkCalculator {
         Element problem = document.createElement("problem");
         problem.setAttribute("name", problemId);
 
-        double instancesSum = 0;
+        /**
+         *                  SUMi=0[size(instance-i)*metric(instance-i)]   .
+         * weighted mean = ---------------------------------------------  .
+         *                            SUMi=0[size(instance-i)]            .
+         */
+        double numerator = 0;
+        double nominator = 0;
         for (String isntanceId: results.get(hhId).get(problemId).keySet()) {
           Element instance = document.createElement("instance");
           instance.setAttribute(
-              isntanceId, Double.toString(results.get(hhId).get(problemId).get(isntanceId)));
+              isntanceId, 
+              Double.toString(results.get(hhId).get(problemId).get(isntanceId).get("metric")));
           
-          instancesSum += results.get(hhId).get(problemId).get(isntanceId);
+          numerator += (
+              results.get(hhId).get(problemId).get(isntanceId).get("size") 
+              * results.get(hhId).get(problemId).get(isntanceId).get("metric"));
+          nominator += results.get(hhId).get(problemId).get(isntanceId).get("size");
           
           problem.appendChild(instance);
         }
+
         problem.setAttribute(
-            "avg", Double.toString(instancesSum / results.get(hhId).get(problemId).size()));
+            "avg", Double.toString(numerator / nominator));
         algorithm.appendChild(problem);
       }
+
       root.appendChild(algorithm);
     }
 
@@ -280,7 +313,7 @@ public class IntervalBenchmarkCalculator {
 
   private Double getMetric(int worst, int best, double current) 
       throws Exception {
-    return mapToInterval(worst, best, intervalFrom, intervalTo, current);
+    return intervalTo - mapToInterval(best, worst, intervalFrom, intervalTo, current);
   }
 
   private double mapToInterval(
