@@ -175,7 +175,7 @@ public class IntervalBenchmarkCalculator {
   }
 
 
-  private HashMap<String, HashMap<String, Double>> readXmlFile(Path path) throws Exception {
+  private HashMap<String, HashMap<String, Double>> readMetadata(Path path) throws Exception {
     HashMap<String, HashMap<String, Double>> results = new HashMap<>();
     // Load the input file
     File inputFile = new File(path.toString());
@@ -285,7 +285,7 @@ public class IntervalBenchmarkCalculator {
     for (String problemId: problems) {
       results.put(
           problemId, 
-          readXmlFile(Paths.get(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml")));
+          readMetadata(Paths.get(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml")));
     }
 
     return results;
