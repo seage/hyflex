@@ -51,13 +51,13 @@ public class IntervalBenchmarkCalculator {
    * @param args .
    */
   public static void main(String[] args) {
-    // if (args.length <= 0) {
-    //   return;
-    // }
+    if (args.length <= 0) {
+      return;
+    }
 
     try {
       IntervalBenchmarkCalculator ibc = new IntervalBenchmarkCalculator();
-      ibc.run("1");//(args[0]);
+      ibc.run(args[0]);
     } catch (Exception e) {
       System.out.println("error");
       System.out.println(e.getStackTrace());
