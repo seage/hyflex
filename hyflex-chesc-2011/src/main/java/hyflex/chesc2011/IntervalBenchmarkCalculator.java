@@ -308,7 +308,7 @@ public class IntervalBenchmarkCalculator {
    * @param current .
    * @return
    */
-  public double getMetric(int worst, int best, double current) 
+  public double getMetric(double worst, double best, double current) 
       throws Exception {
     if (worst < 0 || best < 0 || current < 0) {
       throw new Exception("Bad input values - input parameter < 0");
