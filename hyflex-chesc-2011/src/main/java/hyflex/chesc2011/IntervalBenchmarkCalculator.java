@@ -132,7 +132,7 @@ public class IntervalBenchmarkCalculator {
       results.put(fileName, probRes);
     }
 
-    makeXmlFile(results);
+    saveResultsToXmlFile(results);
   }
 
 
@@ -220,7 +220,7 @@ public class IntervalBenchmarkCalculator {
     return results;
   }
 
-  private void makeXmlFile(HashMap<String, 
+  private void saveResultsToXmlFile(HashMap<String, 
       HashMap<String, HashMap<String, HashMap<String, Double>>>> results) 
       throws Exception {
     DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
