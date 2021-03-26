@@ -31,7 +31,7 @@ public class IntervalBenchmarkCalculator {
   String[] problems = {"SAT", "TSP"};
 
   final int intervalFrom = 0;
-  final int intervalTo = 10000;
+  final int intervalTo = 1;
 
   @SuppressWarnings("serial")
   HashMap<String, List<String>> cardInstances = new HashMap<String, List<String>>() {{
@@ -94,7 +94,7 @@ public class IntervalBenchmarkCalculator {
     HashMap<String, HashMap<String,HashMap<String, Integer>>> metadata = loadMetadata();
 
     HashMap<String, 
-        HashMap<String, HashMap<String, HashMap<String, Integer>>>> results = new HashMap<>();
+        HashMap<String, HashMap<String, HashMap<String, Double>>>> results = new HashMap<>();
 
     for (String fileName : resFiles) {
       HashMap<String, HashMap<String, Double>> hm = loadCard(
@@ -104,21 +104,21 @@ public class IntervalBenchmarkCalculator {
         continue;
       }
 
-      HashMap<String, HashMap<String, HashMap<String, Integer>>> probRes = new HashMap<>();
+      HashMap<String, HashMap<String, HashMap<String, Double>>> probRes = new HashMap<>();
 
       for (String problemId: problems) {
         
-        HashMap<String, HashMap<String, Integer>> instRes = new HashMap<>();
+        HashMap<String, HashMap<String, Double>> instRes = new HashMap<>();
 
         for (String instanceId: cardInstances.get(problemId)) {
-          HashMap<String, Integer> instance = new HashMap<>();
+          HashMap<String, Double> instance = new HashMap<>();
           instance.put("metric", getMetric(
               metadata.get(problemId).get(instanceId).get("random"),
               metadata.get(problemId).get(instanceId).get("optimum"),
               hm.get(problemId).get(instanceId)
           ));
           instance.put(
-              "size", (int)(metadata.get(problemId).get(instanceId).get("size")));
+              "size", (double)metadata.get(problemId).get(instanceId).get("size"));
           
           instRes.put(instanceId, instance);
           // instRes.put(
@@ -239,7 +239,7 @@ public class IntervalBenchmarkCalculator {
   }
 
   private void makeXmlFile(HashMap<String, 
-      HashMap<String, HashMap<String, HashMap<String, Integer>>>> results) 
+      HashMap<String, HashMap<String, HashMap<String, Double>>>> results) 
       throws Exception {
     DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -262,13 +262,13 @@ public class IntervalBenchmarkCalculator {
          * weighted mean = ---------------------------------------------  .
          *                            SUMi=0[size(instance-i)]            .
          */
-        int numerator = 0;
-        int nominator = 0;
+        double numerator = 0;
+        double nominator = 0;
         for (String isntanceId: results.get(hhId).get(problemId).keySet()) {
           Element instance = document.createElement("instance");
           instance.setAttribute(
               isntanceId, 
-              Integer.toString(results.get(hhId).get(problemId).get(isntanceId).get("metric")));
+              Double.toString(results.get(hhId).get(problemId).get(isntanceId).get("metric")));
           
           numerator += (
               results.get(hhId).get(problemId).get(isntanceId).get("size") 
@@ -279,7 +279,7 @@ public class IntervalBenchmarkCalculator {
         }
 
         problem.setAttribute(
-            "avg", Integer.toString((int)(numerator / nominator)));
+            "avg", Double.toString(numerator / nominator));
         algorithm.appendChild(problem);
       }
 
@@ -311,12 +311,13 @@ public class IntervalBenchmarkCalculator {
     }
   }
 
-  private Integer getMetric(int worst, int best, double current) 
+  private double getMetric(int worst, int best, double current) 
       throws Exception {
-    int res = intervalTo - (int)(mapToInterval(best, worst, intervalFrom, intervalTo, current));
-    //System.out.println(
-    //  "curr: " + current + " | best: " + best + " | worst " + worst + " | metric: " + res);
-    return res;
+    if (worst < 0 || best < 0 || current < 0) {
+      throw new Exception("Bad input values");
+    }
+
+    return intervalTo - (mapToInterval(best, worst, intervalFrom, intervalTo, current));
   }
 
   private double mapToInterval(
