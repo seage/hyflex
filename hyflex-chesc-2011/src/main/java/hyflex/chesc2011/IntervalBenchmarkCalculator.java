@@ -6,7 +6,8 @@ package hyflex.chesc2011;
 
 import java.io.File;
 import java.io.FilenameFilter;
-
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -50,13 +51,13 @@ public class IntervalBenchmarkCalculator {
    * @param args .
    */
   public static void main(String[] args) {
-    if (args.length <= 0) {
-      return;
-    }
+    // if (args.length <= 0) {
+    //   return;
+    // }
 
     try {
       IntervalBenchmarkCalculator ibc = new IntervalBenchmarkCalculator();
-      ibc.run(args[0]);
+      ibc.run("1");//(args[0]);
     } catch (Exception e) {
       System.out.println("error");
       System.out.println(e.getStackTrace());
@@ -68,17 +69,19 @@ public class IntervalBenchmarkCalculator {
    * @param id .
    */
   public void run(String id) throws Exception {
-    if (doesDirExists(resultsPath + "/" + id) == false) {
+    Path resultsDirPath = Paths.get(resultsPath + "/" + id);
+
+    if (doesDirExists(resultsDirPath) == false) {
       return;
     }
     
-    if (doesDirExists(metadataPath) == false) {
+    if (doesDirExists(Paths.get(metadataPath)) == false) {
       return;
     }
 
     //HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
 
-    File resDir = new File(resultsPath + "/" + id);
+    File resDir = new File(resultsDirPath.toString());
     String[] resFiles = resDir.list(new FilenameFilter() {
       @Override
       public boolean accept(File current, String name) {
@@ -87,7 +90,7 @@ public class IntervalBenchmarkCalculator {
     });
 
     if (resFiles == null) {
-      System.out.println("There are no files inside " + resultsPath + "/" + id + " directory");
+      System.out.println("There are no files inside " + resultsDirPath.toString() + " directory");
       return;
     }
 
@@ -98,7 +101,7 @@ public class IntervalBenchmarkCalculator {
 
     for (String fileName : resFiles) {
       HashMap<String, HashMap<String, Double>> hm = loadCard(
-          resultsPath + "/" + id + "/" + fileName);
+          resultsDirPath.toString() + "/" + fileName);
 
       if (hm == null) {
         continue;
@@ -172,10 +175,10 @@ public class IntervalBenchmarkCalculator {
   }
 
 
-  private HashMap<String, HashMap<String, Double>> readXmlFile(String path) throws Exception {
+  private HashMap<String, HashMap<String, Double>> readXmlFile(Path path) throws Exception {
     HashMap<String, HashMap<String, Double>> results = new HashMap<>();
     // Load the input file
-    File inputFile = new File(path);
+    File inputFile = new File(path.toString());
     // Read the input file
     Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputFile);
     doc.getDocumentElement().normalize();
@@ -276,19 +279,20 @@ public class IntervalBenchmarkCalculator {
   }
 
   private HashMap<String, HashMap<String, HashMap<String, Double>>> loadMetadata() 
-      throws Exception {
+      throws Exception {    
     HashMap<String, HashMap<String, HashMap<String, Double>>> results = new HashMap<>();
 
     for (String problemId: problems) {
       results.put(
-          problemId, readXmlFile(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml"));
+          problemId, 
+          readXmlFile(Paths.get(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml")));
     }
 
     return results;
   }
 
-  private Boolean doesDirExists(String path) {
-    return new File(path).exists();
+  private Boolean doesDirExists(Path path) {
+    return new File(path.toString()).exists();
   }
 
   private Boolean isDouble(String text) {
