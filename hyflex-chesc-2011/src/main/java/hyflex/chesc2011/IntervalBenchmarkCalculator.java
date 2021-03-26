@@ -31,7 +31,7 @@ public class IntervalBenchmarkCalculator {
   String[] problems = {"SAT", "TSP"};
 
   final int intervalFrom = 0;
-  final int intervalTo = 1000;
+  final int intervalTo = 10000;
 
   @SuppressWarnings("serial")
   HashMap<String, List<String>> cardInstances = new HashMap<String, List<String>>() {{
@@ -94,7 +94,7 @@ public class IntervalBenchmarkCalculator {
     HashMap<String, HashMap<String,HashMap<String, Integer>>> metadata = loadMetadata();
 
     HashMap<String, 
-        HashMap<String, HashMap<String, HashMap<String, Double>>>> results = new HashMap<>();
+        HashMap<String, HashMap<String, HashMap<String, Integer>>>> results = new HashMap<>();
 
     for (String fileName : resFiles) {
       HashMap<String, HashMap<String, Double>> hm = loadCard(
@@ -104,21 +104,21 @@ public class IntervalBenchmarkCalculator {
         continue;
       }
 
-      HashMap<String, HashMap<String, HashMap<String, Double>>> probRes = new HashMap<>();
+      HashMap<String, HashMap<String, HashMap<String, Integer>>> probRes = new HashMap<>();
 
       for (String problemId: problems) {
         
-        HashMap<String, HashMap<String, Double>> instRes = new HashMap<>();
+        HashMap<String, HashMap<String, Integer>> instRes = new HashMap<>();
 
         for (String instanceId: cardInstances.get(problemId)) {
-          HashMap<String, Double> instance = new HashMap<>();
+          HashMap<String, Integer> instance = new HashMap<>();
           instance.put("metric", getMetric(
               metadata.get(problemId).get(instanceId).get("random"),
               metadata.get(problemId).get(instanceId).get("optimum"),
               hm.get(problemId).get(instanceId)
           ));
           instance.put(
-              "size", (double)(metadata.get(problemId).get(instanceId).get("size")));
+              "size", (int)(metadata.get(problemId).get(instanceId).get("size")));
           
           instRes.put(instanceId, instance);
           // instRes.put(
@@ -239,7 +239,7 @@ public class IntervalBenchmarkCalculator {
   }
 
   private void makeXmlFile(HashMap<String, 
-      HashMap<String, HashMap<String, HashMap<String, Double>>>> results) 
+      HashMap<String, HashMap<String, HashMap<String, Integer>>>> results) 
       throws Exception {
     DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -262,13 +262,13 @@ public class IntervalBenchmarkCalculator {
          * weighted mean = ---------------------------------------------  .
          *                            SUMi=0[size(instance-i)]            .
          */
-        double numerator = 0;
-        double nominator = 0;
+        int numerator = 0;
+        int nominator = 0;
         for (String isntanceId: results.get(hhId).get(problemId).keySet()) {
           Element instance = document.createElement("instance");
           instance.setAttribute(
               isntanceId, 
-              Double.toString(results.get(hhId).get(problemId).get(isntanceId).get("metric")));
+              Integer.toString(results.get(hhId).get(problemId).get(isntanceId).get("metric")));
           
           numerator += (
               results.get(hhId).get(problemId).get(isntanceId).get("size") 
@@ -279,7 +279,7 @@ public class IntervalBenchmarkCalculator {
         }
 
         problem.setAttribute(
-            "avg", Double.toString(numerator / nominator));
+            "avg", Integer.toString((int)(numerator / nominator)));
         algorithm.appendChild(problem);
       }
 
@@ -311,9 +311,12 @@ public class IntervalBenchmarkCalculator {
     }
   }
 
-  private Double getMetric(int worst, int best, double current) 
+  private Integer getMetric(int worst, int best, double current) 
       throws Exception {
-    return intervalTo - mapToInterval(best, worst, intervalFrom, intervalTo, current);
+    int res = intervalTo - (int)(mapToInterval(best, worst, intervalFrom, intervalTo, current));
+    //System.out.println(
+    //  "curr: " + current + " | best: " + best + " | worst " + worst + " | metric: " + res);
+    return res;
   }
 
   private double mapToInterval(
