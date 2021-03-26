@@ -43,31 +43,32 @@ public class MetricTest {
 
   @Test
   void testBadRandomInput() throws Exception {
-    toTest.getMetric(-10, 1, 1);
+    assertThrows(Exception.class, () -> toTest.getMetric(-10, 1, 1));
+    ;
   }
 
   @Test
   void testBadOptimalInput() throws Exception {
-    toTest.getMetric(10, -1, 1);
+    assertThrows(Exception.class, () -> toTest.getMetric(10, -1, 1));
   }
 
   @Test
   void testBadWorstInput() throws Exception {
-    toTest.getMetric(10, -1, 1);
+    assertThrows(Exception.class, () -> toTest.getMetric(10, -1, 1));
   }
 
   @Test
   void testBadCurrentInput() throws Exception {
-    toTest.getMetric(10, 1, -1);
+    assertThrows(Exception.class, () -> toTest.getMetric(10, 1, -1));
   }
 
   @Test
   void testBadIntervalInput() throws Exception {
-    toTest.getMetric(3, 42, 1);
+    assertThrows(Exception.class, () -> toTest.getMetric(3, 42, 1));
   }
 
   @Test
   void testBadOutOfIntervaInput() throws Exception {
-    toTest.getMetric(42, 3, 1);
+    assertThrows(Exception.class, () -> toTest.getMetric(42, 3, 1));
   }
 }
