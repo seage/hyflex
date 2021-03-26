@@ -36,7 +36,7 @@ public class IntervalBenchmarkCalculatorTest {
 
       double test2 = toTest.getMetric(1000, 1, 1000);
       if (Math.abs(test2 - toTest.intervalFrom) >= 0.1) {
-        System.out.println("Test2 failed");
+        System.out.println("Test2 failed" + test2 + " " + toTest.intervalFrom);
       } else {
         System.out.println("Test2 passed");
       }

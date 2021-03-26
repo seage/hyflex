@@ -24,91 +24,50 @@ public class MetricTest {
       new IntervalBenchmarkCalculator();
 
   @Test
-  void testOptimalSolution() {
-    try {
-      assertTrue(Math.abs(toTest.intervalTo - toTest.getMetric(42, 1, 1)) <= 0.1);
-    } catch (Exception e) {
-      assertTrue(false);
-    }
+  void testOptimalSolution() throws Exception {
+    assertEquals(toTest.intervalTo, toTest.getMetric(42, 1, 1), 0.1);
   }
 
   @Test
-  void testRandomSolution() {
-    try {
-      assertTrue(Math.abs(toTest.intervalFrom - toTest.getMetric(42, 1, 42)) <= 0.1);
-    } catch (Exception e) {
-      assertTrue(false);
-    }
+  void testRandomSolution() throws Exception {
+    assertEquals(toTest.intervalFrom, toTest.getMetric(42, 1, 42), 0.1);
   }
 
   @Test
-  void testMiddleSolution() {
-    try {
-      assertTrue(Math.abs(
-          (toTest.intervalTo - toTest.intervalFrom) / 2
-          - toTest.getMetric(42, 0, 21)) <= 0.1);
-    } catch (Exception e) {
-      assertTrue(false);
-    }
+  void testMiddleSolution() throws Exception {
+    assertEquals(
+        (toTest.intervalTo - toTest.intervalFrom) / 2, 
+        toTest.getMetric(42, 0, 21), 
+        0.1);
   }
 
   @Test
-  void testBadRandomInput() {
-    try {
-      toTest.getMetric(-10, 1, 1);
-      assertTrue(false);
-    } catch (Exception e) {
-      assertTrue(true);
-    }
+  void testBadRandomInput() throws Exception {
+    toTest.getMetric(-10, 1, 1);
   }
 
   @Test
-  void testBadOptimalInput() {
-    try {
-      toTest.getMetric(10, -1, 1);
-      assertTrue(false);
-    } catch (Exception e) {
-      assertTrue(true);
-    }
+  void testBadOptimalInput() throws Exception {
+    toTest.getMetric(10, -1, 1);
   }
 
   @Test
-  void testBadWorstInput() {
-    try {
-      toTest.getMetric(10, -1, 1);
-      assertTrue(false);
-    } catch (Exception e) {
-      assertTrue(true);
-    }
+  void testBadWorstInput() throws Exception {
+    toTest.getMetric(10, -1, 1);
   }
 
   @Test
-  void testBadCurrentInput() {
-    try {
-      toTest.getMetric(10, 1, -1);
-      assertTrue(false);
-    } catch (Exception e) {
-      assertTrue(true);
-    }
+  void testBadCurrentInput() throws Exception {
+    toTest.getMetric(10, 1, -1);
   }
 
   @Test
-  void testBadIntervalInput() {
-    try {
-      toTest.getMetric(3, 42, 1);
-      assertTrue(false);
-    } catch (Exception e) {
-      assertTrue(true);
-    }
+  void testBadIntervalInput() throws Exception {
+    toTest.getMetric(3, 42, 1);
   }
 
   @Test
-  void testBadOutOfIntervaInput() {
-    try {
-      toTest.getMetric(42, 3, 1);
-      assertTrue(false);
-    } catch (Exception e) {
-      assertTrue(true);
-    }
+  void testBadOutOfIntervaInput() throws Exception {
+    toTest.getMetric(42, 3, 1);
   }
 }

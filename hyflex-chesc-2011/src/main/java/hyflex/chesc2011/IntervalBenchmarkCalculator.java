@@ -92,7 +92,7 @@ public class IntervalBenchmarkCalculator {
       return;
     }
 
-    HashMap<String, HashMap<String,HashMap<String, Integer>>> metadata = loadMetadata();
+    HashMap<String, HashMap<String,HashMap<String, Double>>> metadata = loadMetadata();
 
     HashMap<String, 
         HashMap<String, HashMap<String, HashMap<String, Double>>>> results = new HashMap<>();
@@ -173,8 +173,8 @@ public class IntervalBenchmarkCalculator {
   }
 
 
-  private HashMap<String, HashMap<String, Integer>> readXmlFile(String path) throws Exception {
-    HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
+  private HashMap<String, HashMap<String, Double>> readXmlFile(String path) throws Exception {
+    HashMap<String, HashMap<String, Double>> results = new HashMap<>();
     // Load the input file
     File inputFile = new File(path);
     // Read the input file
@@ -202,11 +202,11 @@ public class IntervalBenchmarkCalculator {
           continue;
         }
 
-        HashMap<String, Integer> result = new HashMap<>();
+        HashMap<String, Double> result = new HashMap<>();
 
-        result.put("optimum", Integer.parseInt(element.getAttribute("optimum")));
-        result.put("random", Integer.parseInt(element.getAttribute("random")));
-        result.put("size", Integer.parseInt(element.getAttribute("size")));
+        result.put("optimum", Double.parseDouble(element.getAttribute("optimum")));
+        result.put("random", Double.parseDouble(element.getAttribute("random")));
+        result.put("size", Double.parseDouble(element.getAttribute("size")));
 
         results.put(element.getAttribute("id"), result);
         // results.put(element.getAttribute("id"), new ArrayList<Integer>(Arrays.asList(
@@ -276,9 +276,9 @@ public class IntervalBenchmarkCalculator {
     transformer.transform(domSource, streamResult);
   }
 
-  private HashMap<String, HashMap<String, HashMap<String, Integer>>> loadMetadata() 
+  private HashMap<String, HashMap<String, HashMap<String, Double>>> loadMetadata() 
       throws Exception {
-    HashMap<String, HashMap<String, HashMap<String, Integer>>> results = new HashMap<>();
+    HashMap<String, HashMap<String, HashMap<String, Double>>> results = new HashMap<>();
 
     for (String problemId: problems) {
       results.put(
