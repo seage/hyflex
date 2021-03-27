@@ -17,55 +17,55 @@ import org.junit.jupiter.api.Test;
   */
 
 public class MetricTest {
-  BenchmarkMetricCalculator toTest = 
+  BenchmarkMetricCalculator calculator = 
       new BenchmarkMetricCalculator();
 
   @Test
   void testOptimalSolution() throws Exception {
-    assertEquals(toTest.intervalTo, toTest.getMetric(42, 1, 1), 0.1);
+    assertEquals(calculator.intervalTo, calculator.getMetric(42, 1, 1), 0.1);
   }
 
   @Test
   void testRandomSolution() throws Exception {
-    assertEquals(toTest.intervalFrom, toTest.getMetric(42, 1, 42), 0.1);
+    assertEquals(calculator.intervalFrom, calculator.getMetric(42, 1, 42), 0.1);
   }
 
   @Test
   void testMiddleSolution() throws Exception {
     assertEquals(
-        (toTest.intervalTo - toTest.intervalFrom) / 2, 
-        toTest.getMetric(42, 0, 21), 
+        (calculator.intervalTo - calculator.intervalFrom) / 2, 
+        calculator.getMetric(42, 0, 21), 
         0.1);
   }
 
   @Test
   void testBadRandomInput() throws Exception {
-    assertThrows(Exception.class, () -> toTest.getMetric(-10, 1, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(-10, 1, 1));
     ;
   }
 
   @Test
   void testBadOptimalInput() throws Exception {
-    assertThrows(Exception.class, () -> toTest.getMetric(10, -1, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(10, -1, 1));
   }
 
   @Test
   void testBadWorstInput() throws Exception {
-    assertThrows(Exception.class, () -> toTest.getMetric(10, -1, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(10, -1, 1));
   }
 
   @Test
   void testBadCurrentInput() throws Exception {
-    assertThrows(Exception.class, () -> toTest.getMetric(10, 1, -1));
+    assertThrows(Exception.class, () -> calculator.getMetric(10, 1, -1));
   }
 
   @Test
   void testBadIntervalInput() throws Exception {
-    assertThrows(Exception.class, () -> toTest.getMetric(3, 42, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(3, 42, 1));
   }
 
   @Test
   void testBadOutOfIntervaInput() throws Exception {
-    assertThrows(Exception.class, () -> toTest.getMetric(42, 3, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(42, 3, 1));
   }
 }
