@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -36,7 +37,7 @@ public class IntervalBenchmarkCalculator {
   public final double intervalTo = 1.0;
 
   @SuppressWarnings("serial")
-  HashMap<String, List<String>> cardInstances = new HashMap<String, List<String>>() {{
+  Map<String, List<String>> cardInstances = new HashMap<>() {{
         put("SAT", new ArrayList<>(
             Arrays.asList(
               "hyflex-sat-3", "hyflex-sat-5", "hyflex-sat-4", "hyflex-sat-10", "hyflex-sat-11")));
@@ -51,13 +52,13 @@ public class IntervalBenchmarkCalculator {
    * @param args .
    */
   public static void main(String[] args) {
-    // if (args.length <= 0) {
-    //   return;
-    // }
+    if (args.length <= 0) {
+      return;
+    }
 
     try {
       IntervalBenchmarkCalculator ibc = new IntervalBenchmarkCalculator();
-      ibc.run("1");//(args[0]);
+      ibc.run(args[0]);
     } catch (Exception e) {
       System.out.println("error");
       System.out.println(e.getStackTrace());
@@ -79,7 +80,7 @@ public class IntervalBenchmarkCalculator {
     //   return;
     // }
 
-    //HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
+    //Map<String, Map<String, Integer>> results = new HashMap<>();
 
     File resDir = new File(resultsDirPath.toString());
     String[] resFiles = resDir.list(new FilenameFilter() {
@@ -94,27 +95,27 @@ public class IntervalBenchmarkCalculator {
       return;
     }
 
-    HashMap<String, HashMap<String,HashMap<String, Double>>> metadata = loadMetadata();
+    Map<String, Map<String,Map<String, Double>>> metadata = loadMetadata();
 
-    HashMap<String, 
-        HashMap<String, HashMap<String, HashMap<String, Double>>>> results = new HashMap<>();
+    Map<String, 
+        Map<String, Map<String, Map<String, Double>>>> results = new HashMap<>();
 
     for (String fileName : resFiles) {
-      HashMap<String, HashMap<String, Double>> hm = loadCard(
+      Map<String, Map<String, Double>> hm = loadCard(
           resultsDirPath.toString() + "/" + fileName);
 
       if (hm == null) {
         continue;
       }
 
-      HashMap<String, HashMap<String, HashMap<String, Double>>> probRes = new HashMap<>();
+      Map<String, Map<String, Map<String, Double>>> probRes = new HashMap<>();
 
       for (String problemId: problems) {
         
-        HashMap<String, HashMap<String, Double>> instRes = new HashMap<>();
+        Map<String, Map<String, Double>> instRes = new HashMap<>();
 
         for (String instanceId: cardInstances.get(problemId)) {
-          HashMap<String, Double> instance = new HashMap<>();
+          Map<String, Double> instance = new HashMap<>();
           instance.put("metric", getMetric(
               metadata.get(problemId).get(instanceId).get("random"),
               metadata.get(problemId).get(instanceId).get("optimum"),
@@ -136,9 +137,9 @@ public class IntervalBenchmarkCalculator {
   }
 
 
-  private HashMap<String, HashMap<String, Double>> loadCard(String path)
+  private Map<String, Map<String, Double>> loadCard(String path)
       throws Exception {
-    HashMap<String, HashMap<String, Double>> results = new HashMap<>();
+    Map<String, Map<String, Double>> results = new HashMap<>();
     
     Scanner scanner = new Scanner(new File(path)).useDelimiter("\n");
 
@@ -151,7 +152,7 @@ public class IntervalBenchmarkCalculator {
         return null;
       }
 
-      HashMap<String, Double> result = new HashMap<>();
+      Map<String, Double> result = new HashMap<>();
 
       Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ");
 
@@ -175,8 +176,8 @@ public class IntervalBenchmarkCalculator {
   }
 
 
-  private HashMap<String, HashMap<String, Double>> readMetadata(Path path) throws Exception {
-    HashMap<String, HashMap<String, Double>> results = new HashMap<>();
+  private Map<String, Map<String, Double>> readMetadata(Path path) throws Exception {
+    Map<String, Map<String, Double>> results = new HashMap<>();
     // Load the input file
     //File inputFile = new File(path.toString());
     // Read the input file
@@ -205,7 +206,7 @@ public class IntervalBenchmarkCalculator {
           continue;
         }
 
-        HashMap<String, Double> result = new HashMap<>();
+        Map<String, Double> result = new HashMap<>();
 
         result.put("optimum", Double.parseDouble(element.getAttribute("optimum")));
         result.put("random", Double.parseDouble(element.getAttribute("random")));
@@ -221,8 +222,8 @@ public class IntervalBenchmarkCalculator {
     return results;
   }
 
-  private void saveResultsToXmlFile(HashMap<String, 
-      HashMap<String, HashMap<String, HashMap<String, Double>>>> results) 
+  private void saveResultsToXmlFile(Map<String, 
+      Map<String, Map<String, Map<String, Double>>>> results) 
       throws Exception {
     DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -279,9 +280,9 @@ public class IntervalBenchmarkCalculator {
     transformer.transform(domSource, streamResult);
   }
 
-  private HashMap<String, HashMap<String, HashMap<String, Double>>> loadMetadata() 
+  private Map<String, Map<String, Map<String, Double>>> loadMetadata() 
       throws Exception {    
-    HashMap<String, HashMap<String, HashMap<String, Double>>> results = new HashMap<>();
+    Map<String, Map<String, Map<String, Double>>> results = new HashMap<>();
 
     for (String problemId: problems) {
       results.put(
