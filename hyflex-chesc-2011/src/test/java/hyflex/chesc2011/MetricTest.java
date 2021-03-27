@@ -1,27 +1,24 @@
 package hyflex.chesc2011;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import hyflex.chesc2011.IntervalBenchmarkCalculator;
-import jdk.jfr.Timestamp;
+import hyflex.chesc2011.BenchmarkMetricCalculator;
+
+//import jdk.jfr.Timestamp;
 
 import org.junit.jupiter.api.Test;
 
 // See https://dzone.com/articles/junit-tutorial-for-beginners-in-5-steps
 
 /**
-  * Few unit tests for getMetric method of the IntervalBenchmarkCalculator class.
+  * Few unit tests for getMetric method of the BenchmarkMetricCalculator class.
   * @author David Omrai
   */
 
 public class MetricTest {
-  IntervalBenchmarkCalculator toTest = 
-      new IntervalBenchmarkCalculator();
+  BenchmarkMetricCalculator toTest = 
+      new BenchmarkMetricCalculator();
 
   @Test
   void testOptimalSolution() throws Exception {

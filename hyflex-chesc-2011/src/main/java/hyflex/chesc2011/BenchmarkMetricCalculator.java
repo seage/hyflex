@@ -26,7 +26,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-public class IntervalBenchmarkCalculator {
+public class BenchmarkMetricCalculator {
   String resultsPath = "./results";
   String metadataPath = "/hyflex/hyflex-chesc-2011";
   String resultsXmlFile = "./results.xml";
@@ -57,7 +57,7 @@ public class IntervalBenchmarkCalculator {
     }
 
     try {
-      IntervalBenchmarkCalculator ibc = new IntervalBenchmarkCalculator();
+      BenchmarkMetricCalculator ibc = new BenchmarkMetricCalculator();
       ibc.run(args[0]);
     } catch (Exception e) {
       System.out.println("error");
@@ -75,12 +75,6 @@ public class IntervalBenchmarkCalculator {
     if (doesDirExists(resultsDirPath) == false) {
       return;
     }
-    
-    // if (doesDirExists(Paths.get(metadataPath)) == false) {
-    //   return;
-    // }
-
-    //Map<String, Map<String, Integer>> results = new HashMap<>();
 
     File resDir = new File(resultsDirPath.toString());
     String[] resFiles = resDir.list(new FilenameFilter() {
