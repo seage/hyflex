@@ -27,7 +27,7 @@ import org.w3c.dom.NodeList;
 
 public class IntervalBenchmarkCalculator {
   String resultsPath = "./results";
-  String metadataPath = "./hyflex-chesc-2011/src/main/resources/hyflex/hyflex-chesc-2011";
+  String metadataPath = "/hyflex/hyflex-chesc-2011";
   String resultsXmlFile = "./results.xml";
 
   String[] problems = {"SAT", "TSP"};
@@ -51,13 +51,13 @@ public class IntervalBenchmarkCalculator {
    * @param args .
    */
   public static void main(String[] args) {
-    if (args.length <= 0) {
-      return;
-    }
+    // if (args.length <= 0) {
+    //   return;
+    // }
 
     try {
       IntervalBenchmarkCalculator ibc = new IntervalBenchmarkCalculator();
-      ibc.run(args[0]);
+      ibc.run("1");//(args[0]);
     } catch (Exception e) {
       System.out.println("error");
       System.out.println(e.getStackTrace());
@@ -75,9 +75,9 @@ public class IntervalBenchmarkCalculator {
       return;
     }
     
-    if (doesDirExists(Paths.get(metadataPath)) == false) {
-      return;
-    }
+    // if (doesDirExists(Paths.get(metadataPath)) == false) {
+    //   return;
+    // }
 
     //HashMap<String, HashMap<String, Integer>> results = new HashMap<>();
 
@@ -178,9 +178,10 @@ public class IntervalBenchmarkCalculator {
   private HashMap<String, HashMap<String, Double>> readMetadata(Path path) throws Exception {
     HashMap<String, HashMap<String, Double>> results = new HashMap<>();
     // Load the input file
-    File inputFile = new File(path.toString());
+    //File inputFile = new File(path.toString());
     // Read the input file
-    Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputFile);
+    Document doc = DocumentBuilderFactory
+        .newInstance().newDocumentBuilder().parse(getClass().getResourceAsStream(path.toString()));
     doc.getDocumentElement().normalize();
 
     // Get all instances from the file
