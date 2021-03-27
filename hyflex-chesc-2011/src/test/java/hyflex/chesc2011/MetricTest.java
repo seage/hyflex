@@ -3,7 +3,7 @@ package hyflex.chesc2011;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import hyflex.chesc2011.BenchmarkMetricCalculator;
+import hyflex.chesc2011.metrics.BenchmarkMetricCalculator;
 
 //import jdk.jfr.Timestamp;
 

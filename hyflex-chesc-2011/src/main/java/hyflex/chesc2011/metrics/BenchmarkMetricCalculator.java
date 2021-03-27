@@ -2,7 +2,7 @@
  * @author David Omrai
  */
 
-package hyflex.chesc2011;
+package hyflex.chesc2011.metrics;
 
 import java.io.File;
 import java.io.FilenameFilter;
