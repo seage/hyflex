@@ -4,6 +4,11 @@
 
 package hyflex.chesc2011.metrics;
 
+import hyflex.chesc2011.metrics.CardHandler;
+import hyflex.chesc2011.metrics.MetadataReader;
+import hyflex.chesc2011.metrics.ResultsCard;
+import hyflex.chesc2011.metrics.ScoreCalculator;
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.file.Path;
@@ -24,6 +29,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 
 /**
  * Class represents benchmark calculator for each solutions card
@@ -183,6 +189,34 @@ public class BenchmarkMetricCalculator {
     }
 
     saveResultsToXmlFile(results);
+  }
+
+  private ResultsCard calculateScore(ResultsCard card, ResultsCard metadata) throws Exception {
+    ResultsCard result = new ResultsCard(problems);
+
+    for (String problemId: problems) {
+        
+      List<Double> scores = new ArrayList<>();
+      List<Double> sizes = new ArrayList<>(); 
+      for (String instanceId: cardInstances.get(problemId)) {
+        double score = ScoreCalculator.getMetric(
+            intervalFrom, 
+            intervalTo, 
+            metadata.getInstanceResult(instanceId, "optimum"), 
+            metadata.getInstanceResult(instanceId, "random"), 
+            card.getInstanceResult(problemId, instanceId)
+        );
+
+        result.putInstanceValue(problemId, instanceId, score);
+
+        scores.add(score);
+        sizes.add((double)metadata.getInstanceResult(instanceId, "size"));
+      }
+      result.putDomainScore(problemId, ScoreCalculator.calculateWeightedMean(scores, sizes));
+      
+    }
+
+    return null;
   }
 
   /**
