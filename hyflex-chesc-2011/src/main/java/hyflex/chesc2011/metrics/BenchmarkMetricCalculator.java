@@ -6,6 +6,7 @@ package hyflex.chesc2011.metrics;
 
 import hyflex.chesc2011.metrics.CardHandler;
 import hyflex.chesc2011.metrics.MetadataReader;
+import hyflex.chesc2011.metrics.MetadataResults;
 import hyflex.chesc2011.metrics.ResultsCard;
 import hyflex.chesc2011.metrics.ScoreCalculator;
 
@@ -191,7 +192,7 @@ public class BenchmarkMetricCalculator {
     saveResultsToXmlFile(results);
   }
 
-  private ResultsCard calculateScore(ResultsCard card, ResultsCard metadata) throws Exception {
+  private ResultsCard calculateScore(ResultsCard card, MetadataResults metadata) throws Exception {
     ResultsCard result = new ResultsCard(problems);
 
     for (String problemId: problems) {
@@ -202,15 +203,15 @@ public class BenchmarkMetricCalculator {
         double score = ScoreCalculator.getMetric(
             intervalFrom, 
             intervalTo, 
-            metadata.getInstanceResult(instanceId, "optimum"), 
-            metadata.getInstanceResult(instanceId, "random"), 
+            metadata.get(instanceId, "optimum"), 
+            metadata.get(instanceId, "random"), 
             card.getInstanceResult(problemId, instanceId)
         );
 
         result.putInstanceValue(problemId, instanceId, score);
 
         scores.add(score);
-        sizes.add((double)metadata.getInstanceResult(instanceId, "size"));
+        sizes.add((double)metadata.get(instanceId, "size"));
       }
       result.putDomainScore(problemId, ScoreCalculator.calculateWeightedMean(scores, sizes));
       

@@ -43,7 +43,7 @@ public class ScoreCalculator {
       double lowerBound, 
       double upperBound, double intervalLower, double intervalUpper, double value)
       throws Exception {
-    double valueNormalization = (value - lowerBound) * (1 / (upperBound - lowerBound));
+    double valueNormalization = (value - lowerBound) / (upperBound - lowerBound);
     double scaling = valueNormalization * (intervalUpper - intervalLower);
     double shifting = scaling + intervalLower;
 
