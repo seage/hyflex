@@ -216,7 +216,7 @@ public class BenchmarkMetricCalculator {
       
     }
 
-    return null;
+    return result;
   }
 
   /**
