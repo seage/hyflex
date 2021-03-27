@@ -25,17 +25,46 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-
+/**
+ * Class represents benchmark calculator for each solutions card
+ * stored inside results file.
+ * .
+ * File has the following format
+ * SAT: 3, 5, 4, 10, 11
+ * BP:  7, 1, 9, 10, 11
+ * PS:  5, 9, 8, 10, 11
+ * FS:  1, 8, 3, 10, 11
+ * TSP: 0, 8, 2, 7, 6 
+ * VRP: 6, 2, 5, 1, 9 
+ * .
+ * Lines represents problem domains and collumns instances of this domain
+ * You can change what problem is where, all that's needed to be done is 
+ * to keep the same format for all results files.
+ * .
+ * And finally if you modify the order of problem domains or instances
+ * also you have to modify the problems array and cardInstances map
+ */
 public class BenchmarkMetricCalculator {
+  // Path where the results are stored
   String resultsPath = "./results";
+  // Path where the metadata are stored
   String metadataPath = "/hyflex/hyflex-chesc-2011";
+  // Path where the file with results is stored
   String resultsXmlFile = "./results.xml";
 
+  // This arrays holds the order of problem domains in results file
   String[] problems = {"SAT", "TSP"};
 
+  // Interval on which are the results being mapped, metric range
   public final double intervalFrom = 0.0;
   public final double intervalTo = 1.0;
 
+  /**
+   * This map represents what instances are on each line of
+   * the results file.
+   * It also holds the order of instances for each problem domain
+   * in the results file.
+   */
   @SuppressWarnings("serial")
   Map<String, List<String>> cardInstances = new HashMap<>() {{
         put("SAT", new ArrayList<>(
@@ -48,8 +77,9 @@ public class BenchmarkMetricCalculator {
   };
 
   /**
-   * .
-   * @param args .
+   * Main method of this class.
+   * It creates a new object and execute run method.
+   * @param args Name of directory where results files are stored.
    */
   public static void main(String[] args) {
     if (args.length <= 0) {
@@ -66,7 +96,9 @@ public class BenchmarkMetricCalculator {
   }
 
   /**
-   * .
+   * This method finds and loads all results files and metadata.
+   * For each algorithm results calculates the metric and stores it
+   * inside xml file.
    * @param id .
    */
   public void run(String id) throws Exception {
@@ -130,7 +162,11 @@ public class BenchmarkMetricCalculator {
     saveResultsToXmlFile(results);
   }
 
-
+  /**
+   * Method reads the results file and stores the data into a map.
+   * @param path Path where the file is stored.
+   * @return Map with algorithm results.
+   */
   private Map<String, Map<String, Double>> loadCard(String path)
       throws Exception {
     Map<String, Map<String, Double>> results = new HashMap<>();
@@ -169,11 +205,13 @@ public class BenchmarkMetricCalculator {
     return results;
   }
 
-
+  /**
+   * Method reads the file with metadata and stores the data inside map.
+   * @param path Path where the metadata is stored.
+   * @return Returns the map with metadata data.
+   */
   private Map<String, Map<String, Double>> readMetadata(Path path) throws Exception {
     Map<String, Map<String, Double>> results = new HashMap<>();
-    // Load the input file
-    //File inputFile = new File(path.toString());
     // Read the input file
     Document doc = DocumentBuilderFactory
         .newInstance().newDocumentBuilder().parse(getClass().getResourceAsStream(path.toString()));
@@ -207,15 +245,15 @@ public class BenchmarkMetricCalculator {
         result.put("size", Double.parseDouble(element.getAttribute("size")));
 
         results.put(element.getAttribute("id"), result);
-        // results.put(element.getAttribute("id"), new ArrayList<Integer>(Arrays.asList(
-        //     Integer.parseInt(element.getAttribute("optimum")), 
-        //     Integer.parseInt(element.getAttribute("random"))
-        // )));
       }    
     }
     return results;
   }
 
+  /**
+   * Method stored the results inside xml file.
+   * @param results Map with results.
+   */
   private void saveResultsToXmlFile(Map<String, 
       Map<String, Map<String, Map<String, Double>>>> results) 
       throws Exception {
@@ -236,9 +274,9 @@ public class BenchmarkMetricCalculator {
         problem.setAttribute("name", problemId);
 
         /**
-         *                  SUMi=0[size(instance-i)*metric(instance-i)]   .
-         * weighted mean = ---------------------------------------------  .
-         *                            SUMi=0[size(instance-i)]            .
+         *                  SUM(i=0|n)[size(instance-i)*metric(instance-i)]   .
+         * weighted mean = -------------------------------------------------  .
+         *                            SUM(i=0|n)[size(instance-i)]            .
          */
         double numerator = 0;
         double nominator = 0;
@@ -274,6 +312,10 @@ public class BenchmarkMetricCalculator {
     transformer.transform(domSource, streamResult);
   }
 
+  /**
+   * Method is uesd by other methods for retrieval of metadata.
+   * @return The map with metadata data.
+   */
   private Map<String, Map<String, Map<String, Double>>> loadMetadata() 
       throws Exception {    
     Map<String, Map<String, Map<String, Double>>> results = new HashMap<>();
@@ -287,10 +329,20 @@ public class BenchmarkMetricCalculator {
     return results;
   }
 
+  /**
+   * Method tests if the given path leads to directory.
+   * @param path Path to directory.
+   * @return True if path leads to directory, false otherwise.
+   */
   private Boolean doesDirExists(Path path) {
     return new File(path.toString()).exists();
   }
 
+  /**
+   * Method tests given string if it contains double.
+   * @param text String to test.
+   * @return True if the string can be translated to double, false otherwise.
+   */
   private Boolean isDouble(String text) {
     try {
       Double.parseDouble(text);
@@ -301,11 +353,11 @@ public class BenchmarkMetricCalculator {
   }
 
   /**
-   * .
+   * Method returns the metric based on given data.
    * @param upperBound The value of random generator.
    * @param lowerBound The optimal value.
    * @param current Input value for metric.
-   * @return
+   * @return The metric for given value.
    */
   public double getMetric(double upperBound, double lowerBound, double current) 
       throws Exception {
@@ -322,6 +374,15 @@ public class BenchmarkMetricCalculator {
     return intervalTo - (mapToInterval(lowerBound, upperBound, intervalFrom, intervalTo, current));
   }
 
+  /**
+   * Method maps the value of one interval onto a new one.
+   * @param lowerBound Lower value of the first interval.
+   * @param upperBound Upper value of the first interval.
+   * @param intervalLower Lower value of the new interval.
+   * @param intervalUpper Upper value of the new interval.
+   * @param value Value to map to a new interval.
+   * @return Return the mapped value of the value.
+   */
   private double mapToInterval(
       double lowerBound, 
       double upperBound, double intervalLower, double intervalUpper, double value)
