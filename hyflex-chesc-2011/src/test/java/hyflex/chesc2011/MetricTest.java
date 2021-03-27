@@ -21,17 +21,17 @@ public class MetricTest {
       new BenchmarkMetricCalculator();
 
   @Test
-  void testOptimalSolution() throws Exception {
+  void testLowerBound() throws Exception {
     assertEquals(calculator.intervalTo, calculator.getMetric(1, 42, 1), 0.1);
   }
 
   @Test
-  void testRandomSolution() throws Exception {
+  void tesUpperBound() throws Exception {
     assertEquals(calculator.intervalFrom, calculator.getMetric(1, 42, 42), 0.1);
   }
 
   @Test
-  void testMiddleSolution() throws Exception {
+  void testMiddleValue() throws Exception {
     assertEquals(
         (calculator.intervalTo - calculator.intervalFrom) / 2, 
         calculator.getMetric(42, 0, 21), 
