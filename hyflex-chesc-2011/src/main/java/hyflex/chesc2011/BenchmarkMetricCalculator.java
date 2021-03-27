@@ -387,7 +387,10 @@ public class BenchmarkMetricCalculator {
       double lowerBound, 
       double upperBound, double intervalLower, double intervalUpper, double value)
       throws Exception {
-    return intervalLower 
-      + ((intervalUpper - intervalLower) / (upperBound - lowerBound)) * (value - lowerBound);
+    double valueNormalization = (value - lowerBound) * (1 / (upperBound - lowerBound));
+    double scaling = valueNormalization * (intervalUpper - intervalLower);
+    double shifting = scaling + intervalLower;
+    
+    return shifting;
   }
 }
