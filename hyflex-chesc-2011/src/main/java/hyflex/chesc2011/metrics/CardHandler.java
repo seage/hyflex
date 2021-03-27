@@ -4,7 +4,11 @@
 
 package hyflex.chesc2011.metrics;
 
+import hyflex.chesc2011.metrics.ResultsCard;
+
+import java.io.FilenameFilter;
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,43 +18,25 @@ import java.util.Scanner;
 
 public class CardHandler {
   /**
-   * This map represents what instances are on each line of
-   * the results file.
-   * It also holds the order of instances for each problem domain
-   * in the results file.
-   */
-  @SuppressWarnings("serial")
-  static Map<String, List<String>> cardInstances = new HashMap<>() {{
-        put("SAT", new ArrayList<>(
-            Arrays.asList(
-              "hyflex-sat-3", "hyflex-sat-5", "hyflex-sat-4", "hyflex-sat-10", "hyflex-sat-11")));
-        put("TSP", new ArrayList<>(
-            Arrays.asList(
-              "hyflex-tsp-0", "hyflex-tsp-8", "hyflex-tsp-2", "hyflex-tsp-7", "hyflex-tsp-6")));
-    }
-  };
-
-  /**
    * Method reads the results file and stores the data into a map.
    * @param path Path where the file is stored.
    * @return Map with algorithm results.
    */
-  public static Map<String, Map<String, Double>> loadCard(String[] problems, String path)
+  public static ResultsCard loadCard(
+      String[] problems, String path, String[] domains, Map<String, List<String>> cardInstances)
       throws Exception {
-    Map<String, Map<String, Double>> results = new HashMap<>();
+    //Map<String, Map<String, Double>> results = new HashMap<>();
+    ResultsCard result = new ResultsCard(domains);
 
     Scanner scanner = new Scanner(new File(path)).useDelimiter("\n");
 
     for (String problemId : problems) {
-      // System.out.println(problemId);
       
       if (scanner.hasNextLine() == false) {
         scanner.close();
         System.out.println("Not enough lines in " + path + " file.");
         return null;
       }
-
-      Map<String, Double> result = new HashMap<>();
 
       Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ");
 
@@ -62,16 +48,31 @@ public class CardHandler {
           return null;
         }
         
-        result.put(instanceId, Double.parseDouble(line.next()));
+        result.putInstanceValue(problemId, instanceId, Double.parseDouble(line.next()));
       }
 
       line.close();
-      results.put(problemId, result);
     }
     scanner.close();
 
-    return results;
+    return result;
   }
 
- 
+  /**
+   * .
+   * @param path .
+   * @return .
+   */
+  public static String[] getCardsNames(Path path) {
+    File resDir = new File(path.toString());
+
+    String[] resFiles = resDir.list(new FilenameFilter() {
+      @Override
+      public boolean accept(File current, String name) {
+        return new File(current, name).isFile();
+      }
+    });
+
+    return resFiles;
+  }
 }

@@ -7,7 +7,7 @@ package hyflex.chesc2011.metrics;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MetadataResults {
+public class ProblemInstanceMetadata {
   /**
    * .
    * String: instanceId
@@ -16,7 +16,7 @@ public class MetadataResults {
    */
   Map<String, Map<String, Double>> instanceResults;
 
-  MetadataResults() {
+  ProblemInstanceMetadata() {
     instanceResults = new HashMap<>();
   }
 
@@ -27,7 +27,7 @@ public class MetadataResults {
    * @param value .
    * @return
    */
-  public MetadataResults put(String instanceId, String parameter, Double value) {
+  public ProblemInstanceMetadata put(String instanceId, String parameter, Double value) {
     instanceResults.get(instanceId).put(parameter, value);
     return this;
   }
