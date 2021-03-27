@@ -143,8 +143,8 @@ public class BenchmarkMetricCalculator {
         for (String instanceId: cardInstances.get(problemId)) {
           Map<String, Double> instance = new HashMap<>();
           instance.put("metric", getMetric(
-              metadata.get(problemId).get(instanceId).get("random"),
               metadata.get(problemId).get(instanceId).get("optimum"),
+              metadata.get(problemId).get(instanceId).get("random"),
               hm.get(problemId).get(instanceId)
           ));
           instance.put(
@@ -359,7 +359,7 @@ public class BenchmarkMetricCalculator {
    * @param current Input value for metric.
    * @return The metric for given value.
    */
-  public double getMetric(double upperBound, double lowerBound, double current) 
+  public double getMetric(double lowerBound, double upperBound, double current) 
       throws Exception {
     if (upperBound < 0 || lowerBound < 0 || current < 0) {
       throw new Exception("Bad input values - input parameter < 0");

@@ -22,12 +22,12 @@ public class MetricTest {
 
   @Test
   void testOptimalSolution() throws Exception {
-    assertEquals(calculator.intervalTo, calculator.getMetric(42, 1, 1), 0.1);
+    assertEquals(calculator.intervalTo, calculator.getMetric(1, 42, 1), 0.1);
   }
 
   @Test
   void testRandomSolution() throws Exception {
-    assertEquals(calculator.intervalFrom, calculator.getMetric(42, 1, 42), 0.1);
+    assertEquals(calculator.intervalFrom, calculator.getMetric(1, 42, 42), 0.1);
   }
 
   @Test
@@ -40,32 +40,32 @@ public class MetricTest {
 
   @Test
   void testBadRandomInput() throws Exception {
-    assertThrows(Exception.class, () -> calculator.getMetric(-10, 1, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(1, -10, 1));
     ;
   }
 
   @Test
   void testBadOptimalInput() throws Exception {
-    assertThrows(Exception.class, () -> calculator.getMetric(10, -1, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(-1, 10, 1));
   }
 
   @Test
   void testBadWorstInput() throws Exception {
-    assertThrows(Exception.class, () -> calculator.getMetric(10, -1, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(-1, 10, 1));
   }
 
   @Test
   void testBadCurrentInput() throws Exception {
-    assertThrows(Exception.class, () -> calculator.getMetric(10, 1, -1));
+    assertThrows(Exception.class, () -> calculator.getMetric(1, 10, -1));
   }
 
   @Test
   void testBadIntervalInput() throws Exception {
-    assertThrows(Exception.class, () -> calculator.getMetric(3, 42, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(42, 3, 1));
   }
 
   @Test
   void testBadOutOfIntervaInput() throws Exception {
-    assertThrows(Exception.class, () -> calculator.getMetric(42, 3, 1));
+    assertThrows(Exception.class, () -> calculator.getMetric(3, 42, 1));
   }
 }
