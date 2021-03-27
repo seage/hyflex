@@ -121,19 +121,42 @@ public class BenchmarkMetricCalculator {
       return;
     }
 
+    /**
+     * First string: problemId.
+     * Second string: instanceId.
+     * Third string: [optimum, random, size]
+     * Double: Parameter value.
+     */
     Map<String, Map<String,Map<String, Double>>> metadata = loadMetadata();
 
+    /**
+     * First String: fileName.
+     * Second String: problemId
+     * Third String: instanceId
+     * Double: instance metric
+     */
     Map<String, 
         Map<String, Map<String, Map<String, Double>>>> results = new HashMap<>();
 
     for (String fileName : resFiles) {
-      Map<String, Map<String, Double>> hm = loadCard(
+      /**
+       * First String: problemId.
+       * Second String: instanceId.
+       * Double: instance result.
+       */
+      Map<String, Map<String, Double>> algorithmResults = loadCard(
           resultsDirPath.toString() + "/" + fileName);
 
-      if (hm == null) {
+      if (algorithmResults == null) {
         continue;
       }
 
+      /**
+       * First String: problemId.
+       * Second String: instanceId.
+       * Third String: [metric, size].
+       * Double: metric or size value.
+       */
       Map<String, Map<String, Map<String, Double>>> probRes = new HashMap<>();
 
       for (String problemId: problems) {
@@ -145,7 +168,7 @@ public class BenchmarkMetricCalculator {
           instance.put("metric", getMetric(
               metadata.get(problemId).get(instanceId).get("optimum"),
               metadata.get(problemId).get(instanceId).get("random"),
-              hm.get(problemId).get(instanceId)
+              algorithmResults.get(problemId).get(instanceId)
           ));
           instance.put(
               "size", (double)metadata.get(problemId).get(instanceId).get("size"));
