@@ -362,13 +362,13 @@ public class BenchmarkMetricCalculator {
   public double getMetric(double lowerBound, double upperBound, double current) 
       throws Exception {
     if (upperBound < 0 || lowerBound < 0 || current < 0) {
-      throw new Exception("Bad input values - input parameter < 0");
+      throw new Exception("Bad input values: input parameter < 0");
     }
     if (upperBound < lowerBound) {
-      throw new Exception("Bad input values - upperBound < lowerBound");
+      throw new Exception("Bad input values: upperBound < lowerBound");
     }
     if (current < lowerBound || current > upperBound) {
-      throw new Exception("Bad input values - current is not from interval");
+      throw new Exception("Bad input values: current is not from interval");
     }
 
     return intervalTo - (mapToInterval(lowerBound, upperBound, intervalFrom, intervalTo, current));
