@@ -84,15 +84,14 @@ public class BenchmarkMetricCalculator {
    * @param args Name of directory where results files are stored.
    */
   public static void main(String[] args) {
-    // if (args.length <= 0) {
-    //   return;
-    // }
-
     try {
+      if (args.length <= 0) {
+        throw new Exception("Error: No results directory name given.");
+      }
+
       BenchmarkMetricCalculator ibc = new BenchmarkMetricCalculator();
-      ibc.run("1");//(args[0]);
+      ibc.run(args[0]);
     } catch (Exception e) {
-      System.out.println("error");
       System.out.println(e.getMessage());
     }
   }
