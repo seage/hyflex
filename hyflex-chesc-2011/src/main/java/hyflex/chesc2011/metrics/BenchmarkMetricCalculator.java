@@ -57,6 +57,16 @@ public class BenchmarkMetricCalculator {
   // This arrays holds the order of problem domains in results file
   String[] problems = {"SAT", "TSP"};
 
+  /**
+   * Map represents weights for each problem domain.
+   */
+  @SuppressWarnings("serial")
+  Map<String, Double> problemsWeights = new HashMap<>() {{
+      put("SAT", 1.0);
+      put("TSP", 1.0);
+    }
+  };
+
   // Interval on which are the results being mapped, metric range
   public final double intervalFrom = 0.0;
   public final double intervalTo = 1.0;
@@ -135,7 +145,7 @@ public class BenchmarkMetricCalculator {
    */
   private ResultsCard calculateScore(
         ResultsCard card, Map<String, ProblemInstanceMetadata> instancesMetadata) throws Exception {
-    ResultsCard result = new ResultsCard(problems);
+    ResultsCard result = new ResultsCard(card.getName(), problems);
 
     for (String problemId: problems) {
         
@@ -147,7 +157,7 @@ public class BenchmarkMetricCalculator {
             intervalTo, 
             instancesMetadata.get(problemId).get(instanceId, "optimum"), 
             instancesMetadata.get(problemId).get(instanceId, "random"), 
-            card.getInstanceResult(problemId, instanceId)
+            card.getInstanceScore(problemId, instanceId)
         );
 
         result.putInstanceValue(problemId, instanceId, score);
@@ -155,6 +165,7 @@ public class BenchmarkMetricCalculator {
         scores.add(score);
         sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
       }
+      result.calculateScore(problemsWeights);
       result.putDomainScore(problemId, ScoreCalculator.calculateWeightedMean(scores, sizes));
       
     }
@@ -191,14 +202,14 @@ public class BenchmarkMetricCalculator {
 
           instance.setAttribute(
               instanceId, 
-              Double.toString(results.get(hhId).getInstanceResult(problemId, instanceId))
+              Double.toString(results.get(hhId).getInstanceScore(problemId, instanceId))
           );
           
           problem.appendChild(instance);
         }
 
         problem.setAttribute(
-            "avg", Double.toString(results.get(hhId).getScore(problemId)));
+            "avg", Double.toString(results.get(hhId).getProblemScore(problemId)));
         algorithm.appendChild(problem);
       }
 

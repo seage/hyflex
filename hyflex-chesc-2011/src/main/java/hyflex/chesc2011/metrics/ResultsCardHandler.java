@@ -23,7 +23,7 @@ public class ResultsCardHandler {
       String[] problems, Path path, String[] domains, Map<String, List<String>> cardInstances)
       throws Exception {
     //Map<String, Map<String, Double>> results = new HashMap<>();
-    ResultsCard result = new ResultsCard(domains);
+    ResultsCard result = new ResultsCard(path.getFileName().toString(), domains);
 
     Scanner scanner = new Scanner(new File(path.toString())).useDelimiter("\n");
 

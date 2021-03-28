@@ -4,11 +4,24 @@
 
 package hyflex.chesc2011.metrics;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class ResultsCard {
+  /**
+   * Name of the algorithm.
+   */
+  String algorithmName;
+
+  /**
+   * Total algorithm score.
+   */
+  double totalScore;
+
   /**
    * .
    * String: problemId
@@ -16,6 +29,7 @@ public class ResultsCard {
    *        - Double: instanceId value
    */
   Map<String, Map<String, Double>> problemResults;
+
   /**
    * .
    * String: problemId
@@ -23,7 +37,9 @@ public class ResultsCard {
    */
   Map<String, Double> scorePerDomain;
 
-  ResultsCard(String[] domains) {
+  ResultsCard(String cardName, String[] domains) {
+    algorithmName = cardName.substring(0, cardName.lastIndexOf("."));
+
     problemResults = new HashMap<>();
     scorePerDomain = new HashMap<>();
 
@@ -57,12 +73,39 @@ public class ResultsCard {
   }
 
   /**
+   * Method calculates the algorithm score.
+   * @param weightsMap Map with weights for each problem domain.
+   */
+  public void calculateScore(Map<String, Double> weightsMap)
+      throws Exception {
+    List<String> sortedKeys = new ArrayList<String>(weightsMap.keySet());
+    Collections.sort(sortedKeys);
+
+    List<Double> scores = new ArrayList<>(); 
+    List<Double> weights = new ArrayList<>();
+    for (String problemId: sortedKeys) {
+      scores.add(scorePerDomain.get(problemId));
+      weights.add(weightsMap.get(problemId));
+    }
+
+    totalScore = ScoreCalculator.calculateWeightedMean(scores, weights);
+  }
+
+  public double getScore() {
+    return totalScore;
+  }
+
+  public String getName() {
+    return algorithmName;
+  }
+
+  /**
    * Method returns value of given instance.
    * @param problemId Name of the problem doamain.
    * @param instanceId Name of the intance.
    * @return Returns the value of given instacne.
    */
-  public double getInstanceResult(String problemId, String instanceId) {
+  public double getInstanceScore(String problemId, String instanceId) {
     return problemResults.get(problemId).get(instanceId);
   }
 
@@ -71,7 +114,7 @@ public class ResultsCard {
    * @param problemId Name of the problem domain.
    * @return Returns the value of the problem domain.
    */
-  public double getScore(String problemId) {
+  public double getProblemScore(String problemId) {
     return scorePerDomain.get(problemId);
   }
 
