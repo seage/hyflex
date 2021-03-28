@@ -4,8 +4,6 @@
 
 package hyflex.chesc2011.metrics;
 
-import hyflex.chesc2011.metrics.ProblemInstanceMetadata;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.nio.file.Path;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,9 +12,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.util.Scanner;
-
-public class MetadataReader {
+public class ProblemInstanceMetadataReader {
 
   /**
     * Method reads the file with metadata and stores the data inside map.
@@ -26,7 +22,7 @@ public class MetadataReader {
   public static ProblemInstanceMetadata read(Path path) throws Exception {
     ProblemInstanceMetadata result = new ProblemInstanceMetadata();
 
-    InputStream inputStream = MetadataReader.class.getResourceAsStream(path.toString());
+    InputStream inputStream = ProblemInstanceMetadataReader.class.getResourceAsStream(path.toString());
     // Read the input file
     Document doc = DocumentBuilderFactory
         .newInstance()

@@ -4,8 +4,8 @@
 
 package hyflex.chesc2011.metrics;
 
-import hyflex.chesc2011.metrics.CardHandler;
-import hyflex.chesc2011.metrics.MetadataReader;
+import hyflex.chesc2011.metrics.ResultsCardHandler;
+import hyflex.chesc2011.metrics.ProblemInstanceMetadataReader;
 import hyflex.chesc2011.metrics.ProblemInstanceMetadata;
 import hyflex.chesc2011.metrics.ResultsCard;
 import hyflex.chesc2011.metrics.ScoreCalculator;
@@ -102,7 +102,7 @@ public class BenchmarkMetricCalculator {
    * @param id .
    */
   public void run(String id) throws Exception {
-    String [] resFiles = CardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
+    String [] resFiles = ResultsCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
 
     Map<String, ProblemInstanceMetadata> instanceMetadata = new HashMap<>();
 
@@ -110,7 +110,7 @@ public class BenchmarkMetricCalculator {
       Path instanceMetadataPath = Paths.get(
           metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml");
 
-      instanceMetadata.put(problemId, MetadataReader.read(instanceMetadataPath));
+      instanceMetadata.put(problemId, ProblemInstanceMetadataReader.read(instanceMetadataPath));
     }
 
     Map<String, ResultsCard> results = new HashMap<>();
@@ -118,7 +118,7 @@ public class BenchmarkMetricCalculator {
     for (String fileName : resFiles) {
       Path resultsCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
       
-      ResultsCard algorithmResults = CardHandler.loadCard(
+      ResultsCard algorithmResults = ResultsCardHandler.loadCard(
           problems, resultsCardPath, problems, cardInstances);
 
       results.put(fileName, calculateScore(algorithmResults, instanceMetadata));

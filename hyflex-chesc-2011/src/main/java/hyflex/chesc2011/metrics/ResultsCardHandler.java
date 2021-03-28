@@ -6,17 +6,14 @@ package hyflex.chesc2011.metrics;
 
 import hyflex.chesc2011.metrics.ResultsCard;
 
-import java.io.FilenameFilter;
 import java.io.File;
+import java.io.FilenameFilter;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class CardHandler {
+public class ResultsCardHandler {
   /**
    * Method reads the results file and stores the data into a map.
    * @param path Path where the file is stored.
