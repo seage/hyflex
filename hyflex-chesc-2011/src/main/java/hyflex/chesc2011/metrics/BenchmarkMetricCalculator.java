@@ -29,7 +29,7 @@ import java.util.Map;
  * to keep the same format for all results files.
  * .
  * And finally if you modify the order of problem domains or instances
- * also you have to modify the problems array and cardInstances map
+ * also you have to modify the problems array and problemInstances map
  */
 public class BenchmarkMetricCalculator {
   // Path where the results are stored
@@ -63,7 +63,7 @@ public class BenchmarkMetricCalculator {
    * in the results file.
    */
   @SuppressWarnings("serial")
-  Map<String, List<String>> cardInstances = new HashMap<>() {{
+  Map<String, List<String>> problemInstances = new HashMap<>() {{
         put("SAT", new ArrayList<>(
             Arrays.asList(
               "hyflex-sat-3", "hyflex-sat-5", "hyflex-sat-4", "hyflex-sat-10", "hyflex-sat-11")));
@@ -92,23 +92,14 @@ public class BenchmarkMetricCalculator {
   }
 
   /**
-   * .
-   * @param id .
+   * Method evaluates all algorithms and stores results into file.
+   * @param id Name of the directory where algorithm problem results are stored.
    */
   public void run(String id) throws Exception {
     ScoreCalculator scoreCalculator = new ScoreCalculator(
-        problems, cardInstances, problemsWeightsMap, intervalFrom, intervalTo);
+        problems, metadataPath, problemInstances, problemsWeightsMap, intervalFrom, intervalTo);
     
     String [] resFiles = ResultsCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
-
-    Map<String, ProblemInstanceMetadata> instanceMetadata = new HashMap<>();
-
-    for (String problemId: problems) {
-      Path instanceMetadataPath = Paths.get(
-          metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml");
-
-      instanceMetadata.put(problemId, ProblemInstanceMetadataReader.read(instanceMetadataPath));
-    }
 
     List<ResultsCard> results = new ArrayList<>();
 
@@ -116,9 +107,9 @@ public class BenchmarkMetricCalculator {
       Path resultsCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
       
       ResultsCard algorithmResults = ResultsCardHandler.loadCard(
-          problems, resultsCardPath, problems, cardInstances);
+          problems, resultsCardPath, problems, problemInstances);
 
-      results.add(scoreCalculator.calculateScore(algorithmResults, instanceMetadata));
+      results.add(scoreCalculator.calculateScore(algorithmResults));
     }
 
     ResultsCardHandler.saveResultsToXmlFile(resultsXmlFile, results);

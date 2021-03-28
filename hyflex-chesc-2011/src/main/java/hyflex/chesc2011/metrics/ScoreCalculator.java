@@ -4,24 +4,30 @@
 
 package hyflex.chesc2011.metrics;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ScoreCalculator {
   String[] problems;
+  String metadataPath;
   Map<String, List<String>> cardInstances; 
   Map<String, Double> problemsWeightsMap;
   double intervalFrom;
   double intervalTo;
 
   ScoreCalculator(
-      String[] problems, 
+      String[] problems,
+      String metadataPath, 
       Map<String, List<String>> cardInstances, 
       Map<String, Double> problemsWeightsMap,
       double intervalFrom, 
       double intervalTo) {
     this.problems = problems;
+    this.metadataPath = metadataPath;
     this.cardInstances = cardInstances;
     this.problemsWeightsMap = problemsWeightsMap;
     this.intervalFrom = intervalFrom;
@@ -31,11 +37,19 @@ public class ScoreCalculator {
   /**
    * .
    * @param card .
-   * @param instancesMetadata .
    * @return .
    */
-  public ResultsCard calculateScore(
-        ResultsCard card, Map<String, ProblemInstanceMetadata> instancesMetadata) throws Exception {
+  public ResultsCard calculateScore(ResultsCard card) throws Exception {
+
+    Map<String, ProblemInstanceMetadata> instancesMetadata = new HashMap<>();
+
+    for (String problemId: problems) {
+      Path instanceMetadataPath = Paths
+          .get(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml");
+
+      instancesMetadata.put(problemId, ProblemInstanceMetadataReader.read(instanceMetadataPath));
+    }
+
     ResultsCard result = new ResultsCard(card.getName(), problems);
 
     List<Double> problemsScores = new ArrayList<>();

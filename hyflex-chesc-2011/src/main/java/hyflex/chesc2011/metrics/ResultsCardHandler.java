@@ -29,7 +29,6 @@ public class ResultsCardHandler {
   public static ResultsCard loadCard(
       String[] problems, Path path, String[] domains, Map<String, List<String>> cardInstances)
       throws Exception {
-    //Map<String, Map<String, Double>> results = new HashMap<>();
     String cardName = path.getFileName().toString();
     ResultsCard result = new ResultsCard(
         cardName.substring(0, cardName.lastIndexOf(".")), domains);

@@ -22,7 +22,8 @@ public class ProblemInstanceMetadataReader {
   public static ProblemInstanceMetadata read(Path path) throws Exception {
     ProblemInstanceMetadata result = new ProblemInstanceMetadata();
 
-    InputStream inputStream = ProblemInstanceMetadataReader.class.getResourceAsStream(path.toString());
+    InputStream inputStream = ProblemInstanceMetadataReader
+        .class.getResourceAsStream(path.toString());
     // Read the input file
     Document doc = DocumentBuilderFactory
         .newInstance()
