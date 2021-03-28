@@ -5,6 +5,8 @@
 package hyflex.chesc2011.metrics;
 
 import hyflex.chesc2011.metrics.ProblemInstanceMetadata;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.nio.file.Path;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -24,23 +26,12 @@ public class MetadataReader {
   public static ProblemInstanceMetadata read(Path path) throws Exception {
     ProblemInstanceMetadata result = new ProblemInstanceMetadata();
 
-
+    InputStream inputStream = MetadataReader.class.getResourceAsStream(path.toString());
     // Read the input file
     Document doc = DocumentBuilderFactory
         .newInstance()
-        .newDocumentBuilder().parse(MetadataReader.class.getResourceAsStream(path.toString()));
-    System.out.println(doc);
+        .newDocumentBuilder().parse(inputStream);
     doc.getDocumentElement().normalize();
-
-    Scanner scan = new Scanner(MetadataReader.class.getResourceAsStream(path.toString()));
-
-    System.out.println(scan.nextLine());
-    System.out.println(scan.nextLine());
-    System.out.println(scan.nextLine());
-    System.out.println(scan.nextLine());
-
-    System.out.println(doc);
-
 
     // Get all instances from the file
     NodeList nodeList = doc.getElementsByTagName("Instance");
@@ -48,7 +39,6 @@ public class MetadataReader {
     // For each instance stores its values into a hash map
     for (int temp = 0; temp < nodeList.getLength(); temp++) {
       Node node = nodeList.item(temp);
-      System.out.println(node);
       
       if (node.getNodeType() == Node.ELEMENT_NODE) {
         Element element = (Element) node;

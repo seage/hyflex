@@ -28,6 +28,10 @@ public class ProblemInstanceMetadata {
    * @return
    */
   public ProblemInstanceMetadata put(String instanceId, String parameter, Double value) {
+    if (instanceResults.containsKey(instanceId) == false) {
+      instanceResults.put(instanceId, new HashMap<>());
+    }
+    
     instanceResults.get(instanceId).put(parameter, value);
     return this;
   }
