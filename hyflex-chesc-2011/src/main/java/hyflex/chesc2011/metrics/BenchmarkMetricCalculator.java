@@ -61,7 +61,7 @@ public class BenchmarkMetricCalculator {
    * Map represents weights for each problem domain.
    */
   @SuppressWarnings("serial")
-  Map<String, Double> problemsWeights = new HashMap<>() {{
+  Map<String, Double> problemsWeightsMap = new HashMap<>() {{
       put("SAT", 1.0);
       put("TSP", 1.0);
     }
@@ -95,12 +95,12 @@ public class BenchmarkMetricCalculator {
    */
   public static void main(String[] args) {
     try {
-      if (args.length <= 0) {
-        throw new Exception("Error: No results directory name given.");
-      }
+      // if (args.length <= 0) {
+      //   throw new Exception("Error: No results directory name given.");
+      // }
 
       BenchmarkMetricCalculator ibc = new BenchmarkMetricCalculator();
-      ibc.run(args[0]);
+      ibc.run("1");//(args[0]);
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -147,12 +147,16 @@ public class BenchmarkMetricCalculator {
         ResultsCard card, Map<String, ProblemInstanceMetadata> instancesMetadata) throws Exception {
     ResultsCard result = new ResultsCard(card.getName(), problems);
 
+    List<Double> problemsScores = new ArrayList<>();
+    List<Double> problemsWeights = new ArrayList<>();
+
     for (String problemId: problems) {
         
-      List<Double> scores = new ArrayList<>();
+      List<Double> instancesScores = new ArrayList<>();
       List<Double> sizes = new ArrayList<>(); 
+
       for (String instanceId: cardInstances.get(problemId)) {
-        double score = ScoreCalculator.getMetric(
+        double instanceScore = ScoreCalculator.getMetric(
             intervalFrom, 
             intervalTo, 
             instancesMetadata.get(problemId).get(instanceId, "optimum"), 
@@ -160,14 +164,21 @@ public class BenchmarkMetricCalculator {
             card.getInstanceScore(problemId, instanceId)
         );
 
-        result.putInstanceValue(problemId, instanceId, score);
+        result.putInstanceValue(problemId, instanceId, instanceScore);
 
-        scores.add(score);
+        instancesScores.add(instanceScore);
         sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
       }
-      result.putDomainScore(problemId, ScoreCalculator.calculateWeightedMean(scores, sizes));
+
+      double problemScore = ScoreCalculator.calculateWeightedMean(instancesScores, sizes);
+      result.putDomainScore(problemId, problemScore);
+
+      problemsScores.add(problemScore);
+      problemsWeights.add(problemsWeightsMap.get(problemId));
     }
-    result.calculateScore(problemsWeights);
+
+    result.setScore(ScoreCalculator.calculateWeightedMean(problemsScores, problemsWeights));
+    
     return result;
   }
   

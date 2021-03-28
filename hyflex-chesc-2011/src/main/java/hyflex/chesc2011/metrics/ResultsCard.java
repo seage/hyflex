@@ -73,22 +73,11 @@ public class ResultsCard {
   }
 
   /**
-   * Method calculates the algorithm score.
-   * @param weightsMap Map with weights for each problem domain.
+   * Method sets algorithm score.
+   * @param score Algorithm score.
    */
-  public void calculateScore(Map<String, Double> weightsMap)
-      throws Exception {
-    List<String> sortedKeys = new ArrayList<String>(weightsMap.keySet());
-    Collections.sort(sortedKeys);
-
-    List<Double> scores = new ArrayList<>(); 
-    List<Double> weights = new ArrayList<>();
-    for (String problemId: sortedKeys) {
-      scores.add(scorePerDomain.get(problemId));
-      weights.add(weightsMap.get(problemId));
-    }
-
-    totalScore = ScoreCalculator.calculateWeightedMean(scores, weights);
+  public void setScore(Double score) {
+    totalScore = score;
   }
 
   public double getScore() {
