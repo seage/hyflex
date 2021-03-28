@@ -6,12 +6,11 @@ package hyflex.chesc2011.metrics;
 
 import hyflex.chesc2011.metrics.CardHandler;
 import hyflex.chesc2011.metrics.MetadataReader;
-import hyflex.chesc2011.metrics.MetadataResults;
+import hyflex.chesc2011.metrics.ProblemInstanceMetadata;
 import hyflex.chesc2011.metrics.ResultsCard;
 import hyflex.chesc2011.metrics.ScoreCalculator;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -28,9 +26,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
 
 /**
  * Class represents benchmark calculator for each solutions card
@@ -89,110 +84,58 @@ public class BenchmarkMetricCalculator {
    * @param args Name of directory where results files are stored.
    */
   public static void main(String[] args) {
-    if (args.length <= 0) {
-      return;
-    }
+    // if (args.length <= 0) {
+    //   return;
+    // }
 
     try {
       BenchmarkMetricCalculator ibc = new BenchmarkMetricCalculator();
-      ibc.run(args[0]);
+      ibc.run("1");//(args[0]);
     } catch (Exception e) {
       System.out.println("error");
-      System.out.println(e.getStackTrace());
+      System.out.println(e.getMessage());
     }
   }
 
+
   /**
-   * This method finds and loads all results files and metadata.
-   * For each algorithm results calculates the metric and stores it
-   * inside xml file.
+   * .
    * @param id .
    */
   public void run(String id) throws Exception {
-    Path resultsDirPath = Paths.get(resultsPath + "/" + id);
+    String [] resFiles = CardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
 
-    if (doesDirExists(resultsDirPath) == false) {
-      return;
+    Map<String, ProblemInstanceMetadata> instanceMetadata = new HashMap<>();
+
+    for (String problemId: problems) {
+      Path instanceMetadataPath = Paths.get(
+          metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml");
+
+      instanceMetadata.put(problemId, MetadataReader.read(instanceMetadataPath));
     }
 
-    File resDir = new File(resultsDirPath.toString());
-    String[] resFiles = resDir.list(new FilenameFilter() {
-      @Override
-      public boolean accept(File current, String name) {
-        return new File(current, name).isFile();
-      }
-    });
-
-    if (resFiles == null) {
-      System.out.println("There are no files inside " + resultsDirPath.toString() + " directory");
-      return;
-    }
-
-    /**
-     * First string: problemId.
-     * Second string: instanceId.
-     * Third string: [optimum, random, size]
-     * Double: Parameter value.
-     */
-    Map<String, Map<String,Map<String, Double>>> metadata = loadMetadata();
-
-    /**
-     * First String: fileName.
-     * Second String: problemId
-     * Third String: instanceId
-     * Double: instance metric
-     */
-    Map<String, 
-        Map<String, Map<String, Map<String, Double>>>> results = new HashMap<>();
+    Map<String, ResultsCard> results = new HashMap<>();
 
     for (String fileName : resFiles) {
-      /**
-       * First String: problemId.
-       * Second String: instanceId.
-       * Double: instance result.
-       */
-      Map<String, Map<String, Double>> algorithmResults = loadCard(
-          resultsDirPath.toString() + "/" + fileName);
-
-      if (algorithmResults == null) {
-        continue;
-      }
-
-      /**
-       * First String: problemId.
-       * Second String: instanceId.
-       * Third String: [metric, size].
-       * Double: metric or size value.
-       */
-      Map<String, Map<String, Map<String, Double>>> probRes = new HashMap<>();
-
-      for (String problemId: problems) {
-        
-        Map<String, Map<String, Double>> instRes = new HashMap<>();
-
-        for (String instanceId: cardInstances.get(problemId)) {
-          Map<String, Double> instance = new HashMap<>();
-          instance.put("metric", getMetric(
-              metadata.get(problemId).get(instanceId).get("optimum"),
-              metadata.get(problemId).get(instanceId).get("random"),
-              algorithmResults.get(problemId).get(instanceId)
-          ));
-          instance.put(
-              "size", (double)metadata.get(problemId).get(instanceId).get("size"));
-          
-          instRes.put(instanceId, instance);
-        }
-
-        probRes.put(problemId, instRes);
-      }
+      Path resultsCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
       
-      results.put(fileName, probRes);
+      ResultsCard algorithmResults = CardHandler.loadCard(
+          problems, resultsCardPath, problems, cardInstances);
+
+      results.put(fileName, calculateScore(algorithmResults, instanceMetadata));
     }
 
     saveResultsToXmlFile(results);
   }
 
-  private ResultsCard calculateScore(ResultsCard card, MetadataResults metadata) throws Exception {
+  /**
+   * .
+   * @param card .
+   * @param instancesMetadata .
+   * @return .
+   */
+  private ResultsCard calculateScore(
+        ResultsCard card, Map<String, ProblemInstanceMetadata> instancesMetadata) throws Exception {
     ResultsCard result = new ResultsCard(problems);
 
     for (String problemId: problems) {
@@ -203,15 +146,15 @@ public class BenchmarkMetricCalculator {
         double score = ScoreCalculator.getMetric(
             intervalFrom, 
             intervalTo, 
-            metadata.get(instanceId, "optimum"), 
-            metadata.get(instanceId, "random"), 
+            instancesMetadata.get(problemId).get(instanceId, "optimum"), 
+            instancesMetadata.get(problemId).get(instanceId, "random"), 
             card.getInstanceResult(problemId, instanceId)
         );
 
         result.putInstanceValue(problemId, instanceId, score);
 
         scores.add(score);
-        sizes.add((double)metadata.get(instanceId, "size"));
+        sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
       }
       result.putDomainScore(problemId, ScoreCalculator.calculateWeightedMean(scores, sizes));
       
@@ -219,101 +162,13 @@ public class BenchmarkMetricCalculator {
 
     return result;
   }
-
-  /**
-   * Method reads the results file and stores the data into a map.
-   * @param path Path where the file is stored.
-   * @return Map with algorithm results.
-   */
-  private Map<String, Map<String, Double>> loadCard(String path)
-      throws Exception {
-    Map<String, Map<String, Double>> results = new HashMap<>();
-    
-    Scanner scanner = new Scanner(new File(path)).useDelimiter("\n");
-
-    for (String problemId : problems) {
-      // System.out.println(problemId);
-      
-      if (scanner.hasNextLine() == false) {
-        scanner.close();
-        System.out.println("Not enough lines in " + path + " file.");
-        return null;
-      }
-
-      Map<String, Double> result = new HashMap<>();
-
-      Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ");
-
-      for (String instanceId: cardInstances.get(problemId)) {
-
-        if (line.hasNextLine() == false) {
-          line.close();
-          System.out.println("Not enough instances results in " + path + " file.");
-          return null;
-        }
-        
-        result.put(instanceId, Double.parseDouble(line.next()));
-      }
-
-      line.close();
-      results.put(problemId, result);
-    }
-    scanner.close();
-
-    return results;
-  }
-
-  /**
-   * Method reads the file with metadata and stores the data inside map.
-   * @param path Path where the metadata is stored.
-   * @return Returns the map with metadata data.
-   */
-  private Map<String, Map<String, Double>> readMetadata(Path path) throws Exception {
-    Map<String, Map<String, Double>> results = new HashMap<>();
-    // Read the input file
-    Document doc = DocumentBuilderFactory
-        .newInstance().newDocumentBuilder().parse(getClass().getResourceAsStream(path.toString()));
-    doc.getDocumentElement().normalize();
-
-    // Get all instances from the file
-    NodeList nodeList = doc.getElementsByTagName("Instance");
-    
-    // For each instance stores its values into a hash map
-    for (int temp = 0; temp < nodeList.getLength(); temp++) {
-      Node node = nodeList.item(temp);
-      
-      if (node.getNodeType() == Node.ELEMENT_NODE) {
-        Element element = (Element) node;
-
-        
-        if (isDouble(element.getAttribute("optimum")) == false) {
-          continue;
-        }
-        if (isDouble(element.getAttribute("random")) == false) {
-          continue;
-        }
-        if (isDouble(element.getAttribute("size")) == false) {
-          continue;
-        }
-
-        Map<String, Double> result = new HashMap<>();
-
-        result.put("optimum", Double.parseDouble(element.getAttribute("optimum")));
-        result.put("random", Double.parseDouble(element.getAttribute("random")));
-        result.put("size", Double.parseDouble(element.getAttribute("size")));
-
-        results.put(element.getAttribute("id"), result);
-      }    
-    }
-    return results;
-  }
+  
 
   /**
    * Method stored the results inside xml file.
    * @param results Map with results.
    */
-  private void saveResultsToXmlFile(Map<String, 
-      Map<String, Map<String, Map<String, Double>>>> results) 
+  private void saveResultsToXmlFile(Map<String, ResultsCard> results) 
       throws Exception {
     DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -327,33 +182,24 @@ public class BenchmarkMetricCalculator {
       Element algorithm = document.createElement("algorithm");
       algorithm.setAttribute("name", hhId);
 
-      for (String problemId: results.get(hhId).keySet()) {
+      for (String problemId: results.get(hhId).getProblems()) {
         Element problem = document.createElement("problem");
         problem.setAttribute("name", problemId);
 
-        /**
-         *                  SUM(i=0|n)[size(instance-i)*metric(instance-i)]   .
-         * weighted mean = -------------------------------------------------  .
-         *                            SUM(i=0|n)[size(instance-i)]            .
-         */
-        double numerator = 0;
-        double nominator = 0;
-        for (String isntanceId: results.get(hhId).get(problemId).keySet()) {
+        
+        for (String instanceId: results.get(hhId).getInstances(problemId)) {
           Element instance = document.createElement("instance");
+
           instance.setAttribute(
-              isntanceId, 
-              Double.toString(results.get(hhId).get(problemId).get(isntanceId).get("metric")));
-          
-          numerator += (
-              results.get(hhId).get(problemId).get(isntanceId).get("size") 
-              * results.get(hhId).get(problemId).get(isntanceId).get("metric"));
-          nominator += results.get(hhId).get(problemId).get(isntanceId).get("size");
+              instanceId, 
+              Double.toString(results.get(hhId).getInstanceResult(problemId, instanceId))
+          );
           
           problem.appendChild(instance);
         }
 
         problem.setAttribute(
-            "avg", Double.toString(numerator / nominator));
+            "avg", Double.toString(results.get(hhId).getScore(problemId)));
         algorithm.appendChild(problem);
       }
 
@@ -368,87 +214,5 @@ public class BenchmarkMetricCalculator {
     StreamResult streamResult = new StreamResult(new File(resultsXmlFile));
 
     transformer.transform(domSource, streamResult);
-  }
-
-  /**
-   * Method is uesd by other methods for retrieval of metadata.
-   * @return The map with metadata data.
-   */
-  private Map<String, Map<String, Map<String, Double>>> loadMetadata() 
-      throws Exception {    
-    Map<String, Map<String, Map<String, Double>>> results = new HashMap<>();
-
-    for (String problemId: problems) {
-      results.put(
-          problemId, 
-          readMetadata(Paths.get(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml")));
-    }
-
-    return results;
-  }
-
-  /**
-   * Method tests if the given path leads to directory.
-   * @param path Path to directory.
-   * @return True if path leads to directory, false otherwise.
-   */
-  private Boolean doesDirExists(Path path) {
-    return new File(path.toString()).exists();
-  }
-
-  /**
-   * Method tests given string if it contains double.
-   * @param text String to test.
-   * @return True if the string can be translated to double, false otherwise.
-   */
-  private Boolean isDouble(String text) {
-    try {
-      Double.parseDouble(text);
-      return true;
-    } catch (NumberFormatException e) {
-      return false;
-    }
-  }
-
-  /**
-   * Method returns the metric based on given data.
-   * @param upperBound The value of random generator.
-   * @param lowerBound The optimal value.
-   * @param current Input value for metric.
-   * @return The metric for given value.
-   */
-  public double getMetric(double lowerBound, double upperBound, double current) 
-      throws Exception {
-    if (upperBound < 0 || lowerBound < 0 || current < 0) {
-      throw new Exception("Bad input values: input parameter < 0");
-    }
-    if (upperBound < lowerBound) {
-      throw new Exception("Bad input values: upperBound < lowerBound");
-    }
-    if (current < lowerBound || current > upperBound) {
-      throw new Exception("Bad input values: current is not from interval");
-    }
-
-    return intervalTo - (mapToInterval(lowerBound, upperBound, intervalFrom, intervalTo, current));
-  }
-
-  /**
-   * Method maps the value of one interval onto a new one.
-   * @param lowerBound Lower value of the first interval.
-   * @param upperBound Upper value of the first interval.
-   * @param intervalLower Lower value of the new interval.
-   * @param intervalUpper Upper value of the new interval.
-   * @param value Value to map to a new interval.
-   * @return Return the mapped value of the value.
-   */
-  private double mapToInterval(
-      double lowerBound, 
-      double upperBound, double intervalLower, double intervalUpper, double value)
-      throws Exception {
-    double valueNormalization = (value - lowerBound) * (1 / (upperBound - lowerBound));
-    double scaling = valueNormalization * (intervalUpper - intervalLower);
-    double shifting = scaling + intervalLower;
-    
-    return shifting;
   }
 }

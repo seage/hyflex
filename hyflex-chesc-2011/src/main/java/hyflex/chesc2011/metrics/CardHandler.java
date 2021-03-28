@@ -23,18 +23,18 @@ public class CardHandler {
    * @return Map with algorithm results.
    */
   public static ResultsCard loadCard(
-      String[] problems, String path, String[] domains, Map<String, List<String>> cardInstances)
+      String[] problems, Path path, String[] domains, Map<String, List<String>> cardInstances)
       throws Exception {
     //Map<String, Map<String, Double>> results = new HashMap<>();
     ResultsCard result = new ResultsCard(domains);
 
-    Scanner scanner = new Scanner(new File(path)).useDelimiter("\n");
+    Scanner scanner = new Scanner(new File(path.toString())).useDelimiter("\n");
 
     for (String problemId : problems) {
       
       if (scanner.hasNextLine() == false) {
         scanner.close();
-        System.out.println("Not enough lines in " + path + " file.");
+        System.out.println("Not enough lines in " + path.toString() + " file.");
         return null;
       }
 
@@ -44,7 +44,7 @@ public class CardHandler {
 
         if (line.hasNextLine() == false) {
           line.close();
-          System.out.println("Not enough instances results in " + path + " file.");
+          System.out.println("Not enough instances results in " + path.toString() + " file.");
           return null;
         }
         

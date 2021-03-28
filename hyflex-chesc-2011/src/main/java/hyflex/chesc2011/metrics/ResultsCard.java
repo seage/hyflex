@@ -6,6 +6,7 @@ package hyflex.chesc2011.metrics;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class ResultsCard {
   /**
@@ -61,5 +62,13 @@ public class ResultsCard {
 
   public double getScore(String problemId) {
     return scorePerDomain.get(problemId);
+  }
+
+  public Set<String> getProblems() {
+    return problemResults.keySet();
+  }
+
+  public Set<String> getInstances(String problemId) {
+    return problemResults.get(problemId).keySet();
   }
 }
