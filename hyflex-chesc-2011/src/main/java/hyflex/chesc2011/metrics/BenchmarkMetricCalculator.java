@@ -4,13 +4,6 @@
 
 package hyflex.chesc2011.metrics;
 
-import hyflex.chesc2011.metrics.ResultsCardHandler;
-import hyflex.chesc2011.metrics.ProblemInstanceMetadataReader;
-import hyflex.chesc2011.metrics.ProblemInstanceMetadata;
-import hyflex.chesc2011.metrics.ResultsCard;
-import hyflex.chesc2011.metrics.ScoreCalculator;
-
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -18,14 +11,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 /**
  * Class represents benchmark calculator for each solutions card
@@ -111,6 +96,9 @@ public class BenchmarkMetricCalculator {
    * @param id .
    */
   public void run(String id) throws Exception {
+    ScoreCalculator scoreCalculator = new ScoreCalculator(
+        problems, cardInstances, problemsWeightsMap, intervalFrom, intervalTo);
+    
     String [] resFiles = ResultsCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
 
     Map<String, ProblemInstanceMetadata> instanceMetadata = new HashMap<>();
@@ -130,108 +118,9 @@ public class BenchmarkMetricCalculator {
       ResultsCard algorithmResults = ResultsCardHandler.loadCard(
           problems, resultsCardPath, problems, cardInstances);
 
-      results.add(calculateScore(algorithmResults, instanceMetadata));
+      results.add(scoreCalculator.calculateScore(algorithmResults, instanceMetadata));
     }
 
-    saveResultsToXmlFile(results);
-  }
-
-  /**
-   * .
-   * @param card .
-   * @param instancesMetadata .
-   * @return .
-   */
-  private ResultsCard calculateScore(
-        ResultsCard card, Map<String, ProblemInstanceMetadata> instancesMetadata) throws Exception {
-    ResultsCard result = new ResultsCard(card.getName(), problems);
-
-    List<Double> problemsScores = new ArrayList<>();
-    List<Double> problemsWeights = new ArrayList<>();
-
-    for (String problemId: problems) {
-        
-      List<Double> instancesScores = new ArrayList<>();
-      List<Double> sizes = new ArrayList<>(); 
-
-      for (String instanceId: cardInstances.get(problemId)) {
-        double instanceScore = ScoreCalculator.getMetric(
-            intervalFrom, 
-            intervalTo, 
-            instancesMetadata.get(problemId).get(instanceId, "optimum"), 
-            instancesMetadata.get(problemId).get(instanceId, "random"), 
-            card.getInstanceScore(problemId, instanceId)
-        );
-
-        result.putInstanceValue(problemId, instanceId, instanceScore);
-
-        instancesScores.add(instanceScore);
-        sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
-      }
-
-      double problemScore = ScoreCalculator.calculateWeightedMean(instancesScores, sizes);
-      result.putDomainScore(problemId, problemScore);
-
-      problemsScores.add(problemScore);
-      problemsWeights.add(problemsWeightsMap.get(problemId));
-    }
-
-    result.setScore(ScoreCalculator.calculateWeightedMean(problemsScores, problemsWeights));
-    
-    return result;
-  }
-  
-
-  /**
-   * Method stored the results inside xml file.
-   * @param results Map with results.
-   */
-  private void saveResultsToXmlFile(List<ResultsCard> results) 
-      throws Exception {
-    DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
-    Document document = documentBuilder.newDocument();
-
-    // root element
-    Element root = document.createElement("results");
-    document.appendChild(root);
-
-    for (ResultsCard resultCard: results) {
-      Element algorithm = document.createElement("algorithm");
-      algorithm.setAttribute("name", resultCard.getName());
-      algorithm.setAttribute("score", Double.toString(resultCard.getScore()));
-
-      for (String problemId: resultCard.getProblems()) {
-        Element problem = document.createElement("problem");
-        problem.setAttribute("name", problemId);
-
-        
-        for (String instanceId: resultCard.getInstances(problemId)) {
-          Element instance = document.createElement("instance");
-
-          instance.setAttribute(
-              instanceId, 
-              Double.toString(resultCard.getInstanceScore(problemId, instanceId))
-          );
-          
-          problem.appendChild(instance);
-        }
-
-        problem.setAttribute(
-            "avg", Double.toString(resultCard.getProblemScore(problemId)));
-        algorithm.appendChild(problem);
-      }
-
-      root.appendChild(algorithm);
-    }
-
-    // create the xml file
-    //transform the DOM Object to an XML File
-    TransformerFactory transformerFactory = TransformerFactory.newInstance();
-    Transformer transformer = transformerFactory.newTransformer();
-    DOMSource domSource = new DOMSource(document);
-    StreamResult streamResult = new StreamResult(new File(resultsXmlFile));
-
-    transformer.transform(domSource, streamResult);
+    ResultsCardHandler.saveResultsToXmlFile(resultsXmlFile, results);
   }
 }

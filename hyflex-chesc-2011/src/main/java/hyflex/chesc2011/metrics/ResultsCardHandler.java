@@ -4,14 +4,21 @@
 
 package hyflex.chesc2011.metrics;
 
-import hyflex.chesc2011.metrics.ResultsCard;
-
 import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class ResultsCardHandler {
   /**
@@ -73,5 +80,59 @@ public class ResultsCardHandler {
     });
 
     return resFiles;
+  }
+
+  /**
+   * Method stored the results inside xml file.
+   * @param results Map with results.
+   */
+  public static void saveResultsToXmlFile(
+      String resultsXmlFile, List<ResultsCard> results) 
+      throws Exception {
+    DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+    Document document = documentBuilder.newDocument();
+
+    // root element
+    Element root = document.createElement("results");
+    document.appendChild(root);
+
+    for (ResultsCard resultCard: results) {
+      Element algorithm = document.createElement("algorithm");
+      algorithm.setAttribute("name", resultCard.getName());
+      algorithm.setAttribute("score", Double.toString(resultCard.getScore()));
+
+      for (String problemId: resultCard.getProblems()) {
+        Element problem = document.createElement("problem");
+        problem.setAttribute("name", problemId);
+
+        
+        for (String instanceId: resultCard.getInstances(problemId)) {
+          Element instance = document.createElement("instance");
+
+          instance.setAttribute(
+              instanceId, 
+              Double.toString(resultCard.getInstanceScore(problemId, instanceId))
+          );
+          
+          problem.appendChild(instance);
+        }
+
+        problem.setAttribute(
+            "avg", Double.toString(resultCard.getProblemScore(problemId)));
+        algorithm.appendChild(problem);
+      }
+
+      root.appendChild(algorithm);
+    }
+
+    // create the xml file
+    //transform the DOM Object to an XML File
+    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+    Transformer transformer = transformerFactory.newTransformer();
+    DOMSource domSource = new DOMSource(document);
+    StreamResult streamResult = new StreamResult(new File(resultsXmlFile));
+
+    transformer.transform(domSource, streamResult);
   }
 }

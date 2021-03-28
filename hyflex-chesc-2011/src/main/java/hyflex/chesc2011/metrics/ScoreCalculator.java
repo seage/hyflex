@@ -4,9 +4,75 @@
 
 package hyflex.chesc2011.metrics;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ScoreCalculator {
+  String[] problems;
+  Map<String, List<String>> cardInstances; 
+  Map<String, Double> problemsWeightsMap;
+  double intervalFrom;
+  double intervalTo;
+
+  ScoreCalculator(
+      String[] problems, 
+      Map<String, List<String>> cardInstances, 
+      Map<String, Double> problemsWeightsMap,
+      double intervalFrom, 
+      double intervalTo) {
+    this.problems = problems;
+    this.cardInstances = cardInstances;
+    this.problemsWeightsMap = problemsWeightsMap;
+    this.intervalFrom = intervalFrom;
+    this.intervalTo = intervalTo;
+  }
+
+  /**
+   * .
+   * @param card .
+   * @param instancesMetadata .
+   * @return .
+   */
+  public ResultsCard calculateScore(
+        ResultsCard card, Map<String, ProblemInstanceMetadata> instancesMetadata) throws Exception {
+    ResultsCard result = new ResultsCard(card.getName(), problems);
+
+    List<Double> problemsScores = new ArrayList<>();
+    List<Double> problemsWeights = new ArrayList<>();
+
+    for (String problemId: problems) {
+        
+      List<Double> instancesScores = new ArrayList<>();
+      List<Double> sizes = new ArrayList<>(); 
+
+      for (String instanceId: cardInstances.get(problemId)) {
+        double instanceScore = ScoreCalculator.getMetric(
+            intervalFrom, 
+            intervalTo, 
+            instancesMetadata.get(problemId).get(instanceId, "optimum"), 
+            instancesMetadata.get(problemId).get(instanceId, "random"), 
+            card.getInstanceScore(problemId, instanceId)
+        );
+
+        result.putInstanceValue(problemId, instanceId, instanceScore);
+
+        instancesScores.add(instanceScore);
+        sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
+      }
+
+      double problemScore = calculateWeightedMean(instancesScores, sizes);
+      result.putDomainScore(problemId, problemScore);
+
+      problemsScores.add(problemScore);
+      problemsWeights.add(problemsWeightsMap.get(problemId));
+    }
+
+    result.setScore(calculateWeightedMean(problemsScores, problemsWeights));
+    
+    return result;
+  }
+
   /**
    * Method returns the metric based on given data.
    * @param upperBound The value of random generator.
