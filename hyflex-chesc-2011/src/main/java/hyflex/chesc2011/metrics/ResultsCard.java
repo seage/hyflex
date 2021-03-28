@@ -38,7 +38,7 @@ public class ResultsCard {
   Map<String, Double> scorePerDomain;
 
   ResultsCard(String cardName, String[] domains) {
-    algorithmName = cardName.substring(0, cardName.lastIndexOf("."));
+    algorithmName = cardName;
 
     problemResults = new HashMap<>();
     scorePerDomain = new HashMap<>();

@@ -123,7 +123,7 @@ public class BenchmarkMetricCalculator {
       instanceMetadata.put(problemId, ProblemInstanceMetadataReader.read(instanceMetadataPath));
     }
 
-    Map<String, ResultsCard> results = new HashMap<>();
+    List<ResultsCard> results = new ArrayList<>();
 
     for (String fileName : resFiles) {
       Path resultsCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
@@ -131,7 +131,7 @@ public class BenchmarkMetricCalculator {
       ResultsCard algorithmResults = ResultsCardHandler.loadCard(
           problems, resultsCardPath, problems, cardInstances);
 
-      results.put(fileName, calculateScore(algorithmResults, instanceMetadata));
+      results.add(calculateScore(algorithmResults, instanceMetadata));
     }
 
     saveResultsToXmlFile(results);
@@ -165,11 +165,9 @@ public class BenchmarkMetricCalculator {
         scores.add(score);
         sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
       }
-      result.calculateScore(problemsWeights);
       result.putDomainScore(problemId, ScoreCalculator.calculateWeightedMean(scores, sizes));
-      
     }
-
+    result.calculateScore(problemsWeights);
     return result;
   }
   
@@ -178,7 +176,7 @@ public class BenchmarkMetricCalculator {
    * Method stored the results inside xml file.
    * @param results Map with results.
    */
-  private void saveResultsToXmlFile(Map<String, ResultsCard> results) 
+  private void saveResultsToXmlFile(List<ResultsCard> results) 
       throws Exception {
     DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -188,28 +186,29 @@ public class BenchmarkMetricCalculator {
     Element root = document.createElement("results");
     document.appendChild(root);
 
-    for (String hhId: results.keySet()) {
+    for (ResultsCard resultCard: results) {
       Element algorithm = document.createElement("algorithm");
-      algorithm.setAttribute("name", hhId);
+      algorithm.setAttribute("name", resultCard.getName());
+      algorithm.setAttribute("score", Double.toString(resultCard.getScore()));
 
-      for (String problemId: results.get(hhId).getProblems()) {
+      for (String problemId: resultCard.getProblems()) {
         Element problem = document.createElement("problem");
         problem.setAttribute("name", problemId);
 
         
-        for (String instanceId: results.get(hhId).getInstances(problemId)) {
+        for (String instanceId: resultCard.getInstances(problemId)) {
           Element instance = document.createElement("instance");
 
           instance.setAttribute(
               instanceId, 
-              Double.toString(results.get(hhId).getInstanceScore(problemId, instanceId))
+              Double.toString(resultCard.getInstanceScore(problemId, instanceId))
           );
           
           problem.appendChild(instance);
         }
 
         problem.setAttribute(
-            "avg", Double.toString(results.get(hhId).getProblemScore(problemId)));
+            "avg", Double.toString(resultCard.getProblemScore(problemId)));
         algorithm.appendChild(problem);
       }
 
