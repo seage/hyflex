@@ -35,9 +35,9 @@ public class ScoreCalculator {
   }
 
   /**
-   * .
-   * @param card .
-   * @return .
+   * Method calculates the score for given algorithm problem results.
+   * @param card ResultsCard with algorithm results.
+   * @return ResultsCard with scores for each problem domain and total score.
    */
   public ResultsCard calculateScore(ResultsCard card) throws Exception {
 
@@ -131,10 +131,10 @@ public class ScoreCalculator {
   }
 
   /**
-   * .
-   * @param values .
-   * @param weights .
-   * @return
+   * Method calculates the weighted mean from given arrays.
+   * @param values Values.
+   * @param weights Weights of values.
+   * @return Returns the weighted mean.
    */
   public static double calculateWeightedMean(
       List<Double> values, List<Double> weights) throws Exception {

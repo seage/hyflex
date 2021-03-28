@@ -64,9 +64,9 @@ public class ResultsCardHandler {
   }
 
   /**
-   * .
-   * @param path .
-   * @return .
+   * Method returns the array of cards names.
+   * @param path Path to the results cards.
+   * @return Returns the array of algorithms results file names..
    */
   public static String[] getCardsNames(Path path) {
     File resDir = new File(path.toString());

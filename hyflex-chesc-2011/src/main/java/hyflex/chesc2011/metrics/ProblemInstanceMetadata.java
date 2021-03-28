@@ -21,11 +21,11 @@ public class ProblemInstanceMetadata {
   }
 
   /**
-   * .
-   * @param instanceId .
-   * @param parameter .
-   * @param value .
-   * @return
+   * Method puts the given instance value.
+   * @param instanceId Name of the instance.
+   * @param parameter Name of the parameter.
+   * @param value Value of the parameter.
+   * @return Returns this.
    */
   public ProblemInstanceMetadata put(String instanceId, String parameter, Double value) {
     if (instanceResults.containsKey(instanceId) == false) {
