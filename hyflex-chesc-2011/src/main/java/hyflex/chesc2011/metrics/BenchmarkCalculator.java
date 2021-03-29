@@ -31,7 +31,7 @@ import java.util.Map;
  * And finally if you modify the order of problem domains or instances
  * also you have to modify the problems array and problemInstances map
  */
-public class BenchmarkMetricCalculator {
+public class BenchmarkCalculator {
   // Path where the results are stored
   String resultsPath = "./results";
   // Path where the metadata are stored
@@ -88,7 +88,7 @@ public class BenchmarkMetricCalculator {
         throw new Exception("Error: No results directory name given.");
       }
 
-      BenchmarkMetricCalculator ibc = new BenchmarkMetricCalculator();
+      BenchmarkCalculator ibc = new BenchmarkCalculator();
       ibc.run(args[0]);
     } catch (Exception e) {
       System.out.println(e.getMessage());

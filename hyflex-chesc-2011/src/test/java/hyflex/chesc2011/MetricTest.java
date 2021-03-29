@@ -3,7 +3,7 @@ package hyflex.chesc2011;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import hyflex.chesc2011.metrics.BenchmarkMetricCalculator;
+import hyflex.chesc2011.metrics.BenchmarkCalculator;
 import hyflex.chesc2011.metrics.UnitMetricScoreCalculator;
 
 //import jdk.jfr.Timestamp;
@@ -18,8 +18,8 @@ import org.junit.jupiter.api.Test;
   */
 
 public class MetricTest {
-  BenchmarkMetricCalculator calculator = 
-      new BenchmarkMetricCalculator();
+  BenchmarkCalculator calculator = 
+      new BenchmarkCalculator();
 
   @Test
   void testLowerBound() throws Exception {
