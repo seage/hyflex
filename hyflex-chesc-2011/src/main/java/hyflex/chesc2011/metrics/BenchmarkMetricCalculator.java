@@ -107,7 +107,7 @@ public class BenchmarkMetricCalculator {
     
     String [] resFiles = ScoreCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
 
-    List<ScoreCard> results = new ArrayList<>();
+    List<ScoreCard> cards = new ArrayList<>();
 
     for (String fileName : resFiles) {
       Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
@@ -115,8 +115,10 @@ public class BenchmarkMetricCalculator {
       ScoreCard algorithmResults = ScoreCardHandler.loadCard(
           problems, scoreCardPath, problems, problemInstances);
 
-      results.add(scoreCalculator.calculateScore(algorithmResults));
+      cards.add(algorithmResults);
     }
+
+    List<ScoreCard> results = scoreCalculator.calculateScore(cards);
 
     ScoreCardHandler.saveResultsToXmlFile(resultsXmlFile, results);
   }

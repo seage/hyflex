@@ -47,55 +47,61 @@ public class UnitMetricScoreCalculator {
 
   /**
    * Method calculates the score for given algorithm problem results.
-   * @param card ScoreCard with algorithm results.
+   * @param cards ScoreCards with algorithms results.
    * @return ScoreCard with scores for each problem domain and total score.
    */
-  public ScoreCard calculateScore(ScoreCard card) throws Exception {
+  public List<ScoreCard> calculateScore(List<ScoreCard> cards) throws Exception {
+    List<ScoreCard> results = new ArrayList<>();
 
-    Map<String, ProblemInstanceMetadata> instancesMetadata = new HashMap<>();
+    for (ScoreCard card: cards) {
 
-    for (String problemId: problems) {
-      Path instanceMetadataPath = Paths
-          .get(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml");
+    
+      Map<String, ProblemInstanceMetadata> instancesMetadata = new HashMap<>();
 
-      instancesMetadata.put(problemId, ProblemInstanceMetadataReader.read(instanceMetadataPath));
-    }
+      for (String problemId: problems) {
+        Path instanceMetadataPath = Paths
+            .get(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml");
 
-    ScoreCard result = new ScoreCard(card.getName(), problems);
-
-    List<Double> problemsScores = new ArrayList<>();
-    List<Double> problemsWeights = new ArrayList<>();
-
-    for (String problemId: problems) {
-        
-      List<Double> instancesScores = new ArrayList<>();
-      List<Double> sizes = new ArrayList<>(); 
-
-      for (String instanceId: problemsInstances.get(problemId)) {
-        double instanceScore = UnitMetricScoreCalculator.getMetric(
-            scoreIntervalFrom, 
-            scoreIntervalTo, 
-            instancesMetadata.get(problemId).get(instanceId, "optimum"), 
-            instancesMetadata.get(problemId).get(instanceId, "random"), 
-            card.getInstanceScore(problemId, instanceId)
-        );
-
-        result.putInstanceScore(problemId, instanceId, instanceScore);
-
-        instancesScores.add(instanceScore);
-        sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
+        instancesMetadata.put(problemId, ProblemInstanceMetadataReader.read(instanceMetadataPath));
       }
 
-      double problemScore = calculateWeightedMean(instancesScores, sizes);
-      result.putDomainScore(problemId, problemScore);
+      ScoreCard result = new ScoreCard(card.getName(), problems);
 
-      problemsScores.add(problemScore);
-      problemsWeights.add(problemsWeightsMap.get(problemId));
+      List<Double> problemsScores = new ArrayList<>();
+      List<Double> problemsWeights = new ArrayList<>();
+
+      for (String problemId: problems) {
+          
+        List<Double> instancesScores = new ArrayList<>();
+        List<Double> sizes = new ArrayList<>(); 
+
+        for (String instanceId: problemsInstances.get(problemId)) {
+          double instanceScore = UnitMetricScoreCalculator.getMetric(
+              scoreIntervalFrom, 
+              scoreIntervalTo, 
+              instancesMetadata.get(problemId).get(instanceId, "optimum"), 
+              instancesMetadata.get(problemId).get(instanceId, "random"), 
+              card.getInstanceScore(problemId, instanceId)
+          );
+
+          result.putInstanceScore(problemId, instanceId, instanceScore);
+
+          instancesScores.add(instanceScore);
+          sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
+        }
+
+        double problemScore = calculateWeightedMean(instancesScores, sizes);
+        result.putDomainScore(problemId, problemScore);
+
+        problemsScores.add(problemScore);
+        problemsWeights.add(problemsWeightsMap.get(problemId));
+      }
+
+      result.setScore(calculateWeightedMean(problemsScores, problemsWeights));
+      results.add(result);
     }
-
-    result.setScore(calculateWeightedMean(problemsScores, problemsWeights));
     
-    return result;
+    return results;
   }
 
 
