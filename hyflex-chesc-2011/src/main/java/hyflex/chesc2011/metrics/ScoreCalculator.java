@@ -80,7 +80,7 @@ public class ScoreCalculator {
             card.getInstanceScore(problemId, instanceId)
         );
 
-        result.putInstanceValue(problemId, instanceId, instanceScore);
+        result.putInstanceScore(problemId, instanceId, instanceScore);
 
         instancesScores.add(instanceScore);
         sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));

@@ -60,7 +60,7 @@ public class ScoreCard {
    * @param value Value of the instance.
    * @return Returns this.
    */
-  public ScoreCard putInstanceValue(String problemId, String instanceId, Double value) {
+  public ScoreCard putInstanceScore(String problemId, String instanceId, Double value) {
     problemResults.get(problemId).put(instanceId, value);
     return this;
   }

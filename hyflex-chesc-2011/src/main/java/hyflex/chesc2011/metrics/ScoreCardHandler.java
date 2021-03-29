@@ -53,7 +53,7 @@ public class ScoreCardHandler {
           return null;
         }
         
-        result.putInstanceValue(problemId, instanceId, Double.parseDouble(line.next()));
+        result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
       }
 
       line.close();
