@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.Map;
 
 public class ScoreCalculator {
+  // Array of problems domains ids.
   String[] problems;
+  // Path to metadata xml files.
   String metadataPath;
+  // Name of the problems instances.
   Map<String, List<String>> problemsInstances; 
+  // Map with weight for each problem domain.
   Map<String, Double> problemsWeightsMap;
+  // Score interval lower bound.
   double scoreIntervalFrom;
+  // Score interval upper bound.
   double scoreIntervalTo;
 
 
   /**
    * Constructor, sets all necessary parameters.
-   * @param problems Array of problems domains ids.
-   * @param metadataPath Path to metadata xml files.
-   * @param problemsInstances Name of the problems instances.
-   * @param problemsWeightsMap Map with weight for each problem domain.
-   * @param scoreIntervalFrom Score interval lower bound.
-   * @param scoreIntervalTo score interval upper bound.
    */
   ScoreCalculator(
       String[] problems,
