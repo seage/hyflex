@@ -5,34 +5,39 @@
 package hyflex.chesc2011.metrics;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class UnitMetricScoreCalculator implements ScoreCalculator {
-  String[] problems;
-  Map<String, ProblemInstanceMetadata> metadata;
-  Map<String, List<String>> problemsInstances; 
-  Map<String, Double> problemsWeightsMap;
-  double scoreIntervalFrom;
-  double scoreIntervalTo;
+  /**
+   * Map represents weights for each problem domain.
+   */
+  @SuppressWarnings("serial")
+  private final Map<String, Double> problemsWeightsMap = new HashMap<>() {{
+      put("SAT", 1.0);
+      put("TSP", 1.0);
+    }
+  };
 
+  // Interval on which are the results being mapped, metric range
+  private static final double scoreIntervalFrom = 0.0;
+  private static final double scoreIntervalTo = 1.0;
+
+  private String[] problems;
+  private Map<String, ProblemInstanceMetadata> metadata;
+  private Map<String, List<String>> problemsInstances; 
 
   /**
    * Constructor.
    */
-  UnitMetricScoreCalculator(
+  public UnitMetricScoreCalculator(
       String[] problems,
       Map<String, ProblemInstanceMetadata> metadata, 
-      Map<String, List<String>> problemsInstances, 
-      Map<String, Double> problemsWeightsMap,
-      double scoreIntervalFrom, 
-      double scoreIntervalTo) {
+      Map<String, List<String>> problemsInstances) {
     this.problems = problems;
     this.metadata = metadata;
     this.problemsInstances = problemsInstances;
-    this.problemsWeightsMap = problemsWeightsMap;
-    this.scoreIntervalFrom = scoreIntervalFrom;
-    this.scoreIntervalTo = scoreIntervalTo;
   }
 
 
@@ -58,8 +63,6 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
 
         for (String instanceId: problemsInstances.get(problemId)) {
           double instanceScore = UnitMetricScoreCalculator.getMetric(
-              scoreIntervalFrom, 
-              scoreIntervalTo, 
               metadata.get(problemId).get(instanceId, "optimum"), 
               metadata.get(problemId).get(instanceId, "random"), 
               card.getInstanceScore(problemId, instanceId)
@@ -93,9 +96,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
    * @param current Input value for metric.
    * @return The metric for given value.
    */
-  public static double getMetric(
-      double scoreIntervalFrom, 
-      double scoreIntervalTo, double lowerBound, double upperBound, double current) 
+  private static double getMetric(double lowerBound, double upperBound, double current) 
       throws Exception {
     if (upperBound < 0 || lowerBound < 0 || current < 0) {
       throw new Exception("Bad input values: input parameter < 0");
@@ -139,7 +140,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
    * @param weights Weights of values.
    * @return Returns the weighted mean.
    */
-  public static double calculateWeightedMean(
+  private static double calculateWeightedMean(
       List<Double> values, List<Double> weights) throws Exception {
     if (values.size() != weights.size()) {
       throw new Exception("Error: input arrays does not have the same size.");
