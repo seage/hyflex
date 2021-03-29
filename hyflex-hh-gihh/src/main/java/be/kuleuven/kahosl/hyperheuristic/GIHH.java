@@ -262,7 +262,7 @@ public class GIHH extends HyperHeuristic implements Serializable {
     	
     	fcSelectPow = 0;
     	
-        statFiles = new StatFiles(numberOfHeuristics, selectionType, acceptanceType);
+        //statFiles = new StatFiles(numberOfHeuristics, selectionType, acceptanceType);
         
         initializeHH();
 	}
@@ -272,7 +272,7 @@ public class GIHH extends HyperHeuristic implements Serializable {
 	 * Create stat files. Initialise the hyper-heuristic's sub-mechanisms
 	 */
 	private void initializeHH(){
-		statFiles.statFileInitialisation(resultFileName); //also create new files for the next run
+		//statFiles.statFileInitialisation(resultFileName); //also create new files for the next run
 		
 		initializeHeuristicSelection();
 		initializeMoveAcceptance();
@@ -411,9 +411,9 @@ public class GIHH extends HyperHeuristic implements Serializable {
 		lastRestartTimePoint = startTime;		/* Set the start time as the most recent time point where the solution re-initialised */
 			
 		/* Write some initial information to the corresponding stat files */
-		statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
-		statFiles.writeIntoFile(WriteFileType.HCntFile, getHeuristicCounterDetailsAsStr());
-		statFiles.writeIntoFile(WriteFileType.ITFile, getIterationLimitDetailsAsStr());
+		// statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
+		// statFiles.writeIntoFile(WriteFileType.HCntFile, getHeuristicCounterDetailsAsStr());
+		// statFiles.writeIntoFile(WriteFileType.ITFile, getIterationLimitDetailsAsStr());
 			
     	if(Print.hyperheuristic){
     		printCurrentState();
@@ -550,7 +550,7 @@ public class GIHH extends HyperHeuristic implements Serializable {
 					acceptance.useNoMoreRestartCaseList();
 					
 					/* Write overall best solution information after re-initalisation to the BF file */
-					statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
+					//statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
 				}
 			}
 			
@@ -695,8 +695,8 @@ public class GIHH extends HyperHeuristic implements Serializable {
 						}
 						
 						
-						statFiles.writeIntoFile(WriteFileType.RHFile, getRelayDetailsAsStr(relayFirstHeurIndex, relaySecondHeurIndex,
-								relayFirstFitness, relaySecondFitness));
+						// statFiles.writeIntoFile(WriteFileType.RHFile, getRelayDetailsAsStr(relayFirstHeurIndex, relaySecondHeurIndex,
+						// 		relayFirstFitness, relaySecondFitness));
 						
 						
 						
@@ -828,14 +828,14 @@ public class GIHH extends HyperHeuristic implements Serializable {
 					problem.copySolution(0, 10);
 
 					/* Append the new search state information to the corresponding stat files */
-					statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(lastCalledHeuristic));
-					statFiles.writeIntoFile(WriteFileType.HCntFile, getHeuristicCounterDetailsAsStr());
-					statFiles.writeIntoFile(WriteFileType.ITFile, getIterationLimitDetailsAsStr());
-					statFiles.writeIntoFile(WriteFileType.LOCFile, getCurrentStateForLOCAsStr());
-					statFiles.writeIntoFile(WriteFileType.LRMFile, getCurrentStateForLRMAsStr());
-					statFiles.writeIntoFile(WriteFileType.IMPRFile, getCurrentStateForIMPRAsStr());
+					// statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(lastCalledHeuristic));
+					// statFiles.writeIntoFile(WriteFileType.HCntFile, getHeuristicCounterDetailsAsStr());
+					// statFiles.writeIntoFile(WriteFileType.ITFile, getIterationLimitDetailsAsStr());
+					// statFiles.writeIntoFile(WriteFileType.LOCFile, getCurrentStateForLOCAsStr());
+					// statFiles.writeIntoFile(WriteFileType.LRMFile, getCurrentStateForLRMAsStr());
+					// statFiles.writeIntoFile(WriteFileType.IMPRFile, getCurrentStateForIMPRAsStr());
 					
-					statFiles.writeIntoFile(WriteFileType.RHFile, getRelayDetailsAsStrJustInfo());
+					// statFiles.writeIntoFile(WriteFileType.RHFile, getRelayDetailsAsStrJustInfo());
 
 
                 	if(Print.hyperheuristic){
@@ -844,7 +844,7 @@ public class GIHH extends HyperHeuristic implements Serializable {
 				}
 
 				/* Append the new search state information to ACFile */
-				statFiles.writeIntoFile(WriteFileType.ACFile, getAcceptanceDetailsAsStr());
+				//statFiles.writeIntoFile(WriteFileType.ACFile, getAcceptanceDetailsAsStr());
 				
 				/* Update the current fitness */
 				currentFitness = newFitness;
@@ -869,14 +869,14 @@ public class GIHH extends HyperHeuristic implements Serializable {
 			}
 			
 			/* Write the current status of the search to the corresponding stat files */
-			if(numberOfIterations%WriteInfo.periodicWriteIteration == 0){
-				statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
-				statFiles.writeIntoFile(WriteFileType.HCntFile, getHeuristicCounterDetailsAsStr());
-				statFiles.writeIntoFile(WriteFileType.ITFile, getIterationLimitDetailsAsStr());
-				statFiles.writeIntoFile(WriteFileType.LOCFile, getCurrentStateForLOCAsStr());
-				statFiles.writeIntoFile(WriteFileType.LRMFile, getCurrentStateForLRMAsStr());
-				statFiles.writeIntoFile(WriteFileType.IMPRFile, getCurrentStateForIMPRAsStr());
-			}
+			// if(numberOfIterations%WriteInfo.periodicWriteIteration == 0){
+			// 	statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
+			// 	statFiles.writeIntoFile(WriteFileType.HCntFile, getHeuristicCounterDetailsAsStr());
+			// 	statFiles.writeIntoFile(WriteFileType.ITFile, getIterationLimitDetailsAsStr());
+			// 	statFiles.writeIntoFile(WriteFileType.LOCFile, getCurrentStateForLOCAsStr());
+			// 	statFiles.writeIntoFile(WriteFileType.LRMFile, getCurrentStateForLRMAsStr());
+			// 	statFiles.writeIntoFile(WriteFileType.IMPRFile, getCurrentStateForIMPRAsStr());
+			// }
 			
 			/* Increment the number of iterations */
 			numberOfIterations++;
@@ -887,15 +887,15 @@ public class GIHH extends HyperHeuristic implements Serializable {
 		
 		
 		/* The final writing to the stat files at the end of a run */
-		statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
-		statFiles.writeIntoFile(WriteFileType.HCntFile, getHeuristicCounterDetailsAsStr());
-		statFiles.writeIntoFile(WriteFileType.ITFile, getIterationLimitDetailsAsStr());
-		statFiles.writeIntoFile(WriteFileType.LOCFile, getCurrentStateForLOCAsStr());
-		statFiles.writeIntoFile(WriteFileType.LRMFile, getCurrentStateForLRMAsStr());
-		statFiles.writeIntoFile(WriteFileType.IMPRFile, getCurrentStateForIMPRAsStr());
+		// statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
+		// statFiles.writeIntoFile(WriteFileType.HCntFile, getHeuristicCounterDetailsAsStr());
+		// statFiles.writeIntoFile(WriteFileType.ITFile, getIterationLimitDetailsAsStr());
+		// statFiles.writeIntoFile(WriteFileType.LOCFile, getCurrentStateForLOCAsStr());
+		// statFiles.writeIntoFile(WriteFileType.LRMFile, getCurrentStateForLRMAsStr());
+		// statFiles.writeIntoFile(WriteFileType.IMPRFile, getCurrentStateForIMPRAsStr());
 		
 		/* Close BufferedWriters at the end of a run*/
-		statFiles.closeBufferedWriters();
+		// statFiles.closeBufferedWriters();
 		
 		/* Write the best solution found after a search to a file */
 		writeTheBestSlnToAFile(problem, bestFitness, bestSlnFoundAsStr); 
@@ -965,9 +965,9 @@ public class GIHH extends HyperHeuristic implements Serializable {
     	}
     	
     	/* Update the corresponding files at the end of a phase */
-    	statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
-    	statFiles.writeIntoFile(WriteFileType.QIFile, selection.getRankListAsStr());
-    	statFiles.writeIntoFile(WriteFileType.TDFile, selection.getTabuDurationListAsStr());
+    	// statFiles.writeIntoFile(WriteFileType.BFFile, getCurrentStateForBestAsStr(-1));
+    	// statFiles.writeIntoFile(WriteFileType.QIFile, selection.getRankListAsStr());
+    	// statFiles.writeIntoFile(WriteFileType.TDFile, selection.getTabuDurationListAsStr());
 	}
 	
 	
