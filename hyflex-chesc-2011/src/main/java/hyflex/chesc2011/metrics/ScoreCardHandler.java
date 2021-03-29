@@ -29,37 +29,38 @@ public class ScoreCardHandler {
   public static ScoreCard loadCard(
       String[] problems, Path path, String[] domains, Map<String, List<String>> cardInstances)
       throws Exception {
+    // Name of the file
     String cardName = path.getFileName().toString();
     ScoreCard result = new ScoreCard(
         cardName.substring(0, cardName.lastIndexOf(".")), domains);
 
-    Scanner scanner = new Scanner(new File(path.toString())).useDelimiter("\n");
-
-    for (String problemId : problems) {
+    try (Scanner scanner = new Scanner(new File(path.toString())).useDelimiter("\n")) {
       
-      if (scanner.hasNextLine() == false) {
-        scanner.close();
-        System.out.println("Not enough lines in " + path.toString() + " file.");
-        return null;
-      }
-
-      Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ");
-
-      for (String instanceId: cardInstances.get(problemId)) {
-
-        if (line.hasNextLine() == false) {
-          line.close();
-          System.out.println("Not enough instances results in " + path.toString() + " file.");
+      for (String problemId : problems) {
+        
+        if (scanner.hasNextLine() == false) {
+          scanner.close();
+          System.out.println("Not enough lines in " + path.toString() + " file.");
           return null;
         }
-        
-        result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
+
+        Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ");
+
+        for (String instanceId: cardInstances.get(problemId)) {
+
+          if (line.hasNextLine() == false) {
+            line.close();
+            System.out.println("Not enough instances results in " + path.toString() + " file.");
+            return null;
+          }
+          
+          result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
+        }
+
+        line.close();
       }
-
-      line.close();
+      scanner.close();
     }
-    scanner.close();
-
     return result;
   }
 
