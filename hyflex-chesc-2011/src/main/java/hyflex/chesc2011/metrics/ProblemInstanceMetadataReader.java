@@ -6,6 +6,9 @@ package hyflex.chesc2011.metrics;
 
 import java.io.InputStream;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -18,7 +21,7 @@ public class ProblemInstanceMetadataReader {
     * @param path Path where the metadata is stored.
     * @return Returns the map with metadata data.
     */
-  public static ProblemInstanceMetadata read(Path path) throws Exception {
+  private static ProblemInstanceMetadata read(Path path) throws Exception {
     ProblemInstanceMetadata result = new ProblemInstanceMetadata();
 
     InputStream inputStream = ProblemInstanceMetadataReader
@@ -73,5 +76,23 @@ public class ProblemInstanceMetadataReader {
     } catch (NumberFormatException e) {
       return false;
     }
+  }
+
+  /**
+   * .
+   * @param problems .
+   * @param metadataPath .
+   */
+  public static Map<String, ProblemInstanceMetadata> readProblemsInstancesMetadata(
+      String[] problems, Path metadataPath) throws Exception {
+    Map<String, ProblemInstanceMetadata> results = new HashMap<>();
+
+    for (String problemId: problems) {
+      Path instanceMetadataPath = Paths
+          .get(metadataPath.toString() + "/" + problemId.toLowerCase() + ".metadata.xml");
+
+      results.put(problemId, read(instanceMetadataPath));
+    }
+    return results;
   }
 }

@@ -15,7 +15,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator{
   // Array of problems domains ids.
   String[] problems;
   // Path to metadata xml files.
-  String metadataPath;
+  Map<String, ProblemInstanceMetadata> metadata;
   // Name of the problems instances.
   Map<String, List<String>> problemsInstances; 
   // Map with weight for each problem domain.
@@ -31,13 +31,13 @@ public class UnitMetricScoreCalculator implements ScoreCalculator{
    */
   UnitMetricScoreCalculator(
       String[] problems,
-      String metadataPath, 
+      Map<String, ProblemInstanceMetadata> metadata, 
       Map<String, List<String>> problemsInstances, 
       Map<String, Double> problemsWeightsMap,
       double scoreIntervalFrom, 
       double scoreIntervalTo) {
     this.problems = problems;
-    this.metadataPath = metadataPath;
+    this.metadata = metadata;
     this.problemsInstances = problemsInstances;
     this.problemsWeightsMap = problemsWeightsMap;
     this.scoreIntervalFrom = scoreIntervalFrom;
@@ -55,16 +55,6 @@ public class UnitMetricScoreCalculator implements ScoreCalculator{
 
     for (ScoreCard card: cards) {
 
-    
-      Map<String, ProblemInstanceMetadata> instancesMetadata = new HashMap<>();
-
-      for (String problemId: problems) {
-        Path instanceMetadataPath = Paths
-            .get(metadataPath + "/" + problemId.toLowerCase() + ".metadata.xml");
-
-        instancesMetadata.put(problemId, ProblemInstanceMetadataReader.read(instanceMetadataPath));
-      }
-
       ScoreCard result = new ScoreCard(card.getName(), problems);
 
       List<Double> problemsScores = new ArrayList<>();
@@ -79,15 +69,15 @@ public class UnitMetricScoreCalculator implements ScoreCalculator{
           double instanceScore = UnitMetricScoreCalculator.getMetric(
               scoreIntervalFrom, 
               scoreIntervalTo, 
-              instancesMetadata.get(problemId).get(instanceId, "optimum"), 
-              instancesMetadata.get(problemId).get(instanceId, "random"), 
+              metadata.get(problemId).get(instanceId, "optimum"), 
+              metadata.get(problemId).get(instanceId, "random"), 
               card.getInstanceScore(problemId, instanceId)
           );
 
           result.putInstanceScore(problemId, instanceId, instanceScore);
 
           instancesScores.add(instanceScore);
-          sizes.add((double)instancesMetadata.get(problemId).get(instanceId, "size"));
+          sizes.add((double)metadata.get(problemId).get(instanceId, "size"));
         }
 
         double problemScore = calculateWeightedMean(instancesScores, sizes);

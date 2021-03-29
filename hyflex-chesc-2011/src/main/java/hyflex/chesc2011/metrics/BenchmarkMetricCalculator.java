@@ -101,9 +101,14 @@ public class BenchmarkMetricCalculator {
    * @param id Name of the directory where algorithm problem results are stored.
    */
   public void run(String id) throws Exception {
+    Map<String, ProblemInstanceMetadata> instancesMetadata = 
+        ProblemInstanceMetadataReader
+        .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
+
     UnitMetricScoreCalculator scoreCalculator = new UnitMetricScoreCalculator(
         problems, 
-        metadataPath, problemInstances, problemsWeightsMap, scoreIntervalFrom, scoreIntervalTo);
+        instancesMetadata, 
+        problemInstances, problemsWeightsMap, scoreIntervalFrom, scoreIntervalTo);
     
     String [] resFiles = ScoreCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
 
