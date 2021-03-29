@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UnitMetricScoreCalculator {
+public class UnitMetricScoreCalculator implements ScoreCalculator{
   // Array of problems domains ids.
   String[] problems;
   // Path to metadata xml files.
