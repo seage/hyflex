@@ -39,27 +39,23 @@ public class ScoreCardHandler {
       for (String problemId : problems) {
         
         if (scanner.hasNextLine() == false) {
-          scanner.close();
           System.out.println("Not enough lines in " + path.toString() + " file.");
           return null;
         }
 
-        Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ");
+        try (Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ")) {
 
-        for (String instanceId: cardInstances.get(problemId)) {
+          for (String instanceId: cardInstances.get(problemId)) {
 
-          if (line.hasNextLine() == false) {
-            line.close();
-            System.out.println("Not enough instances results in " + path.toString() + " file.");
-            return null;
+            if (line.hasNextLine() == false) {
+              System.out.println("Not enough instances results in " + path.toString() + " file.");
+              return null;
+            }
+            
+            result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
           }
-          
-          result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
         }
-
-        line.close();
       }
-      scanner.close();
     }
     return result;
   }
