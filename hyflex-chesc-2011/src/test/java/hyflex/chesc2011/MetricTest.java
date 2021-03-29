@@ -24,60 +24,60 @@ public class MetricTest {
   @Test
   void testLowerBound() throws Exception {
     assertEquals(
-        calculator.intervalTo, 
+        calculator.scoreIntervalTo, 
         ScoreCalculator.getMetric(
-          calculator.intervalFrom, calculator.intervalTo, 1.0, 42.0, 1.0), 0.1);
+          calculator.scoreIntervalFrom, calculator.scoreIntervalTo, 1.0, 42.0, 1.0), 0.1);
   }
 
   @Test
   void tesUpperBound() throws Exception {
-    assertEquals(calculator.intervalFrom, ScoreCalculator.getMetric(
-        calculator.intervalFrom, calculator.intervalTo, 1, 42, 42), 0.1);
+    assertEquals(calculator.scoreIntervalFrom, ScoreCalculator.getMetric(
+        calculator.scoreIntervalFrom, calculator.scoreIntervalTo, 1, 42, 42), 0.1);
   }
 
   @Test
   void testMiddleValue() throws Exception {
     assertEquals(
-        (calculator.intervalTo - calculator.intervalFrom) / 2, 
+        (calculator.scoreIntervalTo - calculator.scoreIntervalFrom) / 2, 
         ScoreCalculator.getMetric(
-          calculator.intervalFrom, calculator.intervalTo, 42, 0, 21), 
+          calculator.scoreIntervalFrom, calculator.scoreIntervalTo, 42, 0, 21), 
         0.1);
   }
 
   @Test
   void testBadRandomInput() throws Exception {
     assertThrows(Exception.class, () -> ScoreCalculator.getMetric(
-        calculator.intervalFrom, calculator.intervalTo, 1, -10, 1));
+        calculator.scoreIntervalFrom, calculator.scoreIntervalTo, 1, -10, 1));
     ;
   }
 
   @Test
   void testBadOptimalInput() throws Exception {
     assertThrows(Exception.class, () -> ScoreCalculator.getMetric(
-        calculator.intervalFrom, calculator.intervalTo, -1, 10, 1));
+        calculator.scoreIntervalFrom, calculator.scoreIntervalTo, -1, 10, 1));
   }
 
   @Test
   void testBadWorstInput() throws Exception {
     assertThrows(Exception.class, () -> ScoreCalculator.getMetric(
-        calculator.intervalFrom, calculator.intervalTo, -1, 10, 1));
+        calculator.scoreIntervalFrom, calculator.scoreIntervalTo, -1, 10, 1));
   }
 
   @Test
   void testBadCurrentInput() throws Exception {
     assertThrows(Exception.class, () -> ScoreCalculator.getMetric(
-        calculator.intervalFrom, calculator.intervalTo, 1, 10, -1));
+        calculator.scoreIntervalFrom, calculator.scoreIntervalTo, 1, 10, -1));
   }
 
   @Test
   void testBadIntervalInput() throws Exception {
     assertThrows(Exception.class, () -> ScoreCalculator.getMetric(
-        calculator.intervalFrom, calculator.intervalTo, 42, 3, 1));
+        calculator.scoreIntervalFrom, calculator.scoreIntervalTo, 42, 3, 1));
   }
 
   @Test
   void testBadOutOfIntervaInput() throws Exception {
     assertThrows(Exception.class, () -> ScoreCalculator.getMetric(
-        calculator.intervalFrom, calculator.intervalTo, 3, 42, 1));
+        calculator.scoreIntervalFrom, calculator.scoreIntervalTo, 3, 42, 1));
   }
 }

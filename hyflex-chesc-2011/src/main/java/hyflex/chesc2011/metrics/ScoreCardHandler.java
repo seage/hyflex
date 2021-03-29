@@ -20,17 +20,17 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class ResultsCardHandler {
+public class ScoreCardHandler {
   /**
    * Method reads the results file and stores the data into a map.
    * @param path Path where the file is stored.
    * @return Map with algorithm results.
    */
-  public static ResultsCard loadCard(
+  public static ScoreCard loadCard(
       String[] problems, Path path, String[] domains, Map<String, List<String>> cardInstances)
       throws Exception {
     String cardName = path.getFileName().toString();
-    ResultsCard result = new ResultsCard(
+    ScoreCard result = new ScoreCard(
         cardName.substring(0, cardName.lastIndexOf(".")), domains);
 
     Scanner scanner = new Scanner(new File(path.toString())).useDelimiter("\n");
@@ -88,7 +88,7 @@ public class ResultsCardHandler {
    * @param results Map with results.
    */
   public static void saveResultsToXmlFile(
-      String resultsXmlFile, List<ResultsCard> results) 
+      String resultsXmlFile, List<ScoreCard> results) 
       throws Exception {
     DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
     DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -98,7 +98,7 @@ public class ResultsCardHandler {
     Element root = document.createElement("results");
     document.appendChild(root);
 
-    for (ResultsCard resultCard: results) {
+    for (ScoreCard resultCard: results) {
       Element algorithm = document.createElement("algorithm");
       algorithm.setAttribute("name", resultCard.getName());
       algorithm.setAttribute("score", Double.toString(resultCard.getScore()));

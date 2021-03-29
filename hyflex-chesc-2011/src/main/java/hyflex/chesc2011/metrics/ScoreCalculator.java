@@ -19,7 +19,7 @@ public class ScoreCalculator {
   double scoreIntervalFrom;
   double scoreIntervalTo;
 
-  
+
   /**
    * Constructor, sets all necessary parameters.
    * @param problems Array of problems domains ids.
@@ -47,10 +47,10 @@ public class ScoreCalculator {
 
   /**
    * Method calculates the score for given algorithm problem results.
-   * @param card ResultsCard with algorithm results.
-   * @return ResultsCard with scores for each problem domain and total score.
+   * @param card ScoreCard with algorithm results.
+   * @return ScoreCard with scores for each problem domain and total score.
    */
-  public ResultsCard calculateScore(ResultsCard card) throws Exception {
+  public ScoreCard calculateScore(ScoreCard card) throws Exception {
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = new HashMap<>();
 
@@ -61,7 +61,7 @@ public class ScoreCalculator {
       instancesMetadata.put(problemId, ProblemInstanceMetadataReader.read(instanceMetadataPath));
     }
 
-    ResultsCard result = new ResultsCard(card.getName(), problems);
+    ScoreCard result = new ScoreCard(card.getName(), problems);
 
     List<Double> problemsScores = new ArrayList<>();
     List<Double> problemsWeights = new ArrayList<>();

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class ResultsCard {
+public class ScoreCard {
   /**
    * Name of the algorithm.
    */
@@ -40,7 +40,7 @@ public class ResultsCard {
    * @param algorithmName Name of the algorithm.
    * @param domains Array of problem domains names.
    */
-  ResultsCard(String algorithmName, String[] domains) {
+  ScoreCard(String algorithmName, String[] domains) {
     this.algorithmName = algorithmName;
 
     problemResults = new HashMap<>();
@@ -60,7 +60,7 @@ public class ResultsCard {
    * @param value Value of the instance.
    * @return Returns this.
    */
-  public ResultsCard putInstanceValue(String problemId, String instanceId, Double value) {
+  public ScoreCard putInstanceValue(String problemId, String instanceId, Double value) {
     problemResults.get(problemId).put(instanceId, value);
     return this;
   }
@@ -72,7 +72,7 @@ public class ResultsCard {
    * @param value Value of the problem domain.
    * @return Returns this.
    */
-  public ResultsCard putDomainScore(String problemId, Double value) {
+  public ScoreCard putDomainScore(String problemId, Double value) {
     scorePerDomain.put(problemId, value);
     return this;
   }

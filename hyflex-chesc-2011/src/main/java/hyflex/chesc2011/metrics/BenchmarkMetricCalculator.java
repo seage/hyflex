@@ -55,8 +55,8 @@ public class BenchmarkMetricCalculator {
 
 
   // Interval on which are the results being mapped, metric range
-  public final double intervalFrom = 0.0;
-  public final double intervalTo = 1.0;
+  public final double scoreIntervalFrom = 0.0;
+  public final double scoreIntervalTo = 1.0;
 
 
   /**
@@ -102,21 +102,22 @@ public class BenchmarkMetricCalculator {
    */
   public void run(String id) throws Exception {
     ScoreCalculator scoreCalculator = new ScoreCalculator(
-        problems, metadataPath, problemInstances, problemsWeightsMap, intervalFrom, intervalTo);
+        problems, 
+        metadataPath, problemInstances, problemsWeightsMap, scoreIntervalFrom, scoreIntervalTo);
     
-    String [] resFiles = ResultsCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
+    String [] resFiles = ScoreCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
 
-    List<ResultsCard> results = new ArrayList<>();
+    List<ScoreCard> results = new ArrayList<>();
 
     for (String fileName : resFiles) {
-      Path resultsCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
+      Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
       
-      ResultsCard algorithmResults = ResultsCardHandler.loadCard(
-          problems, resultsCardPath, problems, problemInstances);
+      ScoreCard algorithmResults = ScoreCardHandler.loadCard(
+          problems, scoreCardPath, problems, problemInstances);
 
       results.add(scoreCalculator.calculateScore(algorithmResults));
     }
 
-    ResultsCardHandler.saveResultsToXmlFile(resultsXmlFile, results);
+    ScoreCardHandler.saveResultsToXmlFile(resultsXmlFile, results);
   }
 }
