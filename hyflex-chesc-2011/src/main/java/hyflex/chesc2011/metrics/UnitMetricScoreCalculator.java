@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ScoreCalculator {
+public class UnitMetricScoreCalculator {
   // Array of problems domains ids.
   String[] problems;
   // Path to metadata xml files.
@@ -29,7 +29,7 @@ public class ScoreCalculator {
   /**
    * Constructor, sets all necessary parameters.
    */
-  ScoreCalculator(
+  UnitMetricScoreCalculator(
       String[] problems,
       String metadataPath, 
       Map<String, List<String>> problemsInstances, 
@@ -72,7 +72,7 @@ public class ScoreCalculator {
       List<Double> sizes = new ArrayList<>(); 
 
       for (String instanceId: problemsInstances.get(problemId)) {
-        double instanceScore = ScoreCalculator.getMetric(
+        double instanceScore = UnitMetricScoreCalculator.getMetric(
             scoreIntervalFrom, 
             scoreIntervalTo, 
             instancesMetadata.get(problemId).get(instanceId, "optimum"), 

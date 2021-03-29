@@ -101,7 +101,7 @@ public class BenchmarkMetricCalculator {
    * @param id Name of the directory where algorithm problem results are stored.
    */
   public void run(String id) throws Exception {
-    ScoreCalculator scoreCalculator = new ScoreCalculator(
+    UnitMetricScoreCalculator scoreCalculator = new UnitMetricScoreCalculator(
         problems, 
         metadataPath, problemInstances, problemsWeightsMap, scoreIntervalFrom, scoreIntervalTo);
     
