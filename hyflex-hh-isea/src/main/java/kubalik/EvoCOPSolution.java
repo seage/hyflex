@@ -385,7 +385,7 @@ public class EvoCOPSolution {
                     if((value < EvoCOPHyFlexManager.current_obj_function_values[2]) && (unikatni))
                     //--- TODO: zkontrolovat cely tabuList
                     {
-                            System.out.println(" " + value);
+                            //System.out.println(" " + value);
                             //--- uprav nejlepsi zname reseni
                             EvoCOPHyFlexManager.problem.copySolution(1, 2);
                             EvoCOPHyFlexManager.current_obj_function_values[2] = value;
