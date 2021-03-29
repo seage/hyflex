@@ -27,7 +27,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator{
 
 
   /**
-   * Constructor, sets all necessary parameters.
+   * Constructor.
    */
   UnitMetricScoreCalculator(
       String[] problems,
