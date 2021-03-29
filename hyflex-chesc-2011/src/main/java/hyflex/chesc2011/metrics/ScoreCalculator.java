@@ -14,25 +14,36 @@ import java.util.Map;
 public class ScoreCalculator {
   String[] problems;
   String metadataPath;
-  Map<String, List<String>> cardInstances; 
+  Map<String, List<String>> problemsInstances; 
   Map<String, Double> problemsWeightsMap;
-  double intervalFrom;
-  double intervalTo;
+  double scoreIntervalFrom;
+  double scoreIntervalTo;
 
+  
+  /**
+   * Constructor, sets all necessary parameters.
+   * @param problems Array of problems domains ids.
+   * @param metadataPath Path to metadata xml files.
+   * @param problemsInstances Name of the problems instances.
+   * @param problemsWeightsMap Map with weight for each problem domain.
+   * @param scoreIntervalFrom Score interval lower bound.
+   * @param scoreIntervalTo score interval upper bound.
+   */
   ScoreCalculator(
       String[] problems,
       String metadataPath, 
-      Map<String, List<String>> cardInstances, 
+      Map<String, List<String>> problemsInstances, 
       Map<String, Double> problemsWeightsMap,
-      double intervalFrom, 
-      double intervalTo) {
+      double scoreIntervalFrom, 
+      double scoreIntervalTo) {
     this.problems = problems;
     this.metadataPath = metadataPath;
-    this.cardInstances = cardInstances;
+    this.problemsInstances = problemsInstances;
     this.problemsWeightsMap = problemsWeightsMap;
-    this.intervalFrom = intervalFrom;
-    this.intervalTo = intervalTo;
+    this.scoreIntervalFrom = scoreIntervalFrom;
+    this.scoreIntervalTo = scoreIntervalTo;
   }
+
 
   /**
    * Method calculates the score for given algorithm problem results.
@@ -60,10 +71,10 @@ public class ScoreCalculator {
       List<Double> instancesScores = new ArrayList<>();
       List<Double> sizes = new ArrayList<>(); 
 
-      for (String instanceId: cardInstances.get(problemId)) {
+      for (String instanceId: problemsInstances.get(problemId)) {
         double instanceScore = ScoreCalculator.getMetric(
-            intervalFrom, 
-            intervalTo, 
+            scoreIntervalFrom, 
+            scoreIntervalTo, 
             instancesMetadata.get(problemId).get(instanceId, "optimum"), 
             instancesMetadata.get(problemId).get(instanceId, "random"), 
             card.getInstanceScore(problemId, instanceId)
@@ -87,6 +98,7 @@ public class ScoreCalculator {
     return result;
   }
 
+
   /**
    * Method returns the metric based on given data.
    * @param upperBound The value of random generator.
@@ -95,7 +107,8 @@ public class ScoreCalculator {
    * @return The metric for given value.
    */
   public static double getMetric(
-      double intervalFrom, double intervalTo, double lowerBound, double upperBound, double current) 
+      double scoreIntervalFrom, 
+      double scoreIntervalTo, double lowerBound, double upperBound, double current) 
       throws Exception {
     if (upperBound < 0 || lowerBound < 0 || current < 0) {
       throw new Exception("Bad input values: input parameter < 0");
@@ -107,8 +120,10 @@ public class ScoreCalculator {
       throw new Exception("Bad input values: current is not from interval");
     }
 
-    return intervalTo - (mapToInterval(lowerBound, upperBound, intervalFrom, intervalTo, current));
+    return scoreIntervalTo - (
+      mapToInterval(lowerBound, upperBound, scoreIntervalFrom, scoreIntervalTo, current));
   }
+
 
   /**
     * Method maps the value of one interval onto a new one.
@@ -129,6 +144,7 @@ public class ScoreCalculator {
 
     return shifting;
   }
+
 
   /**
    * Method calculates the weighted mean from given arrays.

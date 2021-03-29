@@ -13,7 +13,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 public class ProblemInstanceMetadataReader {
-
   /**
     * Method reads the file with metadata and stores the data inside map.
     * @param path Path where the metadata is stored.
@@ -60,6 +59,7 @@ public class ProblemInstanceMetadataReader {
     }
     return result;
   }
+
 
   /**
    * Method tests given string if it contains double.

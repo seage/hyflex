@@ -16,6 +16,9 @@ public class ProblemInstanceMetadata {
    */
   Map<String, Map<String, Double>> instanceResults;
 
+  /**
+   * Constructor, creates new map for instance's parameter results.
+   */
   ProblemInstanceMetadata() {
     instanceResults = new HashMap<>();
   }
@@ -36,6 +39,12 @@ public class ProblemInstanceMetadata {
     return this;
   }
 
+  /**
+   * Method returns the instance result.
+   * @param instanceId Name of the instance.
+   * @param parameter Name of the parameter.
+   * @return Parameter value of the instance.
+   */
   public double get(String instanceId, String parameter) {
     return instanceResults.get(instanceId).get(parameter);
   }

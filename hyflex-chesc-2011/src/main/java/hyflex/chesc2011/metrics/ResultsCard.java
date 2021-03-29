@@ -34,8 +34,14 @@ public class ResultsCard {
    */
   Map<String, Double> scorePerDomain;
 
-  ResultsCard(String cardName, String[] domains) {
-    algorithmName = cardName;
+
+  /**
+   * Constructor, sets all necessary parameters.
+   * @param algorithmName Name of the algorithm.
+   * @param domains Array of problem domains names.
+   */
+  ResultsCard(String algorithmName, String[] domains) {
+    this.algorithmName = algorithmName;
 
     problemResults = new HashMap<>();
     scorePerDomain = new HashMap<>();
@@ -45,6 +51,7 @@ public class ResultsCard {
       scorePerDomain.put(domain, null);
     }
   }
+
 
   /**
    * Method stores given instanceId value.
@@ -58,6 +65,7 @@ public class ResultsCard {
     return this;
   }
 
+
   /**
    * Method stores given problemId value.
    * @param problemId Name of the problem domain.
@@ -69,6 +77,7 @@ public class ResultsCard {
     return this;
   }
 
+
   /**
    * Method sets algorithm score.
    * @param score Algorithm score.
@@ -77,13 +86,24 @@ public class ResultsCard {
     totalScore = score;
   }
 
+
+  /**
+   * Method returns the problem domain score.
+   * @return Problem domain score.
+   */
   public double getScore() {
     return totalScore;
   }
 
+  
+  /**
+   * Method returns the name of the algorithm.
+   * @return Name of the algorithm.
+   */
   public String getName() {
     return algorithmName;
   }
+
 
   /**
    * Method returns value of given instance.
@@ -95,19 +115,31 @@ public class ResultsCard {
     return problemResults.get(problemId).get(instanceId);
   }
 
+
   /**
    * Returns the value of given problem domain.
-   * @param problemId Name of the problem domain.
-   * @return Returns the value of the problem domain.
+   * @param problemId Name of a problem domain.
+   * @return Returns the value of a problem domain.
    */
   public double getProblemScore(String problemId) {
     return scorePerDomain.get(problemId);
   }
 
+
+  /**
+   * Method returns the set of problem domains names.
+   * @return Set of problem domains names.
+   */
   public Set<String> getProblems() {
     return problemResults.keySet();
   }
 
+
+  /**
+   * Method returns the set of problem domains names.
+   * @param problemId Set of problem domains names.
+   * @return
+   */
   public Set<String> getInstances(String problemId) {
     return problemResults.get(problemId).keySet();
   }

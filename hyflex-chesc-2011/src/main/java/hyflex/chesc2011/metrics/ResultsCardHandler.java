@@ -63,6 +63,7 @@ public class ResultsCardHandler {
     return result;
   }
 
+
   /**
    * Method returns the array of cards names.
    * @param path Path to the results cards.
@@ -80,6 +81,7 @@ public class ResultsCardHandler {
 
     return resFiles;
   }
+
 
   /**
    * Method stored the results inside xml file.

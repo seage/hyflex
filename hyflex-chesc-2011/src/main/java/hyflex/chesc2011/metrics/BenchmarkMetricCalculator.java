@@ -42,6 +42,7 @@ public class BenchmarkMetricCalculator {
   // This arrays holds the order of problem domains in results file
   String[] problems = {"SAT", "TSP"};
 
+
   /**
    * Map represents weights for each problem domain.
    */
@@ -52,9 +53,11 @@ public class BenchmarkMetricCalculator {
     }
   };
 
+
   // Interval on which are the results being mapped, metric range
   public final double intervalFrom = 0.0;
   public final double intervalTo = 1.0;
+
 
   /**
    * This map represents what instances are on each line of
@@ -72,6 +75,7 @@ public class BenchmarkMetricCalculator {
               "hyflex-tsp-0", "hyflex-tsp-8", "hyflex-tsp-2", "hyflex-tsp-7", "hyflex-tsp-6")));
     }
   };
+
 
   /**
    * Main method of this class.
@@ -91,6 +95,7 @@ public class BenchmarkMetricCalculator {
     }
   }
 
+  
   /**
    * Method evaluates all algorithms and stores results into file.
    * @param id Name of the directory where algorithm problem results are stored.
