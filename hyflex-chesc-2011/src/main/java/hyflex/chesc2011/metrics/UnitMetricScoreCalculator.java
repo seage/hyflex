@@ -4,25 +4,16 @@
 
 package hyflex.chesc2011.metrics;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UnitMetricScoreCalculator implements ScoreCalculator{
-  // Array of problems domains ids.
+public class UnitMetricScoreCalculator implements ScoreCalculator {
   String[] problems;
-  // Path to metadata xml files.
   Map<String, ProblemInstanceMetadata> metadata;
-  // Name of the problems instances.
   Map<String, List<String>> problemsInstances; 
-  // Map with weight for each problem domain.
   Map<String, Double> problemsWeightsMap;
-  // Score interval lower bound.
   double scoreIntervalFrom;
-  // Score interval upper bound.
   double scoreIntervalTo;
 
 
