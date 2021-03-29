@@ -42,23 +42,6 @@ public class BenchmarkCalculator {
   // This arrays holds the order of problem domains in results file
   String[] problems = {"SAT", "TSP"};
 
-
-  /**
-   * Map represents weights for each problem domain.
-   */
-  @SuppressWarnings("serial")
-  Map<String, Double> problemsWeightsMap = new HashMap<>() {{
-      put("SAT", 1.0);
-      put("TSP", 1.0);
-    }
-  };
-
-
-  // Interval on which are the results being mapped, metric range
-  public final double scoreIntervalFrom = 0.0;
-  public final double scoreIntervalTo = 1.0;
-
-
   /**
    * This map represents what instances are on each line of
    * the results file.
@@ -108,7 +91,7 @@ public class BenchmarkCalculator {
     UnitMetricScoreCalculator scoreCalculator = new UnitMetricScoreCalculator(
         problems, 
         instancesMetadata, 
-        problemInstances, problemsWeightsMap, scoreIntervalFrom, scoreIntervalTo);
+        problemInstances);
     
     String [] resFiles = ScoreCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
 
