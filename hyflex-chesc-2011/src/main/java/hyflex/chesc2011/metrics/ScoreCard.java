@@ -40,7 +40,7 @@ public class ScoreCard {
    * @param algorithmName Name of the algorithm.
    * @param domains Array of problem domains names.
    */
-  ScoreCard(String algorithmName, String[] domains) {
+  public ScoreCard(String algorithmName, String[] domains) {
     this.algorithmName = algorithmName;
 
     problemResults = new HashMap<>();

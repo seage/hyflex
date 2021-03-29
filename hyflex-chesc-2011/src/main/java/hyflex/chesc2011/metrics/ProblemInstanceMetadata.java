@@ -19,7 +19,7 @@ public class ProblemInstanceMetadata {
   /**
    * Constructor, creates new map for instance's parameter results.
    */
-  ProblemInstanceMetadata() {
+  public ProblemInstanceMetadata() {
     instanceResults = new HashMap<>();
   }
 
