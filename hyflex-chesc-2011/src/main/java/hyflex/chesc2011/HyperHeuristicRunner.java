@@ -9,6 +9,9 @@ package hyflex.chesc2011;
  */
 import AbstractClasses.HyperHeuristic;
 import AbstractClasses.ProblemDomain;
+
+import PersonnelScheduling.PersonnelScheduling;
+
 import SAT.SAT;
 
 import be.kuleuven.kahosl.acceptance.AcceptanceCriterionType;
@@ -28,7 +31,6 @@ import leangihh.LeanGIHH;
 import pearlhunter.PearlHunter;
 
 import travelingSalesmanProblem.TSP;
-import PersonnelScheduling.PersonnelScheduling;
 
 public class HyperHeuristicRunner {
   /**
