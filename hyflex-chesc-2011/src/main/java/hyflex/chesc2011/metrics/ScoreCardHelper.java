@@ -5,7 +5,9 @@
 package hyflex.chesc2011.metrics;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
+import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,7 @@ import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -140,8 +143,10 @@ public class ScoreCardHelper {
     TransformerFactory transformerFactory = TransformerFactory.newInstance();
     Transformer transformer = transformerFactory.newTransformer();
     DOMSource domSource = new DOMSource(document);
-    StreamResult streamResult = new StreamResult(new File(resultsXmlFile));
-
+    StreamResult streamResult =
+        new StreamResult(new PrintWriter(new FileOutputStream(new File(resultsXmlFile), false)));
+    
+    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
     transformer.transform(domSource, streamResult);
   }
 }
