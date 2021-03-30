@@ -39,8 +39,7 @@ public class ScoreCardHandler {
       for (String problemId : problems) {
         
         if (scanner.hasNextLine() == false) {
-          System.out.println("Not enough lines in " + path.toString() + " file.");
-          return null;
+          throw new Exception("Not enough lines in " + path.toString() + " file.");
         }
 
         try (Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ")) {
@@ -48,8 +47,7 @@ public class ScoreCardHandler {
           for (String instanceId: cardInstances.get(problemId)) {
 
             if (line.hasNextLine() == false) {
-              System.out.println("Not enough instances results in " + path.toString() + " file.");
-              return null;
+              throw new Exception("Not enough instances results in " + path.toString() + " file.");
             }
             
             result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
