@@ -27,12 +27,12 @@ public class ScoreCardHandler {
    * @return Map with algorithm results.
    */
   public static ScoreCard loadCard(
-      String[] problems, Path path, String[] domains, Map<String, List<String>> cardInstances)
+      String[] problems, Path path, Map<String, List<String>> cardInstances)
       throws Exception {
     // Name of the file
     String cardName = path.getFileName().toString();
     ScoreCard result = new ScoreCard(
-        cardName.substring(0, cardName.lastIndexOf(".")), domains);
+        cardName.substring(0, cardName.lastIndexOf(".")), problems);
 
     try (Scanner scanner = new Scanner(new File(path.toString())).useDelimiter("\n")) {
       

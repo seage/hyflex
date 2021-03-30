@@ -39,9 +39,6 @@ public class BenchmarkCalculator {
   // Path where the file with results is stored
   String resultsXmlFile = "./results.xml";
 
-  // This arrays holds the order of problem domains in results file
-  String[] problems = {"SAT", "TSP"};
-
   /**
    * This map represents what instances are on each line of
    * the results file.
@@ -59,6 +56,8 @@ public class BenchmarkCalculator {
     }
   };
 
+  // This arrays holds the order of problem domains in results file
+  String[] problems = problemInstances.keySet().toArray(new String[0]);
 
   /**
    * Main method of this class.
@@ -89,7 +88,6 @@ public class BenchmarkCalculator {
         .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
 
     UnitMetricScoreCalculator scoreCalculator = new UnitMetricScoreCalculator(
-        problems, 
         instancesMetadata, 
         problemInstances);
     
@@ -101,7 +99,7 @@ public class BenchmarkCalculator {
       Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
       
       ScoreCard algorithmResults = ScoreCardHandler.loadCard(
-          problems, scoreCardPath, problems, problemInstances);
+          problems, scoreCardPath, problemInstances);
 
       cards.add(algorithmResults);
     }
