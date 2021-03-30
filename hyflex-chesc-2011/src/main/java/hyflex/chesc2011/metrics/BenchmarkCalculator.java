@@ -42,7 +42,7 @@ public class BenchmarkCalculator {
   // Path where the metadata are stored
   String metadataPath = "/hyflex/hyflex-chesc-2011";
   // Path where the file with results is stored
-  String resultsXmlFile = "./results/unit-metric.xml";
+  String resultsXmlFile = "./results/%s/unit-metric.xml";
 
   /**
    * This map represents what instances are on each line of
@@ -92,6 +92,8 @@ public class BenchmarkCalculator {
    * @param id Name of the directory where algorithm problem results are stored.
    */
   public void run(String id) throws Exception {
+    resultsXmlFile = String.format(resultsXmlFile, id);
+
     Map<String, ProblemInstanceMetadata> instancesMetadata = 
         ProblemInstanceMetadataReader
         .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
