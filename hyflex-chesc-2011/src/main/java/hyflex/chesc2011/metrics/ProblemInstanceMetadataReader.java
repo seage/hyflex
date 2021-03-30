@@ -17,32 +17,31 @@ import org.w3c.dom.NodeList;
 
 public class ProblemInstanceMetadataReader {
   /**
-    * Method reads the file with metadata and stores the data inside map.
-    * @param path Path where the metadata is stored.
-    * @return Returns the map with metadata data.
-    */
+   * Method reads the file with metadata and stores the data inside map.
+   * 
+   * @param path Path where the metadata is stored.
+   * @return Returns the map with metadata data.
+   */
   private static ProblemInstanceMetadata read(Path path) throws Exception {
     ProblemInstanceMetadata result = new ProblemInstanceMetadata();
 
-    InputStream inputStream = ProblemInstanceMetadataReader
-        .class.getResourceAsStream(path.toString());
+    InputStream inputStream =
+        ProblemInstanceMetadataReader.class.getResourceAsStream(path.toString());
     // Read the input file
-    Document doc = DocumentBuilderFactory
-        .newInstance()
-        .newDocumentBuilder().parse(inputStream);
+    Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputStream);
     doc.getDocumentElement().normalize();
 
     // Get all instances from the file
     NodeList nodeList = doc.getElementsByTagName("Instance");
-    
+
     // For each instance stores its values into a hash map
     for (int temp = 0; temp < nodeList.getLength(); temp++) {
       Node node = nodeList.item(temp);
-      
+
       if (node.getNodeType() == Node.ELEMENT_NODE) {
         Element element = (Element) node;
 
-        
+
         if (isDouble(element.getAttribute("optimum")) == false) {
           continue;
         }
@@ -58,7 +57,7 @@ public class ProblemInstanceMetadataReader {
         result.put(instanceId, "optimum", Double.parseDouble(element.getAttribute("optimum")));
         result.put(instanceId, "random", Double.parseDouble(element.getAttribute("random")));
         result.put(instanceId, "size", Double.parseDouble(element.getAttribute("size")));
-      }    
+      }
     }
     return result;
   }
@@ -66,6 +65,7 @@ public class ProblemInstanceMetadataReader {
 
   /**
    * Method tests given string if it contains double.
+   * 
    * @param text String to test.
    * @return True if the string can be translated to double, false otherwise.
    */
@@ -80,16 +80,17 @@ public class ProblemInstanceMetadataReader {
 
   /**
    * .
-   * @param problems .
+   * 
+   * @param problems     .
    * @param metadataPath .
    */
   public static Map<String, ProblemInstanceMetadata> readProblemsInstancesMetadata(
       String[] problems, Path metadataPath) throws Exception {
     Map<String, ProblemInstanceMetadata> results = new HashMap<>();
 
-    for (String problemId: problems) {
-      Path instanceMetadataPath = Paths
-          .get(metadataPath.toString() + "/" + problemId.toLowerCase() + ".metadata.xml");
+    for (String problemId : problems) {
+      Path instanceMetadataPath =
+          Paths.get(metadataPath.toString() + "/" + problemId.toLowerCase() + ".metadata.xml");
 
       results.put(problemId, read(instanceMetadataPath));
     }

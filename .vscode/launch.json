@@ -6,10 +6,11 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch BenchmarkMetricCalculator",
+      "name": "Launch BenchmarkCalculator",
       "request": "launch",
-      "mainClass": "hyflex.chesc2011.metrics.BenchmarkMetricCalculator",
-      "projectName": "hyflex-chesc-2011"
+      "mainClass": "hyflex.chesc2011.metrics.BenchmarkCalculator",
+      "projectName": "hyflex-chesc-2011",
+      "args": "1616856133479"
     },
     {
       "type": "java",
@@ -19,11 +20,12 @@
       "args": [
         "competition-run",
         "-h",
-        "GIHH",
+        "LeanGIHH",
+        "EPH",
         "-n",
-        "1",
+        "10",
         "-t",
-        "1"
+        "10"
       ]
     },
     {

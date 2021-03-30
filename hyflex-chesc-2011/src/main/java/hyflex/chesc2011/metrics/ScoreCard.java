@@ -20,25 +20,21 @@ public class ScoreCard {
   double totalScore;
 
   /**
-   * .
-   * String: problemId
-   *    - String: instanceId
-   *        - Double: instanceId value
+   * String: problemId - String: instanceId - Double: instanceId value.
    */
   Map<String, Map<String, Double>> problemResults;
 
   /**
-   * .
-   * String: problemId
-   *    - Double: problemId score
+   * . String: problemId - Double: problemId score
    */
   Map<String, Double> scorePerDomain;
 
 
   /**
    * Constructor, sets all necessary parameters.
+   * 
    * @param algorithmName Name of the algorithm.
-   * @param domains Array of problem domains names.
+   * @param domains       Array of problem domains names.
    */
   public ScoreCard(String algorithmName, String[] domains) {
     this.algorithmName = algorithmName;
@@ -46,7 +42,7 @@ public class ScoreCard {
     problemResults = new HashMap<>();
     scorePerDomain = new HashMap<>();
 
-    for (String domain: domains) {
+    for (String domain : domains) {
       problemResults.put(domain, new HashMap<>());
       scorePerDomain.put(domain, null);
     }
@@ -55,9 +51,10 @@ public class ScoreCard {
 
   /**
    * Method stores given instanceId value.
-   * @param problemId Name of the problem domain.
+   * 
+   * @param problemId  Name of the problem domain.
    * @param instanceId Name of the problem domain instance.
-   * @param value Value of the instance.
+   * @param value      Value of the instance.
    * @return Returns this.
    */
   public ScoreCard putInstanceScore(String problemId, String instanceId, Double value) {
@@ -68,8 +65,9 @@ public class ScoreCard {
 
   /**
    * Method stores given problemId value.
+   * 
    * @param problemId Name of the problem domain.
-   * @param value Value of the problem domain.
+   * @param value     Value of the problem domain.
    * @return Returns this.
    */
   public ScoreCard putDomainScore(String problemId, Double value) {
@@ -80,6 +78,7 @@ public class ScoreCard {
 
   /**
    * Method sets algorithm score.
+   * 
    * @param score Algorithm score.
    */
   public void setScore(Double score) {
@@ -89,15 +88,17 @@ public class ScoreCard {
 
   /**
    * Method returns the problem domain score.
+   * 
    * @return Problem domain score.
    */
   public double getScore() {
     return totalScore;
   }
 
-  
+
   /**
    * Method returns the name of the algorithm.
+   * 
    * @return Name of the algorithm.
    */
   public String getName() {
@@ -107,7 +108,8 @@ public class ScoreCard {
 
   /**
    * Method returns value of given instance.
-   * @param problemId Name of the problem doamain.
+   * 
+   * @param problemId  Name of the problem doamain.
    * @param instanceId Name of the intance.
    * @return Returns the value of given instacne.
    */
@@ -118,6 +120,7 @@ public class ScoreCard {
 
   /**
    * Returns the value of given problem domain.
+   * 
    * @param problemId Name of a problem domain.
    * @return Returns the value of a problem domain.
    */
@@ -128,6 +131,7 @@ public class ScoreCard {
 
   /**
    * Method returns the set of problem domains names.
+   * 
    * @return Set of problem domains names.
    */
   public Set<String> getProblems() {
@@ -137,6 +141,7 @@ public class ScoreCard {
 
   /**
    * Method returns the set of problem domains names.
+   * 
    * @param problemId Set of problem domains names.
    * @return
    */

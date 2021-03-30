@@ -9,5 +9,5 @@ public class F1MetricScoreCalculator implements ScoreCalculator {
     // TODO Auto-generated method stub
     return null;
   }
-  
+
 }
