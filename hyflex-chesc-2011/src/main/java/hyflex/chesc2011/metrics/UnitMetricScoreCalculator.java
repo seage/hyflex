@@ -71,6 +71,12 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
           result.putInstanceScore(problemId, instanceId, instanceScore);
 
           instancesScores.add(instanceScore);
+
+          if (metadata.get(problemId).get(instanceId, "size") < 0) {
+            throw new Exception(
+              "Bad input values: size of " + instanceId + " instance is negative.");
+          }
+
           sizes.add((double)metadata.get(problemId).get(instanceId, "size"));
         }
 

@@ -63,15 +63,15 @@ public class UnitMetricScoreCalculatorTest {
 
     List<ScoreCard> scoreCardList = new ArrayList<>();
     scoreCardList.add(
-        new ScoreCard("noname1", problems)
+        new ScoreCard("optimal", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 0.0)
     );
     scoreCardList.add(
-        new ScoreCard("noname2", problems)
+        new ScoreCard("random", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 42.0)
     );
     scoreCardList.add(
-        new ScoreCard("noname3", problems)
+        new ScoreCard("middle", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 21.0)
     );
 
@@ -85,49 +85,57 @@ public class UnitMetricScoreCalculatorTest {
         .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
   }
 
-  // Remove all following tests, all will be tested as a consequence of the call of sc.calculateScore
-  // @Test
-  // void testLowerBound() throws Exception {
-  // assertEquals(1.0, UnitMetricScoreCalculator.getMetric(1.0, 42.0, 1.0), 0.1);
-  // }
+  @Test
+  void testExceptions() throws Exception {
+    // Algorithm result is negative
+    init(1.0, 10.0, 9.0);
 
-  // @Test
-  // void tesUpperBound() throws Exception {
-  //   assertEquals(0, UnitMetricScoreCalculator.getMetric(1, 42, 42), 0.1);
-  // }
+    List<ScoreCard> scoreCardList0 = new ArrayList<>();
+    scoreCardList0.add(
+        new ScoreCard("one-negative", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), -1.0)
+    );
 
-  // @Test
-  // void testMiddleValue() throws Exception {
-  //   assertEquals(0.5, UnitMetricScoreCalculator.getMetric(0, 42, 21), 0.1);
-  // }
+    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
 
-  // @Test
-  // void testBadRandomInput() throws Exception {
-  //   assertThrows(Exception.class, () -> UnitMetricScoreCalculator.getMetric(1, -10, 1));;
-  // }
 
-  // @Test
-  // void testBadOptimalInput() throws Exception {
-  //   assertThrows(Exception.class, () -> UnitMetricScoreCalculator.getMetric(-1, 10, 1));
-  // }
+    // Negative optimum
+    init(-1.0, 10.0, 9.0);
+    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
 
-  // @Test
-  // void testBadWorstInput() throws Exception {
-  //   assertThrows(Exception.class, () -> UnitMetricScoreCalculator.getMetric(-1, 10, 1));
-  // }
 
-  // @Test
-  // void testBadCurrentInput() throws Exception {
-  //   assertThrows(Exception.class, () -> UnitMetricScoreCalculator.getMetric(1, 10, -1));
-  // }
+    // Random is smaller than optimum
+    init(1.0, 0.0, 9.0);
+    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
 
-  // @Test
-  // void testBadIntervalInput() throws Exception {
-  //   assertThrows(Exception.class, () -> UnitMetricScoreCalculator.getMetric(42, 3, 1));
-  // }
 
-  // @Test
-  // void testBadOutOfIntervaInput() throws Exception {
-  //   assertThrows(Exception.class, () -> UnitMetricScoreCalculator.getMetric(3, 42, 1));
-  // }
+    // Both optimum and random are negative
+    init(-2.0, -42.0, 9.0);
+    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
+
+
+    // Instance size is negative
+    init(2.0, 42.0, -9.0);
+    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
+
+
+    // Algotithm is not on interval
+    init(2.0, 42.0, 9.0);
+
+    List<ScoreCard> scoreCardList1 = new ArrayList<>();
+    scoreCardList1.add(
+        new ScoreCard("better-than-optimum", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0)
+    );
+
+    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList1));
+
+    List<ScoreCard> scoreCardList2 = new ArrayList<>();
+    scoreCardList2.add(
+        new ScoreCard("worse-than-random", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0)
+    );
+
+    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList2));
+  }
 }
