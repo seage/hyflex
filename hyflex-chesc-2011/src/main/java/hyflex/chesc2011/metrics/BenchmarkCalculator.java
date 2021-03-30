@@ -42,7 +42,7 @@ public class BenchmarkCalculator {
   // Path where the metadata are stored
   String metadataPath = "/hyflex/hyflex-chesc-2011";
   // Path where the file with results is stored
-  String resultsXmlFile = "./results/%s/unit-metric.xml";
+  String resultsXmlFile = "./results/%s/unit-metric-scores.xml";
 
   /**
    * This map represents what instances are on each line of
