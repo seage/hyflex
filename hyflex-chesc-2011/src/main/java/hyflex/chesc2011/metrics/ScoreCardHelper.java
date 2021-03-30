@@ -137,8 +137,7 @@ public class ScoreCardHelper {
     // transform the DOM Object to an XML File
     TransformerFactory transformerFactory = TransformerFactory.newInstance();
     Transformer transformer = transformerFactory.newTransformer();
-    // transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-    // transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
     DOMSource domSource = new DOMSource(document);
     StreamResult streamResult =
         new StreamResult(new PrintWriter(new FileOutputStream(new File(resultsXmlFile), false)));
