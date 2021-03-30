@@ -6,17 +6,38 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch BenchmarkCalculator",
+      "request": "launch",
+      "mainClass": "hyflex.chesc2011.metrics.BenchmarkCalculator",
+      "projectName": "hyflex-chesc-2011",
+      "args": "1616856133479"
+    },
+    {
+      "type": "java",
       "name": "Launch the Launcher",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.launcher.Launcher",
-      "args": ["competition-run", "-h", "GIHH", "-n", "1", "-t", "1"]
+      "args": [
+        "competition-run",
+        "-h",
+        "LeanGIHH",
+        "EPH",
+        "-n",
+        "10",
+        "-t",
+        "10"
+      ]
     },
     {
       "type": "java",
       "name": "Launch HyperHeuristicRunner",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.HyperHeuristicRunner",
-      "args": ["ISEA", "PersonnelScheduling", "120"]
-    },
+      "args": [
+        "ISEA",
+        "PersonnelScheduling",
+        "120"
+      ]
+    }
   ]
 }

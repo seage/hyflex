@@ -1,3 +1,7 @@
+/**
+ * @author David Omrai
+ */
+
 package hyflex.chesc2011;
 
 // import java.io.FileWriter;

@@ -1,4 +1,4 @@
-package hyflex.chesc2011;
+package hyflex.chesc2011.legacy;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -66,6 +66,10 @@ public class BenchmarkCalculator {
    * Returns leaderboard based on given hyper-heuristics results.
    */
   public void run(String id) throws Exception {
+    /**
+     * Edited by David Omrai.
+     */
+    
     //get the path to results folder
     final String resultsDirPath = Optional.ofNullable(
         System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
