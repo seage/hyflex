@@ -1,9 +1,13 @@
+/**
+ * @author David Omrai
+ */
+
 package hyflex.chesc2011.launcher.commands;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
-import hyflex.chesc2011.BenchmarkCalculator;
+import hyflex.chesc2011.legacy.BenchmarkCalculator;
 
 
 
