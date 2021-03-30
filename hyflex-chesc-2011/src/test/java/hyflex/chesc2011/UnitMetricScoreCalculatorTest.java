@@ -27,42 +27,39 @@ import org.junit.jupiter.api.Test;
  */
 
 public class UnitMetricScoreCalculatorTest {
-  String[] problems = {"testProblem"};
+  String[] problems = {"TSP"};
   
-  @SuppressWarnings("serial")
+  //@SuppressWarnings("serial")
   Map<String, List<String>> problemInstances;
 
-  @SuppressWarnings("serial")
+  //@SuppressWarnings("serial")
   Map<String, ProblemInstanceMetadata> instancesMetadata;
   
   ScoreCalculator sc;
 
   // @BeforeAll
-  void init(double testInstanceRandom, double testInstanceOptimum, double testInstanceSize) {
-    sc = new UnitMetricScoreCalculator(problems, instancesMetadata, problemInstances);
-
+  void init(double testInstanceOptimum, double testInstanceRandom, double testInstanceSize) {
     
     problemInstances = new HashMap<>() {{
-        put("testProblem", new ArrayList<>(
-            Arrays.asList(
-            "testInstance")));
+        put("TSP", new ArrayList<>(
+            Arrays.asList("testInstance")));
       }
     };
 
     instancesMetadata = new HashMap<>() {{
-        put("testProblem", new ProblemInstanceMetadata()
-            .put("testInstance", "random", testInstanceRandom));
-        put("testProblem", new ProblemInstanceMetadata()
-            .put("testInstance", "optimum", testInstanceOptimum));
-        put("testProblem", new ProblemInstanceMetadata()
+        put("TSP", new ProblemInstanceMetadata()
+            .put("testInstance", "random", testInstanceRandom)
+            .put("testInstance", "optimum", testInstanceOptimum)
             .put("testInstance", "size", testInstanceSize));
       }
     };
+
+    sc = new UnitMetricScoreCalculator(problems, instancesMetadata, problemInstances);
   }
 
   @Test
   void testCalculateScoreBoundaries() throws Exception {
-    init(42.0, 0.0, 9.0);
+    init(0.0, 42.0, 9.0);
 
     List<ScoreCard> scoreCardList = new ArrayList<>();
     scoreCardList.add(
@@ -78,12 +75,14 @@ public class UnitMetricScoreCalculatorTest {
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 21.0)
     );
 
-    
     List<ScoreCard> cards = sc.calculateScore(scoreCardList);
     assertEquals(3, cards.size());
-    assertEquals(1.0, cards.get(0).getInstanceScore(problems[0], problems[0]), 0.1);
-    assertEquals(0, cards.get(0).getInstanceScore(problems[0], problems[0]), 0.1);
-    assertEquals(0.5, cards.get(0).getInstanceScore(problems[0], problems[0]), 0.1);
+    assertEquals(1.0, cards.get(0)
+        .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+    assertEquals(0.0, cards.get(1)
+        .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+    assertEquals(0.5, cards.get(2)
+        .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
   }
 
   // Remove all following tests, all will be tested as a consequence of the call of sc.calculateScore
