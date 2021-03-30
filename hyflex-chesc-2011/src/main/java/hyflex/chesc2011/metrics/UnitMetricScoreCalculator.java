@@ -33,8 +33,9 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
    */
   public UnitMetricScoreCalculator(
       Map<String, ProblemInstanceMetadata> metadata, 
-      Map<String, List<String>> problemsInstances) {
-    this.problems = problemsInstances.keySet().toArray(new String[0]);
+      Map<String, List<String>> problemsInstances,
+      String[] problems) {
+    this.problems = problems;
     this.metadata = metadata;
     this.problemsInstances = problemsInstances;
   }

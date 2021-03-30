@@ -20,7 +20,20 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class ScoreCardHandler {
+public class ScoreCardHelper {
+  /**
+   * Array holds information on which line of the
+   * result card is which problem domain.
+   */
+  static String[] cardProblemsOrder = {
+      "SAT", // 0
+      "BP",  // 1
+      "PS",  // 2
+      "FS",  // 3
+      "TSP", // 4
+      "VRP", // 5
+  };
+  
   /**
    * Method reads the results file and stores the data into a map.
    * @param path Path where the file is stored.
@@ -36,8 +49,8 @@ public class ScoreCardHandler {
 
     try (Scanner scanner = new Scanner(new File(path.toString())).useDelimiter("\n")) {
       
-      for (String problemId : problems) {
-        
+      for (String problemId : cardProblemsOrder) {
+
         if (scanner.hasNextLine() == false) {
           throw new Exception("Not enough lines in " + path.toString() + " file.");
         }

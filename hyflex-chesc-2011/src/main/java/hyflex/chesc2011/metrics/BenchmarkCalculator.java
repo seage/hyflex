@@ -17,16 +17,21 @@ import java.util.Map;
  * stored inside results file.
  * .
  * File has the following format
- * SAT: 3, 5, 4, 10, 11
- * BP:  7, 1, 9, 10, 11
- * PS:  5, 9, 8, 10, 11
- * FS:  1, 8, 3, 10, 11
- * TSP: 0, 8, 2, 7, 6 
- * VRP: 6, 2, 5, 1, 9 
+ * line
+ *  0  | SAT: 3, 5, 4, 10, 11
+ *  1  | BP:  7, 1, 9, 10, 11
+ *  2  | PS:  5, 9, 8, 10, 11
+ *  3  | FS:  1, 8, 3, 10, 11
+ *  4  | TSP: 0, 8, 2, 7, 6 
+ *  5  | VRP: 6, 2, 5, 1, 9 
  * .
  * Lines represents problem domains and collumns instances of this domain
  * You can change what problem is where, all that's needed to be done is 
  * to keep the same format for all results files.
+ * .
+ * IMPORTANT!!!
+ * If you decide to change the order of lines, keep in mind, you have to
+ * change it also in the ScoreCardHelper class.
  * .
  * And finally if you modify the order of problem domains or instances
  * also you have to modify the problems array and problemInstances map
@@ -50,14 +55,18 @@ public class BenchmarkCalculator {
         put("SAT", new ArrayList<>(
             Arrays.asList(
               "hyflex-sat-3", "hyflex-sat-5", "hyflex-sat-4", "hyflex-sat-10", "hyflex-sat-11")));
+        put("BP", new ArrayList<>(Arrays.asList()));
+        put("PS", new ArrayList<>(Arrays.asList()));
+        put("FS", new ArrayList<>(Arrays.asList()));
         put("TSP", new ArrayList<>(
             Arrays.asList(
               "hyflex-tsp-0", "hyflex-tsp-8", "hyflex-tsp-2", "hyflex-tsp-7", "hyflex-tsp-6")));
+        put("VRP", new ArrayList<>(Arrays.asList()));
     }
   };
 
   // This arrays holds the order of problem domains in results file
-  String[] problems = problemInstances.keySet().toArray(new String[0]);
+  String[] problems = {"SAT", "TSP"};
 
   /**
    * Main method of this class.
@@ -89,16 +98,17 @@ public class BenchmarkCalculator {
 
     UnitMetricScoreCalculator scoreCalculator = new UnitMetricScoreCalculator(
         instancesMetadata, 
-        problemInstances);
+        problemInstances,
+        problems);
     
-    String [] resFiles = ScoreCardHandler.getCardsNames(Paths.get(resultsPath + "/" + id));
+    String [] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath + "/" + id));
 
     List<ScoreCard> cards = new ArrayList<>();
 
     for (String fileName : resFiles) {
       Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
       
-      ScoreCard algorithmResults = ScoreCardHandler.loadCard(
+      ScoreCard algorithmResults = ScoreCardHelper.loadCard(
           problems, scoreCardPath, problemInstances);
 
       cards.add(algorithmResults);
@@ -106,6 +116,6 @@ public class BenchmarkCalculator {
 
     List<ScoreCard> results = scoreCalculator.calculateScore(cards);
 
-    ScoreCardHandler.saveResultsToXmlFile(resultsXmlFile, results);
+    ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
   }
 }

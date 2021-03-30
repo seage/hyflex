@@ -54,7 +54,7 @@ public class UnitMetricScoreCalculatorTest {
       }
     };
 
-    sc = new UnitMetricScoreCalculator(problems, instancesMetadata, problemInstances);
+    sc = new UnitMetricScoreCalculator(instancesMetadata, problemInstances, problems);
   }
 
   @Test
