@@ -4,6 +4,7 @@
 
 package hyflex.chesc2011.launcher.commands;
 
+import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
@@ -59,6 +60,11 @@ public class CompetitionRunCommand extends Command {
 
   @Override
   public void performCommand() throws Exception {
+    if (help == true) {
+      JCommander jc = new JCommander(this);
+      jc.usage();
+      return;
+    }
     new Competition().run(hyperheurictics, timeout * 1000, runs, id);
   }
 }
