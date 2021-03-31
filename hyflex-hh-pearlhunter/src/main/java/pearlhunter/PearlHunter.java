@@ -846,30 +846,30 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 	 */
 	private void InitSolutions(int size)
 	{
-        if (TRACELEVEL > 0)
-		{
-			System.out.println("[init] Solutions initialization ...");
-			for (int i = 0; i < LS_TESTS && i < size; i++)
-				System.out.print("\tNo. " + i);
-			System.out.println();
-		}
+        // if (TRACELEVEL > 0)
+		// {
+		// 	System.out.println("[init] Solutions initialization ...");
+		// 	for (int i = 0; i < LS_TESTS && i < size; i++)
+		// 		System.out.print("\tNo. " + i);
+		// 	//System.out.println();
+		// }
 		
 		long randStart = System.currentTimeMillis();
 		for (int i = 0; i < LS_TESTS && i < size; i++)
 		{
 			myProblem.initialiseSolution(i);
 			objValues[i] = myProblem.getFunctionValue(i);
-			if (TRACELEVEL > 0) 
-				System.out.print("\t" + objValues[i] );
+			// if (TRACELEVEL > 0) 
+			// 	System.out.print("\t" + objValues[i] );
 		}
-		if (TRACELEVEL > 0) 
-			System.out.println(">");
+		// if (TRACELEVEL > 0) 
+		// 	System.out.println(">");
 		for (int i = 0; currentMissionID <= 1 && i < LS_TESTS * 10 && System.currentTimeMillis() - randStart < overallTime / 1000; i++)
 		{
 			myProblem.initialiseSolution(memSize - 3);
 			objValues[memSize - 3] = myProblem.getFunctionValue(memSize - 3);
-			if (TRACELEVEL > 0) 
-				System.out.print("\t" + objValues[memSize - 3] );
+			// if (TRACELEVEL > 0) 
+			// 	System.out.print("\t" + objValues[memSize - 3] );
 			for (int j = 0; j < LS_TESTS; j++)
 			{
 				objValues[j] = myProblem.getFunctionValue(j);
@@ -880,8 +880,8 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 				}
 			}
 		}
-		if (TRACELEVEL > 0) 
-			System.out.println(">");
+		// if (TRACELEVEL > 0) 
+		// 	System.out.println(">");
 		for (int i = 0; i < size; i++)
 		{
 			if (i >= LS_TESTS)
@@ -891,12 +891,12 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 			}
 			else
 				objValues[i] = myProblem.getFunctionValue(i);
-			if (TRACELEVEL > 0) 
-				System.out.print("\t" + objValues[i] );
+			// if (TRACELEVEL > 0) 
+			// 	System.out.print("\t" + objValues[i] );
 		}
 		
-        if (TRACELEVEL > 0) 
-			System.out.println();
+        // if (TRACELEVEL > 0) 
+		// 	System.out.println();
 	}
 	
 	/**
@@ -963,10 +963,10 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 				runMode += SLOW_LS_MASK;
 			}
 				
-			if (TRACELEVEL > 1)
-				System.out.print("\t" + objValues[i] );
-			if (TRACELEVEL > 1 && i % LS_TESTS == LS_TESTS - 1)
-				System.out.println("\t by LS " + heuristicID);
+			// if (TRACELEVEL > 1)
+			// 	System.out.print("\t" + objValues[i] );
+			// if (TRACELEVEL > 1 && i % LS_TESTS == LS_TESTS - 1)
+			// 	System.out.println("\t by LS " + heuristicID);
 		}
 		
 		for (int i = testBegin + 1; i < testEnd && now() > 0.85 && !hasTimeExpired(); i += LS_TESTS)
@@ -989,10 +989,10 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 			long time = System.currentTimeMillis() - startTime;
 			hList.setTestedTime(candidateIndex, time);
 				
-			if (TRACELEVEL > 1)
-				System.out.print("\t" + objValues[i] );
-			if (TRACELEVEL > 1 && i % LS_TESTS == LS_TESTS - 1)
-				System.out.println("\t by LS " + heuristicID);
+			// if (TRACELEVEL > 1)
+			// 	System.out.print("\t" + objValues[i] );
+			// if (TRACELEVEL > 1 && i % LS_TESTS == LS_TESTS - 1)
+			// 	System.out.println("\t by LS " + heuristicID);
 		}
 		// sort local search heuristics by performances
 		hList.Sort();
@@ -1136,8 +1136,8 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 				//while (before > objValues[index] && !hasTimeExpired() && now() > diveStart - timeLimit);
 			}
 			
-			if (TRACELEVEL > 0 && deepHits % 100 ==0)
-				System.out.println("seq="+seqHits +", rev="+revHits+", par="+parHits+" @ "+deepHits);
+			// if (TRACELEVEL > 0 && deepHits % 100 ==0)
+			// 	System.out.println("seq="+seqHits +", rev="+revHits+", par="+parHits+" @ "+deepHits);
 		}
 		else
 		{
@@ -1259,8 +1259,8 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 			FullSearch(hList.getHeuristic(i), index);
 			objValues[index] = myProblem.getFunctionValue(index);
 				
-			if (TRACELEVEL > 1)
-				System.out.print("\t" + objValues[index]);
+			// if (TRACELEVEL > 1)
+			// 	System.out.print("\t" + objValues[index]);
 			if (objValues[index] < bestV)
 			{
 				hList.candidates[i].weight ++;
@@ -1300,8 +1300,8 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 		{
 			objValueBefore = objValues[index];
 			objValues[index] = myProblem.applyHeuristic(hList.getHeuristic(i % maxIndex), index, index);
-			if (TRACELEVEL > 1)
-				System.out.print(objValues[index] + "-");
+			// if (TRACELEVEL > 1)
+			// 	System.out.print(objValues[index] + "-");
 			if (objValues[index] < objValueBefore && now() > diveStart - timeLimit)
 			{
 				hList.candidates[i % maxIndex].weight ++;
@@ -1342,11 +1342,11 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 					}
 				}
 			}
-			if (TRACELEVEL > 1)
-				System.out.print(objValues[index] + "..");
+			// if (TRACELEVEL > 1)
+			// 	System.out.print(objValues[index] + "..");
 		}
-		if (TRACELEVEL > 1)
-			System.out.println();
+		// if (TRACELEVEL > 1)
+		// 	System.out.println();
 	}
 	
 	private void DiveRedudantReverse(HeuristicCandidateList hList, int index, double timeLimit)
@@ -1372,8 +1372,8 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 			FullSearch(hList.getHeuristic(i), index);
 			objValues[index] = myProblem.getFunctionValue(index);
 				
-			if (TRACELEVEL > 1)
-				System.out.print("\t" + objValues[index]);
+			// if (TRACELEVEL > 1)
+			// 	System.out.print("\t" + objValues[index]);
 			if (objValues[index] < bestV)
 			{
 				bestV = objValues[index];
@@ -1439,8 +1439,8 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 						hList.candidates[st].weight++;
 				}
 					
-				if (TRACELEVEL > 1)
-					System.out.print("\t" + objValues[index]);
+				// if (TRACELEVEL > 1)
+				// 	System.out.print("\t" + objValues[index]);
 			}
 		}
 	}
@@ -1488,8 +1488,8 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 					}*/
 				}
 				s[i] = getMD5(index);
-				if (TRACELEVEL > 1)
-					System.out.print("\t" + objValues[LS_TESTS + i]);
+				// if (TRACELEVEL > 1)
+				// 	System.out.print("\t" + objValues[LS_TESTS + i]);
 			}
 			
 			for (int i = 0; i < maxIndex && !continueQueue; i++)
@@ -1664,8 +1664,8 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 				else if (objValues[crsID] < objValues[memSize - 5] && objValues[crsID] > objValues[memSize - 4])
 					copy(crsID, memSize - 5);
 			}
-			if (TRACELEVEL > 1)
-				System.out.print(crsList.candidates[i].objValue +",");
+			// if (TRACELEVEL > 1)
+			// 	System.out.print(crsList.candidates[i].objValue +",");
 				
 			for (int j = 0; j < numTests; j++)
 			{
@@ -1767,10 +1767,10 @@ TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
 			crsList.candidates[vAvgOrd[i]].vAvg = log2(i) + 1;
 		}
 		
-		if (TRACELEVEL > 1)
-			System.out.println();
-		if (TRACELEVEL > 1)
-			System.out.println();
+		// if (TRACELEVEL > 1)
+		// 	System.out.println();
+		// if (TRACELEVEL > 1)
+		// 	System.out.println();
 		if (endNormally)
 		{
 			// sorts heuristics
@@ -1901,8 +1901,8 @@ tar = 1.0719 +
 		coList.ResetTestedObjValues();
 		while (!hasTimeExpired())
 		{
-			if (TRACELEVEL > 1)
-				System.out.print("\n> " + objValues[0]);
+			// if (TRACELEVEL > 1)
+			// 	System.out.print("\n> " + objValues[0]);
 			
 			boolean lesser = false;
 			int sCand = 0;
@@ -2131,8 +2131,8 @@ tar = 1.0719 +
 					
 			}
 			
-			if (TRACELEVEL > 1)
-				System.out.println();
+			// if (TRACELEVEL > 1)
+			// 	System.out.println();
 		}
 	}
 	
@@ -2178,8 +2178,8 @@ tar = 1.0719 +
 		double archive = Double.MAX_VALUE;
 		for (; !hasTimeExpired();)
 		{
-			if (TRACELEVEL > 1)
-				System.out.println("> " + objValues[src1]);
+			// if (TRACELEVEL > 1)
+			// 	System.out.println("> " + objValues[src1]);
 			archive = objValues[src1];
 				
 			
@@ -2382,8 +2382,8 @@ tar = 1.0719 +
 						}
 						else
 							snorkelingDir = MAX_SNORKELING;
-						if (TRACELEVEL > 1)
-							System.out.print(snorkelingDir + "|" + snorkelingSnor + "-");
+						// if (TRACELEVEL > 1)
+						// 	System.out.print(snorkelingDir + "|" + snorkelingSnor + "-");
 					}
 					/////////////////////
 					snorkelingDir = 1;
@@ -2523,7 +2523,7 @@ tar = 1.0719 +
 							Snorkeling(lDivList, memSize - 3);
 									ob3 = myProblem.getFunctionValue(memSize - 3);
 							DeepDive(hDivList, memSize - 5);
-							System.out.println(ob1+","+ob2+","+ob3+","+myProblem.getFunctionValue(memSize - 5));
+							//System.out.println(ob1+","+ob2+","+ob3+","+myProblem.getFunctionValue(memSize - 5));
 							
 							if (objValues[memSize - 3] < objValues[0])
 							{
@@ -2618,12 +2618,12 @@ tar = 1.0719 +
 											snorHits[myHitId]++;
 										targetPot = true;
 										newBkFound = true;
-										if (TRACELEVEL > 0)
-										{
-											System.out.print(" > BK found from BUOY restart. ");
-											System.out.print(buoyList[selectedHeu] == rnrList ? " RR " : " MU ");
-											System.out.println(buoyHeu[selectedHeu].id + "#");
-										}
+										// if (TRACELEVEL > 0)
+										// {
+										// 	//System.out.print(" > BK found from BUOY restart. ");
+										// 	//System.out.print(buoyList[selectedHeu] == rnrList ? " RR " : " MU ");
+										// 	//System.out.println(buoyHeu[selectedHeu].id + "#");
+										// }
 										break;
 									}
 									else if (objValues[memSize - 6] < objValues[memSize - 3] 
@@ -2631,12 +2631,12 @@ tar = 1.0719 +
 									{
 										copy(memSize - 6, memSize - 3);
 										copy(memSize - 8, memSize - 5);
-										if (TRACELEVEL > 0)
-										{
-											System.out.print(" > solution advised by BUOY restart. ");
-											System.out.print(buoyList[selectedHeu] == rnrList ? " RR " : " MU ");
-											System.out.println(buoyHeu[selectedHeu].id + "#");
-										}
+										// if (TRACELEVEL > 0)
+										// {
+										// 	System.out.print(" > solution advised by BUOY restart. ");
+										// 	System.out.print(buoyList[selectedHeu] == rnrList ? " RR " : " MU ");
+										// 	System.out.println(buoyHeu[selectedHeu].id + "#");
+										// }
 									}
 								}
 							}
@@ -2670,7 +2670,7 @@ tar = 1.0719 +
 						//if (lsMinEnabled)
 							DeepDive(hDivList, crsID);
 						
-						System.out.println();
+						//System.out.println();
 						if (!sameTwoSolution && objValues[crsID] >= objValues[0] && objValues[memSize - 4] > 0)
 						{
 							if (lsEnabled)
@@ -2738,8 +2738,8 @@ tar = 1.0719 +
 					if (srcLS && objValues[0] < objValues[memSize - 2])
 						lsHits[myHitId]++;
 						
-					if (TRACELEVEL > 0)
-						System.out.println("ls="+lsHits[myHitId]+" dir="+dirHits[myHitId]+" snor="+snorHits[myHitId]);
+					// if (TRACELEVEL > 0)
+					// 	System.out.println("ls="+lsHits[myHitId]+" dir="+dirHits[myHitId]+" snor="+snorHits[myHitId]);
 						
 					if (SUB_TEST || SUB_APPLY)
 					{
@@ -2753,8 +2753,8 @@ tar = 1.0719 +
 					}
 					if (!improvement)
 						continue;
-					if (TRACELEVEL > 0)
-						System.out.println(">" + objValues[0] + " by Heurusitc #" + myList.getHeuristic(myId) + " (" + myList.getType() + ") ls="+lsEnabled+".");
+					// if (TRACELEVEL > 0)
+					// 	System.out.println(">" + objValues[0] + " by Heurusitc #" + myList.getHeuristic(myId) + " (" + myList.getType() + ") ls="+lsEnabled+".");
 						
 					myList.Weight += 1;
 					myList.candidates[myId].weight += 1;
@@ -2795,8 +2795,8 @@ tar = 1.0719 +
 					if (isTest() && bestTestedTwo > objValues[1] + Math.min(objValues[0], objValues[memSize - 2]))
 						bestTestedTwo = objValues[1] + Math.min(objValues[0], objValues[memSize - 2]);
 					
-					if (TRACELEVEL > 1)
-						System.out.println();
+					// if (TRACELEVEL > 1)
+					// 	System.out.println();
 						
 					long missionTime = System.currentTimeMillis() - missionStartTime;
 					if (isTest() && missionTime > 0.1 * overallTime || hasTimeExpired())
@@ -3054,8 +3054,8 @@ tar = 1.0719 +
 		if (p >= 0)
 		{
 			copy(index, poolOffset + p);
-			if (TRACELEVEL > 1)
-				System.out.println(" < Adding solution to pool (obj = " + objValues[index] + ", pool size = " + poolSize + ")");
+			// if (TRACELEVEL > 1)
+			// 	System.out.println(" < Adding solution to pool (obj = " + objValues[index] + ", pool size = " + poolSize + ")");
 		}
 	}
 	
