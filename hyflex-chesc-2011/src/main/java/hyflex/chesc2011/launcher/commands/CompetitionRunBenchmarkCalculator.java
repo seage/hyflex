@@ -13,12 +13,12 @@ public class CompetitionRunBenchmarkCalculator extends Command {
   private boolean help;
 
   @Parameter(names = {"--id"},
-      required = true,
+      required = false,
       description = "Name folder containing results.")
   public String id = "0";
 
   @Parameter(names = {"-m", "--metric"},
-      required = true,
+      required = false,
       description = "Name of the metric to be used "
       + "available values are: UnitMetric, F1Metric")
   public String metric = "UnitMetric";
