@@ -11,18 +11,34 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
- * Class represents benchmark calculator for each solutions card stored inside results file. . File
- * has the following format line 0 | SAT: 3, 5, 4, 10, 11 1 | BP: 7, 1, 9, 10, 11 2 | PS: 5, 9, 8,
- * 10, 11 3 | FS: 1, 8, 3, 10, 11 4 | TSP: 0, 8, 2, 7, 6 5 | VRP: 6, 2, 5, 1, 9 . Lines represents
+ * Class represents benchmark calculator for each solutions card stored inside results file.
+ * .
+ * File has the following format 
+ * line 
+ *  0 | SAT: 3, 5, 4, 10, 11
+ *  1 | BP: 7, 1, 9, 10, 11
+ *  2 | PS: 5, 9, 8, 10, 11
+ *  3 | FS: 1, 8, 3, 10, 11
+ *  4 | TSP: 0, 8, 2, 7, 6
+ *  5 | VRP: 6, 2, 5, 1, 9 
+ * . 
+ * Lines represents
  * problem domains and collumns instances of this domain You can change what problem is where, all
- * that's needed to be done is to keep the same format for all results files. . IMPORTANT!!! If you
+ * that's needed to be done is to keep the same format for all results files. 
+ * . 
+ * IMPORTANT!!! If you
  * decide to change the order of lines, keep in mind, you have to change it also in the
- * ScoreCardHelper class. . And finally if you modify the order of problem domains or instances also
+ * ScoreCardHelper class. 
+ * . 
+ * And finally if you modify the order of problem domains or instances also
  * you have to modify the problems array and problemInstances map
  */
 public class BenchmarkCalculator {
+  private final Logger logger = 
+      Logger.getLogger(BenchmarkCalculator.class.getName());
   // Path where the results are stored
   String resultsPath = "./results";
   // Path where the metadata are stored
@@ -99,6 +115,7 @@ public class BenchmarkCalculator {
 
     List<ScoreCard> results = scoreCalculator.calculateScore(cards);
 
+    logger.info("The result file is being stored to " + resultsXmlFile);
     ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
   }
 }
