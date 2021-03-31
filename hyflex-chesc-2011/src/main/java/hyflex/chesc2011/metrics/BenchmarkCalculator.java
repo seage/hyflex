@@ -37,7 +37,7 @@ import java.util.logging.Logger;
  * you have to modify the problems array and problemInstances map
  */
 public class BenchmarkCalculator {
-  private final Logger logger = 
+  private static final Logger logger = 
       Logger.getLogger(BenchmarkCalculator.class.getName());
   // Path where the results are stored
   String resultsPath = "./results";
@@ -81,7 +81,7 @@ public class BenchmarkCalculator {
       BenchmarkCalculator ibc = new BenchmarkCalculator();
       ibc.run(args[0], args[1]);
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      logger.severe(e.getMessage());
     }
   }
 
