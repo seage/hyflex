@@ -58,12 +58,12 @@ public class BenchmarkCalculator {
    */
   public static void main(String[] args) {
     try {
-      if (args.length <= 0) {
+      if (args.length <= 1) {
         throw new Exception("Error: No results directory name given.");
       }
 
       BenchmarkCalculator ibc = new BenchmarkCalculator();
-      ibc.run(args[0]);
+      ibc.run(args[0], args[1]);
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -75,7 +75,7 @@ public class BenchmarkCalculator {
    * 
    * @param id Name of the directory where algorithm problem results are stored.
    */
-  public void run(String id) throws Exception {
+  public void run(String id, String metric) throws Exception {
     resultsXmlFile = String.format(resultsXmlFile, id);
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
