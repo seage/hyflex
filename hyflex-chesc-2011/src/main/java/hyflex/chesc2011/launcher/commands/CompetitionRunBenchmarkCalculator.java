@@ -14,9 +14,9 @@ public class CompetitionRunBenchmarkCalculator extends Command {
   private boolean help;
 
   @Parameter(names = {"--id"},
-      required = false,
+      required = true,
       description = "Name folder containing results.")
-  public String id = "0";
+  public String id;
 
   @Parameter(names = {"-m", "--metric"},
       required = false,
