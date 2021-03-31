@@ -117,6 +117,11 @@ public class BenchmarkCalculator {
         System.out.println("\nInput files:");
         for (int file = 0; file < children.length; file++) {
           String filename = children[file];
+          
+          if (filename.contains(".txt") == false) {
+            continue;
+          }
+
           System.out.println(filename);
           hhnames[file] = filename.split(".txt")[0];
           try {
