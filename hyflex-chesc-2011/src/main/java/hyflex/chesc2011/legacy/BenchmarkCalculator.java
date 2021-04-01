@@ -76,11 +76,14 @@ public class BenchmarkCalculator {
      * Edited by David Omrai.
      */
     
+    
     //get the path to results folder
     final String resultsDirPath = Optional.ofNullable(
         System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
 
+
     File resultsDir = new File(resultsDirPath);
+
 
     //get all subdrectories from the results directory
     String[] directories = resultsDir.list(new FilenameFilter() {
@@ -90,10 +93,12 @@ public class BenchmarkCalculator {
       }
     });
 
+
     //does results directory exists
     if (directories == null) {
       throw new Exception("WARNING, directory " + defaultDirectory + " doesn't exists.");
     }
+
 
     //is id directory in results folder
     if (Arrays.asList(directories).contains(id)) {
@@ -101,8 +106,6 @@ public class BenchmarkCalculator {
     } else if (id != "") {
       throw new Exception("WARNING, directory " + defaultDirectory + "/" + id + " doesn't exists.");
     }
-
-    //create file for output
     
 
     //the main part of the evaluation
@@ -115,7 +118,8 @@ public class BenchmarkCalculator {
       try (PrintWriter out = new PrintWriter(pathToSubmitted + "/f1-metric-scores.log")) {
 
         File dir = new File(pathToSubmitted); 
-        String[] children = dir.list();     
+        String[] children = Arrays
+            .stream(dir.list()).filter(x -> x.contains(".txt")).toArray(String[]::new);     
         String[] hhnames = null;
         int hyperheuristics = 0;
         double[][][] submittedscores = null;
@@ -128,10 +132,6 @@ public class BenchmarkCalculator {
           out.println("\nInput files:");
           for (int file = 0; file < children.length; file++) {
             String filename = children[file];
-            
-            if (filename.contains(".txt") == false) {
-              continue;
-            }
 
             out.println(filename);
             hhnames[file] = filename.split(".txt")[0];
