@@ -47,8 +47,8 @@ public class ScoreCardHelper {
     String cardName = path.getFileName().toString();
     ScoreCard result = new ScoreCard(cardName.substring(0, cardName.lastIndexOf(".")), problems);
 
-    try (Scanner scanner = new Scanner(new File(path.toString())).useDelimiter("\n")) {
-
+    try (Scanner scanner = new Scanner(new File(path.toString()))) {
+      scanner.useDelimiter("\n");
       for (String problemId : cardProblemsOrder) {
 
         if (scanner.hasNextLine() == false) {
