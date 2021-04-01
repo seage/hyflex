@@ -5,11 +5,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Optional;
 
+import java.util.logging.Logger;
 /*
  * @author Dr Matthew Hyde
  * ASAP Research Group, School of Computer Science, University of Nottingham
@@ -59,6 +62,9 @@ import java.util.Optional;
  */
 
 public class BenchmarkCalculator {
+  private static final Logger logger = 
+      Logger.getLogger(BenchmarkCalculator.class.getName());
+    
   final String defaultDirectory = "./results";
 
   /**
@@ -96,6 +102,9 @@ public class BenchmarkCalculator {
       throw new Exception("WARNING, directory " + defaultDirectory + "/" + id + " doesn't exists.");
     }
 
+    //create file for output
+    
+
     //the main part of the evaluation
     int domains = 6;
     int numberOfInstances = 5;
@@ -103,161 +112,163 @@ public class BenchmarkCalculator {
 
       String pathToSubmitted = resultsDirPath + "/" + directory;
 
-      File dir = new File(pathToSubmitted); 
-      String[] children = dir.list();     
-      String[] hhnames = null;
-      int hyperheuristics = 0;
-      double[][][] submittedscores = null;
-      if (children == null) { 
-        System.out.println("There are no files in the submitted directory");
-      } else {
-        hyperheuristics = children.length;
-        hhnames = new String[children.length];
-        submittedscores = new double[domains][numberOfInstances][hyperheuristics];
-        System.out.println("\nInput files:");
-        for (int file = 0; file < children.length; file++) {
-          String filename = children[file];
-          
-          if (filename.contains(".txt") == false) {
-            continue;
-          }
+      try (PrintWriter out = new PrintWriter(pathToSubmitted + "/f1-metric-scores.log")) {
 
-          System.out.println(filename);
-          hhnames[file] = filename.split(".txt")[0];
-          try {
-            FileReader read = new FileReader(pathToSubmitted + "/" + filename);
-            BufferedReader buff = new BufferedReader(read);
-            for (int l = 0; l < domains; l++) {
-              String s = buff.readLine();
-              String[] sa = s.split(",");
-              for (int ins = 0; ins < numberOfInstances; ins++) {
-                String u = sa[ins];
-                double individualresult = Double.parseDouble(u);
-                submittedscores[l][ins][file] = individualresult;
-                System.out.print(individualresult + " ");
-              }
-              System.out.println();
+        File dir = new File(pathToSubmitted); 
+        String[] children = dir.list();     
+        String[] hhnames = null;
+        int hyperheuristics = 0;
+        double[][][] submittedscores = null;
+        if (children == null) { 
+          logger.warning("There are no files in the submitted directory");
+        } else {
+          hyperheuristics = children.length;
+          hhnames = new String[children.length];
+          submittedscores = new double[domains][numberOfInstances][hyperheuristics];
+          out.println("\nInput files:");
+          for (int file = 0; file < children.length; file++) {
+            String filename = children[file];
+            
+            if (filename.contains(".txt") == false) {
+              continue;
             }
-            buff.close();
-            read.close();
-          } catch (IOException e) {
-            System.err.println(e.getMessage());
+
+            out.println(filename);
+            hhnames[file] = filename.split(".txt")[0];
+            try {
+              FileReader read = new FileReader(pathToSubmitted + "/" + filename);
+              BufferedReader buff = new BufferedReader(read);
+              for (int l = 0; l < domains; l++) {
+                String s = buff.readLine();
+                String[] sa = s.split(",");
+                for (int ins = 0; ins < numberOfInstances; ins++) {
+                  String u = sa[ins];
+                  double individualresult = Double.parseDouble(u);
+                  submittedscores[l][ins][file] = individualresult;
+                  out.print(individualresult + " ");
+                }
+                out.println();
+              }
+              buff.close();
+              read.close();
+            } catch (IOException e) {
+              new Exception(e.getMessage());
+            }
+          }
+        }
+
+        //used to store all of the scores
+        double[][][] results = new double[domains][numberOfInstances][hyperheuristics];
+
+        //add the scores of the submitted hyper-heuristics
+        for (int d = 0; d < domains; d++) {
+          for (int i = 0; i < numberOfInstances; i++) {
+            for (int h = 0; h < hyperheuristics; h++) {
+              results[d][i][h] = submittedscores[d][i][h];
+            }
+          }
+        }
+
+        double[] scores = new double[hyperheuristics];
+        double[] basescores = {10,8,6,5,4,3,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        // double totalDomainScores = 0;
+        // 
+        // for (double g : basescores) {
+        //   totalDomainScores += g;
+        // }
+        // totalDomainScores *= numberOfInstances;//total available per domain
+        // 
+        for (int domain = 0; domain < domains; domain++) {
+          double[] domainscores = new double[hyperheuristics];
+          for (int i = 0; i < numberOfInstances; i++) {
+            double[] res = results[domain][i];
+            ArrayList<Score> al = new ArrayList<Score>();
+            for (int s = 0; s < res.length; s++) {
+              Score obj = new Score(s, res[s]);
+              al.add(obj);
+            }
+            Collections.sort(al); 
+            double lastscore = Double.POSITIVE_INFINITY;
+            int scoreindex = 0;
+            double tieaverage = 0;
+            //int tieNumber = 0;
+            ArrayList<Integer> list = new ArrayList<Integer>();
+            while (true) {
+              Score test1 = null;
+              if (scoreindex < al.size()) {
+                test1 = al.get(scoreindex);
+              }
+              if (test1 == null || test1.score != lastscore) {
+                double average = tieaverage / list.size();
+                for (int f = 0; f < list.size(); f++) {
+                  domainscores[list.get(f)] += average;
+                }
+                if (test1 == null) {
+                  break;//all HH have been given a score
+                }
+                //tieNumber = 0;
+                tieaverage = 0;
+                list = new ArrayList<Integer>();
+                list.add(test1.num);
+                //tieNumber++;
+                tieaverage += basescores[scoreindex];
+              } else {
+                list.add(test1.num);
+                //tieNumber++;
+                tieaverage += basescores[scoreindex];
+              }
+              lastscore = test1.score;
+              scoreindex++;
+            }
+          }
+          String d = "";
+          switch (domain) {
+            case 0: 
+              d = "SAT";
+              break;
+            case 1: 
+              d = "Bin Packing";
+              break;
+            case 2: 
+              d = "Personnel Scheduling";
+              break;
+            case 3: 
+              d = "Flow Shop";
+              break;
+            case 4: 
+              d = "TSP";
+              break;
+            case 5: 
+              d = "VRP";
+              break;
+            default:  
+              break;
+          }
+          out.println(d);
+          //double domainTotal = 0;
+          for (int g = 0; g < domainscores.length; g++) {
+            //domainTotal += domainscores[g];
+            scores[g] += domainscores[g];
+            out.println(hhnames[g] + ", " + domainscores[g]);
+          }
+          out.println();
+          /*
+          if (Math.round(domainTotal) != totalDomainScores) {
+            System.err.println("Error, total scores for this domain 
+            (" + domainTotal + ") do not add up to " + totalDomainScores);
+            System.err.println("This represents a bug. Please email this
+            java class file to Dr Matthew Hyde at mvh@cs.nott.ac.uk");
             System.exit(-1);
           }
+          */
         }
+        out.println("------------------------------------------");
+        out.println("Overall Total " + directory + " ");
+        for (int g = 0; g < scores.length; g++) {
+          out.println(hhnames[g] + ", " + scores[g]);
+        }
+        out.println("------------------------------------------");
       }
-
-      //used to store all of the scores
-      double[][][] results = new double[domains][numberOfInstances][hyperheuristics];
-
-      //add the scores of the submitted hyper-heuristics
-      for (int d = 0; d < domains; d++) {
-        for (int i = 0; i < numberOfInstances; i++) {
-          for (int h = 0; h < hyperheuristics; h++) {
-            results[d][i][h] = submittedscores[d][i][h];
-          }
-        }
-      }
-
-      double[] scores = new double[hyperheuristics];
-      double[] basescores = {10,8,6,5,4,3,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-      // double totalDomainScores = 0;
-      // 
-      // for (double g : basescores) {
-      //   totalDomainScores += g;
-      // }
-      // totalDomainScores *= numberOfInstances;//total available per domain
-      // 
-      for (int domain = 0; domain < domains; domain++) {
-        double[] domainscores = new double[hyperheuristics];
-        for (int i = 0; i < numberOfInstances; i++) {
-          double[] res = results[domain][i];
-          ArrayList<Score> al = new ArrayList<Score>();
-          for (int s = 0; s < res.length; s++) {
-            Score obj = new Score(s, res[s]);
-            al.add(obj);
-          }
-          Collections.sort(al); 
-          double lastscore = Double.POSITIVE_INFINITY;
-          int scoreindex = 0;
-          double tieaverage = 0;
-          //int tieNumber = 0;
-          ArrayList<Integer> list = new ArrayList<Integer>();
-          while (true) {
-            Score test1 = null;
-            if (scoreindex < al.size()) {
-              test1 = al.get(scoreindex);
-            }
-            if (test1 == null || test1.score != lastscore) {
-              double average = tieaverage / list.size();
-              for (int f = 0; f < list.size(); f++) {
-                domainscores[list.get(f)] += average;
-              }
-              if (test1 == null) {
-                break;//all HH have been given a score
-              }
-              //tieNumber = 0;
-              tieaverage = 0;
-              list = new ArrayList<Integer>();
-              list.add(test1.num);
-              //tieNumber++;
-              tieaverage += basescores[scoreindex];
-            } else {
-              list.add(test1.num);
-              //tieNumber++;
-              tieaverage += basescores[scoreindex];
-            }
-            lastscore = test1.score;
-            scoreindex++;
-          }
-        }
-        String d = "";
-        switch (domain) {
-          case 0: 
-            d = "SAT";
-            break;
-          case 1: 
-            d = "Bin Packing";
-            break;
-          case 2: 
-            d = "Personnel Scheduling";
-            break;
-          case 3: 
-            d = "Flow Shop";
-            break;
-          case 4: 
-            d = "TSP";
-            break;
-          case 5: 
-            d = "VRP";
-            break;
-          default:  
-            break;
-        }
-        System.out.println(d);
-        //double domainTotal = 0;
-        for (int g = 0; g < domainscores.length; g++) {
-          //domainTotal += domainscores[g];
-          scores[g] += domainscores[g];
-          System.out.println(hhnames[g] + ", " + domainscores[g]);
-        }
-        System.out.println();
-        /*
-        if (Math.round(domainTotal) != totalDomainScores) {
-          System.err.println("Error, total scores for this domain 
-          (" + domainTotal + ") do not add up to " + totalDomainScores);
-          System.err.println("This represents a bug. Please email this
-          java class file to Dr Matthew Hyde at mvh@cs.nott.ac.uk");
-          System.exit(-1);
-        }
-        */
-      }
-      System.out.println("------------------------------------------");
-      System.out.println("Overall Total " + directory + " ");
-      for (int g = 0; g < scores.length; g++) {
-        System.out.println(hhnames[g] + ", " + scores[g]);
-      }
-      System.out.println("------------------------------------------");
     }
   }
 

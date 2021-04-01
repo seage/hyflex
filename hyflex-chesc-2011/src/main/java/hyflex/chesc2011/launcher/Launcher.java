@@ -30,7 +30,7 @@ public class Launcher {
     try {
       HashMap<String, Command> commands = new LinkedHashMap<>();
       commands.put("competition-run", new CompetitionRunCommand());
-      commands.put("competition-benchmark-calculator", new CompetitionEvaluateCommand());
+      commands.put("competition-evaluate", new CompetitionEvaluateCommand());
 
       Launcher launcher = new Launcher();
       JCommander jc = new JCommander(launcher);
