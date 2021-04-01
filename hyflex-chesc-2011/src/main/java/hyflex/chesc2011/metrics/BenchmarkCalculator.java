@@ -115,7 +115,7 @@ public class BenchmarkCalculator {
 
     List<ScoreCard> results = scoreCalculator.calculateScore(cards);
 
-    logger.info("The result file is being stored to " + resultsXmlFile);
     ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
+    logger.info("The score file stored to " + resultsXmlFile);
   }
 }

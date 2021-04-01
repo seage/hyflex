@@ -27,7 +27,8 @@ public class ScoreCardHelper {
   /**
    * Array holds information on which line of the result card is which problem domain.
    */
-  static String[] cardProblemsOrder = {"SAT", // 0
+  static String[] cardProblemsOrder = {
+      "SAT", // 0
       "BP", // 1
       "PS", // 2
       "FS", // 3

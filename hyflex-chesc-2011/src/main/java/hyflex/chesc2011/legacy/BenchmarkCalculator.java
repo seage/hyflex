@@ -2,13 +2,30 @@ package hyflex.chesc2011.legacy;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Paths;
+//import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
+import java.util.logging.Logger;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /*
  * @author Dr Matthew Hyde
@@ -59,6 +76,9 @@ import java.util.Optional;
  */
 
 public class BenchmarkCalculator {
+  private static final Logger logger = 
+      Logger.getLogger(BenchmarkCalculator.class.getName());
+    
   final String defaultDirectory = "./results";
 
   /**
@@ -70,11 +90,14 @@ public class BenchmarkCalculator {
      * Edited by David Omrai.
      */
     
+    
     //get the path to results folder
     final String resultsDirPath = Optional.ofNullable(
         System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
 
+
     File resultsDir = new File(resultsDirPath);
+
 
     //get all subdrectories from the results directory
     String[] directories = resultsDir.list(new FilenameFilter() {
@@ -84,10 +107,12 @@ public class BenchmarkCalculator {
       }
     });
 
+
     //does results directory exists
     if (directories == null) {
       throw new Exception("WARNING, directory " + defaultDirectory + " doesn't exists.");
     }
+
 
     //is id directory in results folder
     if (Arrays.asList(directories).contains(id)) {
@@ -95,6 +120,7 @@ public class BenchmarkCalculator {
     } else if (id != "") {
       throw new Exception("WARNING, directory " + defaultDirectory + "/" + id + " doesn't exists.");
     }
+   
 
     //the main part of the evaluation
     int domains = 6;
@@ -103,21 +129,33 @@ public class BenchmarkCalculator {
 
       String pathToSubmitted = resultsDirPath + "/" + directory;
 
+      //try (PrintWriter out = new PrintWriter(pathToSubmitted + "/f1-metric-scores.log")) {
+
       File dir = new File(pathToSubmitted); 
-      String[] children = dir.list();     
+      String[] children = Arrays
+          .stream(dir.list()).filter(x -> x.contains(".txt")).toArray(String[]::new);   
+          
+          
+      /**
+       * This map is used for storing the results of each hh.
+       */
+      Map<String, Map<String, Double>> resultsMap = new HashMap<>();
+
+
       String[] hhnames = null;
       int hyperheuristics = 0;
       double[][][] submittedscores = null;
       if (children == null) { 
-        System.out.println("There are no files in the submitted directory");
+        logger.warning("There are no files in the submitted directory");
       } else {
         hyperheuristics = children.length;
         hhnames = new String[children.length];
         submittedscores = new double[domains][numberOfInstances][hyperheuristics];
-        System.out.println("\nInput files:");
+        // out.println("\nInput files:");
         for (int file = 0; file < children.length; file++) {
           String filename = children[file];
-          System.out.println(filename);
+
+          // out.println(filename);
           hhnames[file] = filename.split(".txt")[0];
           try {
             FileReader read = new FileReader(pathToSubmitted + "/" + filename);
@@ -129,15 +167,14 @@ public class BenchmarkCalculator {
                 String u = sa[ins];
                 double individualresult = Double.parseDouble(u);
                 submittedscores[l][ins][file] = individualresult;
-                System.out.print(individualresult + " ");
+                // out.println(individualresult + " ");
               }
-              System.out.println();
+              // out.println();
             }
             buff.close();
             read.close();
           } catch (IOException e) {
-            System.err.println(e.getMessage());
-            System.exit(-1);
+            new Exception(e.getMessage());
           }
         }
       }
@@ -229,14 +266,22 @@ public class BenchmarkCalculator {
           default:  
             break;
         }
-        System.out.println(d);
+
+        // out.println(d);
         //double domainTotal = 0;
         for (int g = 0; g < domainscores.length; g++) {
           //domainTotal += domainscores[g];
           scores[g] += domainscores[g];
-          System.out.println(hhnames[g] + ", " + domainscores[g]);
+
+          if (resultsMap.containsKey(hhnames[g]) == false) {
+            resultsMap.put(hhnames[g], new HashMap<>());
+          }
+
+          resultsMap.get(hhnames[g]).put(d.toString(), domainscores[g]);
+
+          // out.println(hhnames[g] + ", " + domainscores[g]);
         }
-        System.out.println();
+        // out.println();
         /*
         if (Math.round(domainTotal) != totalDomainScores) {
           System.err.println("Error, total scores for this domain 
@@ -247,12 +292,63 @@ public class BenchmarkCalculator {
         }
         */
       }
-      System.out.println("------------------------------------------");
-      System.out.println("Overall Total " + directory + " ");
+      // out.println("------------------------------------------");
+      // out.println("Overall Total " + directory + " ");
       for (int g = 0; g < scores.length; g++) {
-        System.out.println(hhnames[g] + ", " + scores[g]);
+        resultsMap.get(hhnames[g]).put("total", scores[g]);
+        // out.println(hhnames[g] + ", " + scores[g]);
       }
-      System.out.println("------------------------------------------");
+      // out.println("------------------------------------------");
+
+      String resultsXmlFile = Paths.get(pathToSubmitted, "/f1-metric-scores.xml").toString();
+      saveResultsToXmlFile(resultsXmlFile, resultsMap);
+      logger.info("The score file stored to " + resultsXmlFile);
+    }
+  }
+
+  private static void saveResultsToXmlFile(
+      String resultsXmlFile, Map<String, Map<String, Double>> results) {
+    try {
+      DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+      Document document = documentBuilder.newDocument();
+  
+      // root element
+      Element root = document.createElement("results");
+      document.appendChild(root);
+
+      for (String algorithmName: results.keySet()) {
+        Element algorithm = document.createElement("algorithm");
+        algorithm.setAttribute("name", algorithmName);
+        algorithm.setAttribute("score", Double.toString(results.get(algorithmName).get("total")));
+
+        for (String problemId: results.get(algorithmName).keySet()) {
+          if (problemId == "total") {
+            continue;
+          }
+
+          Element problem = document.createElement("problem");
+          problem.setAttribute("name", problemId);
+          problem.setAttribute("score", Double.toString(results.get(algorithmName).get(problemId)));
+
+          algorithm.appendChild(problem);
+        }
+        root.appendChild(algorithm);
+      }
+
+
+      // create the xml file
+      // transform the DOM Object to an XML File
+      TransformerFactory transformerFactory = TransformerFactory.newInstance();
+      Transformer transformer = transformerFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      DOMSource domSource = new DOMSource(document);
+      StreamResult streamResult =
+          new StreamResult(new PrintWriter(new FileOutputStream(new File(resultsXmlFile), false)));
+
+      transformer.transform(domSource, streamResult);
+    } catch (Exception e) {
+      logger.severe(e.toString());
     }
   }
 
