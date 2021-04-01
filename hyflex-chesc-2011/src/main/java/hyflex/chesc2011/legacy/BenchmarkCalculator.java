@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 //import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -299,7 +300,9 @@ public class BenchmarkCalculator {
       }
       // out.println("------------------------------------------");
 
-      saveResultsToXmlFile(pathToSubmitted + "/f1-metric-scores.xml", resultsMap);
+      String resultsXmlFile = Paths.get(pathToSubmitted, "/f1-metric-scores.xml").toString();
+      saveResultsToXmlFile(resultsXmlFile, resultsMap);
+      logger.info("The score file stored to " + resultsXmlFile);
     }
   }
 
