@@ -5,7 +5,7 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
 @Parameters(commandDescription = "Perform benchmark calculation on given results.")
-public class CompetitionRunBenchmarkCalculator extends Command {
+public class CompetitionEvaluateCommand extends Command {
 
   @Parameter(names = {"--help"},
       help = true,
