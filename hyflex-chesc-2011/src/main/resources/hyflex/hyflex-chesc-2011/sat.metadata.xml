@@ -4,8 +4,8 @@
         <Instance id="mat-744-2464-hyflex-0" optimum="0" random="428" size="744"/>
         <Instance id="hid1-700-3500-hyflex-1" optimum="0" random="438" size="700"/>
         <Instance id="hid2-700-3500-hyflex-2" optimum="0" random="436" size="700"/>
-        <Instance id="i3-525-2276-hyflex-3" optimum="0" random="330" size="525"/>
-        <Instance id="i3-525-2336-hyflex-4" optimum="0" random="347" size="525"/>
+        <Instance id="pg-525-2276-hyflex-3" optimum="0" random="330" size="525"/>
+        <Instance id="pg-525-2336-hyflex-4" optimum="0" random="347" size="525"/>
         <Instance id="i4-696-3122-hyflex-5" optimum="0" random="463" size="696"/>
         <Instance id="hg1-250-1000-hyflex-6" optimum="0" random="124" size="250"/>
         <Instance id="hg2-250-1000-hyflex-7" optimum="0" random="124" size="250"/>
