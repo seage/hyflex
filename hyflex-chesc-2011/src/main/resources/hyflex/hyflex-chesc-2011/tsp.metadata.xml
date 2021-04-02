@@ -25,16 +25,16 @@
         <Instance id="fl417" optimum="11861" random="488979" size="417"/>
         <Instance id="fnl4461" optimum="182566" random="8288887" size="4461"/>
         <Instance id="gil262" optimum="2378" random="26711" size="262"/>
-        <Instance id="hyflex-tsp-0" optimum="48191" random="747660" size="299"/>
-        <Instance id="hyflex-tsp-1" optimum="107217" random="1876277" size="439"/>
-        <Instance id="hyflex-tsp-2" optimum="6773" random="111818" size="575"/>
-        <Instance id="hyflex-tsp-3" optimum="41910" random="860898" size="724"/>
-        <Instance id="hyflex-tsp-4" optimum="8806" random="177396" size="783"/>
-        <Instance id="hyflex-tsp-5" optimum="56892" random="1387054" size="1173"/>
-        <Instance id="hyflex-tsp-6" optimum="50801" random="1700594" size="1291"/>
-        <Instance id="hyflex-tsp-7" optimum="64253" random="2487368" size="2152"/>
-        <Instance id="hyflex-tsp-8" optimum="19982859" random="2143400926" size="13509"/>
-        <Instance id="hyflex-tsp-9" optimum="645238" random="58887652" size="18512"/>
+        <Instance id="pr299-hyflex-0" optimum="48191" random="747660" size="299"/>
+        <Instance id="pr439-hyflex-1" optimum="107217" random="1876277" size="439"/>
+        <Instance id="rat575-hyflex-2" optimum="6773" random="111818" size="575"/>
+        <Instance id="u724-hyflex-3" optimum="41910" random="860898" size="724"/>
+        <Instance id="rat783-hyflex-4" optimum="8806" random="177396" size="783"/>
+        <Instance id="pcb1173-hyflex-5" optimum="56892" random="1387054" size="1173"/>
+        <Instance id="d1291-hyflex-6" optimum="50801" random="1700594" size="1291"/>
+        <Instance id="u2152-hyflex-7" optimum="64253" random="2487368" size="2152"/>
+        <Instance id="usa13509-hyflex-8" optimum="19982859" random="2143400926" size="13509"/>
+        <Instance id="d18512-hyflex-9" optimum="645238" random="58887652" size="18512"/>
         <Instance id="kroA100" optimum="21282" random="171484" size="100"/>
         <Instance id="kroA150" optimum="26524" random="258083" size="150"/>
         <Instance id="kroA200" optimum="29368" random="340824" size="200"/>
