@@ -57,7 +57,7 @@ public class BenchmarkCalculator {
           "pg-525-2276-hyflex-3",
           "pg-696-3122-hyflex-5", 
           "pg-525-2336-hyflex-4",
-          "braun-684-2300-hyflex-10", 
+          "jarv-684-2300-hyflex-10", 
           "hg4-300-1200-hyflex-11"
           )
         )
