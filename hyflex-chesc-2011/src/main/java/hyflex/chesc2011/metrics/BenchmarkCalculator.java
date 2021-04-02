@@ -53,13 +53,27 @@ public class BenchmarkCalculator {
   @SuppressWarnings("serial")
   Map<String, List<String>> problemInstances = new HashMap<>() {
     {
-      put("SAT", new ArrayList<>(Arrays.asList("hyflex-sat-3", "hyflex-sat-5", "hyflex-sat-4",
-          "hyflex-sat-10", "hyflex-sat-11")));
+      put("SAT", new ArrayList<>(Arrays.asList(
+          "n3-i3-pp-hyflex-3",
+          "n3-i4-pp-ci-ce-hyflex-5", 
+          "n3-i3-pp-ci-ce-hyflex-4",
+          "n3-i4-pp-ci-ce-hyflex-10", 
+          "HG-3SAT-V300-C1200-4-hyflex-11"
+          )
+        )
+      );
       put("BP", new ArrayList<>(Arrays.asList()));
       put("PS", new ArrayList<>(Arrays.asList()));
       put("FS", new ArrayList<>(Arrays.asList()));
-      put("TSP", new ArrayList<>(Arrays.asList("hyflex-tsp-0", "hyflex-tsp-8", "hyflex-tsp-2",
-          "hyflex-tsp-7", "hyflex-tsp-6")));
+      put("TSP", new ArrayList<>(Arrays.asList(
+          "pr299-hyflex-0", 
+          "usa13509-hyflex-8", 
+          "rat575-hyflex-2",
+          "u2152-hyflex-7", 
+          "d1291-hyflex-6"
+          )
+        )
+      );
       put("VRP", new ArrayList<>(Arrays.asList()));
     }
   };
