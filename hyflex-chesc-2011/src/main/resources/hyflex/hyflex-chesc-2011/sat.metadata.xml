@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Problem id="SAT">
     <Instances>
-        <Instance id="contest02-Mat26.sat05-457.reshuffled-07-hyflex-0" optimum="0" random="428" size="744"/>
-        <Instance id="hidden-k3-s0-r5-n700-01-S2069048075.sat05-488.reshuffled-07-hyflex-1" optimum="0" random="438" size="700"/>
-        <Instance id="hidden-k3-s0-r5-n700-02-S350203913.sat05-486.reshuffled-07-hyflex-2" optimum="0" random="436" size="700"/>
-        <Instance id="parity-games-instance-n3-i3-pp-hyflex-3" optimum="0" random="330" size="525"/>
-        <Instance id="parity-games-instance-n3-i3-pp-ci-ce-hyflex-4" optimum="0" random="347" size="525"/>
-        <Instance id="parity-games-instance-n3-i4-pp-ci-ce-hyflex-5" optimum="0" random="463" size="696"/>
-        <Instance id="highgirth-3SAT-HG-3SAT-V250-C1000-1-hyflex-6" optimum="0" random="124" size="250"/>
-        <Instance id="highgirth-3SAT-HG-3SAT-V250-C1000-2-hyflex-7" optimum="0" random="124" size="250"/>
-        <Instance id="highgirth-3SAT-HG-3SAT-V300-C1200-2-hyflex-8" optimum="0" random="150" size="300"/>
-        <Instance id="MAXCUT-SPINGLASS-t7pm3-9999-hyflex-9" optimum="0" random="517" size="343"/>
-        <Instance id="jarvisalo-eq.atree.braun.8.unsat-hyflex-10" optimum="0" random="406" size="684"/>
-        <Instance id="highgirth-3SAT-HG-3SAT-V300-C1200-4-hyflex-11" optimum="0" random="150" size="300"/>
+        <Instance id="mat-744-2464-hyflex-0" optimum="0" random="428" size="744"/>
+        <Instance id="488-700-3500-hyflex-1" optimum="0" random="438" size="700"/>
+        <Instance id="486-700-3500-hyflex-2" optimum="0" random="436" size="700"/>
+        <Instance id="i3-525-2276-hyflex-3" optimum="0" random="330" size="525"/>
+        <Instance id="i3-525-2336-hyflex-4" optimum="0" random="347" size="525"/>
+        <Instance id="i4-696-3122-hyflex-5" optimum="0" random="463" size="696"/>
+        <Instance id="hg1-250-1000-hyflex-6" optimum="0" random="124" size="250"/>
+        <Instance id="hg2-250-1000-hyflex-7" optimum="0" random="124" size="250"/>
+        <Instance id="hg2-300-1200-hyflex-8" optimum="0" random="150" size="300"/>
+        <Instance id="sg-343-2058-hyflex-9" optimum="0" random="517" size="343"/>
+        <Instance id="braun-684-2300-hyflex-10" optimum="0" random="406" size="684"/>
+        <Instance id="hg4-300-1200-hyflex-11" optimum="0" random="150" size="300"/>
         <Instance id="uf100-01" optimum="0" random="53" size="100"/>
         <Instance id="uf100-010" optimum="0" random="54" size="100"/>
         <Instance id="uf100-0100" optimum="0" random="54" size="100"/>
