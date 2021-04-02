@@ -54,11 +54,11 @@ public class BenchmarkCalculator {
   Map<String, List<String>> problemInstances = new HashMap<>() {
     {
       put("SAT", new ArrayList<>(Arrays.asList(
-          "parity-games/instance-n3-i3-pp-hyflex-3",
-          "parity-games/instance-n3-i4-pp-ci-ce-hyflex-5", 
-          "parity-games/instance-n3-i3-pp-ci-ce-hyflex-4",
-          "jarvisalo/eq.atree.braun.8.unsat-hyflex-10", 
-          "highgirth/3SAT/HG-3SAT-V300-C1200-4-hyflex-11"
+          "parity-games-instance-n3-i3-pp-hyflex-3",
+          "parity-games-instance-n3-i4-pp-ci-ce-hyflex-5", 
+          "parity-games-instance-n3-i3-pp-ci-ce-hyflex-4",
+          "jarvisalo-eq.atree.braun.8.unsat-hyflex-10", 
+          "highgirth-3SAT-HG-3SAT-V300-C1200-4-hyflex-11"
           )
         )
       );
