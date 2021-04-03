@@ -22,8 +22,8 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
   };
 
   // Interval on which are the results being mapped, metric range
-  private static final double scoreIntervalFrom = 0.0;
-  private static final double scoreIntervalTo = 1.0;
+  private static final double INTERVAL_MIN = 0.0;
+  private static final double INTERVAL_MAX = 1.0;
 
   private String[] problems;
   private Map<String, ProblemInstanceMetadata> metadata;
@@ -114,9 +114,13 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
       throw new Exception("Bad input values: value can't be better than optimum");
     }
 
-    return scoreIntervalTo
+    return INTERVAL_MAX
         - (mapToInterval(
-          lowerBound, Math.max(upperBound, current), scoreIntervalFrom, scoreIntervalTo, current));
+          lowerBound, 
+          upperBound,
+          Math.min(upperBound, current)
+          )
+      );
   }
 
 
@@ -125,16 +129,14 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
    * 
    * @param lowerBound    Lower value of the first interval.
    * @param upperBound    Upper value of the first interval.
-   * @param intervalLower Lower value of the new interval.
-   * @param intervalUpper Upper value of the new interval.
    * @param value         Value to map to a new interval.
    * @return Return the mapped value of the value.
    */
-  private static double mapToInterval(double lowerBound, double upperBound, double intervalLower,
-      double intervalUpper, double value) throws Exception {
+  private static double mapToInterval(double lowerBound, double upperBound, double value) 
+      throws Exception {
     double valueNormalization = (value - lowerBound) / (upperBound - lowerBound);
-    double scaling = valueNormalization * (intervalUpper - intervalLower);
-    double shifting = scaling + intervalLower;
+    double scaling = valueNormalization * (INTERVAL_MAX - INTERVAL_MIN);
+    double shifting = scaling + INTERVAL_MIN;
 
     return shifting;
   }
