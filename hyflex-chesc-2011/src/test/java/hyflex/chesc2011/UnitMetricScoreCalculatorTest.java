@@ -74,14 +74,20 @@ public class UnitMetricScoreCalculatorTest {
         new ScoreCard("middle", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 21.0)
     );
+    scoreCardList.add(
+        new ScoreCard("worseThanRandom", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0)
+    );
 
     List<ScoreCard> cards = sc.calculateScore(scoreCardList);
-    assertEquals(3, cards.size());
+    assertEquals(4, cards.size());
     assertEquals(1.0, cards.get(0)
         .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
     assertEquals(0.0, cards.get(1)
         .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
     assertEquals(0.5, cards.get(2)
+        .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+    assertEquals(0.0, cards.get(3)
         .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
   }
 
@@ -129,13 +135,5 @@ public class UnitMetricScoreCalculatorTest {
     );
 
     assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList1));
-
-    List<ScoreCard> scoreCardList2 = new ArrayList<>();
-    scoreCardList2.add(
-        new ScoreCard("worse-than-random", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0)
-    );
-
-    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList2));
   }
 }
