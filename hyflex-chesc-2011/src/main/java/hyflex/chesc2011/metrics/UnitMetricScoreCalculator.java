@@ -110,12 +110,13 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
     if (upperBound < lowerBound) {
       throw new Exception("Bad input values: upperBound < lowerBound");
     }
-    if (current < lowerBound || current > upperBound) {
-      throw new Exception("Bad input values: current is not from interval");
+    if (current < lowerBound) {
+      throw new Exception("Bad input values: value can't be better than optimum");
     }
 
     return scoreIntervalTo
-        - (mapToInterval(lowerBound, upperBound, scoreIntervalFrom, scoreIntervalTo, current));
+        - (mapToInterval(
+          lowerBound, Math.min(upperBound, current), scoreIntervalFrom, scoreIntervalTo, current));
   }
 
 
