@@ -114,13 +114,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
       throw new Exception("Bad input values: value can't be better than optimum");
     }
 
-    return INTERVAL_MAX
-        - (mapToInterval(
-          lowerBound, 
-          upperBound,
-          Math.min(upperBound, current)
-          )
-      );
+    return INTERVAL_MAX - (mapToInterval(lowerBound, upperBound, Math.min(upperBound, current)));
   }
 
 
