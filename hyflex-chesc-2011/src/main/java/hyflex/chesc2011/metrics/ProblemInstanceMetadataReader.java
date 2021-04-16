@@ -45,6 +45,9 @@ public class ProblemInstanceMetadataReader {
         if (isDouble(element.getAttribute("optimum")) == false) {
           continue;
         }
+        if (isDouble(element.getAttribute("greedy")) == false) {
+          continue;
+        }
         if (isDouble(element.getAttribute("random")) == false) {
           continue;
         }
@@ -55,6 +58,7 @@ public class ProblemInstanceMetadataReader {
         String instanceId = element.getAttribute("id");
 
         result.put(instanceId, "optimum", Double.parseDouble(element.getAttribute("optimum")));
+        result.put(instanceId, "greedy", Double.parseDouble(element.getAttribute("greedy")));
         result.put(instanceId, "random", Double.parseDouble(element.getAttribute("random")));
         result.put(instanceId, "size", Double.parseDouble(element.getAttribute("size")));
       }

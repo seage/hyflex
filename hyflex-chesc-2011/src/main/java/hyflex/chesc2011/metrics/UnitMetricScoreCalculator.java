@@ -64,7 +64,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
         for (String instanceId : problemsInstances.get(problemId)) {
           double instanceScore = UnitMetricScoreCalculator.getMetric(
               metadata.get(problemId).get(instanceId, "optimum"),
-              metadata.get(problemId).get(instanceId, "random"),
+              metadata.get(problemId).get(instanceId, "greedy"),
               card.getInstanceScore(problemId, instanceId));
 
           result.putInstanceScore(problemId, instanceId, instanceScore);
