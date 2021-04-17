@@ -1,7 +1,4 @@
 package hyflex.chesc2011.metrics.calculators;
-/**
- * @author David Omrai
- */
 
 import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.metrics.scorecard.ScoreCard;
@@ -11,6 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class is used for calculating the unit metric score.
+ * 
+ * @author David Omrai
+ */
 public class UnitMetricScoreCalculator implements ScoreCalculator {
   /**
    * Map represents weights for each problem domain.
@@ -60,7 +62,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
       for (String instanceId : problemsInstances.get(problemId)) {
         double instanceScore = UnitMetricScoreCalculator.getMetric(
             metadata.get(problemId).get(instanceId, "optimum"),
-            metadata.get(problemId).get(instanceId, "random"),
+            metadata.get(problemId).get(instanceId, "greedy"),
             card.getInstanceScore(problemId, instanceId));
 
         result.putInstanceScore(problemId, instanceId, instanceScore);
@@ -110,7 +112,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
   /**
    * Method returns the metric based on given data.
    * 
-   * @param upperBound The value of random generator.
+   * @param upperBound The value of greedy generator.
    * @param lowerBound The optimal value.
    * @param current    Input value for metric.
    * @return The metric for given value.
@@ -163,8 +165,9 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
     }
 
     /**
-     * SUM(i=0|n)[size(instance-i)*metric(instance-i)] . weighted mean =
-     * ------------------------------------------------- . SUM(i=0|n)[size(instance-i)] .
+     *                   SUM(i=0|n)[size(instance-i)*metric(instance-i)] . 
+     * weighted mean = ------------------------------------------------- . 
+     *                           SUM(i=0|n)[size(instance-i)] .
      */
     double numerator = 0;
     double nominator = 0;

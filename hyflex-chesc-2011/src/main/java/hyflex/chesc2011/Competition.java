@@ -1,10 +1,5 @@
-/**
- * @author David Omrai
- */
-
 package hyflex.chesc2011;
 
-// Java libraries
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,7 +10,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ * Class represents the competition.
+ * 
+ * @author David Omrai
+ */
 public class Competition {
   private static final String[] algorithmIDs = {
     "GIHH", "LeanGIHH", "PearlHunter", "EPH", "ISEA"

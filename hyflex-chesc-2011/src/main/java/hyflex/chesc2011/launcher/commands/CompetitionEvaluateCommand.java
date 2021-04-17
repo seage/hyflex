@@ -4,6 +4,11 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
+/**
+ * Class is used for competition evaluation.
+ * 
+ * @author David Omrai
+ */
 @Parameters(commandDescription = "Perform benchmark calculation on given results.")
 public class CompetitionEvaluateCommand extends Command {
 

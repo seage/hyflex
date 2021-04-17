@@ -1,7 +1,3 @@
-/**
- * @author David Omrai
- */
-
 package hyflex.chesc2011.launcher;
 
 import com.beust.jcommander.JCommander;
@@ -16,8 +12,11 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
-
-
+/**
+ * Class is used as a launcher.
+ * 
+ * @author David Omrai
+ */
 public class Launcher {
   @Parameter(names = "--help", help = true)
   private boolean help;

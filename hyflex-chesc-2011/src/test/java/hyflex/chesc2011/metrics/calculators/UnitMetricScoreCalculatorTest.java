@@ -18,7 +18,6 @@ import org.junit.jupiter.api.Test;
  * 
  * @author David Omrai
  */
-
 public class UnitMetricScoreCalculatorTest {
   static String[] problems = {"TSP"};
   
@@ -41,7 +40,7 @@ public class UnitMetricScoreCalculatorTest {
 
     instancesMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "random", 43.0)
+            .put("testInstance", "greedy", 43.0)
             .put("testInstance", "optimum", 1.0)
             .put("testInstance", "size", 9.0));
       }
@@ -62,8 +61,8 @@ public class UnitMetricScoreCalculatorTest {
   }
 
   @Test
-  void testRandomScore() throws Exception {
-    ScoreCard card = new ScoreCard("random", problems)
+  void testGreedyScore() throws Exception {
+    ScoreCard card = new ScoreCard("greedy", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0);
 
     ScoreCard result = sc.calculateScore(card);
@@ -84,8 +83,8 @@ public class UnitMetricScoreCalculatorTest {
   }
 
   @Test
-  void testWorseThanRandomScore() throws Exception {
-    ScoreCard card = new ScoreCard("worseThanRandom", problems)
+  void testWorseThanGreedyScore() throws Exception {
+    ScoreCard card = new ScoreCard("worseThanGreedy", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 44.0);
 
     ScoreCard result = sc.calculateScore(card);
@@ -96,7 +95,7 @@ public class UnitMetricScoreCalculatorTest {
 
   @Test
   void testBetterThanOptimal() throws Exception {
-    ScoreCard card = new ScoreCard("worseThanRandom", problems)
+    ScoreCard card = new ScoreCard("worseThanGreedy", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0);
 
     ScoreCard result = sc.calculateScore(card);
@@ -109,7 +108,7 @@ public class UnitMetricScoreCalculatorTest {
   void testNegativeOptimum() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "random", 10.0)
+            .put("testInstance", "greedy", 10.0)
             .put("testInstance", "optimum", -1.0)
             .put("testInstance", "size", 9.0));
       }
@@ -125,10 +124,10 @@ public class UnitMetricScoreCalculatorTest {
   }
 
   @Test
-  void testRandomSmallerThanOptimum() {
+  void testGreedySmallerThanOptimum() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "random", 0.0)
+            .put("testInstance", "greedy", 0.0)
             .put("testInstance", "optimum", 1.0)
             .put("testInstance", "size", 9.0));
       }
@@ -144,10 +143,10 @@ public class UnitMetricScoreCalculatorTest {
   }
 
   @Test
-  void testNegativeOptimumAndRandom() {
+  void testNegativeOptimumAndGreedy() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "random", -42.0)
+            .put("testInstance", "greedy", -42.0)
             .put("testInstance", "optimum", -2.0)
             .put("testInstance", "size", 9.0));
       }
@@ -166,7 +165,7 @@ public class UnitMetricScoreCalculatorTest {
   void testNegativeInstanceSize() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "random", 42.0)
+            .put("testInstance", "greedy", 42.0)
             .put("testInstance", "optimum", 2.0)
             .put("testInstance", "size", -9.0));
       }
@@ -185,7 +184,7 @@ public class UnitMetricScoreCalculatorTest {
   void testNegativeResult() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "random", 10.0)
+            .put("testInstance", "greedy", 10.0)
             .put("testInstance", "optimum", 1.0)
             .put("testInstance", "size", 9.0));
       }

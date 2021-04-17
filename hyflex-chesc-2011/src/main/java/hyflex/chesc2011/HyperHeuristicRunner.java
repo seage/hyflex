@@ -5,6 +5,9 @@ package hyflex.chesc2011;
  * An example of how to use Lean-GIHH to solve an instance of the HyFlex benchmark.
  * 
  * @author Steven Adriaensen
+ *         
+ *         Class modification
+ *         @author David Omrai
  * 
  */
 import AbstractClasses.HyperHeuristic;

@@ -1,13 +1,14 @@
-/**
- * @author David Omrai
- */
-
 package hyflex.chesc2011.metrics.scorecard;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Class represents the score card.
+ * 
+ * @author David Omrai
+ */
 public class ScoreCard {
   /**
    * Name of the algorithm.

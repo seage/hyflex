@@ -1,12 +1,4 @@
-/**
- * @author David Omrai
- */
-
 package hyflex.chesc2011;
-
-// import java.io.FileWriter;
-// import java.io.IOException;
-// import java.io.PrintWriter;
 
 import AbstractClasses.HyperHeuristic;
 import AbstractClasses.ProblemDomain;
@@ -32,7 +24,6 @@ import leangihh.LeanGIHH;
 import pearlhunter.PearlHunter;
 import travelingSalesmanProblem.TSP;
 
-
 /**
  * This class replicates the experimental setup for the CHeSC competition 2011.
  * Please refer to the comments in the code to find the parameters which are modifiable.
@@ -56,6 +47,8 @@ import travelingSalesmanProblem.TSP;
  * @author Dr. Matthew Hyde (mvh@cs.nott.ac.uk), School of Computer Science. 
  *      University of Nottingham, U.K.
  * 
+ *      Class modification.
+ *      @author David Omrai
  */ 
 
 public class CompetitionRunner extends Thread {

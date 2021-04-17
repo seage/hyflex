@@ -1,7 +1,3 @@
-/**
- * @author David Omrai
- */
-
 package hyflex.chesc2011.metrics.calculators;
 
 import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
@@ -40,6 +36,8 @@ import java.util.logging.Logger;
  * . 
  * And finally if you modify the order of problem domains or instances also
  * you have to modify the problems array and problemInstances map
+ * 
+ * @author David Omrai
  */
 public class BenchmarkCalculator {
   private static final Logger logger = 
