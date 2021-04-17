@@ -117,7 +117,7 @@ public class UnitMetricScoreCalculatorTest {
     UnitMetricScoreCalculator csc = 
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
     
-    ScoreCard card = new ScoreCard("one-negative", problems)
+    ScoreCard card = new ScoreCard("negativeOptimum", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
@@ -136,14 +136,14 @@ public class UnitMetricScoreCalculatorTest {
     UnitMetricScoreCalculator csc = 
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
     
-    ScoreCard card = new ScoreCard("one-negative", problems)
+    ScoreCard card = new ScoreCard("greedySmallerThanOptimum", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 0.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
   }
 
   @Test
-  void testNegativeOptimumAndGreedy() {
+  void testNegativeGreedyAndOptimum() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
             .put("testInstance", "greedy", -42.0)
@@ -155,7 +155,7 @@ public class UnitMetricScoreCalculatorTest {
     UnitMetricScoreCalculator csc = 
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
     
-    ScoreCard card = new ScoreCard("one-negative", problems)
+    ScoreCard card = new ScoreCard("negativeGreedyAndOptimum", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
@@ -174,7 +174,7 @@ public class UnitMetricScoreCalculatorTest {
     UnitMetricScoreCalculator csc = 
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
     
-    ScoreCard card = new ScoreCard("one-negative", problems)
+    ScoreCard card = new ScoreCard("negativeInstanceSize", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
@@ -193,7 +193,7 @@ public class UnitMetricScoreCalculatorTest {
     UnitMetricScoreCalculator csc = 
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
 
-    ScoreCard card = new ScoreCard("one-negative", problems)
+    ScoreCard card = new ScoreCard("negativeResult", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), -1.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
