@@ -1,8 +1,4 @@
-/**
- * @author David Omrai
- */
-
-package hyflex.chesc2011.metrics;
+package hyflex.chesc2011.metrics.metadata;
 
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -15,6 +11,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * Class is used for retrieving the data from metadata file.
+ * 
+ * @author David Omrai
+ */
 public class ProblemInstanceMetadataReader {
   /**
    * Method reads the file with metadata and stores the data inside map.
@@ -45,6 +46,9 @@ public class ProblemInstanceMetadataReader {
         if (isDouble(element.getAttribute("optimum")) == false) {
           continue;
         }
+        if (isDouble(element.getAttribute("greedy")) == false) {
+          continue;
+        }
         if (isDouble(element.getAttribute("random")) == false) {
           continue;
         }
@@ -55,6 +59,7 @@ public class ProblemInstanceMetadataReader {
         String instanceId = element.getAttribute("id");
 
         result.put(instanceId, "optimum", Double.parseDouble(element.getAttribute("optimum")));
+        result.put(instanceId, "greedy", Double.parseDouble(element.getAttribute("greedy")));
         result.put(instanceId, "random", Double.parseDouble(element.getAttribute("random")));
         result.put(instanceId, "size", Double.parseDouble(element.getAttribute("size")));
       }
@@ -79,10 +84,10 @@ public class ProblemInstanceMetadataReader {
   }
 
   /**
-   * .
+   * Method reads the metadata file.
    * 
-   * @param problems     .
-   * @param metadataPath .
+   * @param problems Problems names.
+   * @param metadataPath Path to a metadata file.
    */
   public static Map<String, ProblemInstanceMetadata> readProblemsInstancesMetadata(
       String[] problems, Path metadataPath) throws Exception {

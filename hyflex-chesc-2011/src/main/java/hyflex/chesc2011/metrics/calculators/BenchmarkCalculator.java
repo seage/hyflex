@@ -1,8 +1,9 @@
-/**
- * @author David Omrai
- */
+package hyflex.chesc2011.metrics.calculators;
 
-package hyflex.chesc2011.metrics;
+import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
+import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadataReader;
+import hyflex.chesc2011.metrics.scorecard.ScoreCard;
+import hyflex.chesc2011.metrics.scorecard.ScoreCardHelper;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,6 +36,8 @@ import java.util.logging.Logger;
  * . 
  * And finally if you modify the order of problem domains or instances also
  * you have to modify the problems array and problemInstances map
+ * 
+ * @author David Omrai
  */
 public class BenchmarkCalculator {
   private static final Logger logger = 
@@ -127,7 +130,7 @@ public class BenchmarkCalculator {
       cards.add(algorithmResults);
     }
 
-    List<ScoreCard> results = scoreCalculator.calculateScore(cards);
+    List<ScoreCard> results = scoreCalculator.calculateScores(cards);
 
     ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
     logger.info("The score file stored to " + resultsXmlFile);

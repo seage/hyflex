@@ -1,4 +1,4 @@
-package hyflex.chesc2011.metadata;
+package hyflex.chesc2011.metrics.metadata;
 
 import AbstractClasses.ProblemDomain;
 import FlowShop.FlowShop;

@@ -1,95 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Problem id="TSP">
     <Instances>
-        <Instance id="a280" optimum="2579" random="33544" size="280"/>
-        <Instance id="ar9152" optimum="TBA" random="73685915" size="9152"/>
-        <Instance id="berlin52" optimum="7542" random="29889" size="52"/>
-        <Instance id="bier127" optimum="118282" random="624365" size="127"/>
-        <Instance id="brd14051" optimum="469385" random="41648947" size="14051"/>
-        <Instance id="ch130" optimum="6110" random="46349" size="130"/>
-        <Instance id="ch150" optimum="6528" random="53828" size="150"/>
-        <Instance id="d1291" optimum="50801" random="1698157" size="1291"/>
-        <Instance id="d15112" optimum="1573084" random="133635067" size="15112"/>
-        <Instance id="d1655" optimum="62128" random="2137650" size="1655"/>
-        <Instance id="d18512" optimum="645238" random="58882809" size="18512"/>
-        <Instance id="d198" optimum="15780" random="187804" size="198"/>
-        <Instance id="d2103" optimum="80450" random="3192621" size="2103"/>
-        <Instance id="d493" optimum="35002" random="443538" size="493"/>
-        <Instance id="d657" optimum="48912" random="843837" size="657"/>
-        <Instance id="eil101" optimum="629" random="3404" size="101"/>
-        <Instance id="eil51" optimum="426" random="1641" size="51"/>
-        <Instance id="eil76" optimum="538" random="2509" size="76"/>
-        <Instance id="fl1400" optimum="20127" random="1662060" size="1400"/>
-        <Instance id="fl1577" optimum="22249" random="1332335" size="1577"/>
-        <Instance id="fl3795" optimum="28772" random="3517126" size="3795"/>
-        <Instance id="fl417" optimum="11861" random="488979" size="417"/>
-        <Instance id="fnl4461" optimum="182566" random="8288887" size="4461"/>
-        <Instance id="gil262" optimum="2378" random="26711" size="262"/>
-        <Instance id="pr299-hyflex-0" optimum="48191" random="747660" size="299"/>
-        <Instance id="pr439-hyflex-1" optimum="107217" random="1876277" size="439"/>
-        <Instance id="rat575-hyflex-2" optimum="6773" random="111818" size="575"/>
-        <Instance id="u724-hyflex-3" optimum="41910" random="860898" size="724"/>
-        <Instance id="rat783-hyflex-4" optimum="8806" random="177396" size="783"/>
-        <Instance id="pcb1173-hyflex-5" optimum="56892" random="1387054" size="1173"/>
-        <Instance id="d1291-hyflex-6" optimum="50801" random="1700594" size="1291"/>
-        <Instance id="u2152-hyflex-7" optimum="64253" random="2487368" size="2152"/>
-        <Instance id="usa13509-hyflex-8" optimum="19982859" random="2143400926" size="13509"/>
-        <Instance id="d18512-hyflex-9" optimum="645238" random="58887652" size="18512"/>
-        <Instance id="kroA100" optimum="21282" random="171484" size="100"/>
-        <Instance id="kroA150" optimum="26524" random="258083" size="150"/>
-        <Instance id="kroA200" optimum="29368" random="340824" size="200"/>
-        <Instance id="kroB100" optimum="22141" random="168613" size="100"/>
-        <Instance id="kroB150" optimum="26130" random="257088" size="150"/>
-        <Instance id="kroB200" optimum="29437" random="332755" size="200"/>
-        <Instance id="kroC100" optimum="20749" random="170007" size="100"/>
-        <Instance id="kroD100" optimum="21294" random="162967" size="100"/>
-        <Instance id="kroE100" optimum="22068" random="173414" size="100"/>
-        <Instance id="lin105" optimum="14379" random="122214" size="105"/>
-        <Instance id="lin318" optimum="42029" random="579118" size="318"/>
-        <Instance id="linhp318" optimum="41345" random="579533" size="318"/>
-        <Instance id="mona-lisa100K" optimum="TBA" random="991057672" size="100000"/>
-        <Instance id="nrw1379" optimum="56638" random="1411279" size="1379"/>
-        <Instance id="p654" optimum="34643" random="1999922" size="654"/>
-        <Instance id="pcb1173" optimum="56892" random="1385751" size="1173"/>
-        <Instance id="pcb3038" optimum="137694" random="5308897" size="3038"/>
-        <Instance id="pcb442" optimum="50778" random="762993" size="442"/>
-        <Instance id="pr1002" optimum="259045" random="6331475" size="1002"/>
-        <Instance id="pr107" optimum="44303" random="569295" size="107"/>
-        <Instance id="pr124" optimum="59030" random="685565" size="124"/>
-        <Instance id="pr136" optimum="96772" random="815610" size="136"/>
-        <Instance id="pr144" optimum="58537" random="798840" size="144"/>
-        <Instance id="pr152" optimum="73682" random="1035111" size="152"/>
-        <Instance id="pr226" optimum="80369" random="1671599" size="226"/>
-        <Instance id="pr2392" optimum="378032" random="14977335" size="2392"/>
-        <Instance id="pr264" optimum="49135" random="1104046" size="264"/>
-        <Instance id="pr299" optimum="48191" random="747728" size="299"/>
-        <Instance id="pr439" optimum="107217" random="1876285" size="439"/>
-        <Instance id="pr76" optimum="108159" random="569090" size="76"/>
-        <Instance id="rat195" optimum="2323" random="22342" size="195"/>
-        <Instance id="rat575" optimum="6773" random="111849" size="575"/>
-        <Instance id="rat783" optimum="8806" random="177615" size="783"/>
-        <Instance id="rat99" optimum="1211" random="8315" size="99"/>
-        <Instance id="rd100" optimum="7910" random="55482" size="100"/>
-        <Instance id="rd400" optimum="15281" random="211508" size="400"/>
-        <Instance id="rl11849" optimum="923288" random="86978843" size="11849"/>
-        <Instance id="rl1304" optimum="252948" random="9269131" size="1304"/>
-        <Instance id="rl1323" optimum="270199" random="9667560" size="1323"/>
-        <Instance id="rl1889" optimum="316536" random="14649822" size="1889"/>
-        <Instance id="rl5915" optimum="565530" random="41964272" size="5915"/>
-        <Instance id="rl5934" optimum="556045" random="41610212" size="5934"/>
-        <Instance id="st70" optimum="675" random="3660" size="70"/>
-        <Instance id="ts225" optimum="126643" random="1573420" size="225"/>
-        <Instance id="tsp225" optimum="3916" random="40783" size="225"/>
-        <Instance id="u1060" optimum="224094" random="6644531" size="1060"/>
-        <Instance id="u1432" optimum="152970" random="3873616" size="1432"/>
-        <Instance id="u159" optimum="42080" random="442525" size="159"/>
-        <Instance id="u1817" optimum="57201" random="2080270" size="1817"/>
-        <Instance id="u2152" optimum="64253" random="2488401" size="2152"/>
-        <Instance id="u2319" optimum="234256" random="5892809" size="2319"/>
-        <Instance id="u574" optimum="36905" random="668592" size="574"/>
-        <Instance id="u724" optimum="41910" random="859016" size="724"/>
-        <Instance id="usa13509" optimum="19982859" random="2142966411" size="13509"/>
-        <Instance id="vm1084" optimum="239297" random="8514664" size="1084"/>
-        <Instance id="vm1748" optimum="336556" random="14849532" size="1748"/>
+        <Instance greedy="3266" id="a280" optimum="2579" random="33694" size="280"/>
+        <Instance greedy="1057540" id="ar9152" optimum="TBA" random="73661902" size="9152"/>
+        <Instance greedy="9461" id="berlin52" optimum="7542" random="29766" size="52"/>
+        <Instance greedy="144272" id="bier127" optimum="118282" random="624570" size="127"/>
+        <Instance greedy="576302" id="brd14051" optimum="469385" random="41630103" size="14051"/>
+        <Instance greedy="7613" id="ch130" optimum="6110" random="46250" size="130"/>
+        <Instance greedy="7758" id="ch150" optimum="6528" random="53909" size="150"/>
+        <Instance greedy="61204" id="d1291-hyflex-6" optimum="50801" random="1696843" size="1291"/>
+        <Instance greedy="1949751" id="d15112" optimum="1573084" random="133557320" size="15112"/>
+        <Instance greedy="77742" id="d1655" optimum="62128" random="2136753" size="1655"/>
+        <Instance greedy="792337" id="d18512-hyflex-9" optimum="645238" random="58911138" size="18512"/>
+        <Instance greedy="18435" id="d198" optimum="15780" random="187121" size="198"/>
+        <Instance greedy="91497" id="d2103" optimum="80450" random="3191118" size="2103"/>
+        <Instance greedy="43216" id="d493" optimum="35002" random="442660" size="493"/>
+        <Instance greedy="63467" id="d657" optimum="48912" random="847776" size="657"/>
+        <Instance greedy="759" id="eil101" optimum="629" random="3381" size="101"/>
+        <Instance greedy="586" id="eil51" optimum="426" random="1645" size="51"/>
+        <Instance greedy="631" id="eil76" optimum="538" random="2511" size="76"/>
+        <Instance greedy="27125" id="fl1400" optimum="20127" random="1664491" size="1400"/>
+        <Instance greedy="27974" id="fl1577" optimum="22249" random="1328605" size="1577"/>
+        <Instance greedy="35332" id="fl3795" optimum="28772" random="3520839" size="3795"/>
+        <Instance greedy="15548" id="fl417" optimum="11861" random="487055" size="417"/>
+        <Instance greedy="226861" id="fnl4461" optimum="182566" random="8285829" size="4461"/>
+        <Instance greedy="3089" id="gil262" optimum="2378" random="26836" size="262"/>
+        <Instance greedy="27030" id="kroA100" optimum="21282" random="171806" size="100"/>
+        <Instance greedy="34316" id="kroA150" optimum="26524" random="258708" size="150"/>
+        <Instance greedy="38037" id="kroA200" optimum="29368" random="340367" size="200"/>
+        <Instance greedy="29047" id="kroB100" optimum="22141" random="168865" size="100"/>
+        <Instance greedy="34280" id="kroB150" optimum="26130" random="257643" size="150"/>
+        <Instance greedy="37528" id="kroB200" optimum="29437" random="335664" size="200"/>
+        <Instance greedy="25903" id="kroC100" optimum="20749" random="171814" size="100"/>
+        <Instance greedy="28148" id="kroD100" optimum="21294" random="165061" size="100"/>
+        <Instance greedy="27572" id="kroE100" optimum="22068" random="174307" size="100"/>
+        <Instance greedy="20068" id="lin105" optimum="14379" random="120452" size="105"/>
+        <Instance greedy="52680" id="lin318" optimum="42029" random="577605" size="318"/>
+        <Instance greedy="52761" id="linhp318" optimum="41345" random="577314" size="318"/>
+        <Instance greedy="6880108" id="mona-lisa100K" optimum="5757084" random="990898853" size="100000"/>
+        <Instance greedy="70235" id="nrw1379" optimum="56638" random="1407026" size="1379"/>
+        <Instance greedy="44760" id="p654" optimum="34643" random="1999602" size="654"/>
+        <Instance greedy="72488" id="pcb1173-hyflex-5" optimum="56892" random="1383077" size="1173"/>
+        <Instance greedy="172777" id="pcb3038" optimum="137694" random="5317480" size="3038"/>
+        <Instance greedy="62430" id="pcb442" optimum="50778" random="759474" size="442"/>
+        <Instance greedy="330164" id="pr1002" optimum="259045" random="6325971" size="1002"/>
+        <Instance greedy="47623" id="pr107" optimum="44303" random="573323" size="107"/>
+        <Instance greedy="73008" id="pr124" optimum="59030" random="690205" size="124"/>
+        <Instance greedy="121134" id="pr136" optimum="96772" random="817430" size="136"/>
+        <Instance greedy="61359" id="pr144" optimum="58537" random="793381" size="144"/>
+        <Instance greedy="87728" id="pr152" optimum="73682" random="1032978" size="152"/>
+        <Instance greedy="98856" id="pr226" optimum="80369" random="1670400" size="226"/>
+        <Instance greedy="473093" id="pr2392" optimum="378032" random="14983146" size="2392"/>
+        <Instance greedy="58888" id="pr264" optimum="49135" random="1104365" size="264"/>
+        <Instance greedy="65166" id="pr299-hyflex-0" optimum="48191" random="750788" size="299"/>
+        <Instance greedy="136905" id="pr439-hyflex-1" optimum="107217" random="1876495" size="439"/>
+        <Instance greedy="138644" id="pr76" optimum="108159" random="567850" size="76"/>
+        <Instance greedy="2749" id="rat195" optimum="2323" random="22417" size="195"/>
+        <Instance greedy="8255" id="rat575-hyflex-2" optimum="6773" random="111456" size="575"/>
+        <Instance greedy="11210" id="rat783-hyflex-4" optimum="8806" random="177352" size="783"/>
+        <Instance greedy="1427" id="rat99" optimum="1211" random="8313" size="99"/>
+        <Instance greedy="9938" id="rd100" optimum="7910" random="55872" size="100"/>
+        <Instance greedy="19400" id="rd400" optimum="15281" random="211795" size="400"/>
+        <Instance greedy="1130434" id="rl11849" optimum="923288" random="87005419" size="11849"/>
+        <Instance greedy="320652" id="rl1304" optimum="252948" random="9262739" size="1304"/>
+        <Instance greedy="333413" id="rl1323" optimum="270199" random="9668069" size="1323"/>
+        <Instance greedy="397804" id="rl1889" optimum="316536" random="14657124" size="1889"/>
+        <Instance greedy="693150" id="rl5915" optimum="565530" random="42025222" size="5915"/>
+        <Instance greedy="683334" id="rl5934" optimum="556045" random="41628944" size="5934"/>
+        <Instance greedy="799" id="st70" optimum="675" random="3644" size="70"/>
+        <Instance greedy="144500" id="ts225" optimum="126643" random="1574143" size="225"/>
+        <Instance greedy="5207" id="tsp225" optimum="3916" random="41054" size="225"/>
+        <Instance greedy="290495" id="u1060" optimum="224094" random="6619757" size="1060"/>
+        <Instance greedy="193636" id="u1432" optimum="152970" random="3873632" size="1432"/>
+        <Instance greedy="53630" id="u159" optimum="42080" random="444159" size="159"/>
+        <Instance greedy="69558" id="u1817" optimum="57201" random="2081701" size="1817"/>
+        <Instance greedy="78482" id="u2152-hyflex-7" optimum="64253" random="2489341" size="2152"/>
+        <Instance greedy="277354" id="u2319" optimum="234256" random="5902233" size="2319"/>
+        <Instance greedy="46968" id="u574" optimum="36905" random="666884" size="574"/>
+        <Instance greedy="53531" id="u724-hyflex-3" optimum="41910" random="857912" size="724"/>
+        <Instance greedy="25086666" id="usa13509-hyflex-8" optimum="19982859" random="2143600251" size="13509"/>
+        <Instance greedy="303116" id="vm1084" optimum="239297" random="8512403" size="1084"/>
+        <Instance greedy="429581" id="vm1748" optimum="336556" random="14844628" size="1748"/>
     </Instances>
 </Problem>

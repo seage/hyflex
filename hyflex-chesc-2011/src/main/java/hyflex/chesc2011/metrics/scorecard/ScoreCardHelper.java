@@ -1,8 +1,4 @@
-/**
- * @author David Omrai
- */
-
-package hyflex.chesc2011.metrics;
+package hyflex.chesc2011.metrics.scorecard;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,6 +19,11 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+/**
+ * Class is used for retrieving the data from score card file.
+ * 
+ * @author David Omrai
+ */
 public class ScoreCardHelper {
   /**
    * Array holds information on which line of the result card is which problem domain.

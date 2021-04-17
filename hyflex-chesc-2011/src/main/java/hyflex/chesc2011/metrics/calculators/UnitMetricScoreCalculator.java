@@ -1,14 +1,18 @@
-/**
- * @author David Omrai
- */
+package hyflex.chesc2011.metrics.calculators;
 
-package hyflex.chesc2011.metrics;
+import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
+import hyflex.chesc2011.metrics.scorecard.ScoreCard;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class is used for calculating the unit metric score.
+ * 
+ * @author David Omrai
+ */
 public class UnitMetricScoreCalculator implements ScoreCalculator {
   /**
    * Map represents weights for each problem domain.
@@ -39,54 +43,65 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
     this.problemsInstances = problemsInstances;
   }
 
+  /**
+   * Method calculates card score.
+   * @param card Card with algorithm results.
+   * @return ScoreCard with scores.
+   */
+  public ScoreCard calculateScore(ScoreCard card) throws Exception {
+    ScoreCard result = new ScoreCard(card.getName(), problems);
+
+    List<Double> problemsScores = new ArrayList<>();
+    List<Double> problemsWeights = new ArrayList<>();
+
+    for (String problemId : problems) {
+
+      List<Double> instancesScores = new ArrayList<>();
+      List<Double> sizes = new ArrayList<>();
+
+      for (String instanceId : problemsInstances.get(problemId)) {
+        double instanceScore = UnitMetricScoreCalculator.getMetric(
+            metadata.get(problemId).get(instanceId, "optimum"),
+            metadata.get(problemId).get(instanceId, "greedy"),
+            card.getInstanceScore(problemId, instanceId));
+
+        result.putInstanceScore(problemId, instanceId, instanceScore);
+
+        instancesScores.add(instanceScore);
+
+        if (metadata.get(problemId).get(instanceId, "size") < 0) {
+          throw new Exception(
+              "Bad input values: size of " + instanceId + " instance is negative.");
+        }
+
+        sizes.add((double) metadata.get(problemId).get(instanceId, "size"));
+      }
+
+      double problemScore = calculateWeightedMean(instancesScores, sizes);
+      result.putDomainScore(problemId, problemScore);
+
+      problemsScores.add(problemScore);
+      problemsWeights.add(problemsWeightsMap.get(problemId));
+    }
+
+    result.setScore(calculateWeightedMean(problemsScores, problemsWeights));
+
+    return result;
+  }
+
 
   /**
-   * Method calculates the score for given algorithm problem results.
+   * Method calculates the scores for given algorithm problem results.
    * 
    * @param cards ScoreCards with algorithms results.
    * @return ScoreCard with scores for each problem domain and total score.
    */
-  public List<ScoreCard> calculateScore(List<ScoreCard> cards) throws Exception {
+  public List<ScoreCard> calculateScores(List<ScoreCard> cards) throws Exception {
     List<ScoreCard> results = new ArrayList<>();
 
     for (ScoreCard card : cards) {
+      ScoreCard result = calculateScore(card);
 
-      ScoreCard result = new ScoreCard(card.getName(), problems);
-
-      List<Double> problemsScores = new ArrayList<>();
-      List<Double> problemsWeights = new ArrayList<>();
-
-      for (String problemId : problems) {
-
-        List<Double> instancesScores = new ArrayList<>();
-        List<Double> sizes = new ArrayList<>();
-
-        for (String instanceId : problemsInstances.get(problemId)) {
-          double instanceScore = UnitMetricScoreCalculator.getMetric(
-              metadata.get(problemId).get(instanceId, "optimum"),
-              metadata.get(problemId).get(instanceId, "random"),
-              card.getInstanceScore(problemId, instanceId));
-
-          result.putInstanceScore(problemId, instanceId, instanceScore);
-
-          instancesScores.add(instanceScore);
-
-          if (metadata.get(problemId).get(instanceId, "size") < 0) {
-            throw new Exception(
-                "Bad input values: size of " + instanceId + " instance is negative.");
-          }
-
-          sizes.add((double) metadata.get(problemId).get(instanceId, "size"));
-        }
-
-        double problemScore = calculateWeightedMean(instancesScores, sizes);
-        result.putDomainScore(problemId, problemScore);
-
-        problemsScores.add(problemScore);
-        problemsWeights.add(problemsWeightsMap.get(problemId));
-      }
-
-      result.setScore(calculateWeightedMean(problemsScores, problemsWeights));
       results.add(result);
     }
 
@@ -97,7 +112,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
   /**
    * Method returns the metric based on given data.
    * 
-   * @param upperBound The value of random generator.
+   * @param upperBound The value of greedy generator.
    * @param lowerBound The optimal value.
    * @param current    Input value for metric.
    * @return The metric for given value.
@@ -150,8 +165,9 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
     }
 
     /**
-     * SUM(i=0|n)[size(instance-i)*metric(instance-i)] . weighted mean =
-     * ------------------------------------------------- . SUM(i=0|n)[size(instance-i)] .
+     *                   SUM(i=0|n)[size(instance-i)*metric(instance-i)] . 
+     * weighted mean = ------------------------------------------------- . 
+     *                           SUM(i=0|n)[size(instance-i)] .
      */
     double numerator = 0;
     double nominator = 0;

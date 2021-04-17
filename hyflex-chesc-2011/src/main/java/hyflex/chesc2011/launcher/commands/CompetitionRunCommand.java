@@ -1,7 +1,3 @@
-/**
- * @author David Omrai
- */
-
 package hyflex.chesc2011.launcher.commands;
 
 import com.beust.jcommander.JCommander;
@@ -12,8 +8,11 @@ import hyflex.chesc2011.Competition;
 
 import java.util.List;
 
-
-
+/**
+ * Class is used for competition run.
+ * 
+ * @author David Omrai
+ */
 @Parameters(commandDescription = "Perform the Competition tasks on given hyper-heuristic")
 public class CompetitionRunCommand extends Command {
     

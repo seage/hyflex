@@ -1,15 +1,17 @@
-/**
- * @author David Omrai
- */
-
-package hyflex.chesc2011.metrics;
+package hyflex.chesc2011.metrics.metadata;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class holds the metadata of problem instances.
+ * 
+ * @author David Omrai
+ */
 public class ProblemInstanceMetadata {
   /**
-   * . String: instanceId - String: [optimum, random, size] - Double: instanceId parameter value
+   * String: 
+   *    instanceId - String: [optimum, greedy, random, size] - Double: instanceId parameter value.
    */
   Map<String, Map<String, Double>> instanceResults;
 

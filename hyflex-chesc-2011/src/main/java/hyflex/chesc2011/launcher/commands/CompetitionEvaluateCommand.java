@@ -4,6 +4,11 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
+/**
+ * Class is used for competition evaluation.
+ * 
+ * @author David Omrai
+ */
 @Parameters(commandDescription = "Perform benchmark calculation on given results.")
 public class CompetitionEvaluateCommand extends Command {
 
@@ -45,7 +50,7 @@ public class CompetitionEvaluateCommand extends Command {
 
     switch (metric) {
       case "UnitMetric":
-        new hyflex.chesc2011.metrics.BenchmarkCalculator().run(id, metric);
+        new hyflex.chesc2011.metrics.calculators.BenchmarkCalculator().run(id, metric);
         break;
       case "F1Metric":
         new hyflex.chesc2011.legacy.BenchmarkCalculator().run(id);
