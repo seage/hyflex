@@ -81,7 +81,7 @@ public class BenchmarkCalculator {
     }
   };
 
-  // This arrays holds the order of problem domains in results file
+  // This arrays represents problems with metadata
   String[] problems = {"SAT", "TSP"};
 
   /**
@@ -100,7 +100,7 @@ public class BenchmarkCalculator {
       problems.add("TSP");
 
       BenchmarkCalculator ibc = new BenchmarkCalculator();
-      ibc.run(args[0], args[1], problems);
+      ibc.run(args[0], args[1]);
     } catch (Exception e) {
       logger.severe(e.getMessage());
     }
@@ -112,35 +112,27 @@ public class BenchmarkCalculator {
    * 
    * @param id Name of the directory where algorithm problem results are stored.
    * @param metric Name of the metric to be used.
-   * @param useProblems Names of the problems to use.
    */
-  public void run(String id, String metric, List<String> useProblems) throws Exception {
+  public void run(String id, String metric) throws Exception {
     logger.info("Evaluation is running...");
     resultsXmlFile = String.format(resultsXmlFile, id);
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
         .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
 
-    UnitMetricScoreCalculator scoreCalculator =
-        new UnitMetricScoreCalculator(
-          instancesMetadata, problemInstances, useProblems.toArray(new String[]{}));
-
     String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath + "/" + id));
 
-    List<ScoreCard> cards = new ArrayList<>();
+    List<ScoreCard> results = new ArrayList<>();
 
     for (String fileName : resFiles) {
       logger.info("Evaluating the " + fileName);
       Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
 
       ScoreCard algorithmResults =
-          ScoreCardHelper.loadCard(
-            useProblems.toArray(new String[]{}), scoreCardPath, problemInstances);
+          ScoreCardHelper.loadCard(scoreCardPath, problemInstances, instancesMetadata);
 
-      cards.add(algorithmResults);
+      results.add(algorithmResults);
     }
-
-    List<ScoreCard> results = scoreCalculator.calculateScores(cards);
 
     ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
     logger.info("The score file stored to " + resultsXmlFile);

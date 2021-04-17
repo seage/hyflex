@@ -29,13 +29,6 @@ public class CompetitionEvaluateCommand extends Command {
       + "available values are: UnitMetric, F1Metric")
   public String metric = "UnitMetric";
 
-  @Parameter(names = {"-p", "--problems"},
-      required = true,
-      variableArity = true,
-      description = "Names of problems to be used in competition " 
-      + "available values are: SAT, BinPacking, PersonnelScheduling, FlowShop, TSP, VRP")
-      public List<String> problems;
-
   public boolean isHelp() {
     return help;
   }
@@ -45,8 +38,7 @@ public class CompetitionEvaluateCommand extends Command {
     return ""   
       + "\nhelp" + help
       + "\nid" + id
-      + "\nmetric" + metric
-      + "\nproblems" + problems;
+      + "\nmetric" + metric;
   }
 
   @Override
@@ -59,7 +51,7 @@ public class CompetitionEvaluateCommand extends Command {
 
     switch (metric) {
       case "UnitMetric":
-        new hyflex.chesc2011.metrics.calculators.BenchmarkCalculator().run(id, metric, problems);
+        new hyflex.chesc2011.metrics.calculators.BenchmarkCalculator().run(id, metric);
         break;
       case "F1Metric":
         new hyflex.chesc2011.legacy.BenchmarkCalculator().run(id);
