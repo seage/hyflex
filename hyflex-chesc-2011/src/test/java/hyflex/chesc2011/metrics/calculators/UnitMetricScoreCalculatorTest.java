@@ -137,7 +137,7 @@ public class UnitMetricScoreCalculatorTest {
     assertEquals(0.0, result.getInstanceScore("TSP", "tspTestInstance1"), 0.01);
     assertEquals(1.0, result.getInstanceScore("TSP", "tspTestInstance2"), 0.01);
     /**                 6*0.0 + 2*1.0
-     * weighted mean = --------------- = 2/8 = 1/4
+     * weighted mean = --------------- = 2/8 = 0.25
      *                      6 + 2
      */
     assertEquals(0.25, result.getProblemScore("TSP"), 0.01);
@@ -145,7 +145,7 @@ public class UnitMetricScoreCalculatorTest {
     assertEquals(0.5, result.getInstanceScore("SAT", "satTestInstance1"), 0.01);
     assertEquals(0.5, result.getInstanceScore("SAT", "satTestInstance2"), 0.01);
     /**                 6*0.5 + 2*0.5
-     * weighted mean = --------------- = 4/8 = 1/2
+     * weighted mean = --------------- = 4/8 = 0.5
      *                      6 + 2
      */
     assertEquals(0.5, result.getProblemScore("SAT"), 0.01);
