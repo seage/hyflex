@@ -72,7 +72,7 @@ public class ScoreCardHelper {
         String line = scanner.nextLine();
 
         if (Arrays.stream(problems).anyMatch(problemId::equals)) {
-          if (!line.contains("null")) {
+          if (!line.contains("---")) {
             usedProblems.add(problemId);
             try (Scanner lineScanner = new Scanner(line).useDelimiter(", ")) {
               for (String instanceId : problemInstances.get(problemId)) {

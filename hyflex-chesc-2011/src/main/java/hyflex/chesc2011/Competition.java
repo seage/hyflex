@@ -140,7 +140,7 @@ public class Competition {
       for (List<Double> array : results) {
         line = "";
         for (Double median : array) {
-          line += median + ", ";
+          line += (median == null ? "---" : median) + ", ";
         }
         printer.println(line.substring(0, line.length() - 2));
       }
