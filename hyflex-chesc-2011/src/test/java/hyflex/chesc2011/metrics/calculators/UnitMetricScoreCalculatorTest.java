@@ -137,5 +137,7 @@ public class UnitMetricScoreCalculatorTest {
     assertEquals(0.8, result.getProblemScore(problems1[0]), 0.01);
 
     assertEquals(0.8, result.getProblemScore(problems1[1]), 0.01);
+
+    assertEquals(0.8, result.getScore(), 0.01);
   }
 }
