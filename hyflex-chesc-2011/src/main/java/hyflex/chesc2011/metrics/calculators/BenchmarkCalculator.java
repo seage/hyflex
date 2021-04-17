@@ -111,6 +111,8 @@ public class BenchmarkCalculator {
    * Method evaluates all algorithms and stores results into file.
    * 
    * @param id Name of the directory where algorithm problem results are stored.
+   * @param metric Name of the metric to be used.
+   * @param useProblems Names of the problems to use.
    */
   public void run(String id, String metric, List<String> useProblems) throws Exception {
     resultsXmlFile = String.format(resultsXmlFile, id);
