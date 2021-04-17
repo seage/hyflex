@@ -29,7 +29,7 @@ public class UnitMetricScoreCalculatorExceptionsTest {
     
     problemInstances = new HashMap<>() {{
         put("TSP", new ArrayList<>(
-            Arrays.asList("testInstance")));
+            Arrays.asList("tspTestInstance")));
       }
     };
   }
@@ -38,9 +38,9 @@ public class UnitMetricScoreCalculatorExceptionsTest {
   void testBetterThanOptimal() throws Exception {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
           put("TSP", new ProblemInstanceMetadata()
-              .put("testInstance", "greedy", 42.0)
-              .put("testInstance", "optimum", 1.0)
-              .put("testInstance", "size", 9.0));
+              .put("tspTestInstance", "greedy", 42.0)
+              .put("tspTestInstance", "optimum", 1.0)
+              .put("tspTestInstance", "size", 9.0));
       }
     };
 
@@ -48,7 +48,7 @@ public class UnitMetricScoreCalculatorExceptionsTest {
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
   
     ScoreCard card = new ScoreCard("betterThanOptimal", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 0.0);
+        .putInstanceScore("TSP", "tspTestInstance", 0.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
   }
@@ -57,9 +57,9 @@ public class UnitMetricScoreCalculatorExceptionsTest {
   void testNegativeOptimum() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "greedy", 10.0)
-            .put("testInstance", "optimum", -1.0)
-            .put("testInstance", "size", 9.0));
+            .put("tspTestInstance", "greedy", 10.0)
+            .put("tspTestInstance", "optimum", -1.0)
+            .put("tspTestInstance", "size", 9.0));
       }
     };
 
@@ -67,7 +67,7 @@ public class UnitMetricScoreCalculatorExceptionsTest {
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
     
     ScoreCard card = new ScoreCard("negativeOptimum", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
+        .putInstanceScore("TSP", "tspTestInstance", 1.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
   }
@@ -76,9 +76,9 @@ public class UnitMetricScoreCalculatorExceptionsTest {
   void testGreedySmallerThanOptimum() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "greedy", 0.0)
-            .put("testInstance", "optimum", 1.0)
-            .put("testInstance", "size", 9.0));
+            .put("tspTestInstance", "greedy", 0.0)
+            .put("tspTestInstance", "optimum", 1.0)
+            .put("tspTestInstance", "size", 9.0));
       }
     };
 
@@ -86,7 +86,7 @@ public class UnitMetricScoreCalculatorExceptionsTest {
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
     
     ScoreCard card = new ScoreCard("greedySmallerThanOptimum", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 0.0);
+        .putInstanceScore("TSP", "tspTestInstance", 0.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
   }
@@ -95,9 +95,9 @@ public class UnitMetricScoreCalculatorExceptionsTest {
   void testNegativeGreedyAndOptimum() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "greedy", -42.0)
-            .put("testInstance", "optimum", -2.0)
-            .put("testInstance", "size", 9.0));
+            .put("tspTestInstance", "greedy", -42.0)
+            .put("tspTestInstance", "optimum", -2.0)
+            .put("tspTestInstance", "size", 9.0));
       }
     };
 
@@ -105,7 +105,7 @@ public class UnitMetricScoreCalculatorExceptionsTest {
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
     
     ScoreCard card = new ScoreCard("negativeGreedyAndOptimum", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
+        .putInstanceScore("TSP", "tspTestInstance", 1.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
   }
@@ -114,9 +114,9 @@ public class UnitMetricScoreCalculatorExceptionsTest {
   void testNegativeInstanceSize() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "greedy", 42.0)
-            .put("testInstance", "optimum", 2.0)
-            .put("testInstance", "size", -9.0));
+            .put("tspTestInstance", "greedy", 42.0)
+            .put("tspTestInstance", "optimum", 2.0)
+            .put("tspTestInstance", "size", -9.0));
       }
     };
 
@@ -124,7 +124,7 @@ public class UnitMetricScoreCalculatorExceptionsTest {
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
     
     ScoreCard card = new ScoreCard("negativeInstanceSize", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
+        .putInstanceScore("TSP", "tspTestInstance", 1.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
   }
@@ -133,9 +133,9 @@ public class UnitMetricScoreCalculatorExceptionsTest {
   void testNegativeResult() {
     Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "greedy", 10.0)
-            .put("testInstance", "optimum", 1.0)
-            .put("testInstance", "size", 9.0));
+            .put("tspTestInstance", "greedy", 10.0)
+            .put("tspTestInstance", "optimum", 1.0)
+            .put("tspTestInstance", "size", 9.0));
       }
     };
 
@@ -143,7 +143,7 @@ public class UnitMetricScoreCalculatorExceptionsTest {
         new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
 
     ScoreCard card = new ScoreCard("negativeResult", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), -1.0);
+        .putInstanceScore("TSP", "tspTestInstance", -1.0);
 
     assertThrows(Exception.class, () -> csc.calculateScore(card));
   }

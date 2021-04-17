@@ -124,10 +124,10 @@ public class UnitMetricScoreCalculatorTest {
     };
 
     ScoreCard card = new ScoreCard("weightedMeanCalculation", problems1)
-        .putInstanceScore("TSP", problemInstances1.get("TSP").get(0), 1.0)
-        .putInstanceScore("TSP", problemInstances1.get("TSP").get(1), 6.0)
-        .putInstanceScore("SAT", problemInstances1.get("SAT").get(0), 1.0)
-        .putInstanceScore("SAT", problemInstances1.get("SAT").get(1), 6.0);
+        .putInstanceScore("TSP", "tspTestInstance1", 1.0)
+        .putInstanceScore("TSP", "tspTestInstance2", 6.0)
+        .putInstanceScore("SAT", "satTestInstance1", 1.0)
+        .putInstanceScore("SAT", "satTestInstance2", 6.0);
     
     UnitMetricScoreCalculator unitMetricScoreCalculator1 = 
         new UnitMetricScoreCalculator(instancesMetadata1, problemInstances1, problems1);
