@@ -51,7 +51,8 @@ public class ScoreCardHelper {
    * @param path Path where the file is stored.
    * @return Map with algorithm results.
    */
-  public static ScoreCard loadCard(Path path, Map<String, List<String>> problemInstances, 
+  public static ScoreCard loadCard(String[] problems, Path path, 
+      Map<String, List<String>> problemInstances, 
       Map<String, ProblemInstanceMetadata> instancesMetadata) throws Exception {
     logger.info("Loading the card...");
 
@@ -69,19 +70,21 @@ public class ScoreCardHelper {
           throw new Exception("Not enough lines in " + path.toString() + " file.");
         }
         String line = scanner.nextLine();
-        
-        if (!line.contains("null")) {
-          usedProblems.add(problemId);
-          try (Scanner lineScanner = new Scanner(line).useDelimiter(", ")) {
-            for (String instanceId : problemInstances.get(problemId)) {
-  
-              if (lineScanner.hasNextLine() == false) {
-                throw new Exception(
-                  "Not enough instances results in " + path.toString() + " file.");
+
+        if (Arrays.stream(problems).anyMatch(problemId::equals)) {
+          if (!line.contains("null")) {
+            usedProblems.add(problemId);
+            try (Scanner lineScanner = new Scanner(line).useDelimiter(", ")) {
+              for (String instanceId : problemInstances.get(problemId)) {
+    
+                if (lineScanner.hasNextLine() == false) {
+                  throw new Exception(
+                    "Not enough instances results in " + path.toString() + " file.");
+                }
+                logger.info("Calculating the " + problemId + " " + instanceId + ".");
+                result.putInstanceScore(
+                    problemId, instanceId, Double.parseDouble(lineScanner.next()));
               }
-              logger.info("Calculating the " + problemId + " " + instanceId + ".");
-              result.putInstanceScore(
-                  problemId, instanceId, Double.parseDouble(lineScanner.next()));
             }
           }
         }

@@ -129,7 +129,7 @@ public class BenchmarkCalculator {
       Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
 
       ScoreCard algorithmResults =
-          ScoreCardHelper.loadCard(scoreCardPath, problemInstances, instancesMetadata);
+          ScoreCardHelper.loadCard(problems, scoreCardPath, problemInstances, instancesMetadata);
 
       results.add(algorithmResults);
     }
