@@ -149,7 +149,11 @@ public class UnitMetricScoreCalculatorTest {
      *                      6 + 2
      */
     assertEquals(0.5, result.getProblemScore("SAT"), 0.01);
-
+    /**
+     *          0.25 + 0.5
+     * mean = -------------- = 0.75/2 = 0.375
+     *              2
+     */
     assertEquals(0.375, result.getScore(), 0.01);
   }
 }
