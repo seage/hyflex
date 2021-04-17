@@ -1,7 +1,6 @@
 package hyflex.chesc2011.metrics.calculators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.metrics.scorecard.ScoreCard;
@@ -91,5 +90,52 @@ public class UnitMetricScoreCalculatorTest {
 
     assertEquals(
         0.0, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+  }
+
+  @Test
+  void testWeightedMeanCalculation() throws Exception {
+    String[] problems1 = {"TSP", "SAT"};
+
+    Map<String, List<String>> problemInstances1 = new HashMap<>() {{
+        put("TSP", new ArrayList<>(
+            Arrays.asList(new String[]{"tspTestInstance1", "tspTestInstance2"})));
+        put("SAT", new ArrayList<>(
+            Arrays.asList(new String[]{"satTestInstance1", "satTestInstance2"})));
+      }
+    };
+
+    Map<String, ProblemInstanceMetadata> instancesMetadata1 = new HashMap<>() {{
+        put("TSP", new ProblemInstanceMetadata()
+            .put("tspTestInstance1", "greedy", 42.0)
+            .put("tspTestInstance1", "optimum", 1.0)
+            .put("tspTestInstance1", "size", 9.0)
+            .put("tspTestInstance2", "greedy", 12.0)
+            .put("tspTestInstance2", "optimum", 0.0)
+            .put("tspTestInstance2", "size", 6.0));
+
+        put("SAT", new ProblemInstanceMetadata()
+            .put("satTestInstance1", "greedy", 42.0)
+            .put("satTestInstance1", "optimum", 1.0)
+            .put("satTestInstance1", "size", 9.0)
+            .put("satTestInstance2", "greedy", 12.0)
+            .put("satTestInstance2", "optimum", 0.0)
+            .put("satTestInstance2", "size", 6.0));
+      }
+    };
+
+    ScoreCard card = new ScoreCard("weightedMeanCalculation", problems1)
+        .putInstanceScore(problems1[0], problemInstances1.get(problems1[0]).get(0), 1.0)
+        .putInstanceScore(problems1[0], problemInstances1.get(problems1[0]).get(1), 6.0)
+        .putInstanceScore(problems1[1], problemInstances1.get(problems1[1]).get(0), 1.0)
+        .putInstanceScore(problems1[1], problemInstances1.get(problems1[1]).get(1), 6.0);
+    
+    UnitMetricScoreCalculator unitMetricScoreCalculator1 = 
+        new UnitMetricScoreCalculator(instancesMetadata1, problemInstances1, problems1);
+
+    ScoreCard result = unitMetricScoreCalculator1.calculateScore(card);
+
+    assertEquals(0.8, result.getProblemScore(problems1[0]), 0.01);
+
+    assertEquals(0.8, result.getProblemScore(problems1[1]), 0.01);
   }
 }
