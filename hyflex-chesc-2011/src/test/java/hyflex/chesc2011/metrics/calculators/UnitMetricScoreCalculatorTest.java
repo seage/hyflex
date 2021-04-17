@@ -95,7 +95,7 @@ public class UnitMetricScoreCalculatorTest {
 
   @Test
   void testBetterThanOptimal() throws Exception {
-    ScoreCard card = new ScoreCard("worseThanGreedy", problems)
+    ScoreCard card = new ScoreCard("worseThanOptimal", problems)
         .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0);
 
     ScoreCard result = sc.calculateScore(card);
