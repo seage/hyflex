@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * 
  * @author David Omrai
  */
-public class UnitMetricExceptionsTest {
+public class UnitMetricScoreCalculatorExceptionsTest {
   static String[] problems = {"TSP"};
   
   //@SuppressWarnings("serial")
