@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -20,12 +21,15 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+
 /**
  * Class is used for retrieving the data from score card file.
  * 
  * @author David Omrai
  */
 public class ScoreCardHelper {
+  private static final Logger logger = 
+      Logger.getLogger(ScoreCardHelper.class.getName());
   /**
    * Array holds information on which line of the result card is which problem domain.
    */
@@ -46,6 +50,7 @@ public class ScoreCardHelper {
    */
   public static ScoreCard loadCard(String[] problems, Path path,
       Map<String, List<String>> cardInstances) throws Exception {
+    logger.info("Loading the card...");
     // Name of the file
     String cardName = path.getFileName().toString();
     ScoreCard result = new ScoreCard(cardName.substring(0, cardName.lastIndexOf(".")), problems);
@@ -67,7 +72,7 @@ public class ScoreCardHelper {
                 throw new Exception(
                   "Not enough instances results in " + path.toString() + " file.");
               }
-  
+              logger.info("Calculating the " + problemId + " " + instanceId + ".");
               result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
             }
           }

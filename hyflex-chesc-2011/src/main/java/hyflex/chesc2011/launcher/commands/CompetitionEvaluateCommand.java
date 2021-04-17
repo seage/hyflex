@@ -1,9 +1,9 @@
 package hyflex.chesc2011.launcher.commands;
 
-import java.util.List;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import java.util.List;
 
 /**
  * Class is used for competition evaluation.

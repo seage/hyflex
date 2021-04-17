@@ -115,19 +115,22 @@ public class BenchmarkCalculator {
    * @param useProblems Names of the problems to use.
    */
   public void run(String id, String metric, List<String> useProblems) throws Exception {
+    logger.info("Evaluation is running...");
     resultsXmlFile = String.format(resultsXmlFile, id);
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
         .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
 
     UnitMetricScoreCalculator scoreCalculator =
-        new UnitMetricScoreCalculator(instancesMetadata, problemInstances, problems);
+        new UnitMetricScoreCalculator(
+          instancesMetadata, problemInstances, useProblems.toArray(new String[]{}));
 
     String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath + "/" + id));
 
     List<ScoreCard> cards = new ArrayList<>();
 
     for (String fileName : resFiles) {
+      logger.info("Evaluating the " + fileName);
       Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
 
       ScoreCard algorithmResults =

@@ -11,6 +11,7 @@ import hyflex.chesc2011.launcher.commands.CompetitionRunCommand;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
+import java.util.logging.Logger;
 
 /**
  * Class is used as a launcher.
@@ -18,6 +19,9 @@ import java.util.Map.Entry;
  * @author David Omrai
  */
 public class Launcher {
+  private static final Logger logger = 
+      Logger.getLogger(Launcher.class.getName());
+
   @Parameter(names = "--help", help = true)
   private boolean help;
 
@@ -44,16 +48,16 @@ public class Launcher {
       }
       launcher.run(commands.get(jc.getParsedCommand()));
     } catch (ParameterException ex) {
-      System.out.println(ex.getMessage());
-      System.out.println("Try to use --help");
+      logger.info(ex.getMessage());
+      logger.info("Try to use --help");
     } catch (Exception ex) {
-      System.out.println(ex.getMessage());
+      logger.severe(ex.getMessage());
     }
   }
 
   private void run(Command cmd) throws Exception {
-    System.out.println("Hyflex running ...");
+    logger.info("Hyflex running ...");
     cmd.performCommand();
-    System.out.println("Hyflex finished ...");
+    logger.info("Hyflex finished ...");
   }
 }
