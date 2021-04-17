@@ -33,15 +33,15 @@ public class UnitMetricScoreCalculatorTest {
     
     problemInstances = new HashMap<>() {{
         put("TSP", new ArrayList<>(
-            Arrays.asList("testInstance")));
+            Arrays.asList("tspTestInstance")));
       }
     };
 
     instancesMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "greedy", 43.0)
-            .put("testInstance", "optimum", 1.0)
-            .put("testInstance", "size", 9.0));
+            .put("tspTestInstance", "greedy", 43.0)
+            .put("tspTestInstance", "optimum", 1.0)
+            .put("tspTestInstance", "size", 9.0));
       }
     };
 
@@ -51,45 +51,45 @@ public class UnitMetricScoreCalculatorTest {
   @Test
   void testOptimalScore() throws Exception {
     ScoreCard card = new ScoreCard("optimal", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
+        .putInstanceScore("TSP", "tspTestInstance", 1.0);
 
     ScoreCard result = sc.calculateScore(card);
 
     assertEquals(
-        1.0, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+        1.0, result.getInstanceScore("TSP", "tspTestInstance"), 0.1);
   }
 
   @Test
   void testGreedyScore() throws Exception {
     ScoreCard card = new ScoreCard("greedy", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0);
+        .putInstanceScore("TSP", "tspTestInstance", 43.0);
 
     ScoreCard result = sc.calculateScore(card);
 
     assertEquals(
-        0.0, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+        0.0, result.getInstanceScore("TSP", "tspTestInstance"), 0.1);
   }
 
   @Test
   void testMiddleScore() throws Exception {
     ScoreCard card = new ScoreCard("middle", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 22.0);
+        .putInstanceScore("TSP", "tspTestInstance", 22.0);
 
     ScoreCard result = sc.calculateScore(card);
 
     assertEquals(
-        0.5, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+        0.5, result.getInstanceScore("TSP", "tspTestInstance"), 0.1);
   }
 
   @Test
   void testWorseThanGreedyScore() throws Exception {
     ScoreCard card = new ScoreCard("worseThanGreedy", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 44.0);
+        .putInstanceScore("TSP", "tspTestInstance", 44.0);
 
     ScoreCard result = sc.calculateScore(card);
 
     assertEquals(
-        0.0, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+        0.0, result.getInstanceScore("TSP", "tspTestInstance"), 0.1);
   }
 
   @Test
@@ -124,27 +124,23 @@ public class UnitMetricScoreCalculatorTest {
     };
 
     ScoreCard card = new ScoreCard("weightedMeanCalculation", problems1)
-        .putInstanceScore(problems1[0], problemInstances1.get(problems1[0]).get(0), 1.0)
-        .putInstanceScore(problems1[0], problemInstances1.get(problems1[0]).get(1), 6.0)
-        .putInstanceScore(problems1[1], problemInstances1.get(problems1[1]).get(0), 1.0)
-        .putInstanceScore(problems1[1], problemInstances1.get(problems1[1]).get(1), 6.0);
+        .putInstanceScore("TSP", problemInstances1.get("TSP").get(0), 1.0)
+        .putInstanceScore("TSP", problemInstances1.get("TSP").get(1), 6.0)
+        .putInstanceScore("SAT", problemInstances1.get("SAT").get(0), 1.0)
+        .putInstanceScore("SAT", problemInstances1.get("SAT").get(1), 6.0);
     
     UnitMetricScoreCalculator unitMetricScoreCalculator1 = 
         new UnitMetricScoreCalculator(instancesMetadata1, problemInstances1, problems1);
 
     ScoreCard result = unitMetricScoreCalculator1.calculateScore(card);
 
-    assertEquals(1.0, 
-        result.getInstanceScore(problems1[0], problemInstances1.get(problems1[0]).get(0)), 0.01);
-    assertEquals(0.5, 
-        result.getInstanceScore(problems1[0], problemInstances1.get(problems1[0]).get(1)), 0.01);
-    assertEquals(0.8, result.getProblemScore(problems1[0]), 0.01);
+    assertEquals(1.0, result.getInstanceScore("TSP", "tspTestInstance1"), 0.01);
+    assertEquals(0.5, result.getInstanceScore("TSP", "tspTestInstance2"), 0.01);
+    assertEquals(0.8, result.getProblemScore("TSP"), 0.01);
 
-    assertEquals(1.0, 
-        result.getInstanceScore(problems1[1], problemInstances1.get(problems1[1]).get(0)), 0.01);
-    assertEquals(0.5, 
-        result.getInstanceScore(problems1[1], problemInstances1.get(problems1[1]).get(1)), 0.01);
-    assertEquals(0.8, result.getProblemScore(problems1[1]), 0.01);
+    assertEquals(1.0, result.getInstanceScore("SAT", "satTestInstance1"), 0.01);
+    assertEquals(0.5, result.getInstanceScore("SAT", "satTestInstance2"), 0.01);
+    assertEquals(0.8, result.getProblemScore("SAT"), 0.01);
 
     assertEquals(0.8, result.getScore(), 0.01);
   }
