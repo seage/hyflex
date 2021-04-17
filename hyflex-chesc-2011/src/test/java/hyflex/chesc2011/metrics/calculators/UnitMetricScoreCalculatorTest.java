@@ -134,8 +134,16 @@ public class UnitMetricScoreCalculatorTest {
 
     ScoreCard result = unitMetricScoreCalculator1.calculateScore(card);
 
+    assertEquals(1.0, 
+        result.getInstanceScore(problems1[0], problemInstances1.get(problems1[0]).get(0)), 0.01);
+    assertEquals(0.5, 
+        result.getInstanceScore(problems1[0], problemInstances1.get(problems1[0]).get(1)), 0.01);
     assertEquals(0.8, result.getProblemScore(problems1[0]), 0.01);
 
+    assertEquals(1.0, 
+        result.getInstanceScore(problems1[1], problemInstances1.get(problems1[1]).get(0)), 0.01);
+    assertEquals(0.5, 
+        result.getInstanceScore(problems1[1], problemInstances1.get(problems1[1]).get(1)), 0.01);
     assertEquals(0.8, result.getProblemScore(problems1[1]), 0.01);
 
     assertEquals(0.8, result.getScore(), 0.01);
