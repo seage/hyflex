@@ -44,6 +44,13 @@ public class CompetitionRunCommand extends Command {
       + "available values are: GIHH, LeanGIHH, EPH, PearlHunter, ISEA")
   public List<String> hyperheurictics;
 
+  @Parameter(names = {"-p", "--problems"},
+      required = true,
+      variableArity = true,
+      description = "Names of problems to be used in competition " 
+      + "available values are: SAT, BinPacking, PersonnelScheduling, FlowShop, TSP, VRP")
+  public List<String> problems;
+
   public boolean isHelp() {
     return help;
   }
@@ -54,7 +61,8 @@ public class CompetitionRunCommand extends Command {
       + "\nhelp" + help
       + "\ntimeout" + timeout
       + "\nruns" + runs 
-      + "\nhyperheurictics" + hyperheurictics;
+      + "\nhyperheurictics" + hyperheurictics
+      + "\nproblems" + problems;
   }
 
   @Override
@@ -64,6 +72,6 @@ public class CompetitionRunCommand extends Command {
       jc.usage();
       return;
     }
-    new Competition().run(hyperheurictics, timeout * 1000, runs, id);
+    new Competition().run(hyperheurictics, problems, timeout * 1000, runs, id);
   }
 }

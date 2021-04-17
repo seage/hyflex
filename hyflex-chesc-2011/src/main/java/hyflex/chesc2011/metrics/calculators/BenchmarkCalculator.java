@@ -95,8 +95,12 @@ public class BenchmarkCalculator {
         throw new Exception("Error: No results directory name given.");
       }
 
+      List<String> problems = new ArrayList<>();
+      problems.add("SAT");
+      problems.add("TSP");
+
       BenchmarkCalculator ibc = new BenchmarkCalculator();
-      ibc.run(args[0], args[1]);
+      ibc.run(args[0], args[1], problems);
     } catch (Exception e) {
       logger.severe(e.getMessage());
     }
@@ -108,7 +112,7 @@ public class BenchmarkCalculator {
    * 
    * @param id Name of the directory where algorithm problem results are stored.
    */
-  public void run(String id, String metric) throws Exception {
+  public void run(String id, String metric, List<String> useProblems) throws Exception {
     resultsXmlFile = String.format(resultsXmlFile, id);
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
@@ -125,7 +129,8 @@ public class BenchmarkCalculator {
       Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
 
       ScoreCard algorithmResults =
-          ScoreCardHelper.loadCard(problems, scoreCardPath, problemInstances);
+          ScoreCardHelper.loadCard(
+            useProblems.toArray(new String[]{}), scoreCardPath, problemInstances);
 
       cards.add(algorithmResults);
     }

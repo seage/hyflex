@@ -29,7 +29,8 @@ public class Competition {
    * Method is used for testing each algorithm on all problem domains and instances.
    */
   public void run(
-      List<String> hyperheurictics, long timeout, int runs, Long id) throws Exception {
+      List<String> hyperheurictics, List<String> problems,
+      long timeout, int runs, Long id) throws Exception {
     // check if user defined output folder
     if (id == 0) {
       // create new folder for results
@@ -54,7 +55,23 @@ public class Competition {
       List<List<Double>> results = new ArrayList<List<Double>>();
 
       for (String problemID : problemIDs) {
-        results.add(runAlg(algorithmID, problemID, runs, timeout));
+        //todo append blank line if user did not define this problem
+        if (Arrays.stream(problems.toArray()).anyMatch(problemID::equals)) {
+          results.add(runAlg(algorithmID, problemID, runs, timeout));
+        } else {
+          /**
+           * For this problem blank instances results.
+           */
+          results.add(new ArrayList<Double>() {{
+              add(null);//1
+              add(null);//2
+              add(null);//3
+              add(null);//4
+              add(null);//5
+            }
+          });
+        }
+        
       }
       System.out.println(results);
       makeResultsCard(results, algorithmID, id);

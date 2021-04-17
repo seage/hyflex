@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.PrintWriter;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -59,13 +60,16 @@ public class ScoreCardHelper {
 
         try (Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ")) {
 
-          for (String instanceId : cardInstances.get(problemId)) {
+          if (Arrays.stream(problems).anyMatch(problemId::equals)) {
+            for (String instanceId : cardInstances.get(problemId)) {
 
-            if (line.hasNextLine() == false) {
-              throw new Exception("Not enough instances results in " + path.toString() + " file.");
+              if (line.hasNextLine() == false) {
+                throw new Exception(
+                  "Not enough instances results in " + path.toString() + " file.");
+              }
+  
+              result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
             }
-
-            result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
           }
         }
       }
