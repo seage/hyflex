@@ -1,6 +1,5 @@
 package hyflex.chesc2011.metrics.calculators;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
