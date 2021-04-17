@@ -106,42 +106,50 @@ public class UnitMetricScoreCalculatorTest {
 
     Map<String, ProblemInstanceMetadata> instancesMetadata1 = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("tspTestInstance1", "greedy", 42.0)
-            .put("tspTestInstance1", "optimum", 1.0)
-            .put("tspTestInstance1", "size", 9.0)
-            .put("tspTestInstance2", "greedy", 12.0)
+            .put("tspTestInstance1", "greedy", 10.0)
+            .put("tspTestInstance1", "optimum", 0.0)
+            .put("tspTestInstance1", "size", 6.0)
+            .put("tspTestInstance2", "greedy", 10.0)
             .put("tspTestInstance2", "optimum", 0.0)
-            .put("tspTestInstance2", "size", 6.0));
+            .put("tspTestInstance2", "size", 2.0));
 
         put("SAT", new ProblemInstanceMetadata()
-            .put("satTestInstance1", "greedy", 42.0)
-            .put("satTestInstance1", "optimum", 1.0)
-            .put("satTestInstance1", "size", 9.0)
-            .put("satTestInstance2", "greedy", 12.0)
+            .put("satTestInstance1", "greedy", 10.0)
+            .put("satTestInstance1", "optimum", 0.0)
+            .put("satTestInstance1", "size", 6.0)
+            .put("satTestInstance2", "greedy", 10.0)
             .put("satTestInstance2", "optimum", 0.0)
-            .put("satTestInstance2", "size", 6.0));
+            .put("satTestInstance2", "size", 2.0));
       }
     };
 
     ScoreCard card = new ScoreCard("weightedMeanCalculation", problems1)
-        .putInstanceScore("TSP", "tspTestInstance1", 1.0)
-        .putInstanceScore("TSP", "tspTestInstance2", 6.0)
-        .putInstanceScore("SAT", "satTestInstance1", 1.0)
-        .putInstanceScore("SAT", "satTestInstance2", 6.0);
+        .putInstanceScore("TSP", "tspTestInstance1", 10.0)
+        .putInstanceScore("TSP", "tspTestInstance2", 0.0)
+        .putInstanceScore("SAT", "satTestInstance1", 5.0)
+        .putInstanceScore("SAT", "satTestInstance2", 5.0);
     
     UnitMetricScoreCalculator unitMetricScoreCalculator1 = 
         new UnitMetricScoreCalculator(instancesMetadata1, problemInstances1, problems1);
 
     ScoreCard result = unitMetricScoreCalculator1.calculateScore(card);
 
-    assertEquals(1.0, result.getInstanceScore("TSP", "tspTestInstance1"), 0.01);
-    assertEquals(0.5, result.getInstanceScore("TSP", "tspTestInstance2"), 0.01);
-    assertEquals(0.8, result.getProblemScore("TSP"), 0.01);
+    assertEquals(0.0, result.getInstanceScore("TSP", "tspTestInstance1"), 0.01);
+    assertEquals(1.0, result.getInstanceScore("TSP", "tspTestInstance2"), 0.01);
+    /**                 6*0.0 + 2*1.0
+     * weighted mean = --------------- = 2/8 = 1/4
+     *                      6 + 2
+     */
+    assertEquals(0.25, result.getProblemScore("TSP"), 0.01);
 
-    assertEquals(1.0, result.getInstanceScore("SAT", "satTestInstance1"), 0.01);
+    assertEquals(0.5, result.getInstanceScore("SAT", "satTestInstance1"), 0.01);
     assertEquals(0.5, result.getInstanceScore("SAT", "satTestInstance2"), 0.01);
-    assertEquals(0.8, result.getProblemScore("SAT"), 0.01);
+    /**                 6*0.5 + 2*0.5
+     * weighted mean = --------------- = 4/8 = 1/2
+     *                      6 + 2
+     */
+    assertEquals(0.5, result.getProblemScore("SAT"), 0.01);
 
-    assertEquals(0.8, result.getScore(), 0.01);
+    assertEquals(0.375, result.getScore(), 0.01);
   }
 }
