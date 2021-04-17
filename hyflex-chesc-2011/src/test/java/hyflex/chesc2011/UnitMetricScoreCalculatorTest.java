@@ -2,23 +2,21 @@ package hyflex.chesc2011;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import hyflex.chesc2011.metrics.calculators.UnitMetricScoreCalculator;
+import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
+import hyflex.chesc2011.metrics.scorecard.ScoreCard;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeAll;
-import hyflex.chesc2011.metrics.ProblemInstanceMetadata;
-import hyflex.chesc2011.metrics.ProblemInstanceMetadataReader;
-import hyflex.chesc2011.metrics.ScoreCalculator;
-import hyflex.chesc2011.metrics.ScoreCard;
-import hyflex.chesc2011.metrics.UnitMetricScoreCalculator;
+
 
 // import jdk.jfr.Timestamp;
 
 import org.junit.jupiter.api.Test;
-
-// See https://dzone.com/articles/junit-tutorial-for-beginners-in-5-steps
 
 /**
  * Few unit tests for getMetric method of the UnitMetricScoreCalculator class.
@@ -27,18 +25,18 @@ import org.junit.jupiter.api.Test;
  */
 
 public class UnitMetricScoreCalculatorTest {
-  String[] problems = {"TSP"};
+  static String[] problems = {"TSP"};
   
   //@SuppressWarnings("serial")
-  Map<String, List<String>> problemInstances;
+  static Map<String, List<String>> problemInstances;
 
   //@SuppressWarnings("serial")
-  Map<String, ProblemInstanceMetadata> instancesMetadata;
+  static Map<String, ProblemInstanceMetadata> instancesMetadata;
   
-  ScoreCalculator sc;
+  static UnitMetricScoreCalculator sc;
 
-  // @BeforeAll
-  void init(double testInstanceOptimum, double testInstanceRandom, double testInstanceSize) {
+  @BeforeAll
+  static void init() {
     
     problemInstances = new HashMap<>() {{
         put("TSP", new ArrayList<>(
@@ -48,9 +46,9 @@ public class UnitMetricScoreCalculatorTest {
 
     instancesMetadata = new HashMap<>() {{
         put("TSP", new ProblemInstanceMetadata()
-            .put("testInstance", "random", testInstanceRandom)
-            .put("testInstance", "optimum", testInstanceOptimum)
-            .put("testInstance", "size", testInstanceSize));
+            .put("testInstance", "random", 43.0)
+            .put("testInstance", "optimum", 1.0)
+            .put("testInstance", "size", 9.0));
       }
     };
 
@@ -58,82 +56,152 @@ public class UnitMetricScoreCalculatorTest {
   }
 
   @Test
-  void testCalculateScoreBoundaries() throws Exception {
-    init(0.0, 42.0, 9.0);
+  void testOptimalScore() throws Exception {
+    ScoreCard card = new ScoreCard("optimal", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
 
-    List<ScoreCard> scoreCardList = new ArrayList<>();
-    scoreCardList.add(
-        new ScoreCard("optimal", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 0.0)
-    );
-    scoreCardList.add(
-        new ScoreCard("random", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 42.0)
-    );
-    scoreCardList.add(
-        new ScoreCard("middle", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 21.0)
-    );
-    scoreCardList.add(
-        new ScoreCard("worseThanRandom", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0)
-    );
+    ScoreCard result = sc.calculateScore(card);
 
-    List<ScoreCard> cards = sc.calculateScore(scoreCardList);
-    assertEquals(4, cards.size());
-    assertEquals(1.0, cards.get(0)
-        .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
-    assertEquals(0.0, cards.get(1)
-        .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
-    assertEquals(0.5, cards.get(2)
-        .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
-    assertEquals(0.0, cards.get(3)
-        .getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+    assertEquals(
+        1.0, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
   }
 
   @Test
-  void testExceptions() throws Exception {
-    // Algorithm result is negative
-    init(1.0, 10.0, 9.0);
+  void testRandomScore() throws Exception {
+    ScoreCard card = new ScoreCard("random", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0);
 
-    List<ScoreCard> scoreCardList0 = new ArrayList<>();
-    scoreCardList0.add(
-        new ScoreCard("one-negative", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), -1.0)
-    );
+    ScoreCard result = sc.calculateScore(card);
 
-    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
+    assertEquals(
+        0.0, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+  }
 
+  @Test
+  void testMiddleScore() throws Exception {
+    ScoreCard card = new ScoreCard("middle", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 22.0);
 
-    // Negative optimum
-    init(-1.0, 10.0, 9.0);
-    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
+    ScoreCard result = sc.calculateScore(card);
 
+    assertEquals(
+        0.5, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+  }
 
-    // Random is smaller than optimum
-    init(1.0, 0.0, 9.0);
-    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
+  @Test
+  void testWorseThanRandomScore() throws Exception {
+    ScoreCard card = new ScoreCard("worseThanRandom", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 44.0);
 
+    ScoreCard result = sc.calculateScore(card);
 
-    // Both optimum and random are negative
-    init(-2.0, -42.0, 9.0);
-    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
+    assertEquals(
+        0.0, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+  }
 
+  @Test
+  void testBetterThanOptimal() throws Exception {
+    ScoreCard card = new ScoreCard("worseThanRandom", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 43.0);
 
-    // Instance size is negative
-    init(2.0, 42.0, -9.0);
-    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList0));
+    ScoreCard result = sc.calculateScore(card);
 
+    assertEquals(
+        0.0, result.getInstanceScore(problems[0], problemInstances.get(problems[0]).get(0)), 0.1);
+  }
 
-    // Algotithm is not on interval
-    init(2.0, 42.0, 9.0);
+  @Test
+  void testNegativeOptimum() {
+    Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
+        put("TSP", new ProblemInstanceMetadata()
+            .put("testInstance", "random", 10.0)
+            .put("testInstance", "optimum", -1.0)
+            .put("testInstance", "size", 9.0));
+      }
+    };
 
-    List<ScoreCard> scoreCardList1 = new ArrayList<>();
-    scoreCardList1.add(
-        new ScoreCard("better-than-optimum", problems)
-        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0)
-    );
+    UnitMetricScoreCalculator csc = 
+        new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
+    
+    ScoreCard card = new ScoreCard("one-negative", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
 
-    assertThrows(Exception.class, () -> sc.calculateScore(scoreCardList1));
+    assertThrows(Exception.class, () -> csc.calculateScore(card));
+  }
+
+  @Test
+  void testRandomSmallerThanOptimum() {
+    Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
+        put("TSP", new ProblemInstanceMetadata()
+            .put("testInstance", "random", 0.0)
+            .put("testInstance", "optimum", 1.0)
+            .put("testInstance", "size", 9.0));
+      }
+    };
+
+    UnitMetricScoreCalculator csc = 
+        new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
+    
+    ScoreCard card = new ScoreCard("one-negative", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 0.0);
+
+    assertThrows(Exception.class, () -> csc.calculateScore(card));
+  }
+
+  @Test
+  void testNegativeOptimumAndRandom() {
+    Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
+        put("TSP", new ProblemInstanceMetadata()
+            .put("testInstance", "random", -42.0)
+            .put("testInstance", "optimum", -2.0)
+            .put("testInstance", "size", 9.0));
+      }
+    };
+
+    UnitMetricScoreCalculator csc = 
+        new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
+    
+    ScoreCard card = new ScoreCard("one-negative", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
+
+    assertThrows(Exception.class, () -> csc.calculateScore(card));
+  }
+
+  @Test
+  void testNegativeInstanceSize() {
+    Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
+        put("TSP", new ProblemInstanceMetadata()
+            .put("testInstance", "random", 42.0)
+            .put("testInstance", "optimum", 2.0)
+            .put("testInstance", "size", -9.0));
+      }
+    };
+
+    UnitMetricScoreCalculator csc = 
+        new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
+    
+    ScoreCard card = new ScoreCard("one-negative", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), 1.0);
+
+    assertThrows(Exception.class, () -> csc.calculateScore(card));
+  }
+
+  @Test
+  void testNegativeResult() {
+    Map<String, ProblemInstanceMetadata> insMetadata = new HashMap<>() {{
+        put("TSP", new ProblemInstanceMetadata()
+            .put("testInstance", "random", 10.0)
+            .put("testInstance", "optimum", 1.0)
+            .put("testInstance", "size", 9.0));
+      }
+    };
+
+    UnitMetricScoreCalculator csc = 
+        new UnitMetricScoreCalculator(insMetadata, problemInstances, problems);
+
+    ScoreCard card = new ScoreCard("one-negative", problems)
+        .putInstanceScore(problems[0], problemInstances.get(problems[0]).get(0), -1.0);
+
+    assertThrows(Exception.class, () -> csc.calculateScore(card));
   }
 }

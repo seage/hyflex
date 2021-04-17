@@ -2,7 +2,7 @@
  * @author David Omrai
  */
 
-package hyflex.chesc2011.metrics;
+package hyflex.chesc2011.metrics.scorecard;
 
 import java.io.File;
 import java.io.FileOutputStream;

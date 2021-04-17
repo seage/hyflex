@@ -2,7 +2,12 @@
  * @author David Omrai
  */
 
-package hyflex.chesc2011.metrics;
+package hyflex.chesc2011.metrics.calculators;
+
+import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
+import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadataReader;
+import hyflex.chesc2011.metrics.scorecard.ScoreCard;
+import hyflex.chesc2011.metrics.scorecard.ScoreCardHelper;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -127,7 +132,7 @@ public class BenchmarkCalculator {
       cards.add(algorithmResults);
     }
 
-    List<ScoreCard> results = scoreCalculator.calculateScore(cards);
+    List<ScoreCard> results = scoreCalculator.calculateScores(cards);
 
     ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
     logger.info("The score file stored to " + resultsXmlFile);
