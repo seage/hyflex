@@ -69,7 +69,7 @@ public class ScoreCardHelper {
           throw new Exception("Not enough lines in " + path.toString() + " file.");
         }
         String line = scanner.nextLine();
-        logger.info(line);
+        
         if (!line.contains("null")) {
           usedProblems.add(problemId);
           try (Scanner lineScanner = new Scanner(line).useDelimiter(", ")) {
@@ -88,7 +88,6 @@ public class ScoreCardHelper {
       }
     }
 
-    logger.info("" + usedProblems);
     UnitMetricScoreCalculator scoreCalculator =
         new UnitMetricScoreCalculator(
           instancesMetadata, problemInstances, usedProblems.toArray(new String[]{}));
