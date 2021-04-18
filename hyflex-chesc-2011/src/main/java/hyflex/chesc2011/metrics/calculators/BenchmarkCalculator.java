@@ -4,7 +4,7 @@ import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadataReader;
 import hyflex.chesc2011.metrics.scorecard.ScoreCard;
 import hyflex.chesc2011.metrics.scorecard.ScoreCardHelper;
-
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -115,18 +115,21 @@ public class BenchmarkCalculator {
    */
   public void run(String id, String metric) throws Exception {
     logger.info("Evaluation is running...");
-    resultsXmlFile = String.format(resultsXmlFile, id);
+    
+    if (!Files.exists(Paths.get(resultsPath, id))) {
+      throw new Exception(String.format("Competition id '%s' does not exist", id));
+    }
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
         .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
 
-    String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath + "/" + id));
+    String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath, id));
 
     List<ScoreCard> results = new ArrayList<>();
 
     for (String fileName : resFiles) {
       logger.info("Evaluating the " + fileName);
-      Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
+      Path scoreCardPath = Paths.get(resultsPath, id, fileName);
 
       // Get algorihtm results
       List<String> implementedProblems = new ArrayList<>();
@@ -143,6 +146,7 @@ public class BenchmarkCalculator {
       results.add(algorithmScores);
     }
 
+    resultsXmlFile = String.format(resultsXmlFile, id);
     ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
     logger.info("The score file stored to " + resultsXmlFile);
   }
