@@ -5,8 +5,8 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 
 import hyflex.chesc2011.launcher.commands.Command;
+import hyflex.chesc2011.launcher.commands.CompetitionComputationCommand;
 import hyflex.chesc2011.launcher.commands.CompetitionEvaluateCommand;
-import hyflex.chesc2011.launcher.commands.CompetitionRunCommand;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -32,7 +32,7 @@ public class Launcher {
   public static void main(String[] args) {
     try {
       HashMap<String, Command> commands = new LinkedHashMap<>();
-      commands.put("computation", new CompetitionRunCommand());
+      commands.put("competition", new CompetitionComputationCommand());
       commands.put("evaluation", new CompetitionEvaluateCommand());
 
       Launcher launcher = new Launcher();

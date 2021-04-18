@@ -14,7 +14,7 @@ import java.util.List;
  * @author David Omrai
  */
 @Parameters(commandDescription = "Perform the Competition tasks on given hyper-heuristic")
-public class CompetitionRunCommand extends Command {
+public class CompetitionComputationCommand extends Command {
     
   @Parameter(names = {"--help"},
       help = true,
