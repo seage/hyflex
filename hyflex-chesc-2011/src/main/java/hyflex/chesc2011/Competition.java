@@ -29,11 +29,12 @@ public class Competition {
    * Method is used for testing each algorithm on all problem domains and instances.
    */
   public void run(
-      List<String> hyperheurictics, long timeout, int runs, Long id) throws Exception {
+      List<String> hyperheurictics, List<String> problems,
+      long timeout, int runs, String id) throws Exception {
     // check if user defined output folder
-    if (id == 0) {
+    if (id == "0") {
       // create new folder for results
-      id = System.currentTimeMillis();
+      id = "" + System.currentTimeMillis();
     }
     
     // create output folder
@@ -41,7 +42,7 @@ public class Competition {
         System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
 
 
-    new File(resultsDir + "/" + Long.toString(id) + "/").mkdirs();
+    new File(resultsDir + "/" + id + "/").mkdirs();
 
     System.out.println(resultsDir);
 
@@ -54,7 +55,23 @@ public class Competition {
       List<List<Double>> results = new ArrayList<List<Double>>();
 
       for (String problemID : problemIDs) {
-        results.add(runAlg(algorithmID, problemID, runs, timeout));
+        //todo append blank line if user did not define this problem
+        if (Arrays.stream(problems.toArray()).anyMatch(problemID::equals)) {
+          results.add(runAlg(algorithmID, problemID, runs, timeout));
+        } else {
+          /**
+           * For this problem blank instances results.
+           */
+          results.add(new ArrayList<Double>() {{
+              add(null);//1
+              add(null);//2
+              add(null);//3
+              add(null);//4
+              add(null);//5
+            }
+          });
+        }
+        
       }
       System.out.println(results);
       makeResultsCard(results, algorithmID, id);
@@ -111,19 +128,19 @@ public class Competition {
    * @param algorithmID name of given hyper-heuristic algorithm
    */
   public void makeResultsCard(
-      List<List<Double>> results, String algorithmID, Long id) throws IOException {
+      List<List<Double>> results, String algorithmID, String id) throws IOException {
     
     final String resultsDir = Optional.ofNullable(
             System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
     try (
         FileWriter fwriter =
-            new FileWriter(resultsDir + "/" + Long.toString(id) + "/" + algorithmID + ".txt");
+            new FileWriter(resultsDir + "/" + id + "/" + algorithmID + ".txt");
         PrintWriter printer = new PrintWriter(fwriter);) {
       String line = "";
       for (List<Double> array : results) {
         line = "";
         for (Double median : array) {
-          line += median + ", ";
+          line += (median == null ? "---" : median) + ", ";
         }
         printer.println(line.substring(0, line.length() - 2));
       }

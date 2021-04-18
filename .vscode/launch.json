@@ -6,31 +6,37 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch BenchmarkCalculator",
-      "request": "launch",
-      "mainClass": "hyflex.chesc2011.metrics.BenchmarkCalculator",
-      "projectName": "hyflex-chesc-2011",
-      "args": "1616856133479"
-    },
-    {
-      "type": "java",
-      "name": "Launch the Launcher",
+      "name": "Competiton Run",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.launcher.Launcher",
       "args": [
         "competition-run",
         "-h",
-        "LeanGIHH",
-        "EPH",
+        "ISEA",
+        "-p",
+        "TSP",
         "-n",
-        "10",
+        "1",
         "-t",
-        "10"
+        "1",
+        "--id",
+        "debug1"
       ]
     },
     {
       "type": "java",
-      "name": "Launch HyperHeuristicRunner",
+      "name": "Competiton Evaluation",
+      "request": "launch",
+      "mainClass": "hyflex.chesc2011.launcher.Launcher",
+      "args": [
+        "competition-evaluate",
+        "--id",
+        "debug1"
+      ]
+    },
+    {
+      "type": "java",
+      "name": "HyperHeuristicRunner",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.HyperHeuristicRunner",
       "args": [
@@ -38,6 +44,14 @@
         "PersonnelScheduling",
         "120"
       ]
-    }
+    },
+    {
+      "type": "java",
+      "name": "BenchmarkCalculator",
+      "request": "launch",
+      "mainClass": "hyflex.chesc2011.metrics.BenchmarkCalculator",
+      "projectName": "hyflex-chesc-2011",
+      "args": "1616856133479"
+    },
   ]
 }

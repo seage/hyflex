@@ -5,9 +5,11 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.PrintWriter;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -19,12 +21,15 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+
 /**
  * Class is used for retrieving the data from score card file.
  * 
  * @author David Omrai
  */
 public class ScoreCardHelper {
+  private static final Logger logger = 
+      Logger.getLogger(ScoreCardHelper.class.getName());
   /**
    * Array holds information on which line of the result card is which problem domain.
    */
@@ -43,11 +48,15 @@ public class ScoreCardHelper {
    * @param path Path where the file is stored.
    * @return Map with algorithm results.
    */
-  public static ScoreCard loadCard(String[] problems, Path path,
-      Map<String, List<String>> cardInstances) throws Exception {
+  public static ScoreCard loadCard(String[] problems, Path path, 
+      Map<String, List<String>> problemInstances, List<String> implementedProblems) 
+      throws Exception {
+    logger.info("Loading the card...");
+
     // Name of the file
     String cardName = path.getFileName().toString();
-    ScoreCard result = new ScoreCard(cardName.substring(0, cardName.lastIndexOf(".")), problems);
+    ScoreCard result = 
+        new ScoreCard(cardName.substring(0, cardName.lastIndexOf(".")), cardProblemsOrder);
 
     try (Scanner scanner = new Scanner(new File(path.toString()))) {
       scanner.useDelimiter("\n");
@@ -56,16 +65,23 @@ public class ScoreCardHelper {
         if (scanner.hasNextLine() == false) {
           throw new Exception("Not enough lines in " + path.toString() + " file.");
         }
+        String line = scanner.nextLine();
 
-        try (Scanner line = new Scanner(scanner.nextLine()).useDelimiter(", ")) {
-
-          for (String instanceId : cardInstances.get(problemId)) {
-
-            if (line.hasNextLine() == false) {
-              throw new Exception("Not enough instances results in " + path.toString() + " file.");
+        if (Arrays.stream(problems).anyMatch(problemId::equals)) {
+          if (!line.contains("---")) {
+            implementedProblems.add(problemId);
+            try (Scanner lineScanner = new Scanner(line).useDelimiter(", ")) {
+              for (String instanceId : problemInstances.get(problemId)) {
+    
+                if (lineScanner.hasNextLine() == false) {
+                  throw new Exception(
+                    "Not enough instances results in " + path.toString() + " file.");
+                }
+                logger.info("Calculating the " + problemId + " " + instanceId + ".");
+                result.putInstanceScore(
+                    problemId, instanceId, Double.parseDouble(lineScanner.next()));
+              }
             }
-
-            result.putInstanceScore(problemId, instanceId, Double.parseDouble(line.next()));
           }
         }
       }

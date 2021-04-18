@@ -4,7 +4,7 @@ import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadataReader;
 import hyflex.chesc2011.metrics.scorecard.ScoreCard;
 import hyflex.chesc2011.metrics.scorecard.ScoreCardHelper;
-
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class BenchmarkCalculator {
     }
   };
 
-  // This arrays holds the order of problem domains in results file
+  // This arrays represents problems with metadata
   String[] problems = {"SAT", "TSP"};
 
   /**
@@ -95,6 +95,10 @@ public class BenchmarkCalculator {
         throw new Exception("Error: No results directory name given.");
       }
 
+      List<String> problems = new ArrayList<>();
+      problems.add("SAT");
+      problems.add("TSP");
+
       BenchmarkCalculator ibc = new BenchmarkCalculator();
       ibc.run(args[0], args[1]);
     } catch (Exception e) {
@@ -107,31 +111,42 @@ public class BenchmarkCalculator {
    * Method evaluates all algorithms and stores results into file.
    * 
    * @param id Name of the directory where algorithm problem results are stored.
+   * @param metric Name of the metric to be used.
    */
   public void run(String id, String metric) throws Exception {
-    resultsXmlFile = String.format(resultsXmlFile, id);
+    logger.info("Evaluation is running...");
+    
+    if (!Files.exists(Paths.get(resultsPath, id))) {
+      throw new Exception(String.format("Competition id '%s' does not exist", id));
+    }
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
         .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
 
-    UnitMetricScoreCalculator scoreCalculator =
-        new UnitMetricScoreCalculator(instancesMetadata, problemInstances, problems);
+    String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath, id));
 
-    String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath + "/" + id));
-
-    List<ScoreCard> cards = new ArrayList<>();
+    List<ScoreCard> results = new ArrayList<>();
 
     for (String fileName : resFiles) {
-      Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
+      logger.info("Evaluating the " + fileName);
+      Path scoreCardPath = Paths.get(resultsPath, id, fileName);
 
+      // Get algorihtm results
+      List<String> implementedProblems = new ArrayList<>();
       ScoreCard algorithmResults =
-          ScoreCardHelper.loadCard(problems, scoreCardPath, problemInstances);
+          ScoreCardHelper.loadCard(problems, scoreCardPath, problemInstances, implementedProblems);
+      
+      UnitMetricScoreCalculator scoreCalculator =
+          new UnitMetricScoreCalculator(
+          instancesMetadata, problemInstances, 
+          implementedProblems.toArray(new String[]{}));
 
-      cards.add(algorithmResults);
+      // Calculate algorithm scores
+      ScoreCard algorithmScores = scoreCalculator.calculateScore(algorithmResults);
+      results.add(algorithmScores);
     }
 
-    List<ScoreCard> results = scoreCalculator.calculateScores(cards);
-
+    resultsXmlFile = String.format(resultsXmlFile, id);
     ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
     logger.info("The score file stored to " + resultsXmlFile);
   }

@@ -5,7 +5,8 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
 import hyflex.chesc2011.Competition;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class CompetitionRunCommand extends Command {
 
   @Parameter(names = {"--id"},
       description = "The name of the results folder")
-  public Long id = Long.parseLong("0");
+  public String id = "0";
   
   @Parameter(names = {"-h", "--hyperheuristics"},
       required = true,
@@ -43,6 +44,13 @@ public class CompetitionRunCommand extends Command {
       description = "Names of hyper-heuristics to be used in competition " 
       + "available values are: GIHH, LeanGIHH, EPH, PearlHunter, ISEA")
   public List<String> hyperheurictics;
+
+  @Parameter(names = {"-p", "--problems"},      
+      variableArity = true,
+      description = "Names of problems to be used in competition " 
+      + "available values are: SAT, BinPacking, PersonnelScheduling, FlowShop, TSP, VRP")
+  public List<String> problems = Arrays
+      .asList(new String[] {"SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP"});
 
   public boolean isHelp() {
     return help;
@@ -54,7 +62,8 @@ public class CompetitionRunCommand extends Command {
       + "\nhelp" + help
       + "\ntimeout" + timeout
       + "\nruns" + runs 
-      + "\nhyperheurictics" + hyperheurictics;
+      + "\nhyperheurictics" + hyperheurictics
+      + "\nproblems" + problems;
   }
 
   @Override
@@ -64,6 +73,6 @@ public class CompetitionRunCommand extends Command {
       jc.usage();
       return;
     }
-    new Competition().run(hyperheurictics, timeout * 1000, runs, id);
+    new Competition().run(hyperheurictics, problems, timeout * 1000, runs, id);
   }
 }
