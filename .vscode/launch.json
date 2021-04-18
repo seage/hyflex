@@ -6,11 +6,11 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Competiton Run",
+      "name": "Debug Competiton",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.launcher.Launcher",
       "args": [
-        "competition-run",
+        "competition",
         "-h",
         "ISEA",
         "-p",
@@ -25,11 +25,11 @@
     },
     {
       "type": "java",
-      "name": "Competiton Evaluation",
+      "name": "Debud Evaluation",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.launcher.Launcher",
       "args": [
-        "competition-evaluate",
+        "evaluation",
         "--id",
         "debug1"
       ]
