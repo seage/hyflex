@@ -30,11 +30,11 @@ public class Competition {
    */
   public void run(
       List<String> hyperheurictics, List<String> problems,
-      long timeout, int runs, Long id) throws Exception {
+      long timeout, int runs, String id) throws Exception {
     // check if user defined output folder
-    if (id == 0) {
+    if (id == "0") {
       // create new folder for results
-      id = System.currentTimeMillis();
+      id = "" + System.currentTimeMillis();
     }
     
     // create output folder
@@ -42,7 +42,7 @@ public class Competition {
         System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
 
 
-    new File(resultsDir + "/" + Long.toString(id) + "/").mkdirs();
+    new File(resultsDir + "/" + id + "/").mkdirs();
 
     System.out.println(resultsDir);
 
@@ -128,13 +128,13 @@ public class Competition {
    * @param algorithmID name of given hyper-heuristic algorithm
    */
   public void makeResultsCard(
-      List<List<Double>> results, String algorithmID, Long id) throws IOException {
+      List<List<Double>> results, String algorithmID, String id) throws IOException {
     
     final String resultsDir = Optional.ofNullable(
             System.getenv("RESULTS_DIR")).orElse(defaultDirectory);
     try (
         FileWriter fwriter =
-            new FileWriter(resultsDir + "/" + Long.toString(id) + "/" + algorithmID + ".txt");
+            new FileWriter(resultsDir + "/" + id + "/" + algorithmID + ".txt");
         PrintWriter printer = new PrintWriter(fwriter);) {
       String line = "";
       for (List<Double> array : results) {

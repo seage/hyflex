@@ -35,7 +35,7 @@ public class CompetitionRunCommand extends Command {
 
   @Parameter(names = {"--id"},
       description = "The name of the results folder")
-  public Long id = Long.parseLong("0");
+  public String id = "0";
   
   @Parameter(names = {"-h", "--hyperheuristics"},
       required = true,

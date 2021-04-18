@@ -14,18 +14,32 @@
     },
     {
       "type": "java",
-      "name": "Launch the Launcher",
+      "name": "Competiton Run",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.launcher.Launcher",
       "args": [
         "competition-run",
         "-h",
-        "LeanGIHH",
-        "EPH",
+        "ISEA",
+        "-p",
+        "TSP",
         "-n",
-        "10",
+        "3",
         "-t",
-        "10"
+        "60",
+        "--id",
+        "d999"
+      ]
+    },
+    {
+      "type": "java",
+      "name": "Competiton Evaluation",
+      "request": "launch",
+      "mainClass": "hyflex.chesc2011.launcher.Launcher",
+      "args": [
+        "competition-evaluate",
+        "--id",
+        "999"
       ]
     },
     {
