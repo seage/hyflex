@@ -1,4 +1,4 @@
-package hyflex.chesc2011.metrics.scorecard;
+package hyflex.chesc2011.evaluation.scorecard;
 
 import java.util.HashMap;
 import java.util.Map;

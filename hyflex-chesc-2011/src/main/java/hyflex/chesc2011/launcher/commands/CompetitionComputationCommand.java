@@ -5,7 +5,6 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
 import hyflex.chesc2011.Competition;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import java.util.List;
  * @author David Omrai
  */
 @Parameters(commandDescription = "Perform the Competition tasks on given hyper-heuristic")
-public class CompetitionRunCommand extends Command {
+public class CompetitionComputationCommand extends Command {
     
   @Parameter(names = {"--help"},
       help = true,

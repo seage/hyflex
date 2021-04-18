@@ -1,4 +1,4 @@
-package hyflex.chesc2011.legacy;
+package hyflex.chesc2011.evaluation.calculators.legacy;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,4 +1,4 @@
-package hyflex.chesc2011.metrics.metadata;
+package hyflex.chesc2011.evaluation.metadata;
 
 import java.io.InputStream;
 import java.nio.file.Path;

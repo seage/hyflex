@@ -1,7 +1,7 @@
-package hyflex.chesc2011.metrics.calculators;
+package hyflex.chesc2011.evaluation.calculators;
 
-import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
-import hyflex.chesc2011.metrics.scorecard.ScoreCard;
+import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadata;
+import hyflex.chesc2011.evaluation.scorecard.ScoreCard;
 
 import java.util.ArrayList;
 import java.util.HashMap;

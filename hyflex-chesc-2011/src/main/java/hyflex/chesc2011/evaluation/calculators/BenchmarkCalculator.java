@@ -1,9 +1,10 @@
-package hyflex.chesc2011.metrics.calculators;
+package hyflex.chesc2011.evaluation.calculators;
 
-import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
-import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadataReader;
-import hyflex.chesc2011.metrics.scorecard.ScoreCard;
-import hyflex.chesc2011.metrics.scorecard.ScoreCardHelper;
+import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadata;
+import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadataReader;
+import hyflex.chesc2011.evaluation.scorecard.ScoreCard;
+import hyflex.chesc2011.evaluation.scorecard.ScoreCardHelper;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
 
 /**
  * Class represents benchmark calculator for each solutions card stored inside results file.

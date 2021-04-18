@@ -25,14 +25,14 @@ if [ ! -f hyflex-chesc-2011/build/install/hyflex-chesc-2011/lib/hyflex-chesc-201
 fi
 
 # Evaluate competition
-if [[ $@ == *"competition-evaluate"* ]]; then
+if [[ $@ == *"evaluation"* ]]; then
     echo "Use run.sh instead."
     exit
 fi
 
 
 # Run competition
-if [[ $@ == *"competition-run"* ]]; then
+if [[ $@ == *"competition"* ]]; then
     #Is hh set by user
     if [[ $@ == *"-h"* || $@ == *"--hyperheuristics"* ]]; then
         echo "Don't define hyper-heuristic."
