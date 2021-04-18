@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.PrintWriter;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +20,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import hyflex.chesc2011.metrics.calculators.UnitMetricScoreCalculator;
-import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
 
 
 /**
@@ -52,15 +49,14 @@ public class ScoreCardHelper {
    * @return Map with algorithm results.
    */
   public static ScoreCard loadCard(String[] problems, Path path, 
-      Map<String, List<String>> problemInstances, 
-      Map<String, ProblemInstanceMetadata> instancesMetadata) throws Exception {
+      Map<String, List<String>> problemInstances, List<String> implementedProblems) 
+      throws Exception {
     logger.info("Loading the card...");
 
     // Name of the file
     String cardName = path.getFileName().toString();
     ScoreCard result = 
         new ScoreCard(cardName.substring(0, cardName.lastIndexOf(".")), cardProblemsOrder);
-    List<String> usedProblems = new ArrayList<>();
 
     try (Scanner scanner = new Scanner(new File(path.toString()))) {
       scanner.useDelimiter("\n");
@@ -73,7 +69,7 @@ public class ScoreCardHelper {
 
         if (Arrays.stream(problems).anyMatch(problemId::equals)) {
           if (!line.contains("---")) {
-            usedProblems.add(problemId);
+            implementedProblems.add(problemId);
             try (Scanner lineScanner = new Scanner(line).useDelimiter(", ")) {
               for (String instanceId : problemInstances.get(problemId)) {
     
@@ -90,12 +86,7 @@ public class ScoreCardHelper {
         }
       }
     }
-
-    UnitMetricScoreCalculator scoreCalculator =
-        new UnitMetricScoreCalculator(
-          instancesMetadata, problemInstances, usedProblems.toArray(new String[]{}));
- 
-    return scoreCalculator.calculateScore(result);
+    return result;
   }
 
 

@@ -128,10 +128,19 @@ public class BenchmarkCalculator {
       logger.info("Evaluating the " + fileName);
       Path scoreCardPath = Paths.get(resultsPath + "/" + id + "/" + fileName);
 
+      // Get algorihtm results
+      List<String> implementedProblems = new ArrayList<>();
       ScoreCard algorithmResults =
-          ScoreCardHelper.loadCard(problems, scoreCardPath, problemInstances, instancesMetadata);
+          ScoreCardHelper.loadCard(problems, scoreCardPath, problemInstances, implementedProblems);
+      
+      UnitMetricScoreCalculator scoreCalculator =
+          new UnitMetricScoreCalculator(
+          instancesMetadata, problemInstances, 
+          implementedProblems.toArray(new String[]{}));
 
-      results.add(algorithmResults);
+      // Calculate algorithm scores
+      ScoreCard algorithmScores = scoreCalculator.calculateScore(algorithmResults);
+      results.add(algorithmScores);
     }
 
     ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
