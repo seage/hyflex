@@ -5,7 +5,8 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
 import hyflex.chesc2011.Competition;
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -44,12 +45,12 @@ public class CompetitionRunCommand extends Command {
       + "available values are: GIHH, LeanGIHH, EPH, PearlHunter, ISEA")
   public List<String> hyperheurictics;
 
-  @Parameter(names = {"-p", "--problems"},
-      required = true,
+  @Parameter(names = {"-p", "--problems"},      
       variableArity = true,
       description = "Names of problems to be used in competition " 
       + "available values are: SAT, BinPacking, PersonnelScheduling, FlowShop, TSP, VRP")
-  public List<String> problems;
+  public List<String> problems = Arrays
+      .asList(new String[] {"SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP"});
 
   public boolean isHelp() {
     return help;
