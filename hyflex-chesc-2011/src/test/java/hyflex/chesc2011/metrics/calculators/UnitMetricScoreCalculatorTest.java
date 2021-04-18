@@ -2,8 +2,10 @@ package hyflex.chesc2011.metrics.calculators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import hyflex.chesc2011.metrics.metadata.ProblemInstanceMetadata;
-import hyflex.chesc2011.metrics.scorecard.ScoreCard;
+import hyflex.chesc2011.evaluation.calculators.UnitMetricScoreCalculator;
+import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadata;
+import hyflex.chesc2011.evaluation.scorecard.ScoreCard;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
