@@ -20,7 +20,7 @@ public class Competition {
     "GIHH", "LeanGIHH", "PearlHunter", "EPH", "ISEA"
   };
   private static final String[] problemIDs = {
-    "SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP"
+    "SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP", "QAP"
   };
   
   final String defaultDirectory = "./results";

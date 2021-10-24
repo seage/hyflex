@@ -8,6 +8,7 @@ import Examples.ExampleHyperHeuristic1;
 
 import FlowShop.FlowShop;
 import PersonnelScheduling.PersonnelScheduling;
+import QAP.QAP;
 import SAT.SAT;
 import VRP.VRP;
 
@@ -68,7 +69,7 @@ public class CompetitionRunner extends Thread {
   //These are parameters were used for the competition, 
   //so if they are changed then the results may not be comparable to those of the competition
   private static int numberofruns = 31;
-  private static final int domains = 6;
+  private static final int domains = 7;
   private static final int instances = 5;
 
   private static long instanceseed;
@@ -144,6 +145,10 @@ public class CompetitionRunner extends Thread {
       case "VRP": 
         problem = 5;
         resultsfolder = "VRP";
+        break;
+      case "QAP":
+        problem = 6;
+        resultsfolder = "QAP";
         break;
       default: System.err.println("wrong input for the problem domain");
         System.exit(-1);
@@ -290,6 +295,9 @@ public class CompetitionRunner extends Thread {
       case 5: 
         p = new VRP(instanceseed); 
         break;
+      case 6:
+        p = new QAP(instanceseed);
+        break;
       default: System.err.println("there is no problem domain with this index");
         p = new BinPacking(rng.nextLong());
         System.exit(0);
@@ -314,6 +322,7 @@ public class CompetitionRunner extends Thread {
     final int[] fs  = {1,8,3,10,11};
     final int[] tsp = {0,8,2,7,6};
     final int[] vrp = {6,2,5,1,9};
+    final int[] qap = {0,1,2,3,9};
 
     instancesToUse[0] = sat;
     instancesToUse[1] = bp;
@@ -321,6 +330,7 @@ public class CompetitionRunner extends Thread {
     instancesToUse[3] = fs;
     instancesToUse[4] = tsp;
     instancesToUse[5] = vrp;
+    instancesToUse[6] = qap;
 
     System.out.println("PROBLEM DOMAIN " + resultsfolder);
     int instancetouse = instancesToUse[problem][instance];
