@@ -37,6 +37,17 @@ subprojects {
 project(':hyflex-chesc-2011') {
     dependencies {
         implementation project(':hyflex-hh-acuna')
+        implementation project(':hyflex-hh-jiang')
+        implementation project(':hyflex-hh-johnston')
+        implementation project(':hyflex-hh-khamassi')
+        implementation project(':hyflex-hh-larose')
+        implementation project(':hyflex-hh-lehrbaumhaha')
+        implementation project(':hyflex-hh-mascianahh')
+        implementation project(':hyflex-hh-mcclymont')
+        implementation project(':hyflex-hh-nunez')
+        implementation project(':hyflex-hh-shafi')
+        implementation project(':hyflex-hh-sim')
+        implementation project(':hyflex-hh-urli')
         implementation project(':hyflex-hh-eph')
         implementation project(':hyflex-hh-eph')
         implementation project(':hyflex-hh-gihh')
