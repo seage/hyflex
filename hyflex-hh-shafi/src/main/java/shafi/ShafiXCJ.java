@@ -1,4 +1,4 @@
-package ShafiXCJ;
+package shafi;
 
 import AbstractClasses.HyperHeuristic;
 import AbstractClasses.ProblemDomain;

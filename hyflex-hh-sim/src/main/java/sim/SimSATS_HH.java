@@ -1,4 +1,4 @@
-package simCHeSC;
+package sim;
 import java.util.ArrayList;
 import java.util.HashMap;
 

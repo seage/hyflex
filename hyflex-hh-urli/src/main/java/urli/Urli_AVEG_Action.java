@@ -1,4 +1,4 @@
-package hyperHeuristics;
+package urli;
 
 import AbstractClasses.ProblemDomain.HeuristicType;
 
