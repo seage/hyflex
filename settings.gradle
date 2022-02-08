@@ -9,6 +9,7 @@
 
 rootProject.name = 'hyflex'
 include('hyflex-chesc-2011')
+include('hyflex-hh-acuna')
 include('hyflex-hh-eph')
 include('hyflex-hh-gihh')
 include('hyflex-hh-isea')

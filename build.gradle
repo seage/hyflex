@@ -36,6 +36,7 @@ subprojects {
 
 project(':hyflex-chesc-2011') {
     dependencies {
+        implementation project(':hyflex-hh-acuna')
         implementation project(':hyflex-hh-eph')
         implementation project(':hyflex-hh-eph')
         implementation project(':hyflex-hh-gihh')
