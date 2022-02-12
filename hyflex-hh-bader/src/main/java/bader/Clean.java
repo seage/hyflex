@@ -1,4 +1,4 @@
-package Bader;
+package bader;
 
 //import java.math.*;
 import java.util.Random;

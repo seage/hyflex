@@ -1,4 +1,4 @@
-package Examples;
+package elomari;
 
 import AbstractClasses.HyperHeuristic;
 import AbstractClasses.ProblemDomain;

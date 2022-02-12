@@ -25,6 +25,27 @@ import leangihh.LeanGIHH;
 import pearlhunter.PearlHunter;
 import travelingSalesmanProblem.TSP;
 
+
+import acuna.GISS;
+import bader.Clean;
+import bader.Clean02;
+import csput.CSPUTGeneticHiveHyperHeuristic;
+import elomari.elomariSS;
+import elomari.elomariSS_Main;
+import gomez.HaeaHH;
+import hsiao.HsiaoCHeSCHyperheuristic;
+import jiang.sa_ilsHyperHeuristic;
+import johnston.JohnstonBiasILS;
+import johnston.JohnstonDynamicILS;
+import laroseml.LaroseML;
+import lehrbaum.LehrbaumHAHA;
+import iridia.MyHyperHeuristic;
+import khmassi.Ant_Q;
+import shafi.ShafiXCJ;
+import aco.ACO_HH;
+import sim.SimSATS_HH;
+import shafi.ShafiXCJ;
+import urli.Urli_AVEG_NeptuneHyperHeuristic;
 /**
  * This class replicates the experimental setup for the CHeSC competition 2011.
  * Please refer to the comments in the code to find the parameters which are modifiable.

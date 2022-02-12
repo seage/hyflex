@@ -1,4 +1,4 @@
-package chesc.solutions;
+package csput;
 
 import java.util.Vector;
 
