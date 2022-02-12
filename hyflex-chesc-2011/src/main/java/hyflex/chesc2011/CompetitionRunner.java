@@ -18,7 +18,9 @@ import be.kuleuven.kahosl.selection.SelectionMethodType;
 import fr.lalea.eph.EPH;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.Map;
 
 import kubalik.EvoCOPHyperHeuristic;
 import leangihh.LeanGIHH;
@@ -44,7 +46,6 @@ import khmassi.Ant_Q;
 import shafi.ShafiXCJ;
 import aco.ACO_HH;
 import sim.SimSATS_HH;
-import shafi.ShafiXCJ;
 import urli.Urli_AVEG_NeptuneHyperHeuristic;
 /**
  * This class replicates the experimental setup for the CHeSC competition 2011.
@@ -97,6 +98,35 @@ public class CompetitionRunner extends Thread {
   private static String resultsfolder;
   private static long[][][] instanceseeds;
 
+  private static Map<String, Integer> hhsMap = new HashMap<String, Integer>()
+  {{
+    put("ExampleHyperHeuristic1", 0);
+    put("EPH", 1);
+    put("LeanGIHH", 2);
+    put("PearlHunter", 3);
+    put("GIHH", 4);
+    put("ISEA", 5);
+    put("GISS", 6);
+    put("Clean", 7);
+    put("Clean02", 8);
+    put("CSPUTGeneticHiveHyperHeuristic", 9);
+    put("elomariSS", 10);
+    put("elomariSS_Main", 11);
+    put("HaeaHH", 12);
+    put("HsiaoCHeSCHyperheuristic", 13);
+    put("sa_ilsHyperHeuristic", 14);
+    put("JohnstonBiasILS", 15);
+    put("JohnstonDynamicILS", 16);
+    put("LaroseML", 17);
+    put("LehrbaumHAHA", 18);
+    put("MyHyperHeuristic", 19);
+    put("Ant_Q", 20);
+    put("ShafiXCJ", 21);
+    put("ACO_HH", 22);
+    put("SimSATS_HH", 23);
+    put("Urli_AVEG_NeptuneHyperHeuristic", 24);
+  }};
+
   ArrayList<Double> results = new ArrayList<Double>();
 
   /**
@@ -137,6 +167,9 @@ public class CompetitionRunner extends Thread {
         break;
       case "ISEA": 
         algorithm = 5;
+        break;
+      case "GISS":
+        algorithm = 6;
         break;
       default: System.err.println("wrong input for the problem domain");
         System.exit(-1);
