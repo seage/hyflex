@@ -27,26 +27,6 @@ import leangihh.LeanGIHH;
 import pearlhunter.PearlHunter;
 import travelingSalesmanProblem.TSP;
 
-
-import acuna.GISS;
-import bader.Clean;
-import bader.Clean02;
-import csput.CSPUTGeneticHiveHyperHeuristic;
-import elomari.elomariSS;
-import elomari.elomariSS_Main;
-import gomez.HaeaHH;
-import hsiao.HsiaoCHeSCHyperheuristic;
-import jiang.sa_ilsHyperHeuristic;
-import johnston.JohnstonBiasILS;
-import johnston.JohnstonDynamicILS;
-import laroseml.LaroseML;
-import lehrbaum.LehrbaumHAHA;
-import iridia.MyHyperHeuristic;
-import khmassi.Ant_Q;
-import shafi.ShafiXCJ;
-import aco.ACO_HH;
-import sim.SimSATS_HH;
-import urli.Urli_AVEG_NeptuneHyperHeuristic;
 /**
  * This class replicates the experimental setup for the CHeSC competition 2011.
  * Please refer to the comments in the code to find the parameters which are modifiable.
@@ -111,20 +91,19 @@ public class CompetitionRunner extends Thread {
     put("Clean02", 8);
     put("CSPUTGeneticHiveHyperHeuristic", 9);
     put("elomariSS", 10);
-    put("elomariSS_Main", 11);
-    put("HaeaHH", 12);
-    put("HsiaoCHeSCHyperheuristic", 13);
-    put("sa_ilsHyperHeuristic", 14);
-    put("JohnstonBiasILS", 15);
-    put("JohnstonDynamicILS", 16);
-    put("LaroseML", 17);
-    put("LehrbaumHAHA", 18);
-    put("MyHyperHeuristic", 19);
-    put("Ant_Q", 20);
-    put("ShafiXCJ", 21);
-    put("ACO_HH", 22);
-    put("SimSATS_HH", 23);
-    put("Urli_AVEG_NeptuneHyperHeuristic", 24);
+    put("HaeaHH", 11);
+    put("HsiaoCHeSCHyperheuristic", 12);
+    put("sa_ilsHyperHeuristic", 13);
+    put("JohnstonBiasILS", 14);
+    put("JohnstonDynamicILS", 15);
+    put("LaroseML", 16);
+    put("LehrbaumHAHA", 17);
+    put("MyHyperHeuristic", 18);
+    put("Ant_Q", 19);
+    put("ShafiXCJ", 20);
+    put("ACO_HH", 21);
+    put("SimSATS_HH", 22);
+    put("Urli_AVEG_NeptuneHyperHeuristic", 23);
   }};
 
   ArrayList<Double> results = new ArrayList<Double>();
@@ -149,31 +128,12 @@ public class CompetitionRunner extends Thread {
     time          = runTime;
     numberofruns  = algRuns;
 
-    switch (algorithmID) {
-      case "ExampleHyperHeuristic1": 
-        algorithm = 0;
-        break;
-      case "EPH": 
-        algorithm = 1;
-        break;
-      case "LeanGIHH": 
-        algorithm = 2;
-        break;
-      case "PearlHunter": 
-        algorithm = 3;
-        break;
-      case "GIHH": 
-        algorithm = 4;
-        break;
-      case "ISEA": 
-        algorithm = 5;
-        break;
-      case "GISS":
-        algorithm = 6;
-        break;
-      default: System.err.println("wrong input for the problem domain");
-        System.exit(-1);
+    if (!hhsMap.containsKey(algorithmID)) {
+      System.err.println("wrong input for the problem domain");
+      System.exit(-1);      
     }
+
+    algorithm = hhsMap.get(algorithmID);
 
     switch (problemID) {
       case "SAT": 

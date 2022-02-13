@@ -35,6 +35,25 @@ import pearlhunter.PearlHunter;
 
 import travelingSalesmanProblem.TSP;
 
+import acuna.GISS;
+import bader.Clean;
+import bader.Clean02;
+import csput.CSPUTGeneticHiveHyperHeuristic;
+import elomari.elomariSS;
+import gomez.HaeaHH;
+import hsiao.HsiaoCHeSCHyperheuristic;
+import jiang.sa_ilsHyperHeuristic;
+import johnston.JohnstonBiasILS;
+import johnston.JohnstonDynamicILS;
+import laroseml.LaroseML;
+import lehrbaum.LehrbaumHAHA;
+import iridia.MyHyperHeuristic;
+import khmassi.Ant_Q;
+import shafi.ShafiXCJ;
+import aco.ACO_HH;
+import sim.SimSATS_HH;
+import urli.Urli_AVEG_NeptuneHyperHeuristic;
+
 public class HyperHeuristicRunner {
   /**
    * Main method of HyperHeuristicRunner class, it runs hyper-heuristic based on the user input.
@@ -139,6 +158,42 @@ public class HyperHeuristicRunner {
         return new EPH(seed);
       case "ISEA":
         return new EvoCOPHyperHeuristic(seed);
+      case "GISS":
+        return new GISS(seed);
+      case "Clean":
+        return new Clean(seed);
+      case "Clean02":
+        return new Clean02(seed);
+      case "CSPUTGeneticHiveHyperHeuristic":
+        return new CSPUTGeneticHiveHyperHeuristic(seed);
+      case "elomariSS":
+        return new elomariSS(seed);
+      case "HaeaHH":
+        return new HaeaHH(seed);
+      case "HsiaoCHeSCHyperheuristic":
+        return new HsiaoCHeSCHyperheuristic(seed);
+      case "sa_ilsHyperHeuristic":
+        return new sa_ilsHyperHeuristic(seed);
+      case "JohnstonBiasILS":
+        return new JohnstonBiasILS(seed);
+      case "JohnstonDynamicILS":
+        return new JohnstonDynamicILS(seed);
+      case "LaroseML":
+        return new LaroseML(seed);
+      case "LehrbaumHAHA":
+        return new LehrbaumHAHA(seed);
+      case "MyHyperHeuristic":
+        return new MyHyperHeuristic(seed);
+      case "Ant_Q":
+        return new Ant_Q(seed);
+      case "ShafiXCJ":
+        return new ShafiXCJ(seed);
+      case "ACO_HH":
+        return new ACO_HH(seed);
+      case "SimSATS_HH":
+        return new SimSATS_HH(seed);
+      case "Urli_AVEG_NeptuneHyperHeuristic":
+        return new Urli_AVEG_NeptuneHyperHeuristic(seed);
       default:
         System.out.println("ERROR, " + algorithmName + " INVALID INPUT");
         return null;
