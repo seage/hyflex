@@ -18,12 +18,33 @@ import be.kuleuven.kahosl.selection.SelectionMethodType;
 import fr.lalea.eph.EPH;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.Map;
 
 import kubalik.EvoCOPHyperHeuristic;
 import leangihh.LeanGIHH;
 import pearlhunter.PearlHunter;
 import travelingSalesmanProblem.TSP;
+
+import acuna.GISS;
+import bader.Clean;
+import bader.Clean02;
+import csput.CSPUTGeneticHiveHyperHeuristic;
+import elomari.elomariSS;
+import gomez.HaeaHH;
+import hsiao.HsiaoCHeSCHyperheuristic;
+import jiang.sa_ilsHyperHeuristic;
+import johnston.JohnstonBiasILS;
+import johnston.JohnstonDynamicILS;
+import laroseml.LaroseML;
+import lehrbaum.LehrbaumHAHA;
+import iridia.MyHyperHeuristic;
+import khmassi.Ant_Q;
+import shafi.ShafiXCJ;
+import aco.ACO_HH;
+import sim.SimSATS_HH;
+import urli.Urli_AVEG_NeptuneHyperHeuristic;
 
 /**
  * This class replicates the experimental setup for the CHeSC competition 2011.
@@ -76,6 +97,34 @@ public class CompetitionRunner extends Thread {
   private static String resultsfolder;
   private static long[][][] instanceseeds;
 
+  private static Map<String, Integer> hhsMap = new HashMap<String, Integer>()
+  {{
+    put("ExampleHyperHeuristic1", 0);
+    put("EPH", 1);
+    put("LeanGIHH", 2);
+    put("PearlHunter", 3);
+    put("GIHH", 4);
+    put("ISEA", 5);
+    put("GISS", 6);
+    put("Clean", 7);
+    put("Clean02", 8);
+    put("CSPUTGeneticHiveHyperHeuristic", 9);
+    put("elomariSS", 10);
+    put("HaeaHH", 11);
+    put("HsiaoCHeSCHyperheuristic", 12);
+    put("sa_ilsHyperHeuristic", 13);
+    put("JohnstonBiasILS", 14);
+    put("JohnstonDynamicILS", 15);
+    put("LaroseML", 16);
+    put("LehrbaumHAHA", 17);
+    put("MyHyperHeuristic", 18);
+    put("Ant_Q", 19);
+    put("ShafiXCJ", 20);
+    put("ACO_HH", 21);
+    put("SimSATS_HH", 22);
+    put("Urli_AVEG_NeptuneHyperHeuristic", 23);
+  }};
+
   ArrayList<Double> results = new ArrayList<Double>();
 
   /**
@@ -98,28 +147,12 @@ public class CompetitionRunner extends Thread {
     time          = runTime;
     numberofruns  = algRuns;
 
-    switch (algorithmID) {
-      case "ExampleHyperHeuristic1": 
-        algorithm = 0;
-        break;
-      case "EPH": 
-        algorithm = 1;
-        break;
-      case "LeanGIHH": 
-        algorithm = 2;
-        break;
-      case "PearlHunter": 
-        algorithm = 3;
-        break;
-      case "GIHH": 
-        algorithm = 4;
-        break;
-      case "ISEA": 
-        algorithm = 5;
-        break;
-      default: System.err.println("wrong input for the problem domain");
-        System.exit(-1);
+    if (!hhsMap.containsKey(algorithmID)) {
+      System.err.println("wrong input for the problem domain");
+      System.exit(-1);      
     }
+
+    algorithm = hhsMap.get(algorithmID);
 
     switch (problemID) {
       case "SAT": 
@@ -261,6 +294,78 @@ public class CompetitionRunner extends Thread {
       case 5: 
         h = new EvoCOPHyperHeuristic(rng.nextLong()); 
         h.setTimeLimit(timeLimit); 
+        break;
+      case 6:
+        h =  new GISS(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 7:
+        h =  new Clean(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 8:
+        h =  new Clean02(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 9:
+        h =  new CSPUTGeneticHiveHyperHeuristic(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 10:
+        h =  new elomariSS(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 11:
+        h =  new HaeaHH(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 12:
+        h =  new HsiaoCHeSCHyperheuristic(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 13:
+        h =  new sa_ilsHyperHeuristic(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 14:
+        h =  new JohnstonBiasILS(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 15:
+        h =  new JohnstonDynamicILS(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 16:
+        h =  new LaroseML(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 17:
+        h =  new LehrbaumHAHA(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 18:
+        h =  new MyHyperHeuristic(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 19:
+        h =  new Ant_Q(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 20:
+        h =  new ShafiXCJ(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 21:
+        h =  new ACO_HH(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 22:
+        h =  new SimSATS_HH(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 23:
+        h =  new Urli_AVEG_NeptuneHyperHeuristic(rng.nextLong());
+        h.setTimeLimit(timeLimit);
         break;
       default: System.err.println("there is no hyper heuristic with this index");
         h = null;

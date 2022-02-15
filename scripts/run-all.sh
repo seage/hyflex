@@ -6,7 +6,7 @@ runAllHyperHeuristics(){
     mkdir -p results/log 2> /dev/null
 
     #All hyper-heuristics names
-    hhIDs="GIHH LeanGIHH PearlHunter EPH ISEA"
+    hhIDs="GIHH LeanGIHH PearlHunter EPH ISEA GISS Clean Clean02 CSeneticHiveHyperHeuristic elomariSS HaeaHH HsiaoCHeSCHyperheuristic sa_ilsHyperHeuristic JohnstonBiasILS JohnstonDynamicILS LaroseML LehrbaumHAHA MyHyperHeuristic Ant_Q ShafiXCJ ACO_HH SimSATS_HH Urli_AVEG_NeptuneHyperHeuristic"
     
     #Run all hyper-heuristics in parallel
     for hhID in $hhIDs

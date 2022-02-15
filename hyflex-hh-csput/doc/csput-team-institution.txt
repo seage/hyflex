@@ -1,0 +1,29 @@
+------------------Name of the hyperheuristic------------------
+Genetic Hive HyperHeuristic
+
+
+------------------Creators of the hyperheuristic------------------
+Micha³ Frankiewicz
+Michal.Frankiewicz@student.put.poznan.pl
+
+Tomasz Cichowicz
+Tomasz.Cichowicz@student.put.poznan.pl
+
+Prof. Maciej Drozdowski
+Maciej.Drozdowski@cs.put.poznan.pl
+
+Dr Grzegorz Pawlak
+Grzegorz.Pawlak@cs.put.poznan.pl
+
+Filip Rytwiñski
+Filip.Rytwinski@student.put.poznan.pl
+
+Jacek Wasilewski
+Jacek.Wasilewski@student.put.poznan.pl
+
+------------------Institution of the creators------------------
+Institute of Computing Science, 
+Poznan University of Technology
+Piotrowo 2, 
+60-965 Poznan, 
+Poland

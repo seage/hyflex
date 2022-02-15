@@ -17,8 +17,31 @@ import java.util.Optional;
  */
 public class Competition {
   private static final String[] algorithmIDs = {
-    "GIHH", "LeanGIHH", "PearlHunter", "EPH", "ISEA"
+    "GIHH",
+    "LeanGIHH",
+    "PearlHunter",
+    "EPH",
+    "ISEA",
+    "GISS",
+    "Clean",
+    "Clean02",
+    "CSeneticHiveHyperHeuristic",
+    "elomariSS",
+    "HaeaHH",
+    "HsiaoCHeSCHyperheuristic",
+    "sa_ilsHyperHeuristic",
+    "JohnstonBiasILS",
+    "JohnstonDynamicILS",
+    "LaroseML",
+    "LehrbaumHAHA",
+    "MyHyperHeuristic",
+    "Ant_Q",
+    "ShafiXCJ",
+    "ACO_HH",
+    "SimSATS_HH",
+    "Urli_AVEG_NeptuneHyperHeuristic",
   };
+
   private static final String[] problemIDs = {
     "SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP", "QAP"
   };
@@ -32,7 +55,7 @@ public class Competition {
       List<String> hyperheurictics, List<String> problems,
       long timeout, int runs, String id) throws Exception {
     // check if user defined output folder
-    if (id == "0") {
+    if (id.equals("0")) {
       // create new folder for results
       id = "" + System.currentTimeMillis();
     }

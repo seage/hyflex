@@ -40,8 +40,31 @@ public class CompetitionComputationCommand extends Command {
   @Parameter(names = {"-h", "--hyperheuristics"},
       required = true,
       variableArity = true,
-      description = "Names of hyper-heuristics to be used in competition " 
-      + "available values are: GIHH, LeanGIHH, EPH, PearlHunter, ISEA")
+      description = "Names of hyper-heuristics to be used in competition " + 
+      "available values are:" +
+      "GIHH," + 
+      "LeanGIHH," + 
+      "EPH," + 
+      "PearlHunter," + 
+      "ISEA," + 
+      "GISS," +
+      "Clean," +
+      "Clean02," +
+      "CSeneticHiveHyperHeuristic," +
+      "elomariSS," +
+      "HaeaHH," +
+      "HsiaoCHeSCHyperheuristic," +
+      "sa_ilsHyperHeuristic," +
+      "JohnstonBiasILS," +
+      "JohnstonDynamicILS," +
+      "LaroseML," +
+      "LehrbaumHAHA," +
+      "MyHyperHeuristic," +
+      "Ant_Q," +
+      "ShafiXCJ," +
+      "ACO_HH," +
+      "SimSATS_HH," +
+      "Urli_AVEG_NeptuneHyperHeuristi")
   public List<String> hyperheurictics;
 
   @Parameter(names = {"-p", "--problems"},      
