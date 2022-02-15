@@ -55,7 +55,7 @@ public class Competition {
       List<String> hyperheurictics, List<String> problems,
       long timeout, int runs, String id) throws Exception {
     // check if user defined output folder
-    if (id == "0") {
+    if (id.equals("0")) {
       // create new folder for results
       id = "" + System.currentTimeMillis();
     }
