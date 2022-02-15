@@ -29,7 +29,7 @@ This runs the ISEA hyper-heuristic with timeout 10s and 10 trials
 This runs the ISEA hyper-heuristic on just TSP and SAT problems with timeout 10s and 10 trials
 
 ```
-./scripts/run.sh competition-run -h ISEA -p TSP SAT -t 10 -n 10
+./scripts/run.sh competition -h ISEA -p TSP SAT -t 10 -n 10
 ```
 
 This runs the ISEA and LeanGIHH hyper-heuristics with timeout 10s and 10 trials each
