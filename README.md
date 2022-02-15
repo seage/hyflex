@@ -38,6 +38,19 @@ This runs the ISEA and LeanGIHH hyper-heuristics with timeout 10s and 10 trials 
 ./scripts/run.sh competition -h ISEA LeanGIHH -t 10 -n 10
 ```
 
+### Example run of all available hyper-heuristics competition
+
+This runs all of the hyper-heuristics parallel with timeout 10s and 10 trials each
+
+```
+./scripts/run-all.sh competition -t 10 -n 10
+```
+
+To see all available hyper-heuristics run following command
+
+```
+./scripts/run.sh --help
+```
 
 ### Example run for evaluation
 
@@ -45,6 +58,12 @@ Run the competition with the id e.g. `competition1`
 
 ```
 ./scripts/run.sh competition -h ISEA LeanGIHH -t 10 -n 10 --id competition1
+```
+
+To run all the hyper-heuristics with the id e.g. `competition1`
+
+```
+./scripts/run-all.sh competition -t 10 -n 10 --id competition1
 ```
 
 
