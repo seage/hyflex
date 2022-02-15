@@ -8,11 +8,11 @@ public class ACO_HH extends HyperHeuristic {
 	/* 
 	 * Genera caminos de hormiga de largo n confomados por
 	 * secuencias de heuristicas que reutilizan la salida de
-	 * la ejecución anterior dentro del camino.
-	 * Primera solución del camino es una aleatoria en la primera iteración 
+	 * la ejecuci-n anterior dentro del camino.
+	 * Primera soluci-n del camino es una aleatoria en la primera iteraci-n 
 	 * y la mejor encontrada en las siguientes iteraciones.
 	 * 
-	 * Por José Luis Núñez.
+	 * Por Jos- Luis N--ez.
 	*/
 	
 	
@@ -30,14 +30,14 @@ public class ACO_HH extends HyperHeuristic {
 	// Numero de nodos por camino de hormiga (contador k)
 	int n=1;
 	
-	// Numero de heurísticas disponibles
+	// Numero de heur-sticas disponibles
 	int H;
 	
 	// Numero de parametros a utilizar (son fijos)
 	int P=5;
 	
 	// Caminos de hormigas [m x n x 2]. 
-	// (j,k,0): Indice h de la heurística aplicada
+	// (j,k,0): Indice h de la heur-stica aplicada
 	// (j,k,1): Parametro p de la heuristica empleado
 	int[][][] caminos;
 	
@@ -60,7 +60,7 @@ public class ACO_HH extends HyperHeuristic {
 	//Problema a resolver
 	ProblemDomain problema;
 	
-	// Parámetros de la función de probabilidad
+	// Par-metros de la funci-n de probabilidad
 	double alfa=1;
 	double beta=1;
 		
