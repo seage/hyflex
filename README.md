@@ -17,12 +17,12 @@ Run the script and follow the help
 ./scripts/run.sh
 ```
 
-### Example run for competition
+### Example run for single and multiple hyper-heuristics competition
 
 This runs the ISEA hyper-heuristic with timeout 10s and 10 trials
 
 ```
-./scripts/run.sh competition-run -h ISEA -t 10 -n 10
+./scripts/run.sh competition -h ISEA -t 10 -n 10
 ```
 
 
@@ -32,18 +32,26 @@ This runs the ISEA hyper-heuristic on just TSP and SAT problems with timeout 10s
 ./scripts/run.sh competition-run -h ISEA -p TSP SAT -t 10 -n 10
 ```
 
+This runs the ISEA and LeanGIHH hyper-heuristics with timeout 10s and 10 trials each
+
+```
+./scripts/run.sh competition -h ISEA LeanGIHH -t 10 -n 10
+```
+
 
 ### Example run for evaluation
 
 Run the competition with the id e.g. `competition1`
 
 ```
-./scripts/run.sh competition-run -h ISEA -t 10 -n 10 --id competition1
+./scripts/run.sh competition -h ISEA LeanGIHH -t 10 -n 10 --id competition1
 ```
 
 
 Evaluate the competition with id `competition1`
 
 ```
-./scripts/run.sh competition-evaluate --id competition1
+./scripts/run.sh evaluation --id competition1
 ```
+
+The final result will be stores as xml file in the competiton1 folder
