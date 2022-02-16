@@ -74,3 +74,23 @@ Evaluate the competition with id `competition1`
 ```
 
 The final result will be stores as xml file in the competiton1 folder
+
+
+### Supported hyper-heuristics
+Ant_Q
+Clean
+Clean02
+elosmariSS
+EPH
+GISS
+HaeaHH
+JohnstonBiasILS
+JohnstonDynamicILS
+LaroseML
+LeanGIHH
+LehrbaumHAHA
+PearlHunter
+sa_ilsHyperHeuristic
+ShafiXCJ
+SimSATS
+Urli_AVEG_NeptuneHyperHeuristic
