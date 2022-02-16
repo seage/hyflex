@@ -12,7 +12,7 @@ subprojects {
         jcenter()
 
          maven {
-            url "file://$projectDir/../hyflex-lib/repository"
+            url "file://$projectDir/../../hyflex-lib/repository"
         }
     }
 

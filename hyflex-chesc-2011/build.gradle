@@ -3,6 +3,14 @@ plugins {
     id 'application'
 }
 
+repositories {
+    jcenter()
+
+        maven {
+        url "file://$projectDir/../hyflex-lib/repository"
+    }
+}
+
 dependencies {
     // This dependency is used by the application.
     implementation group: 'com.beust', name: 'jcommander', version: '1.78'
