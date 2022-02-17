@@ -2,10 +2,27 @@ from importlib.abc import FileLoader
 from xml.dom import minidom
 from jinja2 import Environment, FileSystemLoader 
 
-# parse xml file
-# results = minidom.parse("results/1/unit-metric-scores.xml").getElementsByTagName('results')[0]
+# Parse xml file
+results_xml = minidom.parse("results/1/unit-metric-scores.xml").getElementsByTagName('results')[0]
 
-# print(results.getElementsByTagName("algorithm")[0].attribute["name"])
+algorithms_xml =  results_xml.getElementsByTagName("algorithm") 
+problems_xml =algorithms_xml[0].getElementsByTagName("problem")
 
-fileLoader = FileSystemLoader("templates")
-env = Environment(loader=fileLoader)
+# Extract the data from xml format
+problems = []
+
+for problem_xml in problems_xml:
+    problems.append(problem_xml.attribute["name"])
+
+results = []
+
+for algorithm_xml in algorithms_xml:
+    result = {}
+    # todo
+    results.append[result]
+
+
+# fileLoader = FileSystemLoader("templates")
+# env = Environment(loader=fileLoader)
+
+# rendered = env.get_template("results.html").render()
