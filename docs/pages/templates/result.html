@@ -5,6 +5,28 @@
         <meta charset="utf-8" />
     </head>
     <body>
-        <!-- todo -->
+        <div class="container">
+            <div class="heading">
+                <h1>{{ title }}</h1>
+            </div>
+            <div class="table">
+                <table>
+                    <tr>      
+                        <th>HH</th>
+                        {% for problem in problems %}
+                        <th>{{problem}}</th>
+                        {% endfor %}
+                        <th>Overall</th>
+                    </tr>
+                    {% for hh in results %}
+                        <th>hh.name</th>
+                        {% for problem in problems %}
+                        <th>{{hh.results[problem]}}</th>
+                        {% endfor %}
+                        <th>{{hh.overall}}</th>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
     </body>
 </html>
