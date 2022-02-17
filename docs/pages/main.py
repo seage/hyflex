@@ -18,7 +18,19 @@ results = []
 
 for algorithm_xml in algorithms_xml:
     result = {}
-    # todo
+    
+    # Algorithm name
+    result["name"] = algorithm_xml.attribute["name"]
+
+    # Algorithm overall score
+    result["overall"] = algorithm_xml.attribute["score"]
+
+    # Score on each problem
+    result["score"] = {}
+    for score_xml in algorithm_xml.getElementsByTagName("problem"):
+        result["score"][score_xml.attribute["name"]] = score_xml.attribute["avg"]
+    
+
     results.append[result]
 
 

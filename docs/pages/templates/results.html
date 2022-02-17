@@ -21,7 +21,7 @@
                     {% for hh in results %}
                         <th>hh.name</th>
                         {% for problem in problems %}
-                        <th>{{hh.results[problem]}}</th>
+                        <th>{{hh.score[problem]}}</th>
                         {% endfor %}
                         <th>{{hh.overall}}</th>
                     {% endfor %}
