@@ -3,6 +3,24 @@
     <head>
         <title>Results of {{ results_id }}</title>
         <meta charset="utf-8" />
+        <style>
+            body {
+                background-color: whitesmoke;
+            }
+
+            #hh_score {
+                text-align: left;
+            }
+
+            #hh_overall {
+                text-align: left;
+            }
+
+            th {
+                padding-right: 10px;
+            }
+
+        </style>
     </head>
     <body>
         <div class="container">
@@ -12,19 +30,19 @@
             <div class="table">
                 <table aria-describedby="results">
                     <tr>      
-                        <th id="hh">HH</th>
+                        <th id="hh_head">HH</th>
                         {% for problem in problems %}
-                        <th id={{problem}}>{{problem}}</th>
+                        <th id="p_head">{{problem}}</th>
                         {% endfor %}
-                        <th id="overall">Overall</th>
+                        <th id="overall_head">Overall</th>
                     </tr>
                     {% for hh in results %}
                         <tr>
                             <th id="hh_name">{{hh.name}}</th>
                             {% for problem in problems %}
-                            <th id="problem">{{hh.score[problem]}}</th>
+                            <th id="hh_score" style="background-color:rgba(255, 0, 0, {{hh.score[problem]}})">{{hh.score[problem]}}</th>
                             {% endfor %}
-                            <th id="hh_overall">{{hh.overall}}</th>
+                            <th id="hh_overall" style="background-color:rgba(255, 0, 0, {{hh.overall}})">{{hh.overall}}</th>
                         </tr>
                     {% endfor %}
                 </table>

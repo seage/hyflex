@@ -53,7 +53,6 @@ def create_page(results, problems, page_dest):
 
 def build_results_page(exp_id):
     results, problems = exp_xml_to_dict("results/{}/unit-metric-scores.xml".format(str(exp_id)))
-    print(results)
     create_page(results, problems, "results/{}/index.html".format(str(exp_id)))
 
 
