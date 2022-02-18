@@ -6,6 +6,7 @@ from importlib.abc import FileLoader
 from xml.dom import minidom
 from jinja2 import Environment, FileSystemLoader 
 import sys
+import os
 
 def exp_xml_to_dict(exp_xml_path):
     # Parse xml file
@@ -18,7 +19,7 @@ def exp_xml_to_dict(exp_xml_path):
     problems = []
 
     for problem_xml in problems_xml:
-        problems.append(problem_xml.attribute["name"])
+        problems.append(problem_xml.getAttribute("name"))
 
     results = []
 
@@ -26,32 +27,31 @@ def exp_xml_to_dict(exp_xml_path):
         result = {}
         
         # Algorithm name
-        result["name"] = algorithm_xml.attribute["name"]
+        result["name"] = algorithm_xml.getAttribute("name")
 
         # Algorithm overall score
-        result["overall"] = algorithm_xml.attribute["score"]
+        result["overall"] = algorithm_xml.getAttribute("score")
 
         # Score on each problem
         result["score"] = {}
         for score_xml in algorithm_xml.getElementsByTagName("problem"):
-            result["score"][score_xml.attribute["name"]] = score_xml.attribute["avg"]
+            result["score"][score_xml.getAttribute("name")] = score_xml.getAttribute("avg")
         
         results.append(result)
 
 
 def create_page(results, page_dest):
     # Jinja2 part for templates
-    file_loader = FileSystemLoader("templates")
+    file_loader = FileSystemLoader("docs/pages/templates")
     env = Environment(loader=file_loader)
+    rendered = env.get_template("results.html").render()
 
-    rendered = env.get_template("docs/pages/templates/results.html").render()
-
-    with open("{page_dest}", "w") as f:
+    with open("{}".format(str(page_dest)), "w") as f:
         f.write(rendered)
 
 def build_results_page(exp_id):
-    results = exp_xml_to_dict("results/{exp_id}/unit-metric-scores.xml")
-    create_page(results, "results/{exp_id}/index.html")
+    results = exp_xml_to_dict("results/{}/unit-metric-scores.xml".format(str(exp_id)))
+    create_page(results, "results/{}/index.html".format(str(exp_id)))
 
 
 if __name__ == "__main__":
