@@ -39,19 +39,22 @@ def exp_xml_to_dict(exp_xml_path):
         
         results.append(result)
 
+    return results, problems
 
-def create_page(results, page_dest):
+
+def create_page(results, problems, page_dest):
     # Jinja2 part for templates
     file_loader = FileSystemLoader("docs/pages/templates")
     env = Environment(loader=file_loader)
-    rendered = env.get_template("results.html").render()
+    rendered = env.get_template("results.html").render(results=results, problems=problems)
 
     with open("{}".format(str(page_dest)), "w") as f:
         f.write(rendered)
 
 def build_results_page(exp_id):
-    results = exp_xml_to_dict("results/{}/unit-metric-scores.xml".format(str(exp_id)))
-    create_page(results, "results/{}/index.html".format(str(exp_id)))
+    results, problems = exp_xml_to_dict("results/{}/unit-metric-scores.xml".format(str(exp_id)))
+    print(results)
+    create_page(results, problems, "results/{}/index.html".format(str(exp_id)))
 
 
 if __name__ == "__main__":

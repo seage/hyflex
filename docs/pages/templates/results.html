@@ -12,18 +12,20 @@
             <div class="table">
                 <table aria-describedby="results">
                     <tr>      
-                        <th>HH</th>
+                        <th id="hh">HH</th>
                         {% for problem in problems %}
-                        <th>{{problem}}</th>
+                        <th id={{problem}}>{{problem}}</th>
                         {% endfor %}
-                        <th>Overall</th>
+                        <th id="overall">Overall</th>
                     </tr>
                     {% for hh in results %}
-                        <th>hh.name</th>
-                        {% for problem in problems %}
-                        <th>{{hh.score[problem]}}</th>
-                        {% endfor %}
-                        <th>{{hh.overall}}</th>
+                        <tr>
+                            <th id="hh_name">{{hh.name}}</th>
+                            {% for problem in problems %}
+                            <th id="problem">{{hh.score[problem]}}</th>
+                            {% endfor %}
+                            <th id="hh_overall">{{hh.overall}}</th>
+                        </tr>
                     {% endfor %}
                 </table>
             </div>
