@@ -11,83 +11,99 @@ import os
 hh_info = {
     "clean": {
         "name": '',
-        "author": ''
+        "author": 'Mohamed Bader-El-Den'
     },
     "isea": {
-        "name": '',
-        "author": ''
+        "name": 'terated Local Search Driven by Evolutionary Algorithm',
+        "author": 'Pavel Kubalík'
     },
     "aco_hh": {
-        "name": '',
-        "author": ''
+        "name": 'Ant colony optimization',
+        "author": 'José Luis Núñez'
     },
     "elomariss": {
-        "name": '',
-        "author": ''
+        "name": 'Self-Search (Extended Abstract)',
+        "author": 'Jawad Elomari'
+    },
+    "MyHyperHeuristic":{
+        "name": 'Non-Adaptive Hyper-Heuristic',
+        "author": 'Franco Mascia'
     },
     "simsats_hh":{
-        "name": '',
-        "author": ''
+        "name": 'KSATS-HH: A Simulated Annealing Hyper-Heuristic with Reinforcement Learning and Tabu-Search',
+        "author": 'Kevin Sim'
     },
     "clean02": {
         "name": '',
-        "author": ''
+        "author": 'Mohamed Bader-El-Den'
     },
-    "sa_ilshyperh{uristic": {
+    "sa_ilshyperheuristic": {
         "name": '',
-        "author": ''
+        "author": 'He Jiang'
     },
     "eph": {
-        "name": '',
-        "author": ''
+        "name": 'Evolutionary Programming Hyper-heuristic',
+        "author": 'David Meignan'
     },
     "pearlhunter": {
-        "name": '',
-        "author": ''
+        "name": 'Pearl Hunter: A Hyper-heuristic that Compiles Iterated Local Search Algorithms',
+        "author": 'Fan Xue'
     },
     "haeahh": {
-        "name": '',
-        "author": ''
+        "name": 'Hybrid Adaptive Evolutionary Algorithm Hyper Heuristic',
+        "author": 'Jonatan Gómez'
     },
-    "urli_aveg_ne{tunehyperheuristic": {
-        "name": '',
-        "author": ''
+    "urli_aveg_netunehyperheuristic": {
+        "name": 'A Reinforcement Learning approach',
+        "author": 'Luca Di Gaspero'
     },
     "lehrbaumhaha": {
-        "name": '',
-        "author": ''
+        "name": 'A new Hyperheuristic Algorithm',
+        "author": 'Andreas Lehrbaum'
     },
-    "johnstonbias{ls": {
-        "name": '',
-        "author": ''
+    "johnstonbiasls": {
+        "name": 'Non-Improvement Bias Iterated Local Search',
+        "author": 'Mark Johnston'
     },
     "leangihh": {
-        "name": '',
-        "author": ''
+        "name": 'Simpler variant of GIHH',
+        "author": 'Steven Adriaensen'
     },
     "laroseml": {
-        "name": '',
-        "author": ''
+        "name": 'Self-adaptive meta-heuristic of Meignan',
+        "author": 'Mathieu Larose'
     },
-    "hsiaochescyp{rheuristic": {
-        "name": '',
-        "author": ''
+    "hsiaochescyprheuristic": {
+        "name": 'Variable neighborhood search-based hyperheuristic',
+        "author": 'Ping-Che Hsiao'
     },
     "ant_q": {
         "name": '',
-        "author": ''
+        "author": 'Imen Khamassi'
     },
-    "johnstondyna{icils": {
-        "name": '',
-        "author": ''
+    "CSPUTGeneticHiveHyperHeuristic": {
+        "name": 'Genetic Hive HyperHeuristic',
+        "author": 'Michal Frankiewicz',
+    },
+    "johnstondynamicils": {
+        "name": 'Dynamic Iterated Local Search',
+        "author": 'Mark Johnston'
     },
     "shafixcj": {
-        "name": '',
-        "author": ''
+        "name": 'eXplore-Climb-Jump: A Hill Climbing based Cross-Domain Hyper-Heuristi',
+        "author": 'Kamran Shafi'
     },
     "giss": {
-        "name": '',
-        "author": ''
+        "name": 'Generic Iterative Simulated-Annealing Search',
+        "author": 'Alberto Acuna'
+    },
+    "gihh": {
+        "name": 'Genetic Iterative Hyper-heuristic',
+        "author": 'Mustafa Misir'
+    },
+    "McClymontMCHHS": {
+        "name": 'A Single Objective Variant of the Online Selective Markov chain Hyper-heuristic',
+        "author": 'Kent McClymont'
     },
 }
 
