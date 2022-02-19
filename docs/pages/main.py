@@ -15,7 +15,7 @@ hh_info = {
     },
     "ISEA": {
         "name": 'terated Local Search Driven by Evolutionary Algorithm',
-        "author": 'Pavel Kubalík'
+        "author": 'Jiří Kubalík'
     },
     "ACO_HH": {
         "name": 'Ant colony optimization',
