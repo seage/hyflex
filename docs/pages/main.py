@@ -138,6 +138,8 @@ def exp_xml_to_dict(exp_xml_path):
         
         results.append(result)
 
+    results.sort(key=lambda k: k["overall"], reverse=True)
+
     return results, problems
 
 
