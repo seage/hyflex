@@ -8,6 +8,10 @@
                 background-color: whitesmoke;
             }
 
+            table {
+                border: 1px solid;
+            }
+
             #hh_score {
                 text-align: left;
             }
@@ -15,6 +19,38 @@
             #hh_overall {
                 text-align: left;
             }
+
+            .styled-table {
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 0.9em;
+                font-family: sans-serif;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            }
+
+            .styled-table thead tr {
+                background-color: #009879;
+                color: #fff;
+                text-align: center;
+            }
+
+            .styled-table th, .styled-table td {
+                padding: 9px 12px;
+            }
+
+            .styled-table tbody tr {
+                border-bottom: 1px solid #dddddd;
+            }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .styled-table tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+            }
+
 
             th {
                 padding-right: 10px;
@@ -28,23 +64,27 @@
                 <h1>{{ title }}</h1>
             </div>
             <div class="table">
-                <table aria-describedby="results">
-                    <tr>      
+                <table aria-describedby="results" class="styled-table">
+                    <thead>
+                        <tr>      
                         <th id="hh_head">HH</th>
-                        {% for problem in problems %}
-                        <th id="p_head">{{problem}}</th>
-                        {% endfor %}
-                        <th id="overall_head">Overall</th>
-                    </tr>
-                    {% for hh in results %}
-                        <tr>
-                            <th id="hh_name">{{hh.name}}</th>
                             {% for problem in problems %}
-                            <th id="hh_score" style="background-color:rgba(255, 0, 0, {{hh.score[problem]}})">{{hh.score[problem]}}</th>
+                            <th id="p_head">{{problem}}</th>
                             {% endfor %}
-                            <th id="hh_overall" style="background-color:rgba(255, 0, 0, {{hh.overall}})">{{hh.overall}}</th>
+                            <th id="overall_head">Overall</th>
                         </tr>
-                    {% endfor %}
+                    </thead>
+                    <tbody>
+                        {% for hh in results %}
+                            <tr>
+                                <th id="hh_name">{{hh.name}}</th>
+                                {% for problem in problems %}
+                                <th id="hh_score" style="background-color:rgba(255, 0, 0, {{hh.score[problem]}})">{{hh.score[problem]}}</th>
+                                {% endfor %}
+                                <th id="hh_overall" style="background-color:rgba(255, 255, 0, {{hh.overall}})">{{hh.overall}}</th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
