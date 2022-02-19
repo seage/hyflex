@@ -145,7 +145,7 @@ def create_page(results, problems, page_dest):
     # Jinja2 part for templates
     file_loader = FileSystemLoader("docs/pages/templates")
     env = Environment(loader=file_loader)
-    rendered = env.get_template("results.html").render(results=results, problems=problems)
+    rendered = env.get_template("results.html").render(results=results, problems=problems, hh_info=hh_info)
 
     with open("{}".format(str(page_dest)), "w") as f:
         f.write(rendered)
