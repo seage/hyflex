@@ -8,6 +8,89 @@ from jinja2 import Environment, FileSystemLoader
 import sys
 import os
 
+hh_info = {
+    "clean": {
+        "name": '',
+        "author": ''
+    },
+    "isea": {
+        "name": '',
+        "author": ''
+    },
+    "aco_hh": {
+        "name": '',
+        "author": ''
+    },
+    "elomariss": {
+        "name": '',
+        "author": ''
+    },
+    "simsats_hh":{
+        "name": '',
+        "author": ''
+    },
+    "clean02": {
+        "name": '',
+        "author": ''
+    },
+    "sa_ilshyperh{uristic": {
+        "name": '',
+        "author": ''
+    },
+    "eph": {
+        "name": '',
+        "author": ''
+    },
+    "pearlhunter": {
+        "name": '',
+        "author": ''
+    },
+    "haeahh": {
+        "name": '',
+        "author": ''
+    },
+    "urli_aveg_ne{tunehyperheuristic": {
+        "name": '',
+        "author": ''
+    },
+    "lehrbaumhaha": {
+        "name": '',
+        "author": ''
+    },
+    "johnstonbias{ls": {
+        "name": '',
+        "author": ''
+    },
+    "leangihh": {
+        "name": '',
+        "author": ''
+    },
+    "laroseml": {
+        "name": '',
+        "author": ''
+    },
+    "hsiaochescyp{rheuristic": {
+        "name": '',
+        "author": ''
+    },
+    "ant_q": {
+        "name": '',
+        "author": ''
+    },
+    "johnstondyna{icils": {
+        "name": '',
+        "author": ''
+    },
+    "shafixcj": {
+        "name": '',
+        "author": ''
+    },
+    "giss": {
+        "name": '',
+        "author": ''
+    },
+}
+
 def exp_xml_to_dict(exp_xml_path):
     # Parse xml file
     results_xml = minidom.parse(exp_xml_path).getElementsByTagName('results')[0]
