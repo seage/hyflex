@@ -7,6 +7,11 @@ The goal of this project is to collect hyper-heurisics from CHeSC 2011 (Cross-do
 
 Hyper-heuristic implementers might find this environment helpful for comparing own results with other approaches.
 
+## List of available hyper-heuristics
+
+See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder.
+![Hyper-heuristics](docs/hh.png)
+
 ## Build and run the project
 ```
 ./scripts/build.sh

@@ -53,6 +53,7 @@ import shafi.ShafiXCJ;
 import aco.ACO_HH;
 import sim.SimSATS_HH;
 import urli.Urli_AVEG_NeptuneHyperHeuristic;
+import mcclymont.McClymontMCHHS;
 
 public class HyperHeuristicRunner {
   /**
@@ -194,6 +195,8 @@ public class HyperHeuristicRunner {
         return new SimSATS_HH(seed);
       case "Urli_AVEG_NeptuneHyperHeuristic":
         return new Urli_AVEG_NeptuneHyperHeuristic(seed);
+      case "McClymontMCHHS":
+        return new McClymontMCHHS(seed);
       default:
         System.out.println("ERROR, " + algorithmName + " INVALID INPUT");
         return null;

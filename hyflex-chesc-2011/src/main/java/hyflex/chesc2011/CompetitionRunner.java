@@ -45,6 +45,7 @@ import shafi.ShafiXCJ;
 import aco.ACO_HH;
 import sim.SimSATS_HH;
 import urli.Urli_AVEG_NeptuneHyperHeuristic;
+import mcclymont.McClymontMCHHS;
 
 /**
  * This class replicates the experimental setup for the CHeSC competition 2011.
@@ -123,6 +124,7 @@ public class CompetitionRunner extends Thread {
     put("ACO_HH", 21);
     put("SimSATS_HH", 22);
     put("Urli_AVEG_NeptuneHyperHeuristic", 23);
+    put("McClymontMCHHS", 24);
   }};
 
   ArrayList<Double> results = new ArrayList<Double>();
@@ -365,6 +367,10 @@ public class CompetitionRunner extends Thread {
         break;
       case 23:
         h =  new Urli_AVEG_NeptuneHyperHeuristic(rng.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case 24:
+        h = new McClymontMCHHS(rng.nextLong());
         h.setTimeLimit(timeLimit);
         break;
       default: System.err.println("there is no hyper heuristic with this index");

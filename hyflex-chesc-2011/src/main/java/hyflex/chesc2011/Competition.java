@@ -40,6 +40,7 @@ public class Competition {
     "ACO_HH",
     "SimSATS_HH",
     "Urli_AVEG_NeptuneHyperHeuristic",
+    "McClymontMCHHS",
   };
 
   private static final String[] problemIDs = {
