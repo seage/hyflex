@@ -79,3 +79,12 @@ Evaluate the competition with id `competition1`
 ```
 
 The final result will be stores as xml file in the competiton1 folder
+
+
+### Create a page with a heat map of competition results
+```
+./scripts/build-page.sh competition1
+```
+
+The result page will be stored in the competition1 folder as index.html file.
+
