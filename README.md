@@ -76,6 +76,13 @@ Evaluate the competition with id `competition1`
 The final result will be stores as xml file in the competiton1 folder
 
 
+### Create the html with heat map competition results
+```
+./scripts/build-page.sh competition1
+```
+
+The result page will be stored in the competition1 folder as index.html file.
+
 ### Supported hyper-heuristics
 ```
 Ant_Q
