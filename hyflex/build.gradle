@@ -1,0 +1,10 @@
+repositories {
+    jcenter()
+
+        maven {
+        url "file://$projectDir/../hyflex-lib/repository"
+    }
+}
+
+dependencies {
+}
