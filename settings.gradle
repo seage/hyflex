@@ -1,6 +1,6 @@
 rootProject.name = 'hyflex'
 include('hyflex-chesc-2011')
-
+include('hyflex_ext')
 // include hyperheuristics
 new File("./hyflex-hyperheuristics/").listFiles().each
 {
