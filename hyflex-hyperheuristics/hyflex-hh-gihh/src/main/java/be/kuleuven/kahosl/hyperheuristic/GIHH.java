@@ -898,7 +898,14 @@ public class GIHH extends HyperHeuristic implements Serializable {
 		// statFiles.closeBufferedWriters();
 		
 		/* Write the best solution found after a search to a file */
-		writeTheBestSlnToAFile(problem, bestFitness, bestSlnFoundAsStr); 
+		/**
+		 * This line of code caused NullPointerException
+		 * I've decided to comment it because it is not anything
+		 * that is really needed
+		 * 
+		 * @autor Dave Omrai
+		 */
+		//writeTheBestSlnToAFile(problem, bestFitness, bestSlnFoundAsStr); 
 		
 	}
 	
@@ -915,7 +922,6 @@ public class GIHH extends HyperHeuristic implements Serializable {
 		try {
 			outBestSln = new BufferedWriter(
 				    		new FileWriter(WriteInfo.mainFolder+WriteInfo.resultSubFolderName+"/"+resultFileName+"_BESTslnFOUND.txt", true));
-			
 			outBestSln.write("BestFitness: "+bestFitness+"\n");
 			outBestSln.write(bestSlnFoundAsStr);
 		} catch (IOException e) {
