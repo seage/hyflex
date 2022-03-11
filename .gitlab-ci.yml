@@ -1,0 +1,27 @@
+image: docker:stable
+
+stages:
+  - build
+  - test
+  - report
+
+variables:
+  DOCKER_DRIVER: overlay2
+  HYFLEX_TEST_IMAGE: hyflex:$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA-$CI_PIPELINE_ID
+
+build-hyflex:
+  stage: build
+  script:
+    - docker build -t $HYFLEX_TEST_IMAGE -f Dockerfile .
+
+test-hyflex:
+  stage: test
+  script:
+    - docker run --rm $HYFLEX_TEST_IMAGE ./gradlew clean test
+
+#report-hyflex:
+#  stage: report
+#  # only:
+#  #   - master
+#  script:
+#    - docker run --rm $HYFLEX_TEST_IMAGE ./gradlew codeCoverageReport sonarqube -Dsonar.projectKey=hyflex -Dsonar.host.url=https://sonarqube.rickq.net -Dsonar.login=$SONAR_SECRET
