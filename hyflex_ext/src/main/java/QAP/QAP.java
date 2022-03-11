@@ -1,5 +1,6 @@
 package QAP;
 
+import QAP.SolutionQAP.SwapNH;
 import QAP.heuristics.BestSwap;
 import QAP.heuristics.OrderedXO;
 import QAP.heuristics.PartiallyMatchedXO;
@@ -19,66 +20,84 @@ import hfu.heuristics.ModifierMutationHeuristic;
 import hfu.heuristics.MutationHeuristic;
 import hfu.heuristics.RuinRecreateHeuristic;
 import hfu.heuristics.selector.SelectBest;
+import hfu.heuristics.selector.SelectBestDepth;
 import hfu.heuristics.selector.SelectFirst;
 import hfu.heuristics.selector.SelectRandom;
-import hfu.heuristics.selector.Selector;
 
-public class QAP extends BasicProblemDomain<SolutionQAP, InfoQAP> {
-  public QAP(long seed) {
-    super(seed);
-  }
-  
-  public BenchmarkInstance<InfoQAP>[] getBenchmarkInstances() {
-    CFGParserQAP cFGParserQAP = new CFGParserQAP();
-    BenchmarkInstance[] benchmarks = { new BenchmarkInstance("instances/qap/sko100a.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/sko100b.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/sko100c.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/sko100d.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/tai100a.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/tai100b.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/tai150b.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/tai256c.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/tho150.flp", (Parser)cFGParserQAP), 
-        new BenchmarkInstance("instances/qap/wil100.flp", (Parser)cFGParserQAP) };
-    return (BenchmarkInstance<InfoQAP>[])benchmarks;
-  }
-  
-  public ConstructionHeuristic<SolutionQAP, InfoQAP> getConstructionHeuristic() {
-    return (ConstructionHeuristic<SolutionQAP, InfoQAP>)new RandomInit();
-  }
-  
-  public LocalSearchHeuristic<SolutionQAP, InfoQAP>[] getLocalSearchHeuristics() {
-    LocalSearchHeuristic[] llhs_ls = { (LocalSearchHeuristic)new ModifierFullLocalSearchHeuristic((Selector)new SelectFirst(), new Swap(), false), 
-        (LocalSearchHeuristic)new ModifierFullLocalSearchHeuristic((Selector)new SelectBest(false), new Swap(), false) };
-    return (LocalSearchHeuristic<SolutionQAP, InfoQAP>[])llhs_ls;
-  }
-  
-  public MutationHeuristic<SolutionQAP, InfoQAP>[] getMutationHeuristics() {
-    MutationHeuristic[] llhs_mut = { (MutationHeuristic)new ModifierMutationHeuristic((Selector)new SelectRandom(), new Swap()), 
-        (MutationHeuristic)new BestSwap() };
-    return (MutationHeuristic<SolutionQAP, InfoQAP>[])llhs_mut;
-  }
-  
-  public RuinRecreateHeuristic<SolutionQAP, InfoQAP>[] getRuinRecreateHeuristics() {
-    RuinRecreateHeuristic[] llhs_rr = { (RuinRecreateHeuristic)new ReAssignRandom(), 
-        (RuinRecreateHeuristic)new ReAssignGreedyF(), 
-        (RuinRecreateHeuristic)new ReAssignGreedyL() };
-    return (RuinRecreateHeuristic<SolutionQAP, InfoQAP>[])llhs_rr;
-  }
-  
-  public String toString() {
-    return "Quadratic Assignment Problem";
-  }
-  
-  public CrossoverHeuristic<SolutionQAP, InfoQAP>[] getCrossoverHeuristics() {
-    CrossoverHeuristic[] llhs_xo = { (CrossoverHeuristic)new PartiallyMatchedXO(), 
-        (CrossoverHeuristic)new OrderedXO() };
-    return (CrossoverHeuristic<SolutionQAP, InfoQAP>[])llhs_xo;
-  }
+public class QAP extends BasicProblemDomain<SolutionQAP,InfoQAP>{
+
+	public QAP(long seed) {
+		super(seed);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public BenchmarkInstance<InfoQAP>[] getBenchmarkInstances() {
+		Parser<InfoQAP> parser = new CFGParserQAP();
+		BenchmarkInstance<InfoQAP>[] benchmarks = new BenchmarkInstance[]{
+				new BenchmarkInstance<InfoQAP>("instances/qap/sko100a.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/sko100b.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/sko100c.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/sko100d.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/tai100a.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/tai100b.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/tai150b.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/tai256c.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/tho150.flp",parser),
+				new BenchmarkInstance<InfoQAP>("instances/qap/wil100.flp",parser),
+		};
+		return benchmarks;
+	}
+
+	@Override
+	public ConstructionHeuristic<SolutionQAP, InfoQAP> getConstructionHeuristic() {
+		return new RandomInit();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public LocalSearchHeuristic<SolutionQAP, InfoQAP>[] getLocalSearchHeuristics() {
+		LocalSearchHeuristic<SolutionQAP, InfoQAP>[] llhs_ls = new LocalSearchHeuristic[]{
+				new ModifierFullLocalSearchHeuristic<SolutionQAP,InfoQAP,SwapNH>(new SelectFirst<SolutionQAP,InfoQAP,SwapNH>(), new Swap(), false), //random order first-improvement hill-climbing (terminated in local optima or after x iterations)
+				new ModifierFullLocalSearchHeuristic<SolutionQAP,InfoQAP,SwapNH>(new SelectBest<SolutionQAP,InfoQAP,SwapNH>(false), new Swap(), false), //best-improvement hill-climbing (terminated in local optima or after x iterations)
+		};
+		return llhs_ls;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public MutationHeuristic<SolutionQAP, InfoQAP>[] getMutationHeuristics() {
+		MutationHeuristic<SolutionQAP, InfoQAP>[] llhs_mut = new MutationHeuristic[]{
+				new ModifierMutationHeuristic<SolutionQAP,InfoQAP,SwapNH>(new SelectRandom<SolutionQAP,InfoQAP,SwapNH>(), new Swap()), //swap x pairs of randomly selected facilities
+				new BestSwap(), //performs the best swap (even when not improving, maintain tabu-list)
+		};
+		return llhs_mut;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public RuinRecreateHeuristic<SolutionQAP, InfoQAP>[] getRuinRecreateHeuristics() {
+		RuinRecreateHeuristic<SolutionQAP, InfoQAP>[] llhs_rr = new RuinRecreateHeuristic[]{
+				new ReAssignRandom(),
+				new ReAssignGreedyF(),
+				new ReAssignGreedyL()
+		};
+		return llhs_rr;
+	}
+
+	@Override
+	public String toString() {
+		return "Quadratic Assignment Problem";
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public CrossoverHeuristic<SolutionQAP, InfoQAP>[] getCrossoverHeuristics() {
+		CrossoverHeuristic<SolutionQAP, InfoQAP>[] llhs_xo = new CrossoverHeuristic[]{
+				new PartiallyMatchedXO(),
+				new OrderedXO()
+		};
+		return llhs_xo;
+	}
+
 }
-
-
-/* Location:              C:\Users\Steve\Documents\GitHub\hyflext\domains\hyflex_ext.jar!\QAP\QAP.class
- * Java compiler version: 7 (51.0)
- * JD-Core Version:       1.1.3
- */

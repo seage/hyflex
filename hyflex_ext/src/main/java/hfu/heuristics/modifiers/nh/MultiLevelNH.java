@@ -1,113 +1,118 @@
 package hfu.heuristics.modifiers.nh;
 
 import hfu.BenchmarkInfo;
+import hfu.RNG;
 
-public abstract class MultiLevelNH<P extends BenchmarkInfo> extends NeighbourHood<P> implements RandomIterable, SamplableNH {
-  int nlevels;
-  
-  public MultiLevelNH(int nlevels, P instance) {
-    super(instance);
-    this.nlevels = nlevels;
-  }
-  
-  public abstract RangeNH<P> getNeighbourhood(int[] paramArrayOfint, int paramInt);
-  
-  public int[] sample() {
-    int[] result = new int[this.nlevels];
-    for (int i = 0; i < this.nlevels; i++)
-      result[i] = getNeighbourhood(result, i).sample()[0]; 
-    return result;
-  }
-  
-  public IteratorNH getIterator() {
-    return new MultiLevelIterator();
-  }
-  
-  public IteratorNH getRandomIterator() {
-    return new MultiLevelIterator(sample());
-  }
-  
-  public int getDimensionality() {
-    return this.nlevels;
-  }
-  
-  class MultiLevelIterator extends IteratorNH {
-    IteratorNH[] its;
-    
-    int[] current;
-    
-    boolean done = false;
-    
-    MultiLevelIterator() {
-      this.its = new IteratorNH[MultiLevelNH.this.nlevels];
-      this.current = new int[MultiLevelNH.this.nlevels];
-      for (int i = 0; i < MultiLevelNH.this.nlevels; i++) {
-        RangeNH<P> nh = MultiLevelNH.this.getNeighbourhood(this.current, i);
-        this.its[i] = nh.getIterator();
-        if (this.its[i].hasNext()) {
-          this.current[i] = this.its[i].next()[0];
-        } else {
-          if (i == 0) {
-            this.done = true;
-            break;
-          } 
-          i -= 2;
-        } 
-      } 
-    }
-    
-    MultiLevelIterator(int[] init) {
-      this.its = new IteratorNH[MultiLevelNH.this.nlevels];
-      this.current = new int[MultiLevelNH.this.nlevels];
-      for (int i = 0; i < MultiLevelNH.this.nlevels; i++) {
-        RangeNH<P> nh = MultiLevelNH.this.getNeighbourhood(this.current, i);
-        this.its[i] = nh.getIterator(init[i]);
-        if (this.its[i].hasNext()) {
-          this.current[i] = this.its[i].next()[0];
-        } else {
-          this.done = true;
-          break;
-        } 
-      } 
-    }
-    
-    public boolean hasNext() {
-      return !this.done;
-    }
-    
-    public int[] next() {
-      int[] result = new int[MultiLevelNH.this.nlevels];
-      System.arraycopy(this.current, 0, result, 0, MultiLevelNH.this.nlevels);
-      for (int i = MultiLevelNH.this.nlevels - 1; i >= 0; i--) {
-        if (this.its[i].hasNext()) {
-          boolean next = true;
-          this.current[i] = this.its[i].next()[0];
-          for (int j = i + 1; j < MultiLevelNH.this.nlevels; j++) {
-            this.its[j] = MultiLevelNH.this.getNeighbourhood(this.current, j).getIterator();
-            if (this.its[j].hasNext()) {
-              this.current[j] = this.its[j].next()[0];
-            } else {
-              if (j == i + 1) {
-                i++;
-                next = false;
-                break;
-              } 
-              j -= 2;
-            } 
-          } 
-          if (next)
-            break; 
-        } else if (i == 0) {
-          this.done = true;
-        } 
-      } 
-      return result;
-    }
-  }
+abstract public class MultiLevelNH<P extends BenchmarkInfo> extends NeighbourHood<P> implements RandomIterable, SamplableNH{
+
+	int nlevels;
+	
+	public MultiLevelNH(int nlevels, P instance) {
+		super(instance);
+		this.nlevels = nlevels;
+	}
+	
+	abstract public RangeNH<P> getNeighbourhood(int[] p, int level);
+	
+	@Override
+	public int[] sample() {
+		int[] result = new int[nlevels];
+		for(int i = 0; i < nlevels;i++){
+			result[i] = getNeighbourhood(result,i).sample()[0];
+		}
+		return result;
+	}
+	
+	@Override
+	public IteratorNH getIterator() {
+		return new MultiLevelIterator();
+	}
+
+	
+	@Override
+	public IteratorNH getRandomIterator() {
+		return new MultiLevelIterator(sample());
+	}
+
+	@Override
+	public int getDimensionality() {
+		return nlevels;
+	}
+	
+	class MultiLevelIterator extends IteratorNH{
+		IteratorNH[] its;
+		int[] current;
+		boolean done = false;
+
+		MultiLevelIterator(){
+			its = new IteratorNH[nlevels];
+			current = new int[nlevels];
+			for(int i = 0; i < nlevels;i++){
+				RangeNH<P> nh = getNeighbourhood(current,i);
+				its[i] = nh.getIterator();
+				if(its[i].hasNext()){
+					current[i] = its[i].next()[0];
+				}else if(i == 0){
+					done = true;
+					break;
+				}else{
+					//backtrack
+					i = i-2;
+				}
+			}
+		}
+		
+		MultiLevelIterator(int[] init){
+			its = new IteratorNH[nlevels];
+			current = new int[nlevels];
+			for(int i = 0; i < nlevels;i++){
+				RangeNH<P> nh = getNeighbourhood(current,i);
+				its[i] = nh.getIterator(init[i]);
+				if(its[i].hasNext()){
+					current[i] = its[i].next()[0];
+				}else{
+					done = true;
+					break;
+				}
+			}
+		}
+		
+		public boolean hasNext() {
+			return !done;
+		}
+
+		@Override
+		public int[] next() {
+			int[] result = new int[nlevels];
+			System.arraycopy(current, 0, result, 0, nlevels);
+			for(int i = nlevels-1; i >= 0;i--){
+				if(its[i].hasNext()){
+					boolean next = true;
+					current[i] = its[i].next()[0];
+					for(int j = i+1;j < nlevels;j++){
+						its[j] = getNeighbourhood(current,j).getIterator();
+						if(its[j].hasNext()){
+							current[j] = its[j].next()[0];
+						}else if(j == i+1){
+							//backtrack to previous level
+							i++;
+							next = false;
+							break;
+						}else{
+							//backtrack in current level
+							j = j-2;
+						}
+					}
+					if(next){
+						break;
+					}
+				}else if(i == 0){
+					done = true;
+				}
+			}
+			return result;
+		}
+		
+	}
+
 }
-
-
-/* Location:              C:\Users\Steve\Documents\GitHub\hyflext\domains\hyflex_ext.jar!\hfu\heuristics\modifiers\nh\MultiLevelNH.class
- * Java compiler version: 7 (51.0)
- * JD-Core Version:       1.1.3
- */

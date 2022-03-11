@@ -4,28 +4,20 @@ import hfu.BasicSolution;
 import hfu.BenchmarkInfo;
 import hfu.heuristics.modifiers.nh.NeighbourHood;
 
-public abstract class Modifier<T extends BasicSolution<P>, P extends BenchmarkInfo, N extends NeighbourHood<P>> {
-  protected P instance;
-  
-  public void init(P instance) {
-    this.instance = instance;
-  }
-  
-  public abstract boolean isApplicable(T paramT);
-  
-  public abstract N getNeightbourhood(T paramT);
-  
-  public abstract T apply(T paramT, int... paramVarArgs);
-  
-  public abstract int interpretIOM(double paramDouble, T paramT);
-  
-  public int interpretDOS(double dos, T c) {
-    return (int)Math.ceil(5.0D * dos);
-  }
+abstract public class Modifier<T extends BasicSolution<P>, P extends BenchmarkInfo,N extends NeighbourHood<P>> {
+
+	protected P instance;
+	
+	//boolean isSymmetric();
+	public void init(P instance){
+		this.instance = instance;
+	}
+	abstract public boolean isApplicable(T c);
+	abstract public N getNeightbourhood(T c);
+	abstract public T apply(T c, int... param);
+	abstract public int interpretIOM(double iom, T c);
+
+	public int interpretDOS(double dos, T c) {
+		return (int) Math.ceil(5*dos);
+	}
 }
-
-
-/* Location:              C:\Users\Steve\Documents\GitHub\hyflext\domains\hyflex_ext.jar!\hfu\heuristics\modifiers\Modifier.class
- * Java compiler version: 7 (51.0)
- * JD-Core Version:       1.1.3
- */

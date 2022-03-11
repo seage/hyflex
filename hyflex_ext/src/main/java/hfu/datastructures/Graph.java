@@ -1,19 +1,15 @@
 package hfu.datastructures;
 
+import hfu.datastructures.AdjecencyList.Neighbor;
+
 import java.util.ArrayList;
 
 public interface Graph {
-  void addEdge(int paramInt1, int paramInt2, int paramInt3);
-  
-  int getNedges();
-  
-  int getNvertices();
-  
-  ArrayList<AdjecencyList.Neighbor> getNeighbors(int paramInt);
+	public void addEdge(int v1, int v2, int w);
+	
+	public int getNedges();
+	
+	public int getNvertices();
+	
+	public ArrayList<Neighbor> getNeighbors(int v);
 }
-
-
-/* Location:              C:\Users\Steve\Documents\GitHub\hyflext\domains\hyflex_ext.jar!\hfu\datastructures\Graph.class
- * Java compiler version: 7 (51.0)
- * JD-Core Version:       1.1.3
- */

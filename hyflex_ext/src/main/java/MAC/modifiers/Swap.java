@@ -2,27 +2,33 @@ package MAC.modifiers;
 
 import MAC.InfoMAC;
 import MAC.SolutionMAC;
-import hfu.BasicSolution;
+import MAC.SolutionMAC.InsertNH;
+import MAC.SolutionMAC.SwapNH;
 import hfu.heuristics.modifiers.PerturbativeModifier;
-import hfu.heuristics.modifiers.nh.NeighbourHood;
 
-public class Swap extends PerturbativeModifier<SolutionMAC, InfoMAC, SolutionMAC.SwapNH> {
-  public SolutionMAC.SwapNH getNeightbourhood(SolutionMAC c) {
-    return new SolutionMAC.SwapNH((InfoMAC)this.instance);
-  }
-  
-  public SolutionMAC apply(SolutionMAC c, int... param) {
-    c.swap(param[0]);
-    return c;
-  }
-  
-  public int interpretIOM(double iom, SolutionMAC c) {
-    return Math.max((int)Math.ceil(iom * 10.0D), 1);
-  }
+public class Swap extends PerturbativeModifier<SolutionMAC,InfoMAC,SwapNH>{
+	
+	public Swap(){
+
+	}
+
+	@Override
+	public SwapNH getNeightbourhood(SolutionMAC c) {
+		return new SwapNH(instance);
+	}
+
+	@Override
+	public SolutionMAC apply(SolutionMAC c, int... param) {
+		//System.out.println(c.toText());
+		//System.out.println("swap "+ (param[0]+1));
+		c.swap(param[0]);
+		//System.out.println(c.toText());
+		return c;
+	}
+
+	@Override
+	public int interpretIOM(double iom, SolutionMAC c) {
+		return Math.max((int) Math.ceil(iom*10),1); // 0.2 = 2
+	}
+
 }
-
-
-/* Location:              C:\Users\Steve\Documents\GitHub\hyflext\domains\hyflex_ext.jar!\MAC\modifiers\Swap.class
- * Java compiler version: 7 (51.0)
- * JD-Core Version:       1.1.3
- */

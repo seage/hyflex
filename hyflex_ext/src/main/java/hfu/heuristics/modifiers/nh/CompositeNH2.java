@@ -3,34 +3,33 @@ package hfu.heuristics.modifiers.nh;
 import java.util.Arrays;
 
 import hfu.BenchmarkInfo;
+import hfu.RNG;
 import hfu.heuristics.modifiers.nh.filter.Filter;
 
-public class CompositeNH<P extends BenchmarkInfo> extends NeighbourHood<P> implements RandomIterable, SamplableNH{
+public class CompositeNH2<P extends BenchmarkInfo> extends NeighbourHood<P> implements RandomIterable, SamplableNH{
 
 	RangeNH<P>[] nhs;
-	//int lo[];
-	//int hi[];
+	int lo[];
+	int hi[];
 	Filter filter;
 	int k;
 	
 	
 	@SafeVarargs
-	public CompositeNH(P instance,RangeNH<P>... nhs) {
+	public CompositeNH2(P instance,RangeNH<P>... nhs) {
 		super(instance);
 		this.nhs = nhs;
-		this.k = nhs.length;
-		/*
+		
 		lo = new int[nhs.length];
 		hi = new int[nhs.length];
 		for(int i = 0; i < nhs.length;i++){
 			lo[i] = nhs[i].getLow();
 			hi[i] = nhs[i].getHigh();
 		}
-		*/
 	}
 	
 	@SafeVarargs
-	public CompositeNH(P instance, Filter filter, RangeNH<P>... nhs) {
+	public CompositeNH2(P instance, Filter filter, RangeNH<P>... nhs) {
 		this(instance,nhs);
 		this.filter = filter;
 	}
@@ -38,12 +37,7 @@ public class CompositeNH<P extends BenchmarkInfo> extends NeighbourHood<P> imple
 	private int[] sample_unfiltered(){
 		int[] sample = new int[nhs.length];
 		for(int i = 0; i < nhs.length; i++){
-			int[] param = nhs[i].sample();
-			if(param != null){
-				sample[i] = param[0];
-			}else{
-				return null;
-			}
+			sample[i] = nhs[i].sample()[0];
 		}
 		return sample;
 	}
@@ -70,19 +64,20 @@ public class CompositeNH<P extends BenchmarkInfo> extends NeighbourHood<P> imple
 	@Override
 	public IteratorNH getRandomIterator() {
 		int[] init = sample_unfiltered();
+		Arrays.sort(init);
 		return filter == null? new CompositeIterator(init) : new FilteredIterator(new CompositeIterator(init),filter);
 	}
 	
 	class CompositeIterator extends IteratorNH{
-		IteratorNH[] its;
+
 		int[] current;
 		int[] init;
+		IteratorNH[] its;
 		boolean done;
 		
 		CompositeIterator(){
 			current = new int[k];
 			init = new int[k];
-			its = new IteratorNH[k];
 			for(int i = 0; i < nhs.length;i++){
 				its[i] = nhs[i].getIterator();
 				if(its[i].hasNext()){
@@ -95,21 +90,16 @@ public class CompositeNH<P extends BenchmarkInfo> extends NeighbourHood<P> imple
 		}
 		
 		CompositeIterator(int[] init){
-			if(init != null){
-				current = new int[k];
-				this.init = new int[k];
-				its = new IteratorNH[k];
-				for(int i = 0; i < nhs.length;i++){
-					its[i] = nhs[i].getIterator(init[i]);
-					if(its[i].hasNext()){
-						this.init[i] = its[i].next()[0];
-						current[i] = this.init[i];
-					}else{
-						done = true;
-					}
+			current = new int[k];
+			init = new int[k];
+			for(int i = 0; i < nhs.length;i++){
+				its[i] = nhs[i].getIterator(init[i]);
+				if(its[i].hasNext()){
+					this.init[i] = its[i].next()[0];
+					current[i] = init[i];
+				}else{
+					done = true;
 				}
-			}else{
-				done = true;
 			}
 		}
 		
@@ -124,12 +114,13 @@ public class CompositeNH<P extends BenchmarkInfo> extends NeighbourHood<P> imple
 			System.arraycopy(current, 0, result, 0, k);
 			//increment 
 			for(int i = 0; i < k;i++){
-				if(its[i].hasNext()){
-					current[i] = its[i].next()[0];
+				if(current[i] < hi[i]-1){
+					current[i]++;
 					break;
+				}else if(i < k-1){
+					current[i] = lo[i];
 				}else{
-					its[i] = nhs[i].getIterator();
-					current[i] = its[i].next()[0];
+					System.arraycopy(lo, 0, current, 0, nhs.length);
 				}
 			}
 			if(Arrays.equals(current, init)){
