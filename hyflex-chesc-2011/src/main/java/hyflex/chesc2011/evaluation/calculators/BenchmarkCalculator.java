@@ -69,7 +69,7 @@ public class BenchmarkCalculator {
       );
       put("BP", new ArrayList<>(Arrays.asList()));
       put("PS", new ArrayList<>(Arrays.asList()));
-      put("FS", new ArrayList<>(Arrays.asList(
+      put("FSP", new ArrayList<>(Arrays.asList(
             "tai100_20_02",
             "tai500_20_02",
             "tai100_20_04",
@@ -92,7 +92,7 @@ public class BenchmarkCalculator {
   };
 
   // This arrays represents problems with metadata
-  String[] problems = {"SAT", "TSP", "FS"};
+  String[] problems = {"SAT", "TSP", "FSP"};
 
   /**
    * Main method of this class. It creates a new object and execute run method.
@@ -108,7 +108,7 @@ public class BenchmarkCalculator {
       List<String> problems = new ArrayList<>();
       problems.add("SAT");
       problems.add("TSP");
-      problems.add("FS");
+      problems.add("FSP");
 
       BenchmarkCalculator ibc = new BenchmarkCalculator();
       ibc.run(args[0], args[1]);

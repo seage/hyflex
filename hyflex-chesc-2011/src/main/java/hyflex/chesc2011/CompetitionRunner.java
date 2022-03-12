@@ -430,7 +430,7 @@ public class CompetitionRunner extends Thread {
     final int[] sat = {3,5,4,10,11};
     final int[] bp  = {7,1,9,10,11};
     final int[] ps  = {5,9,8,10,11};
-    final int[] fs  = {1,8,3,10,11};
+    final int[] fsp  = {1,8,3,10,11};
     final int[] tsp = {0,8,2,7,6};
     final int[] vrp = {6,2,5,1,9};
     final int[] qap = {0,1,2,3,9};
@@ -438,7 +438,7 @@ public class CompetitionRunner extends Thread {
     instancesToUse[0] = sat;
     instancesToUse[1] = bp;
     instancesToUse[2] = ps;
-    instancesToUse[3] = fs;
+    instancesToUse[3] = fsp;
     instancesToUse[4] = tsp;
     instancesToUse[5] = vrp;
     instancesToUse[6] = qap;

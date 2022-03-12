@@ -22,7 +22,7 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
     {
       put("SAT", 1.0);
       put("TSP", 1.0);
-      put("FS", 1.0);
+      put("FSP", 1.0);
     }
   };
 

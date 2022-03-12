@@ -98,7 +98,7 @@ public class HyperHeuristicRunner {
     final int[] sat = {3,5,4,10,11};
     // final int[] bp  = {7,1,9,10,11};
     final int[] ps  = {5,9,8,10,11};
-    // final int[] fs  = {1,8,3,10,11};
+    // final int[] fsp  = {1,8,3,10,11};
     final int[] tsp = {0,8,2,7,6};
     // final int[] vrp = {6,2,5,1,9};
 
