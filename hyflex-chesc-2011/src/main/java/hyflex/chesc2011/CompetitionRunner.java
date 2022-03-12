@@ -169,9 +169,9 @@ public class CompetitionRunner extends Thread {
         problem = 2;
         resultsfolder = "PersonnelScheduling";
         break;
-      case "FlowShop": 
+      case "FSP": 
         problem = 3;
-        resultsfolder = "FlowShop";
+        resultsfolder = "FSP";
         break;
       case "TSP": 
         problem = 4;
@@ -225,7 +225,7 @@ public class CompetitionRunner extends Thread {
         resultsfolder = "PersonnelScheduling";
         break;
       case 3:
-        resultsfolder = "FlowShop";
+        resultsfolder = "FSP";
         break;
       case 4:
         resultsfolder = "TSP";

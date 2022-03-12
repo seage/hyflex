@@ -12,7 +12,7 @@ package hyflex.chesc2011;
  */
 import AbstractClasses.HyperHeuristic;
 import AbstractClasses.ProblemDomain;
-
+import FlowShop.FlowShop;
 import PersonnelScheduling.PersonnelScheduling;
 
 import SAT.SAT;
@@ -211,6 +211,8 @@ public class HyperHeuristicRunner {
         return new TSP(seed);
       case "PersonnelScheduling":
         return new PersonnelScheduling(seed);
+      case "FSP":
+        return new FlowShop(seed);
       default:
         System.out.println("ERROR, " + problemName + " INVALID INPUT");
         return null;
