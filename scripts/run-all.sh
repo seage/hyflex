@@ -63,5 +63,5 @@ if [[ $@ == *"competition"* ]]; then
     exit
 fi
 
-echo "Bad command."
-
+./scripts/run.sh
+echo "'-h' can be ommited"
