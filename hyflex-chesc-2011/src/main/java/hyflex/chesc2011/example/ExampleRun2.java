@@ -81,11 +81,11 @@ public class ExampleRun2 {
 		int[] sat = {0, 1, 2, 3, 4};
 		int[] bp = {2, 3, 4, 5, 6};
 		int[] ps = {4, 5, 6, 7, 8};
-		int[] fs = {9, 0, 4, 2, 3};
+		int[] fsp = {9, 0, 4, 2, 3};
 		instances_to_use[0] = sat;
 		instances_to_use[1] = bp;
 		instances_to_use[2] = ps;
-		instances_to_use[3] = fs;
+		instances_to_use[3] = fsp;
 		
 		//loop through all four problem domains
 		for (int problem_domain_index = 0; problem_domain_index < 4; problem_domain_index++) {

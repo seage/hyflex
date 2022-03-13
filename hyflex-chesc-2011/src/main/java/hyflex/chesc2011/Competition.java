@@ -44,7 +44,7 @@ public class Competition {
   };
 
   private static final String[] problemIDs = {
-    "SAT", "BinPacking", "PersonnelScheduling", "FlowShop", "TSP", "VRP", "QAP"
+    "SAT", "BinPacking", "PersonnelScheduling", "FSP", "TSP", "VRP", "QAP"
   };
   
   final String defaultDirectory = "./results";

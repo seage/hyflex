@@ -1,7 +1,8 @@
 rootProject.name = 'hyflex'
 include('hyflex-chesc-2011')
+include('hyflex-ext')
 
-// include hyperheuristics
+// include all hyperheuristics
 new File("./hyflex-hyperheuristics/").listFiles().each
 {
   if (it.directory && new File(it, 'build.gradle').exists())

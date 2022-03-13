@@ -37,7 +37,7 @@ public class ScoreCardHelper {
       "SAT", // 0
       "BP", // 1
       "PS", // 2
-      "FS", // 3
+      "FSP", // 3
       "TSP", // 4
       "VRP", // 5
   };
