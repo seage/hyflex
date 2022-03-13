@@ -10,7 +10,7 @@ Hyper-heuristic implementers might find this environment helpful for comparing o
 ## List of available hyper-heuristics
 
 See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder.
-![Hyper-heuristics](docs/hh.png)
+![Hyper-heuristics](docs/heatmap.svg)
 
 ## Build and run the project
 ```

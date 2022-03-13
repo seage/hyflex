@@ -55,32 +55,34 @@
     </style>
     <!--Common use case: embed HTML text into SVG-->
     <foreignObject x="0" y="0" width="1000" height="1000">
-        <div class="table">
-            <table aria-describedby="results" class="styled-table">
-                <thead>
-                    <tr>      
-                        <th id="hh_head">HH</th>
-                        <th id="hh_head">Author</th>
-                        {% for problem in problems %}
-                        <th id="p_head">{{problem}}</th>
-                        {% endfor %}
-                        <th id="overall_head">Overall</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for hh in results %}
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <div class="table">
+                <table aria-describedby="results" class="styled-table">
+                    <thead>
                         <tr>
-                            <th id="hh_name">{{hh.name}}</th>
-                            <th id="hh_name">{{hh_info[hh.name]["author"]}}</th>
-                            
+                            <th id="hh_head">HH</th>
+                            <th id="hh_head">Author</th>
                             {% for problem in problems %}
-                            <th id="hh_score" style="background-color:rgba(255, 0, 0, {{hh.score[problem]}})">{{hh.score[problem]}}</th>
+                            <th id="p_head">{{problem}}</th>
                             {% endfor %}
-                            <th id="hh_overall" style="background-color:rgba(255, 0, 0, {{hh.overall}})">{{hh.overall}}</th>
+                            <th id="overall_head">Overall</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for hh in results %}
+                            <tr>
+                                <th id="hh_name">{{hh.name}}</th>
+                                <th id="hh_name">{{hh_info[hh.name]["author"]}}</th>
+
+                                {% for problem in problems %}
+                                <th id="hh_score" style="background-color:rgba(255, 0, 0, {{hh.score[problem]}})">{{hh.score[problem]}}</th>
+                                {% endfor %}
+                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, {{hh.overall}})">{{hh.overall}}</th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </foreignObject>>
 </svg>
