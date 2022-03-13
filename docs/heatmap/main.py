@@ -145,7 +145,7 @@ def exp_xml_to_dict(exp_xml_path):
 
 def create_page(results, problems, page_dest):
     # Jinja2 part for templates
-    file_loader = FileSystemLoader("docs/pages/templates")
+    file_loader = FileSystemLoader("docs/heatmap/templates")
     env = Environment(loader=file_loader)
     rendered = env.get_template("results.html").render(results=results, problems=problems, hh_info=hh_info)
 
@@ -154,7 +154,7 @@ def create_page(results, problems, page_dest):
 
 def build_results_page(exp_id):
     results, problems = exp_xml_to_dict("results/{}/unit-metric-scores.xml".format(str(exp_id)))
-    create_page(results, problems, "results/{}/index.html".format(str(exp_id)))
+    create_page(results, problems, "results/{}/heatmap.svg".format(str(exp_id)))
 
 
 if __name__ == "__main__":
