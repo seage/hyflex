@@ -6,8 +6,8 @@ plugins {
 repositories {
     jcenter()
 
-        maven {
-        url "file://$projectDir/../hyflex-lib/repository"
+    maven {
+        url "file://$projectDir/../maven-repo"
     }
 }
 
