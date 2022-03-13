@@ -117,7 +117,7 @@
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">sa_ilsHyperHeuristic</th>
+                                <th id="hh_name">sa_ilsHH</th>
                                 <th id="hh_name">He Jiang</th>
 
                                 
@@ -299,7 +299,7 @@
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">Urli_AVEG_NeptuneHyperHeuristic</th>
+                                <th id="hh_name">Urli_AVEG_NeptuneHH</th>
                                 <th id="hh_name">Luca Di Gaspero</th>
 
                                 

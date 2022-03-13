@@ -25,7 +25,7 @@ hh_info = {
         "name": 'Self-Search (Extended Abstract)',
         "author": 'Jawad Elomari'
     },
-    "MyHyperHeuristic":{
+    "MyHH":{
         "name": 'Non-Adaptive Hyper-Heuristic',
         "author": 'Franco Mascia'
     },
@@ -37,7 +37,7 @@ hh_info = {
         "name": '',
         "author": 'Mohamed Bader-El-Den'
     },
-    "sa_ilsHyperHeuristic": {
+    "sa_ilsHH": {
         "name": '',
         "author": 'He Jiang'
     },
@@ -53,7 +53,7 @@ hh_info = {
         "name": 'Hybrid Adaptive Evolutionary Algorithm Hyper Heuristic',
         "author": 'Jonatan Gómez'
     },
-    "Urli_AVEG_NeptuneHyperHeuristic": {
+    "Urli_AVEG_NeptuneHH": {
         "name": 'A Reinforcement Learning approach',
         "author": 'Luca Di Gaspero'
     },
@@ -73,7 +73,7 @@ hh_info = {
         "name": 'Self-adaptive meta-heuristic of Meignan',
         "author": 'Mathieu Larose'
     },
-    "HsiaoCHeSCHyperheuristic": {
+    "HsiaoCHeSCHH": {
         "name": 'Variable neighborhood search-based hyperheuristic',
         "author": 'Ping-Che Hsiao'
     },
@@ -81,7 +81,7 @@ hh_info = {
         "name": '',
         "author": 'Imen Khamassi'
     },
-    "CSPUTGeneticHiveHyperHeuristic": {
+    "CSPUTGeneticHiveHH": {
         "name": 'Genetic Hive HyperHeuristic',
         "author": 'Michal Frankiewicz',
     },
@@ -108,6 +108,8 @@ hh_info = {
 }
 
 def exp_xml_to_dict(exp_xml_path):
+    # Try if file exists
+
     # Parse xml file
     results_xml = minidom.parse(exp_xml_path).getElementsByTagName('results')[0]
 
