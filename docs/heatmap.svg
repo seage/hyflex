@@ -1,4 +1,4 @@
-<svg viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1100 700" xmlns="http://www.w3.org/2000/svg">
     <style>
         body {
             background-color: whitesmoke;
@@ -54,7 +54,7 @@
 
     </style>
     <!--Common use case: embed HTML text into SVG-->
-    <foreignObject x="0" y="0" width="1000" height="1000">
+    <foreignObject x="0" y="0" width="100%" height="100%">
         <div xmlns="http://www.w3.org/1999/xhtml">
             <div class="table">
                 <table aria-describedby="results" class="styled-table">
