@@ -6,6 +6,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Iterator;
 
 public class MyTokenizer implements Iterable<String>{
@@ -32,13 +34,14 @@ public class MyTokenizer implements Iterable<String>{
 		boolean done;
 		
 		public MyIterator(){
-			try {
-				reader = new BufferedReader(new FileReader(file));
+			try {				
+				InputStream is = MyIterator.class.getResourceAsStream("/"+file);
+				reader = new BufferedReader(new InputStreamReader(is));
 				line = new String[0];
 				index = 1;
 				line_count = 0;
 				done = false;
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			
@@ -139,13 +142,14 @@ public class MyTokenizer implements Iterable<String>{
 		boolean done;
 		
 		public MyTokenIterator(){
-			try {
-				reader = new BufferedReader(new FileReader(file));
+			try {	
+				InputStream is = MyTokenIterator.class.getResourceAsStream("/"+file);			
+				reader = new BufferedReader(new InputStreamReader(is));
 				line = new String[0];
 				index = 1;
 				line_count = 0;
 				done = false;
-			} catch (IOException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			

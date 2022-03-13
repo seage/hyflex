@@ -12,13 +12,13 @@
       "args": [
         "competition",
         "-h",
-        "ISEA",
+        "LeanGIHH",
         "-p",
-        "TSP",
+        "QAP",
         "-n",
-        "1",
+        "10",
         "-t",
-        "1",
+        "10",
         "--id",
         "debug1"
       ]

@@ -14,7 +14,7 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation group: 'com.beust', name: 'jcommander', version: '1.78'
-    implementation project(':hyflex_ext')
+    implementation project(':hyflex-ext')
 }
 
 application {
