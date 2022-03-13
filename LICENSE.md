@@ -34,7 +34,7 @@ The following parts are licensed under the GPLv3 license
 - Metadata handling
 - UnitMetric calculation
 
-Copyright (C) 2020 SEAGE
+Copyright (c) 2020 SEAGE
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
