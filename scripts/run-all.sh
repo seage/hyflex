@@ -6,7 +6,7 @@ runAllHyperHeuristics(){
     mkdir -p results/log 2> /dev/null
 
     #All hyper-heuristics names
-    hhIDs="GIHH LeanGIHH PearlHunter EPH ISEA GISS Clean Clean02 CSeneticHiveHyperHeuristic elomariSS HaeaHH HsiaoCHeSCHyperheuristic sa_ilsHyperHeuristic JohnstonBiasILS JohnstonDynamicILS LaroseML LehrbaumHAHA MyHyperHeuristic Ant_Q ShafiXCJ ACO_HH SimSATS_HH Urli_AVEG_NeptuneHyperHeuristic McClymontMCHHS"
+    hhIDs="GIHH LeanGIHH PearlHunter EPH ISEA GISS Clean Clean02 CSeneticHiveHH elomariSS HaeaHH HsiaoCHeSCHH sa_ilsHH JohnstonBiasILS JohnstonDynamicILS LaroseML LehrbaumHAHA MyHH Ant_Q ShafiXCJ ACO_HH SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS"
     
     #Run all hyper-heuristics in parallel
     for hhID in $hhIDs
@@ -63,5 +63,5 @@ if [[ $@ == *"competition"* ]]; then
     exit
 fi
 
-echo "Bad command."
-
+./scripts/run.sh
+echo "'-h' can be ommited"

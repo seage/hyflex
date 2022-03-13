@@ -165,15 +165,15 @@ public class HyperHeuristicRunner {
         return new Clean(seed);
       case "Clean02":
         return new Clean02(seed);
-      case "CSPUTGeneticHiveHyperHeuristic":
+      case "CSPUTGeneticHiveHH":
         return new CSPUTGeneticHiveHyperHeuristic(seed);
       case "elomariSS":
         return new elomariSS(seed);
       case "HaeaHH":
         return new HaeaHH(seed);
-      case "HsiaoCHeSCHyperheuristic":
+      case "HsiaoCHeSCHH":
         return new HsiaoCHeSCHyperheuristic(seed);
-      case "sa_ilsHyperHeuristic":
+      case "sa_ilsHH":
         return new sa_ilsHyperHeuristic(seed);
       case "JohnstonBiasILS":
         return new JohnstonBiasILS(seed);
@@ -183,7 +183,7 @@ public class HyperHeuristicRunner {
         return new LaroseML(seed);
       case "LehrbaumHAHA":
         return new LehrbaumHAHA(seed);
-      case "MyHyperHeuristic":
+      case "MyHH":
         return new MyHyperHeuristic(seed);
       case "Ant_Q":
         return new Ant_Q(seed);
@@ -193,7 +193,7 @@ public class HyperHeuristicRunner {
         return new ACO_HH(seed);
       case "SimSATS_HH":
         return new SimSATS_HH(seed);
-      case "Urli_AVEG_NeptuneHyperHeuristic":
+      case "Urli_AVEG_NeptuneHH":
         return new Urli_AVEG_NeptuneHyperHeuristic(seed);
       case "McClymontMCHHS":
         return new McClymontMCHHS(seed);
