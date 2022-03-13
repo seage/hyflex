@@ -50,21 +50,21 @@ public class CompetitionComputationCommand extends Command {
       "GISS," +
       "Clean," +
       "Clean02," +
-      "CSeneticHiveHyperHeuristic," +
+      "CSeneticHiveHH," +
       "elomariSS," +
       "HaeaHH," +
-      "HsiaoCHeSCHyperheuristic," +
-      "sa_ilsHyperHeuristic," +
+      "HsiaoCHeSCHH," +
+      "sa_ilsHH," +
       "JohnstonBiasILS," +
       "JohnstonDynamicILS," +
       "LaroseML," +
       "LehrbaumHAHA," +
-      "MyHyperHeuristic," +
+      "MyHH," +
       "Ant_Q," +
       "ShafiXCJ," +
       "ACO_HH," +
       "SimSATS_HH," +
-      "Urli_AVEG_NeptuneHyperHeuristi")
+      "Urli_AVEG_NeptuneHH")
   public List<String> hyperheurictics;
 
   @Parameter(names = {"-p", "--problems"},      

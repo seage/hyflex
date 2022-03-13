@@ -109,21 +109,21 @@ public class CompetitionRunner extends Thread {
     put("GISS", 6);
     put("Clean", 7);
     put("Clean02", 8);
-    put("CSPUTGeneticHiveHyperHeuristic", 9);
+    put("CSPUTGeneticHiveHH", 9);
     put("elomariSS", 10);
     put("HaeaHH", 11);
-    put("HsiaoCHeSCHyperheuristic", 12);
-    put("sa_ilsHyperHeuristic", 13);
+    put("HsiaoCHeSCHH", 12);
+    put("sa_ilsHH", 13);
     put("JohnstonBiasILS", 14);
     put("JohnstonDynamicILS", 15);
     put("LaroseML", 16);
     put("LehrbaumHAHA", 17);
-    put("MyHyperHeuristic", 18);
+    put("MyHH", 18);
     put("Ant_Q", 19);
     put("ShafiXCJ", 20);
     put("ACO_HH", 21);
     put("SimSATS_HH", 22);
-    put("Urli_AVEG_NeptuneHyperHeuristic", 23);
+    put("Urli_AVEG_NeptuneHH", 23);
     put("McClymontMCHHS", 24);
   }};
 
