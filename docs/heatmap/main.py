@@ -11,8 +11,8 @@ import os
 
 from numpy import double
 
-c = ["red", "red", "yellow", "green", "green"]
-v = [0, .5, .65, .75, 1]
+c = ["darkred", "red", "yellow", "green", "darkgreen"]
+v = [0, .5, .65, .85, 1]
 l = list(zip(v, c))
 cmap = LinearSegmentedColormap.from_list('rg',l, N=256)
 
