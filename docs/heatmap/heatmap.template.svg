@@ -14,10 +14,10 @@
 
         .styled-table {
             border-collapse: collapse;
-            #margin: 25px 0;
-            font-size: 0.9em;
+            margin: 25px 0;
+            font-size: 1.1em;
             font-family: sans-serif;
-            #min-width: 400px;
+            min-width: 400px;
             #box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         }
 
@@ -51,7 +51,7 @@
     <foreignObject x="0" y="0" width="100%" height="100%">
         <div xmlns="http://www.w3.org/1999/xhtml">
             <div class="table">
-                <table aria-describedby="results" class="styled-table">
+                <table width="100%" aria-describedby="results" class="styled-table">
                     <thead>
                         <tr>
                             <th id="hh_head">Hyper-heuristic</th>
