@@ -1,9 +1,5 @@
 <svg viewBox="0 0 1100 700" xmlns="http://www.w3.org/2000/svg">
     <style>
-        body {
-            background-color: whitesmoke;
-        }
-
         table {
             border: 1px solid;
         }
@@ -18,16 +14,16 @@
 
         .styled-table {
             border-collapse: collapse;
-            margin: 25px 0;
-            font-size: 0.9em;
+            #margin: 25px 0;
+            #font-size: 1.1em;
             font-family: sans-serif;
-            min-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            width: 800px;
+            #box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         }
 
         .styled-table thead tr {
-            background-color: #009879;
-            color: #fff;
+            background-color: #dddddd;
+            color: #000;
             text-align: center;
         }
 
@@ -44,10 +40,8 @@
         }
 
         .styled-table tbody tr:last-of-type {
-            border-bottom: 2px solid #009879;
+            border-bottom: 1px solid #000;
         }
-
-
         th {
             padding-right: 10px;
         }
@@ -60,261 +54,213 @@
                 <table aria-describedby="results" class="styled-table">
                     <thead>
                         <tr>
-                            <th id="hh_head">HH</th>
+                            <th id="hh_head">Hyper-heuristic</th>
                             <th id="hh_head">Author</th>
                             
                             <th id="p_head">TSP</th>
+                            
+                            <th id="p_head">QAP</th>
                             
                             <th id="p_head">FSP</th>
                             
                             <th id="p_head">SAT</th>
                             
-                            <th id="overall_head">Overall</th>
+                            <th id="overall_head"></th>
+                            <th id="overall_head">Score</th>
                         </tr>
                     </thead>
                     <tbody>
                         
                             <tr>
-                                <th id="hh_name">LeanGIHH</th>
-                                <th id="hh_name">Steven Adriaensen</th>
+                                <td id="hh_name">EPH</td>
+                                <td id="hh_name">David Meignan</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6171455634865192)">0.6171455634865192</th>
+                                <td id="hh_score" style="background-color:rgba(148.74999999999997, 202.08333333333331, 0.0, 1)">0.73436</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8917334575878194)">0.8917334575878194</th>
+                                <td id="hh_score" style="background-color:rgba(188.75, 222.0049019607843, 0.0, 1)">0.70227</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.7249379538261377)">0.7249379538261377</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 116.83660130718954, 0.0, 1)">0.90645</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.7446056583001588)">0.7446056583001588</th>
+                                <td id="hh_score" style="background-color:rgba(93.75, 174.6911764705882, 0.0, 1)">0.77668</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(88.75, 172.20098039215685, 0.0, 1)">0.77994</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">LehrbaumHAHA</th>
-                                <th id="hh_name">Andreas Lehrbaum</th>
+                                <td id="hh_name">PearlHunter</td>
+                                <td id="hh_name">Fan Xue</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6500975616171867)">0.6500975616171867</th>
+                                <td id="hh_score" style="background-color:rgba(138.75000000000003, 197.10294117647058, 0.0, 1)">0.73931</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8863661549726086)">0.8863661549726086</th>
+                                <td id="hh_score" style="background-color:rgba(233.75, 244.41666666666669, 0.0, 1)">0.66737</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6969162362959741)">0.6969162362959741</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 118.30065359477123, 0.0, 1)">0.90192</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.7444599842952565)">0.7444599842952565</th>
+                                <td id="hh_score" style="background-color:rgba(123.75000000000001, 189.6323529411765, 0.0, 1)">0.75154</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(108.75000000000001, 182.16176470588235, 0.0, 1)">0.76504</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">ISEA</th>
-                                <th id="hh_name">Jiří Kubalík</th>
+                                <td id="hh_name">HaeaHH</td>
+                                <td id="hh_name">Jonatan Gómez</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.7345363570464513)">0.7345363570464513</th>
+                                <td id="hh_score" style="background-color:rgba(148.74999999999997, 202.08333333333331, 0.0, 1)">0.73057</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.897786265410189)">0.897786265410189</th>
+                                <td id="hh_score" style="background-color:rgba(228.75, 241.92647058823528, 0.0, 1)">0.67101</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.5896035575500714)">0.5896035575500714</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 116.83660130718954, 0.0, 1)">0.90858</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.7406420600022372)">0.7406420600022372</th>
+                                <td id="hh_score" style="background-color:rgba(153.75000000000003, 204.57352941176472, 0.0, 1)">0.72989</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(113.74999999999999, 184.65196078431373, 0.0, 1)">0.76001</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">sa_ilsHH</th>
-                                <th id="hh_name">He Jiang</th>
+                                <td id="hh_name">sa_ilsHH</td>
+                                <td id="hh_name">He Jiang</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6308087516276257)">0.6308087516276257</th>
+                                <td id="hh_score" style="background-color:rgba(198.75, 226.98529411764707, 0.0, 1)">0.69272</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8842162953287986)">0.8842162953287986</th>
+                                <td id="hh_score" style="background-color:rgba(248.75, 251.88725490196077, 0.0, 1)">0.65553</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6766637003108258)">0.6766637003108258</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 120.49673202614379, 0.0, 1)">0.89043</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.7305629157557499)">0.7305629157557499</th>
+                                <td id="hh_score" style="background-color:rgba(113.74999999999999, 184.65196078431373, 0.0, 1)">0.76036</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(128.75, 192.12254901960785, 0.0, 1)">0.74976</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">elomariSS</th>
-                                <th id="hh_name">Jawad Elomari</th>
+                                <td id="hh_name">ISEA</td>
+                                <td id="hh_name">Jiří Kubalík</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6615625766238712)">0.6615625766238712</th>
+                                <td id="hh_score" style="background-color:rgba(143.75, 199.59313725490196, 0.0, 1)">0.73779</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.893724007772136)">0.893724007772136</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 243.33333333333314, 0.0, 1)">0.64094</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6283472603102702)">0.6283472603102702</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 116.83660130718954, 0.0, 1)">0.90733</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.7278779482354257)">0.7278779482354257</th>
+                                <td id="hh_score" style="background-color:rgba(213.75, 234.4558823529412, 0.0, 1)">0.68058</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(138.75000000000003, 197.10294117647058, 0.0, 1)">0.74166</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">LaroseML</th>
-                                <th id="hh_name">Mathieu Larose</th>
+                                <td id="hh_name">McClymontMCHHS</td>
+                                <td id="hh_name">Kent McClymont</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6609469357518648)">0.6609469357518648</th>
+                                <td id="hh_score" style="background-color:rgba(218.75000000000003, 236.94607843137254, 0.0, 1)">0.67679</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8786680803728445)">0.8786680803728445</th>
+                                <td id="hh_score" style="background-color:rgba(243.75, 249.39705882352942, 0.0, 1)">0.65936</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6348214844729062)">0.6348214844729062</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 119.76470588235296, 0.0, 1)">0.89353</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.7248121668658718)">0.7248121668658718</th>
+                                <td id="hh_score" style="background-color:rgba(143.75, 199.59313725490196, 0.0, 1)">0.73512</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(138.75000000000003, 197.10294117647058, 0.0, 1)">0.7412</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">HaeaHH</th>
-                                <th id="hh_name">Jonatan Gómez</th>
+                                <td id="hh_name">SimSATS_HH</td>
+                                <td id="hh_name">Kevin Sim</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6559161555493793)">0.6559161555493793</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 156.66666666666669, 0.0, 1)">0.59252</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8826949760441379)">0.8826949760441379</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 216.66666666666666, 0.0, 1)">0.62693</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6196649798763038)">0.6196649798763038</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 117.5686274509804, 0.0, 1)">0.90393</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.7194253704899403)">0.7194253704899403</th>
+                                <td id="hh_score" style="background-color:rgba(63.75, 159.75, 0.0, 1)">0.7987</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(148.74999999999997, 202.08333333333331, 0.0, 1)">0.73052</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">PearlHunter</th>
-                                <th id="hh_name">Fan Xue</th>
+                                <td id="hh_name">JohnstonDynamicILS</td>
+                                <td id="hh_name">Mark Johnston</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6764907514030526)">0.6764907514030526</th>
+                                <td id="hh_score" style="background-color:rgba(153.75000000000003, 204.57352941176472, 0.0, 1)">0.72772</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8792633770011)">0.8792633770011</th>
+                                <td id="hh_score" style="background-color:rgba(248.75, 251.88725490196077, 0.0, 1)">0.65536</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.5465230503704218)">0.5465230503704218</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 117.5686274509804, 0.0, 1)">0.90337</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.7007590595915247)">0.7007590595915247</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 123.33333333333333, 0.0, 1)">0.57333</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(168.75, 212.0441176470588, 0.0, 1)">0.71495</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">JohnstonBiasILS</th>
-                                <th id="hh_name">Mark Johnston</th>
+                                <td id="hh_name">GISS</td>
+                                <td id="hh_name">Alberto Acuna</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6536623082252617)">0.6536623082252617</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 136.66666666666646, 0.0, 1)">0.57911</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8807172263233154)">0.8807172263233154</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 236.66666666666669, 0.0, 1)">0.6371</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.5434750648503686)">0.5434750648503686</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 121.22875816993464, 0.0, 1)">0.88529</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.6926181997996487)">0.6926181997996487</th>
+                                <td id="hh_score" style="background-color:rgba(133.75, 194.61274509803923, 0.0, 1)">0.74263</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(173.75, 214.53431372549022, 0.0, 1)">0.71103</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">JohnstonDynamicILS</th>
-                                <th id="hh_name">Mark Johnston</th>
+                                <td id="hh_name">JohnstonBiasILS</td>
+                                <td id="hh_name">Mark Johnston</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6432032113862444)">0.6432032113862444</th>
+                                <td id="hh_score" style="background-color:rgba(153.75000000000003, 204.57352941176472, 0.0, 1)">0.72915</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8822310381021539)">0.8822310381021539</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 210.0, 0.0, 1)">0.62221</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.5246791804038516)">0.5246791804038516</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 117.5686274509804, 0.0, 1)">0.90285</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.6833711432974167)">0.6833711432974167</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 83.33333333333333, 0.0, 1)">0.54808</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(188.75, 222.0049019607843, 0.0, 1)">0.70057</td>
                             </tr>
                         
                             <tr>
-                                <th id="hh_name">ShafiXCJ</th>
-                                <th id="hh_name">Kamran Shafi</th>
+                                <td id="hh_name">Ant_Q</td>
+                                <td id="hh_name">Imen Khamassi</td>
 
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.5129412501834861)">0.5129412501834861</th>
+                                <td id="hh_score" style="background-color:rgba(203.75, 229.47549019607843, 0.0, 1)">0.68982</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8807520238533961)">0.8807520238533961</th>
+                                <td id="hh_score" style="background-color:rgba(255.0, 110.0, 0.0, 1)">0.566</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6490739830863421)">0.6490739830863421</th>
+                                <td id="hh_score" style="background-color:rgba(0.0, 119.76470588235296, 0.0, 1)">0.89136</td>
                                 
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.6809224190410749)">0.6809224190410749</th>
-                            </tr>
-                        
-                            <tr>
-                                <th id="hh_name">GISS</th>
-                                <th id="hh_name">Alberto Acuna</th>
-
+                                <td id="hh_score" style="background-color:rgba(255.0, 156.66666666666669, 0.0, 1)">0.5918</td>
                                 
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.478047707528816)">0.478047707528816</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8662190073342044)">0.8662190073342044</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.6395134507374383)">0.6395134507374383</th>
-                                
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.6612600552001529)">0.6612600552001529</th>
-                            </tr>
-                        
-                            <tr>
-                                <th id="hh_name">Ant_Q</th>
-                                <th id="hh_name">Imen Khamassi</th>
-
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.70203034821129)">0.70203034821129</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8881142889053074)">0.8881142889053074</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.3560379993882612)">0.3560379993882612</th>
-                                
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.6487275455016196)">0.6487275455016196</th>
-                            </tr>
-                        
-                            <tr>
-                                <th id="hh_name">EPH</th>
-                                <th id="hh_name">David Meignan</th>
-
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.19653110717759548)">0.19653110717759548</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.9003273797147239)">0.9003273797147239</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.5225338542175492)">0.5225338542175492</th>
-                                
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.5397974470366228)">0.5397974470366228</th>
-                            </tr>
-                        
-                            <tr>
-                                <th id="hh_name">Clean</th>
-                                <th id="hh_name">Mohamed Bader-El-Den</th>
-
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.1497110814944499)">0.1497110814944499</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8725511870818246)">0.8725511870818246</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.5950701917367056)">0.5950701917367056</th>
-                                
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.5391108201043266)">0.5391108201043266</th>
-                            </tr>
-                        
-                            <tr>
-                                <th id="hh_name">Clean02</th>
-                                <th id="hh_name">Mohamed Bader-El-Den</th>
-
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.15457463409300728)">0.15457463409300728</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8765758039517955)">0.8765758039517955</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.5699313039501216)">0.5699313039501216</th>
-                                
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.5336939139983081)">0.5336939139983081</th>
-                            </tr>
-                        
-                            <tr>
-                                <th id="hh_name">Urli_AVEG_NeptuneHH</th>
-                                <th id="hh_name">Luca Di Gaspero</th>
-
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.07877350033778338)">0.07877350033778338</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.8772791174323636)">0.8772791174323636</th>
-                                
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, 0.36047014103203145)">0.36047014103203145</th>
-                                
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, 0.4388409196007262)">0.4388409196007262</th>
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(208.75, 231.96568627450978, 0.0, 1)">0.68475</td>
                             </tr>
                         
                     </tbody>
                 </table>
             </div>
         </div>
-    </foreignObject>>
+    </foreignObject>
 </svg>

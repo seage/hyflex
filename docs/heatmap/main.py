@@ -1,12 +1,20 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 # @author David Omrai
 
 from cmath import exp
+from matplotlib.colors import LinearSegmentedColormap
 from importlib.abc import FileLoader
 from xml.dom import minidom
 from jinja2 import Environment, FileSystemLoader 
 import sys
 import os
+
+from numpy import double
+
+c = ["darkred", "red", "yellow", "green", "darkgreen"]
+v = [0, .5, .65, .85, 1]
+l = list(zip(v, c))
+cmap = LinearSegmentedColormap.from_list('rg',l, N=256)
 
 hh_info = {
     "Clean": {
@@ -131,13 +139,22 @@ def exp_xml_to_dict(exp_xml_path):
         result["name"] = algorithm_xml.getAttribute("name")
 
         # Algorithm overall score
-        result["overall"] = algorithm_xml.getAttribute("score")
+        overall_score = double(format(double(algorithm_xml.getAttribute("score")), ".5f"))
+        result["overall"] = overall_score
+        result["overall_color"] = cmap(int(overall_score * 256))
 
         # Score on each problem
         result["score"] = {}
+        result["color"] = {}
         for score_xml in algorithm_xml.getElementsByTagName("problem"):
-            result["score"][score_xml.getAttribute("name")] = score_xml.getAttribute("avg")
-        
+            h_name = score_xml.getAttribute("name")
+            h_score = double(format(double(score_xml.getAttribute("avg")), ".5f"))
+
+            result["score"][h_name] = h_score
+
+            result["color"][h_name] = cmap(int(h_score * 256))
+
+            # todo colors
         results.append(result)
 
     results.sort(key=lambda k: k["overall"], reverse=True)
