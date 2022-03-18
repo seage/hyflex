@@ -9,6 +9,8 @@ from jinja2 import Environment, FileSystemLoader
 import sys
 import os
 
+from numpy import double
+
 cmap = LinearSegmentedColormap.from_list('rg',["r", "y", "g"], N=256)
 
 hh_info = {
@@ -110,8 +112,6 @@ hh_info = {
     },
 }
 
-cmap = LinearSegmentedColormap.from_li
-
 def exp_xml_to_dict(exp_xml_path):
     # Try if file exists
 
@@ -147,7 +147,7 @@ def exp_xml_to_dict(exp_xml_path):
 
             result["score"][h_name] = h_score
 
-            result["color"] = cmap(h_score*256)
+            result["color"] = cmap(double(h_score)*256)
 
             # todo colors
         results.append(result)
