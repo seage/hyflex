@@ -11,7 +11,10 @@ import os
 
 from numpy import double
 
-cmap = LinearSegmentedColormap.from_list('rg',["r", "y", "g"], N=256)
+c = ["red", "red", "yellow", "green", "green"]
+v = [0, .5, .65, .75, 1]
+l = list(zip(v, c))
+cmap = LinearSegmentedColormap.from_list('rg',l, N=256)
 
 hh_info = {
     "Clean": {
