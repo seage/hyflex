@@ -1,9 +1,5 @@
 <svg viewBox="0 0 1100 700" xmlns="http://www.w3.org/2000/svg">
     <style>
-        body {
-            background-color: whitesmoke;
-        }
-
         table {
             border: 1px solid;
         }
@@ -18,16 +14,16 @@
 
         .styled-table {
             border-collapse: collapse;
-            margin: 25px 0;
+            #margin: 25px 0;
             font-size: 0.9em;
             font-family: sans-serif;
-            min-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            #min-width: 400px;
+            #box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         }
 
         .styled-table thead tr {
-            background-color: #808080;
-            color: #fff;
+            background-color: #dddddd;
+            color: #000;
             text-align: center;
         }
 
@@ -44,10 +40,8 @@
         }
 
         .styled-table tbody tr:last-of-type {
-            border-bottom: 2px solid #808080;
+            border-bottom: 1px solid #000;
         }
-
-
         th {
             padding-right: 10px;
         }
@@ -60,12 +54,13 @@
                 <table aria-describedby="results" class="styled-table">
                     <thead>
                         <tr>
-                            <th id="hh_head">HH</th>
+                            <th id="hh_head">Hyper-heuristic</th>
                             <th id="hh_head">Author</th>
                             {% for problem in problems %}
                             <th id="p_head">{{problem}}</th>
                             {% endfor %}
-                            <th id="overall_head">Overall</th>
+                            <th id="overall_head"></th>
+                            <th id="overall_head">Score</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,6 +72,7 @@
                                 {% for problem in problems %}
                                 <td id="hh_score" style="background-color:rgba({{hh.color[problem][0]*255}}, {{hh.color[problem][1]*255}}, {{hh.color[problem][2]*255}}, 1)">{{hh.score[problem]}}</td>
                                 {% endfor %}
+                                <td></td>
                                 <td id="hh_overall" style="background-color:rgba({{hh.overall_color[0]*255}}, {{hh.overall_color[1]*255}}, {{hh.overall_color[2]*255}}, 1)">{{hh.overall}}</td>
                             </tr>
                         {% endfor %}
@@ -84,5 +80,5 @@
                 </table>
             </div>
         </div>
-    </foreignObject>>
+    </foreignObject>
 </svg>
