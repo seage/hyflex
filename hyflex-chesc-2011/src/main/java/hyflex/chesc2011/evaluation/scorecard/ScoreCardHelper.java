@@ -40,6 +40,7 @@ public class ScoreCardHelper {
       "FSP", // 3
       "TSP", // 4
       "VRP", // 5
+      "QAP", // 6
   };
 
   /**
