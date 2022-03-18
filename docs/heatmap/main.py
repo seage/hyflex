@@ -139,20 +139,20 @@ def exp_xml_to_dict(exp_xml_path):
         result["name"] = algorithm_xml.getAttribute("name")
 
         # Algorithm overall score
-        overall_score = algorithm_xml.getAttribute("score")
+        overall_score = double(format(double(algorithm_xml.getAttribute("score")), ".5f"))
         result["overall"] = overall_score
-        result["overall_color"] = cmap(int(double(overall_score)*256))
+        result["overall_color"] = cmap(int(overall_score * 256))
 
         # Score on each problem
         result["score"] = {}
         result["color"] = {}
         for score_xml in algorithm_xml.getElementsByTagName("problem"):
             h_name = score_xml.getAttribute("name")
-            h_score = score_xml.getAttribute("avg")
+            h_score = double(format(double(score_xml.getAttribute("avg")), ".5f"))
 
             result["score"][h_name] = h_score
 
-            result["color"][h_name] = cmap(int(double(h_score)*256))
+            result["color"][h_name] = cmap(int(h_score * 256))
 
             # todo colors
         results.append(result)

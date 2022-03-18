@@ -26,7 +26,7 @@
         }
 
         .styled-table thead tr {
-            background-color: #009879;
+            background-color: #808080;
             color: #fff;
             text-align: center;
         }
@@ -44,7 +44,7 @@
         }
 
         .styled-table tbody tr:last-of-type {
-            border-bottom: 2px solid #009879;
+            border-bottom: 2px solid #808080;
         }
 
 
@@ -71,13 +71,13 @@
                     <tbody>
                         {% for hh in results %}
                             <tr>
-                                <th id="hh_name">{{hh.name}}</th>
-                                <th id="hh_name">{{hh_info[hh.name]["author"]}}</th>
+                                <td id="hh_name">{{hh.name}}</td>
+                                <td id="hh_name">{{hh_info[hh.name]["author"]}}</td>
 
                                 {% for problem in problems %}
-                                <th id="hh_score" style="background-color:rgba({{hh.color[problem][0]*255}}, {{hh.color[problem][1]*255}}, {{hh.color[problem][2]*255}}, 1)">{{hh.score[problem]}}</th>
+                                <td id="hh_score" style="background-color:rgba({{hh.color[problem][0]*255}}, {{hh.color[problem][1]*255}}, {{hh.color[problem][2]*255}}, 1)">{{hh.score[problem]}}</td>
                                 {% endfor %}
-                                <th id="hh_overall" style="background-color:rgba({{hh.overall_color[0]*255}}, {{hh.overall_color[1]*255}}, {{hh.overall_color[2]*255}}, 1)">{{hh.overall}}</th>
+                                <td id="hh_overall" style="background-color:rgba({{hh.overall_color[0]*255}}, {{hh.overall_color[1]*255}}, {{hh.overall_color[2]*255}}, 1)">{{hh.overall}}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
