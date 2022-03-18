@@ -138,7 +138,7 @@ def exp_xml_to_dict(exp_xml_path):
         # Algorithm overall score
         overall_score = algorithm_xml.getAttribute("score")
         result["overall"] = overall_score
-        result["overall_color"] = cmap(double(overall_score)*256)
+        result["overall_color"] = cmap(int(double(overall_score)*256))
 
         # Score on each problem
         result["score"] = {}
