@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 # @author David Omrai
 
 from cmath import exp
@@ -8,6 +8,8 @@ from xml.dom import minidom
 from jinja2 import Environment, FileSystemLoader 
 import sys
 import os
+
+cmap = LinearSegmentedColormap.from_list('rg',["r", "y", "g"], N=256)
 
 hh_info = {
     "Clean": {
@@ -137,8 +139,6 @@ def exp_xml_to_dict(exp_xml_path):
         result["overall"] = algorithm_xml.getAttribute("score")
 
         # Score on each problem
-        cmap = LinearSegmentedColormap.from_list('rg',["r", "y", "g"], N=256)
-
         result["score"] = {}
         result["color"] = {}
         for score_xml in algorithm_xml.getElementsByTagName("problem"):
