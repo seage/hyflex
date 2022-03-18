@@ -75,9 +75,9 @@
                                 <th id="hh_name">{{hh_info[hh.name]["author"]}}</th>
 
                                 {% for problem in problems %}
-                                <th id="hh_score" style="background-color:rgba(255, 0, 0, {{hh.score[problem]}})">{{hh.score[problem]}}</th>
+                                <th id="hh_score" style="background-color:rgba({{hh.color[problem][0]*255}}, {{hh.color[problem][1]*255}}, {{hh.color[problem][2]*255}}, 1)">{{hh.score[problem]}}</th>
                                 {% endfor %}
-                                <th id="hh_overall" style="background-color:rgba(255, 0, 0, {{hh.overall}})">{{hh.overall}}</th>
+                                <th id="hh_overall" style="background-color:rgba({{hh.overall_color[0]*255}}, {{hh.overall_color[1]*255}}, {{hh.overall_color[2]*255}}, 1)">{{hh.overall}}</th>
                             </tr>
                         {% endfor %}
                     </tbody>
