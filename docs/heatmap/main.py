@@ -2,6 +2,7 @@
 # @author David Omrai
 
 from cmath import exp
+from matplotlib.colors import LinearSegmentedColormap
 from importlib.abc import FileLoader
 from xml.dom import minidom
 from jinja2 import Environment, FileSystemLoader 
@@ -107,6 +108,8 @@ hh_info = {
     },
 }
 
+cmap = LinearSegmentedColormap.from_li
+
 def exp_xml_to_dict(exp_xml_path):
     # Try if file exists
 
@@ -134,10 +137,19 @@ def exp_xml_to_dict(exp_xml_path):
         result["overall"] = algorithm_xml.getAttribute("score")
 
         # Score on each problem
+        cmap = LinearSegmentedColormap.from_list('rg',["r", "y", "g"], N=256)
+
         result["score"] = {}
+        result["color"] = {}
         for score_xml in algorithm_xml.getElementsByTagName("problem"):
-            result["score"][score_xml.getAttribute("name")] = score_xml.getAttribute("avg")
-        
+            h_name = score_xml.getAttribute("name")
+            h_score = score_xml.getAttribute("avg")
+
+            result["score"][h_name] = h_score
+
+            result["color"] = cmap(h_score*256)
+
+            # todo colors
         results.append(result)
 
     results.sort(key=lambda k: k["overall"], reverse=True)
