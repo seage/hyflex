@@ -155,9 +155,9 @@ def create_page(results, problems, page_dest):
         f.write(rendered)
 
 def build_results_page(exp_id):
-    results, problems = exp_xml_to_dict("results/{}/unit-metric-scores.xml".format(str(exp_id)))
-    create_page(results, problems, "results/{}/heatmap.svg".format(str(exp_id)))
+    results, problems = exp_xml_to_dict("results/{}/unit-metric-scores.xml".format(exp_id))
+    create_page(results, problems, "results/{}/heatmap.svg".format(exp_id))
 
 
 if __name__ == "__main__":
-    build_results_page(int(sys.argv[1]))
+    build_results_page(sys.argv[1])

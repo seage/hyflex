@@ -64,35 +64,36 @@ public class BenchmarkCalculator {
           "pg-525-2336-hyflex-4",
           "jarv-684-2300-hyflex-10", 
           "hg4-300-1200-hyflex-11"
-          )
-        )
-      );
+      )));
+      put("TSP", new ArrayList<>(Arrays.asList(
+        "pr299-hyflex-0", 
+        "usa13509-hyflex-8", 
+        "rat575-hyflex-2",
+        "u2152-hyflex-7", 
+        "d1291-hyflex-6"
+      )));
+      put("FSP", new ArrayList<>(Arrays.asList(
+        "tai100_20_02",
+        "tai500_20_02",
+        "tai100_20_04",
+        "tai200_20_01",
+        "tai500_20_03"
+      )));
+      put("QAP", new ArrayList<>(Arrays.asList(
+        "sko100a",
+        "tai100a",
+        "tai256c",
+        "tho150",
+        "wil100"
+      )));
       put("BP", new ArrayList<>(Arrays.asList()));
       put("PS", new ArrayList<>(Arrays.asList()));
-      put("FSP", new ArrayList<>(Arrays.asList(
-            "tai100_20_02",
-            "tai500_20_02",
-            "tai100_20_04",
-            "tai200_20_01",
-            "tai500_20_03"
-          )
-        )
-      );
-      put("TSP", new ArrayList<>(Arrays.asList(
-          "pr299-hyflex-0", 
-          "usa13509-hyflex-8", 
-          "rat575-hyflex-2",
-          "u2152-hyflex-7", 
-          "d1291-hyflex-6"
-          )
-        )
-      );
       put("VRP", new ArrayList<>(Arrays.asList()));
     }
   };
 
   // This arrays represents problems with metadata
-  String[] problems = {"SAT", "TSP", "FSP"};
+  String[] problems = {"SAT", "TSP", "FSP", "QAP"};
 
   /**
    * Main method of this class. It creates a new object and execute run method.
@@ -109,6 +110,7 @@ public class BenchmarkCalculator {
       problems.add("SAT");
       problems.add("TSP");
       problems.add("FSP");
+      problems.add("QAP");
 
       BenchmarkCalculator ibc = new BenchmarkCalculator();
       ibc.run(args[0], args[1]);
