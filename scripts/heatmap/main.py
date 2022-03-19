@@ -7,9 +7,9 @@ from importlib.abc import FileLoader
 from xml.dom import minidom
 from jinja2 import Environment, FileSystemLoader 
 import sys
-import os
-
 from numpy import double
+
+supported_problems = ["SAT", "TSP", "FSP", "QAP"]
 
 c = ["darkred", "red", "yellow", "green", "darkgreen"]
 v = [0, .5, .65, .85, 1]
@@ -121,14 +121,16 @@ def exp_xml_to_dict(exp_xml_path):
     # Parse xml file
     results_xml = minidom.parse(exp_xml_path).getElementsByTagName('results')[0]
 
-    algorithms_xml =  results_xml.getElementsByTagName("algorithm") 
+    algorithms_xml =  results_xml.getElementsByTagName("algorithm")
     problems_xml =algorithms_xml[0].getElementsByTagName("problem")
 
     # Extract the data from xml format
     problems = []
 
-    for problem_xml in problems_xml:
-        problems.append(problem_xml.getAttribute("name"))
+    for problem_name in supported_problems:
+        name_found = any(x for x in problems_xml if x.getAttribute("name") == problem_name)
+        if name_found:
+            problems.append(problem_name)
 
     results = []
 
