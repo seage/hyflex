@@ -74,7 +74,7 @@ if [[ $@ == *"competition"* ]]; then
         exit
     fi
     # No id provided, use the time in millis
-    id=`date +%s`
+    id=`date +%s%3N`
     runAllHyperHeuristics "$@ --id $id" &
     echo $id
     echo $!
