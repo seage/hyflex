@@ -62,13 +62,9 @@ public class UnitMetricScoreCalculator implements ScoreCalculator {
       List<Double> sizes = new ArrayList<>();
 
       for (String instanceId : problemsInstances.get(problemId)) {
-        double lowerBound = Math.min(
-            metadata.get(problemId).get(instanceId, "greedy"), 
-            metadata.get(problemId).get(instanceId, "random"));
-
         double instanceScore = UnitMetricScoreCalculator.getMetric(
             metadata.get(problemId).get(instanceId, "optimum"),
-            lowerBound,
+            metadata.get(problemId).get(instanceId, "greedy"),
             card.getInstanceScore(problemId, instanceId));
 
         result.putInstanceScore(problemId, instanceId, instanceScore);
