@@ -1,16 +1,15 @@
 #!/bin/bash
+cd `dirname $0`
 
-printHelpInfo(){
-    echo "Maker of heatmap from results"
-    echo "The syntax of this command is as follows"
-    echo "./build-page.sh {folder name}"
-}
+cd heatmap
 
-# Crate a page with results from given folder
-if [ -d "results/$1" ]; then
-    python3 docs/heatmap/main.py $1
-else
-    echo "Error: results/$1 not found"
-    printHelpInfo
-fi
+# Install dependecies
+python3 -m venv venv
+. ./venv/bin/activate
+pip install -r requirements.txt > /dev/null
+cd ../..
+# Run the python script
+python3 ./scripts/heatmap/main.py $1
+
+deactivate
  

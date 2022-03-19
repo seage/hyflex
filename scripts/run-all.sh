@@ -1,17 +1,47 @@
 #!/bin/bash
 
+runHyperHeuristic(){
+    hhID=$1
+    params=$2
+    ./hyflex-chesc-2011/build/install/hyflex-chesc-2011/bin/hyflex-chesc-2011 $params --hyperheuristics $hhID > results/log/${hhID}_log.txt 2> results/log/${hhID}_err.txt
+}
+
+runHyperHeuristics(){
+    hhIDs=$1
+    params=$2
+    #Run the hyper-heuristics in parallel
+    #echo "Running $hhIDs"
+    IFS=" "
+    for hhID in $hhIDs
+    do
+        runHyperHeuristic "$hhID" "$params"&
+        pids[${i}]=$!
+    done
+    # wait for all pids
+    for pid in ${pids[*]}; do
+        wait $pid
+    done
+}
 
 runAllHyperHeuristics(){
+    params="$@"
     # Create directory for output of processes
     mkdir -p results/log 2> /dev/null
 
     #All hyper-heuristics names
-    hhIDs="GIHH LeanGIHH PearlHunter EPH ISEA GISS Clean Clean02 CSeneticHiveHH elomariSS HaeaHH HsiaoCHeSCHH sa_ilsHH JohnstonBiasILS JohnstonDynamicILS LaroseML LehrbaumHAHA MyHH Ant_Q ShafiXCJ ACO_HH SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS"
-    
-    #Run all hyper-heuristics in parallel
-    for hhID in $hhIDs
+    hhIDs=(
+        "GIHH LeanGIHH PearlHunter EPH"
+        "ISEA GISS Clean Clean02"
+        "CSeneticHiveHH elomariSS HaeaHH HsiaoCHeSCHH"
+        "sa_ilsHH JohnstonBiasILS JohnstonDynamicILS LaroseML"
+        "LehrbaumHAHA MyHH Ant_Q ShafiXCJ"
+        "ACO_HH SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS"
+    )
+    IFS=""
+    for hhBatch in ${hhIDs[*]} 
     do
-        ./hyflex-chesc-2011/build/install/hyflex-chesc-2011/bin/hyflex-chesc-2011 $@ --hyperheuristics $hhID > results/log/${hhID}_log.txt 2> results/log/${hhID}_err.txt &
+        runHyperHeuristics "$hhBatch" "$params"
+        # echo "$hhBatch"
     done
 }
 
@@ -30,7 +60,6 @@ if [[ $@ == *"evaluation"* ]]; then
     exit
 fi
 
-
 # Run competition
 if [[ $@ == *"competition"* ]]; then
     #Is hh set by user
@@ -44,22 +73,11 @@ if [[ $@ == *"competition"* ]]; then
         runAllHyperHeuristics $@
         exit
     fi
-
-    # Find the highest directory id
-    maxId=0
-    idDirs=$(find  ./results/ -type d -name "[0-9]*" -exec basename \{} \; 2>/dev/null)
-
-    if [ $? == 0 ]; then 
-        for idDir in $idDirs
-        do
-            if [ $idDir -gt $maxId ]; then
-                maxId=$idDir
-            fi
-        done
-    fi
-
-    runAllHyperHeuristics "$@ --id $(expr $maxId + 1 )"
-
+    # No id provided, use the time in millis
+    id=`date +%s%3N`
+    runAllHyperHeuristics "$@ --id $id" &
+    echo $id
+    echo $!
     exit
 fi
 
