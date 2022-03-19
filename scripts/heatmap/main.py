@@ -164,7 +164,7 @@ def exp_xml_to_dict(exp_xml_path):
 
 def create_page(results, problems, page_dest):
     # Jinja2 part for templates
-    file_loader = FileSystemLoader("docs/heatmap")
+    file_loader = FileSystemLoader("scripts/heatmap")
     env = Environment(loader=file_loader)
     rendered = env.get_template("heatmap.template.svg").render(results=results, problems=problems, hh_info=hh_info)
 
@@ -177,4 +177,7 @@ def build_results_page(exp_id):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Provide the id if the competition")
+        sys.exit(1)
     build_results_page(sys.argv[1])

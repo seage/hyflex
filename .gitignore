@@ -6,7 +6,7 @@ build/
 .gradle/
 .settings/
 results/
-
+venv
 *.log*
 **/bin/
 
