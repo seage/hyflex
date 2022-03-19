@@ -1,4 +1,4 @@
-<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 850 800" xmlns="http://www.w3.org/2000/svg">
     <style>
         table {
             border: 1px solid;
@@ -17,7 +17,7 @@
             #margin: 25px 0;
             #font-size: 1.1em;
             font-family: sans-serif;
-            width: 800px;
+            #width: 800px;
             #box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         }
 
