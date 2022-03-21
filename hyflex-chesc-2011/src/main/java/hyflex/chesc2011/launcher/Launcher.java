@@ -11,6 +11,7 @@ import hyflex.chesc2011.launcher.commands.CompetitionEvaluateCommand;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -51,7 +52,7 @@ public class Launcher {
       logger.info(ex.getMessage());
       logger.info("Try to use --help");
     } catch (Exception ex) {
-      logger.severe(ex.getMessage());
+      logger.log(Level.SEVERE, ex.getMessage(), ex);
     }
   }
 

@@ -1,5 +1,6 @@
 package hyflex.chesc2011.evaluation.calculators;
 
+import hyflex.chesc2011.Competition;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadataReader;
 import hyflex.chesc2011.evaluation.scorecard.ScoreCard;
@@ -50,47 +51,6 @@ public class BenchmarkCalculator {
   String metadataPath = "/hyflex/hyflex-chesc-2011";
   // Path where the file with results is stored
   String resultsXmlFile = "./results/%s/unit-metric-scores.xml";
-
-  /**
-   * This map represents what instances are on each line of the results file. It also holds the
-   * order of instances for each problem domain in the results file.
-   */
-  @SuppressWarnings("serial")
-  Map<String, List<String>> problemInstances = new HashMap<>() {
-    {
-      put("SAT", new ArrayList<>(Arrays.asList(
-          "pg-525-2276-hyflex-3",
-          "pg-696-3122-hyflex-5", 
-          "pg-525-2336-hyflex-4",
-          "jarv-684-2300-hyflex-10", 
-          "hg4-300-1200-hyflex-11"
-      )));
-      put("TSP", new ArrayList<>(Arrays.asList(
-        "pr299-hyflex-0", 
-        "usa13509-hyflex-8", 
-        "rat575-hyflex-2",
-        "u2152-hyflex-7", 
-        "d1291-hyflex-6"
-      )));
-      put("FSP", new ArrayList<>(Arrays.asList(
-        "tai100_20_02",
-        "tai500_20_02",
-        "tai100_20_04",
-        "tai200_20_01",
-        "tai500_20_03"
-      )));
-      put("QAP", new ArrayList<>(Arrays.asList(
-        "sko100a",
-        "tai100a",
-        "tai256c",
-        "tho150",
-        "wil100"
-      )));
-      put("BP", new ArrayList<>(Arrays.asList()));
-      put("PS", new ArrayList<>(Arrays.asList()));
-      put("VRP", new ArrayList<>(Arrays.asList()));
-    }
-  };
 
   // This arrays represents problems with metadata
   String[] problems = {"SAT", "TSP", "FSP", "QAP"};
@@ -147,11 +107,11 @@ public class BenchmarkCalculator {
       // Get algorihtm results
       List<String> implementedProblems = new ArrayList<>();
       ScoreCard algorithmResults =
-          ScoreCardHelper.loadCard(problems, scoreCardPath, problemInstances, implementedProblems);
+          ScoreCardHelper.loadCard(problems, scoreCardPath, Competition.problemInstances, implementedProblems);
       
       UnitMetricScoreCalculator scoreCalculator =
           new UnitMetricScoreCalculator(
-          instancesMetadata, problemInstances, 
+          instancesMetadata, Competition.problemInstances, 
           implementedProblems.toArray(new String[]{}));
 
       // Calculate algorithm scores

@@ -95,7 +95,6 @@ public class CompetitionRunner extends Thread {
   private final int instances = 5;
 
   private long instanceSeed;
-  private String resultsFolder;
   private Map<String, long[][]> instanceSeeds;
 
   ArrayList<Double> results = new ArrayList<Double>();
@@ -122,8 +121,6 @@ public class CompetitionRunner extends Thread {
       System.err.println("Wrong input for the problem domain: " + algorithmID);
       System.exit(-1);
     }
-
-    resultsFolder = problemID;
 
     if (!Arrays.asList(Competition.problemIDs).contains(problemID)) {
       System.err.println("Wrong input for the problem domain: " + problemID);
@@ -265,7 +262,7 @@ public class CompetitionRunner extends Thread {
         h.setTimeLimit(timeLimit);
         break;
       default:
-        System.err.println("There is no hyper heuristic with this id: " + algorithmID);
+        System.err.println("There is no hyper-heuristic with this id: " + algorithmID);
         h = null;
         System.exit(0);
     }
@@ -290,7 +287,7 @@ public class CompetitionRunner extends Thread {
       case "PersonnelScheduling":
         p = new PersonnelScheduling(instanceSeed);
         break;
-      case "FlowShop":
+      case "FSP":
         p = new FlowShop(instanceSeed);
         break;
       case "TSP":
@@ -322,24 +319,25 @@ public class CompetitionRunner extends Thread {
      */
 
     instancesToUse.put("SAT", new int[] {3, 5, 4, 10, 11});
-    instancesToUse.put("BP", new int[] {7, 1, 9, 10, 11});
-    instancesToUse.put("PS", new int[] {5, 9, 8, 10, 11});
+    instancesToUse.put("BinPacking", new int[] {7, 1, 9, 10, 11});
+    instancesToUse.put("PersonnelScheduling", new int[] {5, 9, 8, 10, 11});
     instancesToUse.put("FSP", new int[] {1, 8, 3, 10, 11});
     instancesToUse.put("TSP", new int[] {0, 8, 2, 7, 6});
     instancesToUse.put("VRP", new int[] {6, 2, 5, 1, 9});
     instancesToUse.put("QAP", new int[] {0, 4, 7, 8, 9});
 
-    System.out.println("PROBLEM DOMAIN " + resultsFolder);
+    System.out.println("PROBLEM DOMAIN " + problemID);
     int instanceToUse = instancesToUse.get(problemID)[instanceID];
-    System.out.println("  instance " + instanceToUse + " ");
+    // int instanceOrder = Arrays.asList(instancesToUse.get(problemID)).indexOf(instanceToUse);
+    System.out.println("\tINSTANCE " + Competition.problemInstances.get(problemID).get(instanceID));
 
     for (int run = 0; run < numberOfRuns; run++) {
       instanceSeed = instanceSeeds.get(problemID)[instanceID][run];
-      System.out.println("    RUN " + run + " " + instanceSeed);
+      System.out.println("\t\tRUN " + (run+1) + "/"+numberOfRuns+" - seed " + instanceSeed);
 
       ProblemDomain p = loadProblemDomain(problemID);
       HyperHeuristic h = loadHyperHeuristic(algorithmID, time);
-      System.out.print("      HYPER HEURISTIC " + h.toString());
+      System.out.print("\t\t\tHYPER HEURISTIC " + h.toString());
       p.loadInstance(instanceToUse);
       h.loadProblemDomain(p);
 

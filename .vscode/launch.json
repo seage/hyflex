@@ -13,12 +13,10 @@
         "competition",
         "-h",
         "LeanGIHH",
-        "-p",
-        "QAP",
         "-n",
-        "3",
+        "1",
         "-t",
-        "10",
+        "1",
         "--id",
         "debug1"
       ]

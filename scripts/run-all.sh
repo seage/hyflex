@@ -32,12 +32,10 @@ runAllHyperHeuristics(){
 
     #All hyper-heuristics names
     hhIDs=(
-        "GIHH LeanGIHH PearlHunter EPH"
-        "ISEA GISS Clean Clean02"
-        "CSeneticHiveHH elomariSS HaeaHH HsiaoCHeSCHH"
-        "sa_ilsHH JohnstonBiasILS JohnstonDynamicILS LaroseML"
-        "LehrbaumHAHA MyHH Ant_Q ShafiXCJ"
-        "ACO_HH SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS"
+        "GIHH LeanGIHH PearlHunter EPH ISEA HaeaHH"
+        "GISS ACO_HH elomariSS LaroseML sa_ilsHH HsiaoCHeSCHH"
+        "CSeneticHiveHH JohnstonBiasILS JohnstonDynamicILS LehrbaumHAHA MyHH Ant_Q"
+        "ShafiXCJ SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS Clean Clean02"
     )
     IFS=""
     for hhBatch in ${hhIDs[*]} 
@@ -69,14 +67,14 @@ if [[ $@ == *"competition"* ]]; then
 
     # Is id defined by the user
     if [[ $@ == *"--id"* ]]; then
-        runAllHyperHeuristics $@
+        runAllHyperHeuristics $@ &
         exit
     fi
     # No id provided, use the time in millis
     id=`date +%s%3N`
     # Store parameters this script has been run with
     mkdir ./results/${id}
-    echo $@ > ./results/${id}/_run-all-params.txt
+    echo $@ > ./results/${id}/_run-all-params.log
     ### Run ###
     runAllHyperHeuristics "$@ --id $id" &
     echo "Competition id: $id"
