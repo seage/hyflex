@@ -18,6 +18,7 @@ import be.kuleuven.kahosl.selection.SelectionMethodType;
 import fr.lalea.eph.EPH;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Map;
@@ -64,6 +65,7 @@ import mcclymont.McClymontMCHHS;
  *    |- FlowShop/
  *    |- TSP/
  *    |- VRP/
+ *    |- QAP/
  *
  * <p>Please report any bugs or issues to Dr. Matthew Hyde at mvh@cs.nott.ac.uk.
  * 
@@ -75,134 +77,76 @@ import mcclymont.McClymontMCHHS;
  */ 
 
 public class CompetitionRunner extends Thread {
-  /* These are parameters which can be changed.
-  * time - set to ten minutes, but this may need to change depending on your machine spec. Refer to http://www.asap.cs.nott.ac.uk/chesc2011/benchmarking.html
-  * numberofhyperheuristics - the number you wish to test in the same run
-  * problem - the selected domain
-  * instance - the selected instance of the problem domain. This should be between 0-4 inclusive
-  * rng - select a random seed
-  */
-  private static long time;
-  //private static final int numberofhyperheuristics = 7;
-  private static int problem = 0;
-  private static int instance = 0;//This should be between 0-4 inclusive.
-  private static int algorithm = 0;//This represents hh
-  private static Random rng = new Random(123456789);
-  //These are parameters were used for the competition, 
-  //so if they are changed then the results may not be comparable to those of the competition
-  private static int numberofruns = 31;
-  private static final int domains = 7;
-  private static final int instances = 5;
+  /*
+   * These are parameters which can be changed. time - set to ten minutes, but this may need to
+   * change depending on your machine spec. Refer to
+   * http://www.asap.cs.nott.ac.uk/chesc2011/benchmarking.html problemID - the selected domain
+   * instanceID - the selected instance of the problem domain. This should be between 0-4 inclusive
+   * rnd - select a random seed
+   */
+  private long time;
+  private String algorithmID;
+  private String problemID;
+  private int instanceID = 0;// This should be between 0-4 inclusive.
+  private Random rnd = new Random(123456789);
+  // These are parameters were used for the competition,
+  // so if they are changed then the results may not be comparable to those of the competition
+  private int numberOfRuns = 31;
+  private final int instances = 5;
 
-  private static long instanceseed;
-  private static String resultsfolder;
-  private static long[][][] instanceseeds;
-
-  private static Map<String, Integer> hhsMap = new HashMap<String, Integer>()
-  {{
-    put("ExampleHyperHeuristic1", 0);
-    put("EPH", 1);
-    put("LeanGIHH", 2);
-    put("PearlHunter", 3);
-    put("GIHH", 4);
-    put("ISEA", 5);
-    put("GISS", 6);
-    put("Clean", 7);
-    put("Clean02", 8);
-    put("CSPUTGeneticHiveHH", 9);
-    put("elomariSS", 10);
-    put("HaeaHH", 11);
-    put("HsiaoCHeSCHH", 12);
-    put("sa_ilsHH", 13);
-    put("JohnstonBiasILS", 14);
-    put("JohnstonDynamicILS", 15);
-    put("LaroseML", 16);
-    put("LehrbaumHAHA", 17);
-    put("MyHH", 18);
-    put("Ant_Q", 19);
-    put("ShafiXCJ", 20);
-    put("ACO_HH", 21);
-    put("SimSATS_HH", 22);
-    put("Urli_AVEG_NeptuneHH", 23);
-    put("McClymontMCHHS", 24);
-  }};
+  private long instanceSeed;
+  private String resultsFolder;
+  private Map<String, long[][]> instanceSeeds;
 
   ArrayList<Double> results = new ArrayList<Double>();
 
   /**
-  * Class constructor with problemID and algorithmID translator.
-  * @param problemID   ID of the problem domain
-  * @param instanceID  ID of the problem instance
- */
-  public CompetitionRunner(
-      String algorithmID,
-      String problemID,
-      int instanceID,
-      long runTime,
-      int algRuns
-  ) {
+   * Class constructor with problemID and algorithmID translator.
+   * 
+   * @param problemID ID of the problem domain
+   * @param instanceID ID of the problem instance
+   */
+  public CompetitionRunner(String algorithmID, String problemID, int instanceID, long runTime,
+      int algRuns) {
     if (instanceID > instances || instanceID < 0) {
       System.err.println("wrong input for the problem domain");
       System.exit(-1);
     }
-    instance      = instanceID;
-    time          = runTime;
-    numberofruns  = algRuns;
+    this.algorithmID = algorithmID;
+    this.problemID = problemID;
+    this.instanceID = instanceID;
+    this.time = runTime;
+    this.numberOfRuns = algRuns;
 
-    if (!hhsMap.containsKey(algorithmID)) {
-      System.err.println("wrong input for the problem domain");
-      System.exit(-1);      
+    if (!Arrays.asList(Competition.algorithmIDs).contains(algorithmID)) {
+      System.err.println("Wrong input for the problem domain: " + algorithmID);
+      System.exit(-1);
     }
 
-    algorithm = hhsMap.get(algorithmID);
+    resultsFolder = problemID;
 
-    switch (problemID) {
-      case "SAT": 
-        problem = 0;
-        resultsfolder = "SAT";
-        break;
-      case "BinPacking": 
-        problem = 1;
-        resultsfolder = "BinPacking";
-        break;
-      case "PersonnelScheduling": 
-        problem = 2;
-        resultsfolder = "PersonnelScheduling";
-        break;
-      case "FSP": 
-        problem = 3;
-        resultsfolder = "FSP";
-        break;
-      case "TSP": 
-        problem = 4;
-        resultsfolder = "TSP";
-        break;
-      case "VRP": 
-        problem = 5;
-        resultsfolder = "VRP";
-        break;
-      case "QAP":
-        problem = 6;
-        resultsfolder = "QAP";
-        break;
-      default: System.err.println("wrong input for the problem domain");
-        System.exit(-1);
+    if (!Arrays.asList(Competition.problemIDs).contains(problemID)) {
+      System.err.println("Wrong input for the problem domain: " + problemID);
+      System.exit(-1);
     }
 
-    setInstanceseeds();
+    setInstanceSeeds();
   }
 
   public ArrayList<Double> getResults() {
     return results;
   }
 
-  private void setInstanceseeds() {
-    instanceseeds = new long[domains][instances][numberofruns];
+  private void setInstanceSeeds() {
+    instanceSeeds = new HashMap<>();
 
-    for (int x = 0; x < domains; x++) {
+    for (String problemID : Competition.problemIDs) {
+      long[][] rndNumbers = new long[instances][];
+      instanceSeeds.put(problemID, rndNumbers);
       for (int y = 0; y < instances; y++) {
-        for (int r = 0; r < numberofruns; r++) {
-          instanceseeds[x][y][r] = rng.nextLong();
+        rndNumbers[y] = new long[numberOfRuns];
+        for (int r = 0; r < numberOfRuns; r++) {
+          rndNumbers[y][r] = rnd.nextLong();
         }
       }
     }
@@ -210,122 +154,118 @@ public class CompetitionRunner extends Thread {
 
   /**
    * Method creates new HyperHeuristic object with given parameters and returs it.
-   * @param number    number representing the hh
+   * 
+   * @param number number representing the hh
    * @param timeLimit time limit for hh
-   * @param rng       random number
-   * @return          HyperHeuristic object
+   * @return HyperHeuristic object
    */
-  public static HyperHeuristic loadHyperHeuristic(int number, long timeLimit, Random rng) {
+  public HyperHeuristic loadHyperHeuristic(String algorithmID, long timeLimit) {
     HyperHeuristic h;
-    switch (number) {
-      case 0: 
-        h = new ExampleHyperHeuristic1(rng.nextLong()); 
-        h.setTimeLimit(timeLimit); 
-        break;
-      case 1: 
-        h = new EPH(rng.nextLong()); 
-        h.setTimeLimit(timeLimit); 
-        break;
-      case 2: 
-        h = new LeanGIHH(rng.nextLong()); 
-        h.setTimeLimit(timeLimit); 
-        break;
-      case 3: 
-        h = new PearlHunter(rng.nextLong()); 
-        h.setTimeLimit(timeLimit); 
-        break;
-      case 4: 
-        h = new GIHH(
-          rng.nextLong(),
-          loadProblemDomain(problem).getNumberOfHeuristics(), 
-          time,
-          "gihh",
-          SelectionMethodType.AdaptiveLimitedLAassistedDHSMentorSTD, 
-          AcceptanceCriterionType.AdaptiveIterationLimitedListBasedTA
-        ); 
-        h.setTimeLimit(timeLimit); 
-        break;
-      case 5: 
-        h = new EvoCOPHyperHeuristic(rng.nextLong()); 
-        h.setTimeLimit(timeLimit); 
-        break;
-      case 6:
-        h =  new GISS(rng.nextLong());
+    switch (algorithmID) {
+      case "ExampleHyperHeuristic1":
+        h = new ExampleHyperHeuristic1(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 7:
-        h =  new Clean(rng.nextLong());
+      case "EPH":
+        h = new EPH(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 8:
-        h =  new Clean02(rng.nextLong());
+      case "LeanGIHH":
+        h = new LeanGIHH(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 9:
-        h =  new CSPUTGeneticHiveHyperHeuristic(rng.nextLong());
+      case "PearlHunter":
+        h = new PearlHunter(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 10:
-        h =  new elomariSS(rng.nextLong());
+      case "GIHH":
+        h = new GIHH(rnd.nextLong(), loadProblemDomain(problemID).getNumberOfHeuristics(), time,
+            "gihh", SelectionMethodType.AdaptiveLimitedLAassistedDHSMentorSTD,
+            AcceptanceCriterionType.AdaptiveIterationLimitedListBasedTA);
         h.setTimeLimit(timeLimit);
         break;
-      case 11:
-        h =  new HaeaHH(rng.nextLong());
+      case "EvoCOPHyperHeuristic":
+        h = new EvoCOPHyperHeuristic(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 12:
-        h =  new HsiaoCHeSCHyperheuristic(rng.nextLong());
+      case "6":
+        h = new GISS(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 13:
-        h =  new sa_ilsHyperHeuristic(rng.nextLong());
+      case "Clean":
+        h = new Clean(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 14:
-        h =  new JohnstonBiasILS(rng.nextLong());
+      case "Clean02":
+        h = new Clean02(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 15:
-        h =  new JohnstonDynamicILS(rng.nextLong());
+      case "CSPUTGeneticHiveHyperHeuristic":
+        h = new CSPUTGeneticHiveHyperHeuristic(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 16:
-        h =  new LaroseML(rng.nextLong());
+      case "elomariSS":
+        h = new elomariSS(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 17:
-        h =  new LehrbaumHAHA(rng.nextLong());
+      case "HaeaHH":
+        h = new HaeaHH(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 18:
-        h =  new MyHyperHeuristic(rng.nextLong());
+      case "HsiaoCHeSCHyperheuristic":
+        h = new HsiaoCHeSCHyperheuristic(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 19:
-        h =  new Ant_Q(rng.nextLong());
+      case "sa_ilsHyperHeuristic":
+        h = new sa_ilsHyperHeuristic(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 20:
-        h =  new ShafiXCJ(rng.nextLong());
+      case "JohnstonBiasILS":
+        h = new JohnstonBiasILS(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 21:
-        h =  new ACO_HH(rng.nextLong());
+      case "JohnstonDynamicILS":
+        h = new JohnstonDynamicILS(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 22:
-        h =  new SimSATS_HH(rng.nextLong());
+      case "LaroseML":
+        h = new LaroseML(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 23:
-        h =  new Urli_AVEG_NeptuneHyperHeuristic(rng.nextLong());
+      case "LehrbaumHAHA":
+        h = new LehrbaumHAHA(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      case 24:
-        h = new McClymontMCHHS(rng.nextLong());
+      case "MyHyperHeuristic":
+        h = new MyHyperHeuristic(rnd.nextLong());
         h.setTimeLimit(timeLimit);
         break;
-      default: System.err.println("there is no hyper heuristic with this index");
+      case "Ant_Q":
+        h = new Ant_Q(rnd.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case "ShafiXCJ":
+        h = new ShafiXCJ(rnd.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case "ACO_HH":
+        h = new ACO_HH(rnd.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case "SimSATS_HH":
+        h = new SimSATS_HH(rnd.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case "Urli_AVEG_NeptuneHyperHeuristic":
+        h = new Urli_AVEG_NeptuneHyperHeuristic(rnd.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      case "McClymontMCHHS":
+        h = new McClymontMCHHS(rnd.nextLong());
+        h.setTimeLimit(timeLimit);
+        break;
+      default:
+        System.err.println("There is no hyper heuristic with this id: " + algorithmID);
         h = null;
         System.exit(0);
     }
@@ -334,35 +274,37 @@ public class CompetitionRunner extends Thread {
 
   /**
    * Method creates new ProblemDomain object with given parameters and returns it.
-   * @param number  number of problem
-   * @return        ProblemDomain object
+   * 
+   * @param number number of problem
+   * @return ProblemDomain object
    */
-  public static ProblemDomain loadProblemDomain(int number) {
+  public ProblemDomain loadProblemDomain(String problemID) {
     ProblemDomain p;
-    switch (number) {
-      case 0: 
-        p = new SAT(instanceseed); 
+    switch (problemID) {
+      case "SAT":
+        p = new SAT(instanceSeed);
         break;
-      case 1: 
-        p = new BinPacking(instanceseed); 
+      case "BinPacking":
+        p = new BinPacking(instanceSeed);
         break;
-      case 2: 
-        p = new PersonnelScheduling(instanceseed); 
+      case "PersonnelScheduling":
+        p = new PersonnelScheduling(instanceSeed);
         break;
-      case 3: 
-        p = new FlowShop(instanceseed); 
+      case "FlowShop":
+        p = new FlowShop(instanceSeed);
         break;
-      case 4: 
-        p = new TSP(instanceseed); 
+      case "TSP":
+        p = new TSP(instanceSeed);
         break;
-      case 5: 
-        p = new VRP(instanceseed); 
+      case "VRP":
+        p = new VRP(instanceSeed);
         break;
-      case 6:
-        p = new QAP(instanceseed);
+      case "QAP":
+        p = new QAP(instanceSeed);
         break;
-      default: System.err.println("there is no problem domain with this index");
-        p = new BinPacking(rng.nextLong());
+      default:
+        System.err.println("There is no problem domain with this id: " + problemID);
+        p = new BinPacking(rnd.nextLong());
         System.exit(0);
     }
     return p;
@@ -372,41 +314,33 @@ public class CompetitionRunner extends Thread {
    * Method starts the computing of hh on given instance of given problem domain.
    */
   public void run() {
-    int[][] instancesToUse = new int[domains][];
+    Map<String, int[]> instancesToUse = new HashMap<>();
     /*
-     * These instances are generated by CompetitionInstanceSelector.java
-     * Ten instances are included for each problem domain, 
-     * but these are the instances selected for use in the competition.
-     * The last two instances of the first four domains were hidden instances.
+     * These instances are generated by CompetitionInstanceSelector.java Ten instances are included
+     * for each problem domain, but these are the instances selected for use in the competition. The
+     * last two instances of the first four domains were hidden instances.
      */
-    final int[] sat = {3,5,4,10,11};
-    final int[] bp  = {7,1,9,10,11};
-    final int[] ps  = {5,9,8,10,11};
-    final int[] fsp = {1,8,3,10,11};
-    final int[] tsp = {0,8,2,7,6};
-    final int[] vrp = {6,2,5,1,9};
-    final int[] qap = {0,4,7,8,9};
 
-    instancesToUse[0] = sat;
-    instancesToUse[1] = bp;
-    instancesToUse[2] = ps;
-    instancesToUse[3] = fsp;
-    instancesToUse[4] = tsp;
-    instancesToUse[5] = vrp;
-    instancesToUse[6] = qap;
+    instancesToUse.put("SAT", new int[] {3, 5, 4, 10, 11});
+    instancesToUse.put("BP", new int[] {7, 1, 9, 10, 11});
+    instancesToUse.put("PS", new int[] {5, 9, 8, 10, 11});
+    instancesToUse.put("FSP", new int[] {1, 8, 3, 10, 11});
+    instancesToUse.put("TSP", new int[] {0, 8, 2, 7, 6});
+    instancesToUse.put("VRP", new int[] {6, 2, 5, 1, 9});
+    instancesToUse.put("QAP", new int[] {0, 4, 7, 8, 9});
 
-    System.out.println("PROBLEM DOMAIN " + resultsfolder);
-    int instancetouse = instancesToUse[problem][instance];
-    System.out.println("  instance " + instancetouse + " ");
+    System.out.println("PROBLEM DOMAIN " + resultsFolder);
+    int instanceToUse = instancesToUse.get(problemID)[instanceID];
+    System.out.println("  instance " + instanceToUse + " ");
 
-    for (int run = 0; run < numberofruns; run++) {
-      instanceseed = instanceseeds[problem][instance][run];
-      System.out.println("    RUN " + run + " " + instanceseed);
+    for (int run = 0; run < numberOfRuns; run++) {
+      instanceSeed = instanceSeeds.get(problemID)[instanceID][run];
+      System.out.println("    RUN " + run + " " + instanceSeed);
 
-      ProblemDomain p = loadProblemDomain(problem);
-      HyperHeuristic h = loadHyperHeuristic(algorithm, time, rng);
+      ProblemDomain p = loadProblemDomain(problemID);
+      HyperHeuristic h = loadHyperHeuristic(algorithmID, time);
       System.out.print("      HYPER HEURISTIC " + h.toString());
-      p.loadInstance(instancetouse);
+      p.loadInstance(instanceToUse);
       h.loadProblemDomain(p);
 
       long initialTime2 = System.currentTimeMillis();
@@ -417,24 +351,10 @@ public class CompetitionRunner extends Thread {
       for (int y : i) {
         counter += y;
       }
-      System.out.println(
-          "\t" + h.getBestSolutionValue() + "\t"
-          + (h.getElapsedTime() / 1000.0) + "\t"
-          + (System.currentTimeMillis() - initialTime2) / 1000.0 + "\t" + counter
-      );
+      System.out.println("\t" + h.getBestSolutionValue() + "\t" + (h.getElapsedTime() / 1000.0)
+          + "\t" + (System.currentTimeMillis() - initialTime2) / 1000.0 + "\t" + counter);
 
       results.add(h.getBestSolutionValue());
     }
   }
-
-  // public static void main(String[] args) {  
-  //   CompetitionRunner r = new CompetitionRunner(problem, instance, algorithm, 5000);
-  //   r.start();
-  //   try {
-  //     r.join();
-  //   } catch (InterruptedException e) {
-  //     System.out.println();
-  //     System.exit(0);
-  //   }
-  // }
 }
