@@ -754,7 +754,7 @@ public class elomariSS extends HyperHeuristic
 				avNoOfGenerations = (elomariSS.this.getTimeLimit())/(avTimePerGenSum / ((double)(generation+1)));
 							
 				//print output
-				System.out.println(problem.toString() + "\t" + inst + "\t" + rep + "\t" + restart + "\t" + generation + "\t" + problem.getBestSolutionValue() + "\t" + elomariSS.this.getElapsedTime());
+				//System.out.println(problem.toString() + "\t" + inst + "\t" + rep + "\t" + restart + "\t" + generation + "\t" + problem.getBestSolutionValue() + "\t" + elomariSS.this.getElapsedTime());
 		
 				generation++;
 			}
@@ -1156,7 +1156,7 @@ public class elomariSS extends HyperHeuristic
 				avNoOfGenerations = (elomariSS.this.getTimeLimit())/(avTimePerGenSum / ((double)(generation+1)));
 						
 				//print output
-				System.out.println(problem.toString() + "\t" + inst + "\t" + rep + "\t" + restart + "\t" + generation + "\t" + problem.getBestSolutionValue() + "\t" + elomariSS.this.getElapsedTime());
+				//System.out.println(problem.toString() + "\t" + inst + "\t" + rep + "\t" + restart + "\t" + generation + "\t" + problem.getBestSolutionValue() + "\t" + elomariSS.this.getElapsedTime());
 		
 				generation++;
 			}			

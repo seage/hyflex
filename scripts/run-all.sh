@@ -1,9 +1,11 @@
 #!/bin/bash
+cd $(dirname "$0")
+cd ..
 
 runHyperHeuristic(){
     hhID=$1
     params=$2
-    ./hyflex-chesc-2011/build/install/hyflex-chesc-2011/bin/hyflex-chesc-2011 $params --hyperheuristics $hhID > results/log/${hhID}_log.txt 2> results/log/${hhID}_err.txt
+    ./hyflex-chesc-2011/build/install/hyflex-chesc-2011/bin/hyflex-chesc-2011 $params --hyperheuristics $hhID > results/log/${hhID}.log 2> results/log/${hhID}.err
 }
 
 runHyperHeuristics(){
@@ -30,12 +32,10 @@ runAllHyperHeuristics(){
 
     #All hyper-heuristics names
     hhIDs=(
-        "GIHH LeanGIHH PearlHunter EPH"
-        "ISEA GISS Clean Clean02"
-        "CSeneticHiveHH elomariSS HaeaHH HsiaoCHeSCHH"
-        "sa_ilsHH JohnstonBiasILS JohnstonDynamicILS LaroseML"
-        "LehrbaumHAHA MyHH Ant_Q ShafiXCJ"
-        "ACO_HH SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS"
+        "GIHH LeanGIHH PearlHunter EPH ISEA HaeaHH"
+        "GISS ACO_HH elomariSS LaroseML sa_ilsHH HsiaoCHeSCHH"
+        "CSeneticHiveHH JohnstonBiasILS JohnstonDynamicILS LehrbaumHAHA MyHH Ant_Q"
+        "ShafiXCJ SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS Clean Clean02"
     )
     IFS=""
     for hhBatch in ${hhIDs[*]} 
@@ -44,9 +44,6 @@ runAllHyperHeuristics(){
         # echo "$hhBatch"
     done
 }
-
-cd $(dirname "$0")
-cd ..
 
 # Test if project jar exists
 if [ ! -f hyflex-chesc-2011/build/install/hyflex-chesc-2011/lib/hyflex-chesc-2011*.jar ]; then
@@ -70,14 +67,18 @@ if [[ $@ == *"competition"* ]]; then
 
     # Is id defined by the user
     if [[ $@ == *"--id"* ]]; then
-        runAllHyperHeuristics $@
+        runAllHyperHeuristics $@ &
         exit
     fi
     # No id provided, use the time in millis
     id=`date +%s%3N`
+    # Store parameters this script has been run with
+    mkdir ./results/${id}
+    echo $@ > ./results/${id}/_run-all-params.log
+    ### Run ###
     runAllHyperHeuristics "$@ --id $id" &
-    echo $id
-    echo $!
+    echo "Competition id: $id"
+    echo "Process id: $!"
     exit
 fi
 
