@@ -104,11 +104,12 @@ public class CompetitionRunner extends Thread {
    * 
    * @param problemID ID of the problem domain
    * @param instanceID ID of the problem instance
+   * @throws Exception
    */
   public CompetitionRunner(String algorithmID, String problemID, int instanceID, long runTime,
-      int algRuns) {
+      int algRuns) throws Exception {
     if (instanceID > instances || instanceID < 0) {
-      System.err.println("wrong input for the problem domain");
+      System.err.println("Wrong input for the problem domain");
       System.exit(-1);
     }
     this.algorithmID = algorithmID;
@@ -118,13 +119,11 @@ public class CompetitionRunner extends Thread {
     this.numberOfRuns = algRuns;
 
     if (!Arrays.asList(Competition.algorithmIDs).contains(algorithmID)) {
-      System.err.println("Wrong input for the problem domain: " + algorithmID);
-      System.exit(-1);
+      throw new Exception("Wrong input for the problem domain: " + algorithmID);
     }
 
     if (!Arrays.asList(Competition.problemIDs).contains(problemID)) {
-      System.err.println("Wrong input for the problem domain: " + problemID);
-      System.exit(-1);
+      throw new Exception("Wrong input for the problem domain: " + problemID);
     }
 
     setInstanceSeeds();
@@ -155,117 +154,92 @@ public class CompetitionRunner extends Thread {
    * @param number number representing the hh
    * @param timeLimit time limit for hh
    * @return HyperHeuristic object
+   * @throws Exception
    */
-  public HyperHeuristic loadHyperHeuristic(String algorithmID, long timeLimit) {
+  public HyperHeuristic loadHyperHeuristic(String algorithmID, long timeLimit) throws Exception {
     HyperHeuristic h;
     switch (algorithmID) {
       case "ExampleHyperHeuristic1":
         h = new ExampleHyperHeuristic1(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "EPH":
         h = new EPH(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "LeanGIHH":
         h = new LeanGIHH(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "PearlHunter":
         h = new PearlHunter(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "GIHH":
         h = new GIHH(rnd.nextLong(), loadProblemDomain(problemID).getNumberOfHeuristics(), time,
             "gihh", SelectionMethodType.AdaptiveLimitedLAassistedDHSMentorSTD,
             AcceptanceCriterionType.AdaptiveIterationLimitedListBasedTA);
-        h.setTimeLimit(timeLimit);
         break;
-      case "EvoCOPHyperHeuristic":
+      case "ISEA":
         h = new EvoCOPHyperHeuristic(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
-      case "6":
+      case "GISS":
         h = new GISS(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "Clean":
         h = new Clean(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "Clean02":
         h = new Clean02(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "CSPUTGeneticHiveHyperHeuristic":
         h = new CSPUTGeneticHiveHyperHeuristic(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "elomariSS":
         h = new elomariSS(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "HaeaHH":
         h = new HaeaHH(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "HsiaoCHeSCHyperheuristic":
         h = new HsiaoCHeSCHyperheuristic(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "sa_ilsHyperHeuristic":
         h = new sa_ilsHyperHeuristic(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "JohnstonBiasILS":
         h = new JohnstonBiasILS(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "JohnstonDynamicILS":
         h = new JohnstonDynamicILS(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "LaroseML":
         h = new LaroseML(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "LehrbaumHAHA":
         h = new LehrbaumHAHA(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "MyHyperHeuristic":
         h = new MyHyperHeuristic(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "Ant_Q":
         h = new Ant_Q(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "ShafiXCJ":
         h = new ShafiXCJ(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "ACO_HH":
         h = new ACO_HH(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "SimSATS_HH":
         h = new SimSATS_HH(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "Urli_AVEG_NeptuneHyperHeuristic":
         h = new Urli_AVEG_NeptuneHyperHeuristic(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       case "McClymontMCHHS":
         h = new McClymontMCHHS(rnd.nextLong());
-        h.setTimeLimit(timeLimit);
         break;
       default:
-        System.err.println("There is no hyper-heuristic with this id: " + algorithmID);
-        h = null;
-        System.exit(0);
+        throw new Exception("There is no hyper-heuristic with this id: " + algorithmID);
     }
+    h.setTimeLimit(timeLimit);
     return h;
   }
 
@@ -274,8 +248,9 @@ public class CompetitionRunner extends Thread {
    * 
    * @param number number of problem
    * @return ProblemDomain object
+   * @throws Exception
    */
-  public ProblemDomain loadProblemDomain(String problemID) {
+  public ProblemDomain loadProblemDomain(String problemID) throws Exception {
     ProblemDomain p;
     switch (problemID) {
       case "SAT":
@@ -300,9 +275,7 @@ public class CompetitionRunner extends Thread {
         p = new QAP(instanceSeed);
         break;
       default:
-        System.err.println("There is no problem domain with this id: " + problemID);
-        p = new BinPacking(rnd.nextLong());
-        System.exit(0);
+        throw new Exception("There is no problem domain with this id: " + problemID);
     }
     return p;
   }
@@ -310,7 +283,7 @@ public class CompetitionRunner extends Thread {
   /**
    * Method starts the computing of hh on given instance of given problem domain.
    */
-  public void run() {
+  public void run(){
     Map<String, int[]> instancesToUse = new HashMap<>();
     /*
      * These instances are generated by CompetitionInstanceSelector.java Ten instances are included
@@ -332,27 +305,31 @@ public class CompetitionRunner extends Thread {
     System.out.println("\tINSTANCE " + Competition.problemInstances.get(problemID).get(instanceID));
 
     for (int run = 0; run < numberOfRuns; run++) {
-      instanceSeed = instanceSeeds.get(problemID)[instanceID][run];
-      System.out.println("\t\tRUN " + (run+1) + "/"+numberOfRuns+" - seed " + instanceSeed);
+      try {
+        instanceSeed = instanceSeeds.get(problemID)[instanceID][run];
+        System.out.println("\t\tRUN " + (run+1) + "/"+numberOfRuns+" - seed " + instanceSeed);
 
-      ProblemDomain p = loadProblemDomain(problemID);
-      HyperHeuristic h = loadHyperHeuristic(algorithmID, time);
-      System.out.print("\t\t\tHYPER HEURISTIC " + h.toString());
-      p.loadInstance(instanceToUse);
-      h.loadProblemDomain(p);
+        ProblemDomain p = loadProblemDomain(problemID);
+        HyperHeuristic h = loadHyperHeuristic(algorithmID, time);
+        System.out.print("\t\t\tHYPER HEURISTIC " + h.toString());
+        p.loadInstance(instanceToUse);
+        h.loadProblemDomain(p);
 
-      long initialTime2 = System.currentTimeMillis();
-      h.run();
+        long initialTime2 = System.currentTimeMillis();
+        h.run();
 
-      int[] i = p.getHeuristicCallRecord();
-      int counter = 0;
-      for (int y : i) {
-        counter += y;
+        int[] i = p.getHeuristicCallRecord();
+        int counter = 0;
+        for (int y : i) {
+          counter += y;
+        }
+        System.out.println("\t" + h.getBestSolutionValue() + "\t" + (h.getElapsedTime() / 1000.0)
+            + "\t" + (System.currentTimeMillis() - initialTime2) / 1000.0 + "\t" + counter);
+
+        results.add(h.getBestSolutionValue());
+      } catch(Exception ex) {
+        ex.printStackTrace();
       }
-      System.out.println("\t" + h.getBestSolutionValue() + "\t" + (h.getElapsedTime() / 1000.0)
-          + "\t" + (System.currentTimeMillis() - initialTime2) / 1000.0 + "\t" + counter);
-
-      results.add(h.getBestSolutionValue());
     }
   }
 }
