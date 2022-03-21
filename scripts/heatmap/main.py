@@ -89,7 +89,7 @@ hh_info = {
         "name": '',
         "author": 'Imen Khamassi'
     },
-    "CSPUTGeneticHiveHH": {
+    "CSeneticHiveHH": {
         "name": 'Genetic Hive HyperHeuristic',
         "author": 'Michal Frankiewicz',
     },
