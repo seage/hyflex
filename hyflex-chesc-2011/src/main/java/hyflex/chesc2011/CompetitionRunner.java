@@ -188,7 +188,7 @@ public class CompetitionRunner extends Thread {
       case "Clean02":
         h = new Clean02(rnd.nextLong());
         break;
-      case "CSPUTGeneticHiveHyperHeuristic":
+      case "CSeneticHiveHH":
         h = new CSPUTGeneticHiveHyperHeuristic(rnd.nextLong());
         break;
       case "elomariSS":
@@ -197,10 +197,10 @@ public class CompetitionRunner extends Thread {
       case "HaeaHH":
         h = new HaeaHH(rnd.nextLong());
         break;
-      case "HsiaoCHeSCHyperheuristic":
+      case "HsiaoCHeSCHH":
         h = new HsiaoCHeSCHyperheuristic(rnd.nextLong());
         break;
-      case "sa_ilsHyperHeuristic":
+      case "sa_ilsHH":
         h = new sa_ilsHyperHeuristic(rnd.nextLong());
         break;
       case "JohnstonBiasILS":
@@ -230,7 +230,7 @@ public class CompetitionRunner extends Thread {
       case "SimSATS_HH":
         h = new SimSATS_HH(rnd.nextLong());
         break;
-      case "Urli_AVEG_NeptuneHyperHeuristic":
+      case "Urli_AVEG_NeptuneHH":
         h = new Urli_AVEG_NeptuneHyperHeuristic(rnd.nextLong());
         break;
       case "McClymontMCHHS":
