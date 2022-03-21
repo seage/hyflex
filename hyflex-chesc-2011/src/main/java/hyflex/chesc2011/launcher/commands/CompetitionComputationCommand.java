@@ -70,9 +70,8 @@ public class CompetitionComputationCommand extends Command {
   @Parameter(names = {"-p", "--problems"},      
       variableArity = true,
       description = "Names of problems to be used in competition " 
-      + "available values are: SAT, BinPacking, PersonnelScheduling, FSP, TSP, VRP")
-  public List<String> problems = Arrays
-      .asList(new String[] {"SAT", "BinPacking", "PersonnelScheduling", "FSP", "TSP", "VRP"});
+      + "available values are: SAT, BinPacking, PersonnelScheduling, FSP, TSP, VRP, QAP")
+  public List<String> problems = Arrays.asList(Competition.problemIDs);
 
   public boolean isHelp() {
     return help;

@@ -16,7 +16,7 @@ import java.util.Optional;
  * @author David Omrai
  */
 public class Competition {
-  private static final String[] algorithmIDs = {
+  public static final String[] algorithmIDs = {
     "GIHH",
     "LeanGIHH",
     "PearlHunter",
@@ -39,11 +39,11 @@ public class Competition {
     "ShafiXCJ",
     "ACO_HH",
     "SimSATS_HH",
-    "Urli_AVEG_NeptuneHHe",
+    "Urli_AVEG_NeptuneHH",
     "McClymontMCHHS",
   };
 
-  private static final String[] problemIDs = {
+  public static final String[] problemIDs = {
     "SAT", "BinPacking", "PersonnelScheduling", "FSP", "TSP", "VRP", "QAP"
   };
   

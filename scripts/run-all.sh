@@ -1,4 +1,6 @@
 #!/bin/bash
+cd $(dirname "$0")
+cd ..
 
 runHyperHeuristic(){
     hhID=$1
@@ -45,9 +47,6 @@ runAllHyperHeuristics(){
     done
 }
 
-cd $(dirname "$0")
-cd ..
-
 # Test if project jar exists
 if [ ! -f hyflex-chesc-2011/build/install/hyflex-chesc-2011/lib/hyflex-chesc-2011*.jar ]; then
     echo "Project needs to be compiled!"
@@ -75,9 +74,13 @@ if [[ $@ == *"competition"* ]]; then
     fi
     # No id provided, use the time in millis
     id=`date +%s%3N`
+    # Store parameters this script has been run with
+    mkdir ./results/${id}
+    echo $@ > ./results/${id}/_run-all-params.txt
+    ### Run ###
     runAllHyperHeuristics "$@ --id $id" &
-    echo $id
-    echo $!
+    echo "Competition id: $id"
+    echo "Process id: $!"
     exit
 fi
 

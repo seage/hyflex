@@ -192,54 +192,6 @@ public class CompetitionRunner extends Thread {
     setInstanceseeds();
   }
 
-  
-  /**
-   * Class constructor with problemID translator.
-   * @param algorithmID number representing algorithm from range 0-5
-   * @param problemID   number representing problem from range 0-(domains-1)
-   * @param instanceID  number representing the instance of problem domain, range 0-(instances-1)
-   * @param runTime     run time of given algorithm on instance
-   * @param algRuns     number of runs
-   */
-  public CompetitionRunner(
-      int algorithmID, 
-      int problemID, 
-      int instanceID, 
-      long runTime, 
-      int algRuns
-  ) {
-    problem       = problemID;
-    instance      = instanceID;
-    algorithm     = algorithmID;
-    time          = runTime;
-    numberofruns  = algRuns;
-
-    switch (problem) {
-      case 0:
-        resultsfolder = "SAT";
-        break;
-      case 1:
-        resultsfolder = "BinPacking";
-        break;
-      case 2:
-        resultsfolder = "PersonnelScheduling";
-        break;
-      case 3:
-        resultsfolder = "FSP";
-        break;
-      case 4:
-        resultsfolder = "TSP";
-        break;
-      case 5:
-        resultsfolder = "VRP";
-        break;
-      default: System.err.println("wrong input for the problem domain");
-        System.exit(-1);
-    }
-
-    setInstanceseeds();
-  }
-
   public ArrayList<Double> getResults() {
     return results;
   }
