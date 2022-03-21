@@ -5,7 +5,7 @@ cd ..
 runHyperHeuristic(){
     hhID=$1
     params=$2
-    ./hyflex-chesc-2011/build/install/hyflex-chesc-2011/bin/hyflex-chesc-2011 $params --hyperheuristics $hhID > results/log/${hhID}_log.txt 2> results/log/${hhID}_err.txt
+    ./hyflex-chesc-2011/build/install/hyflex-chesc-2011/bin/hyflex-chesc-2011 $params --hyperheuristics $hhID > results/log/${hhID}.log 2> results/log/${hhID}.err
 }
 
 runHyperHeuristics(){
