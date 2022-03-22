@@ -176,7 +176,7 @@ public class CompetitionRunner extends Thread {
       case "Clean":
         h = new Clean(rnd.nextLong());
         break;
-      case "Clean02":
+      case "Clean-2":
         h = new Clean02(rnd.nextLong());
         break;
       case "DynILS":

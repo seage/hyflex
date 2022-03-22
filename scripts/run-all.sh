@@ -35,7 +35,7 @@ runAllHyperHeuristics(){
         "AdapHH-GIHH LeanGIHH PHUNTER EPH ISEA HAEA"
         "GISS ACO-HH SelfSearch ML SA-ILS VNS-TW"
         "GenHive DynILS-b DynILS HAHA NAHH Ant-Q"
-        "XCJ KSATS-HH AVEG-Nep MCHH-S Clean Clean02"
+        "XCJ KSATS-HH AVEG-Nep MCHH-S Clean Clean-2"
     )
     IFS=""
     for hhBatch in ${hhIDs[*]} 

@@ -24,7 +24,7 @@ public class Competition {
     "Ant-Q",
     "AVEG-Nep",
     "Clean",
-    "Clean02",
+    "Clean-2",
     "DynILS",
     "DynILS-b",
     "EPH",

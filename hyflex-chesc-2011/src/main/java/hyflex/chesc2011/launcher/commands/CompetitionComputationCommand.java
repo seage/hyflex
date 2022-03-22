@@ -47,7 +47,7 @@ public class CompetitionComputationCommand extends Command {
       "Ant-Q," +
       "AVEG-Nep" +
       "Clean," +
-      "Clean02," +
+      "Clean-2," +
       "DynILS," +
       "DynILS-b," +
       "EPH," +

@@ -37,7 +37,7 @@ hh_info = {
         "name": '',
         "author": 'Mohamed Bader-El-Den'
     },
-    "Clean02": {
+    "Clean-2": {
         "name": '',
         "author": 'Mohamed Bader-El-Den'
     },
