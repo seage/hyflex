@@ -162,7 +162,7 @@ public class CompetitionRunner extends Thread {
       case "ACO-HH":
         h = new ACO_HH(rnd.nextLong());
         break;
-      case "AdapHH":
+      case "AdapHH-GIHH":
         h = new GIHH(rnd.nextLong(), loadProblemDomain(problemID).getNumberOfHeuristics(), time,
             "gihh", SelectionMethodType.AdaptiveLimitedLAassistedDHSMentorSTD,
             AcceptanceCriterionType.AdaptiveIterationLimitedListBasedTA);

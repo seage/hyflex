@@ -43,7 +43,7 @@ public class CompetitionComputationCommand extends Command {
       description = "Names of hyper-heuristics to be used in competition " + 
       "available values are:" +
       "ACO-HH," +
-      "AdapHH," +
+      "AdapHH-GIHH," +
       "Ant-Q," +
       "AVEG-Nep" +
       "Clean," +
@@ -53,7 +53,7 @@ public class CompetitionComputationCommand extends Command {
       "EPH," +
       "GenHive," +
       "GISS," +
-      "HaeaHH," +
+      "HAHAE," +
       "HAHA," +
       "ISEA," +
       "KSATS-HH," +

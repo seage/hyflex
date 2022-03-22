@@ -20,7 +20,7 @@ import java.util.Optional;
 public class Competition {
   public static final String[] algorithmIDs = {
     "ACO-HH",
-    "AdapHH",
+    "AdapHH-GIHH",
     "Ant-Q",
     "AVEG-Nep",
     "Clean",
