@@ -55,7 +55,6 @@ public class CompetitionComputationCommand extends Command {
       "GISS," +
       "HaeaHH," +
       "HAHA," +
-      "HsiaoCHeSCHH," +
       "ISEA," +
       "KSATS-HH," +
       "LeanGIHH," +
@@ -65,6 +64,7 @@ public class CompetitionComputationCommand extends Command {
       "PHUNTER," +
       "SA-ILS," +
       "SelfSearch," +
+      "VNS-TW," +
       "XCJ")
   public List<String> hyperheurictics;
 
