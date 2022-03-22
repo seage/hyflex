@@ -29,15 +29,15 @@ hh_info = {
         "name": 'Ant colony optimization',
         "author": 'José Luis Núñez'
     },
-    "elomariSS": {
+    "SelfSearch": {
         "name": 'Self-Search (Extended Abstract)',
         "author": 'Jawad Elomari'
     },
-    "MyHH":{
+    "NAHH":{
         "name": 'Non-Adaptive Hyper-Heuristic',
         "author": 'Franco Mascia'
     },
-    "SimSATS_HH":{
+    "KSATS_HH":{
         "name": 'KSATS-HH: A Simulated Annealing Hyper-Heuristic with Reinforcement Learning and Tabu-Search',
         "author": 'Kevin Sim'
     },
@@ -45,7 +45,7 @@ hh_info = {
         "name": '',
         "author": 'Mohamed Bader-El-Den'
     },
-    "sa_ilsHH": {
+    "SA_ILS": {
         "name": '',
         "author": 'He Jiang'
     },
@@ -53,23 +53,23 @@ hh_info = {
         "name": 'Evolutionary Programming Hyper-heuristic',
         "author": 'David Meignan'
     },
-    "PearlHunter": {
+    "PHUNTER": {
         "name": 'Pearl Hunter: A Hyper-heuristic that Compiles Iterated Local Search Algorithms',
         "author": 'Fan Xue'
     },
-    "HaeaHH": {
+    "HAEA": {
         "name": 'Hybrid Adaptive Evolutionary Algorithm Hyper Heuristic',
         "author": 'Jonatan Gómez'
     },
-    "Urli_AVEG_NeptuneHH": {
+    "AVEG_Nep": {
         "name": 'A Reinforcement Learning approach',
         "author": 'Luca Di Gaspero'
     },
-    "LehrbaumHAHA": {
+    "HAHA": {
         "name": 'A new Hyperheuristic Algorithm',
         "author": 'Andreas Lehrbaum'
     },
-    "JohnstonBiasILS": {
+    "DynILS_b": {
         "name": 'Non-Improvement Bias Iterated Local Search',
         "author": 'Mark Johnston'
     },
@@ -77,11 +77,11 @@ hh_info = {
         "name": 'Simpler variant of GIHH',
         "author": 'Steven Adriaensen'
     },
-    "LaroseML": {
+    "ML": {
         "name": 'Self-adaptive meta-heuristic of Meignan',
         "author": 'Mathieu Larose'
     },
-    "HsiaoCHeSCHH": {
+    "VNS_TW": {
         "name": 'Variable neighborhood search-based hyperheuristic',
         "author": 'Ping-Che Hsiao'
     },
@@ -89,15 +89,15 @@ hh_info = {
         "name": '',
         "author": 'Imen Khamassi'
     },
-    "CSeneticHiveHH": {
+    "GenHive": {
         "name": 'Genetic Hive HyperHeuristic',
         "author": 'Michal Frankiewicz',
     },
-    "JohnstonDynamicILS": {
+    "DynILS": {
         "name": 'Dynamic Iterated Local Search',
         "author": 'Mark Johnston'
     },
-    "ShafiXCJ": {
+    "XCJ": {
         "name": 'eXplore-Climb-Jump: A Hill Climbing based Cross-Domain Hyper-Heuristi',
         "author": 'Kamran Shafi'
     },
@@ -109,7 +109,7 @@ hh_info = {
         "name": 'Genetic Iterative Hyper-heuristic',
         "author": 'Mustafa Misir'
     },
-    "McClymontMCHHS": {
+    "MCHH_S": {
         "name": 'A Single Objective Variant of the Online Selective Markov chain Hyper-heuristic',
         "author": 'Kent McClymont'
     },

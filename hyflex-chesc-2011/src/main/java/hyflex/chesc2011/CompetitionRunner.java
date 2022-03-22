@@ -168,7 +168,7 @@ public class CompetitionRunner extends Thread {
       case "LeanGIHH":
         h = new LeanGIHH(rnd.nextLong());
         break;
-      case "PearlHunter":
+      case "PHUNTER":
         h = new PearlHunter(rnd.nextLong());
         break;
       case "GIHH":
@@ -187,11 +187,11 @@ public class CompetitionRunner extends Thread {
         break;
       case "Clean02":
         h = new Clean02(rnd.nextLong());
-        break;
+        break; 
       case "GenHive":
         h = new CSPUTGeneticHiveHyperHeuristic(rnd.nextLong());
         break;
-      case "elomariSS":
+      case "SelfSearch":
         h = new elomariSS(rnd.nextLong());
         break;
       case "HaeaHH":
@@ -200,40 +200,40 @@ public class CompetitionRunner extends Thread {
       case "HsiaoCHeSCHH":
         h = new HsiaoCHeSCHyperheuristic(rnd.nextLong());
         break;
-      case "sa_ilsHH":
+      case "SA_ILS":
         h = new sa_ilsHyperHeuristic(rnd.nextLong());
         break;
-      case "JohnstonBiasILS":
+      case "DynILS_b":
         h = new JohnstonBiasILS(rnd.nextLong());
         break;
-      case "JohnstonDynamicILS":
+      case "DynILS":
         h = new JohnstonDynamicILS(rnd.nextLong());
         break;
       case "LaroseML":
         h = new LaroseML(rnd.nextLong());
         break;
-      case "LehrbaumHAHA":
+      case "HAHA":
         h = new LehrbaumHAHA(rnd.nextLong());
         break;
-      case "MyHyperHeuristic":
+      case "NAHH":
         h = new MyHyperHeuristic(rnd.nextLong());
         break;
       case "Ant_Q":
         h = new Ant_Q(rnd.nextLong());
         break;
-      case "ShafiXCJ":
+      case "XCJ":
         h = new ShafiXCJ(rnd.nextLong());
         break;
       case "ACO_HH":
         h = new ACO_HH(rnd.nextLong());
         break;
-      case "SimSATS_HH":
+      case "KSATS_HH":
         h = new SimSATS_HH(rnd.nextLong());
         break;
-      case "Urli_AVEG_NeptuneHH":
+      case "AVEG_Nep":
         h = new Urli_AVEG_NeptuneHyperHeuristic(rnd.nextLong());
         break;
-      case "McClymontMCHHS":
+      case "MCHH_S":
         h = new McClymontMCHHS(rnd.nextLong());
         break;
       default:
