@@ -46,10 +46,10 @@ public class CompetitionComputationCommand extends Command {
       "AdapHH-GIHH," +
       "Ant-Q," +
       "AVEG-Nep" +
+      "BiasILS," +
       "Clean," +
       "Clean-2," +
       "DynILS," +
-      "DynILS-b," +
       "EPH," +
       "GenHive," +
       "GISS," +

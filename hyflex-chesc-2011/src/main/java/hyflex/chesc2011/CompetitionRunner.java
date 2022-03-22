@@ -173,6 +173,9 @@ public class CompetitionRunner extends Thread {
       case "AVEG-Nep":
         h = new Urli_AVEG_NeptuneHyperHeuristic(rnd.nextLong());
         break;
+      case "BiasILS":
+        h = new JohnstonBiasILS(rnd.nextLong());
+        break;
       case "Clean":
         h = new Clean(rnd.nextLong());
         break;
@@ -181,9 +184,6 @@ public class CompetitionRunner extends Thread {
         break;
       case "DynILS":
         h = new JohnstonDynamicILS(rnd.nextLong());
-        break;
-      case "DynILS-b":
-        h = new JohnstonBiasILS(rnd.nextLong());
         break;
       case "EPH":
         h = new EPH(rnd.nextLong());

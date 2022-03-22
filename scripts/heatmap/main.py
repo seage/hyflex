@@ -33,6 +33,10 @@ hh_info = {
         "name": 'A Reinforcement Learning approach',
         "author": 'Luca Di Gaspero'
     },
+    "BiasILS": {
+        "name": 'Non-Improvement Bias Iterated Local Search',
+        "author": 'Mark Johnston'
+    },
     "Clean": {
         "name": '',
         "author": 'Mohamed Bader-El-Den'
@@ -43,10 +47,6 @@ hh_info = {
     },
     "DynILS": {
         "name": 'Dynamic Iterated Local Search',
-        "author": 'Mark Johnston'
-    },
-    "DynILS-b": {
-        "name": 'Non-Improvement Bias Iterated Local Search',
         "author": 'Mark Johnston'
     },
     "EPH": {
