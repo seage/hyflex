@@ -34,7 +34,7 @@ public class Competition {
     "SA_ILS",
     "DynILS_b",
     "DynILS",
-    "LaroseML",
+    "ML",
     "HAHA",
     "NAHH",
     "Ant_Q",

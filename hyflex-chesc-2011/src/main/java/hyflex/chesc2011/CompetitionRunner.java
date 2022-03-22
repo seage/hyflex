@@ -209,7 +209,7 @@ public class CompetitionRunner extends Thread {
       case "DynILS":
         h = new JohnstonDynamicILS(rnd.nextLong());
         break;
-      case "LaroseML":
+      case "ML":
         h = new LaroseML(rnd.nextLong());
         break;
       case "HAHA":
