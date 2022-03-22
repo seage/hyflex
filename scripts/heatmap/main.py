@@ -25,7 +25,7 @@ hh_info = {
         "name": 'terated Local Search Driven by Evolutionary Algorithm',
         "author": 'Jiří Kubalík'
     },
-    "ACO_HH": {
+    "ACO-HH": {
         "name": 'Ant colony optimization',
         "author": 'José Luis Núñez'
     },
@@ -37,7 +37,7 @@ hh_info = {
         "name": 'Non-Adaptive Hyper-Heuristic',
         "author": 'Franco Mascia'
     },
-    "KSATS_HH":{
+    "KSATS-HH":{
         "name": 'KSATS-HH: A Simulated Annealing Hyper-Heuristic with Reinforcement Learning and Tabu-Search',
         "author": 'Kevin Sim'
     },
@@ -69,7 +69,7 @@ hh_info = {
         "name": 'A new Hyperheuristic Algorithm',
         "author": 'Andreas Lehrbaum'
     },
-    "DynILS_b": {
+    "DynILS-b": {
         "name": 'Non-Improvement Bias Iterated Local Search',
         "author": 'Mark Johnston'
     },
@@ -81,11 +81,11 @@ hh_info = {
         "name": 'Self-adaptive meta-heuristic of Meignan',
         "author": 'Mathieu Larose'
     },
-    "VNS_TW": {
+    "VNS-TW": {
         "name": 'Variable neighborhood search-based hyperheuristic',
         "author": 'Ping-Che Hsiao'
     },
-    "Ant_Q": {
+    "Ant-Q": {
         "name": '',
         "author": 'Imen Khamassi'
     },
@@ -109,7 +109,7 @@ hh_info = {
         "name": 'Genetic Iterative Hyper-heuristic',
         "author": 'Mustafa Misir'
     },
-    "MCHH_S": {
+    "MCHH-S": {
         "name": 'A Single Objective Variant of the Online Selective Markov chain Hyper-heuristic',
         "author": 'Kent McClymont'
     },

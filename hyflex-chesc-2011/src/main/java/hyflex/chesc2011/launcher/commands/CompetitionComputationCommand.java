@@ -42,14 +42,14 @@ public class CompetitionComputationCommand extends Command {
       variableArity = true,
       description = "Names of hyper-heuristics to be used in competition " + 
       "available values are:" +
-      "ACO_HH," +
+      "ACO-HH," +
       "AdapHH," +
-      "Ant_Q," +
-      "AVEG_Nep" +
+      "Ant-Q," +
+      "AVEG-Nep" +
       "Clean," +
       "Clean02," +
       "DynILS," +
-      "DynILS_b," +
+      "DynILS-b," +
       "EPH," +
       "GenHive," +
       "GISS," +
@@ -57,13 +57,13 @@ public class CompetitionComputationCommand extends Command {
       "HAHA," +
       "HsiaoCHeSCHH," +
       "ISEA," +
-      "KSATS_HH," +
+      "KSATS-HH," +
       "LeanGIHH," +
-      "MCHH_S," +
+      "MCHH-S," +
       "ML," +
       "NAHH," +
       "PHUNTER," +
-      "SA_ILS," +
+      "SA-ILS," +
       "SelfSearch," +
       "XCJ")
   public List<String> hyperheurictics;
