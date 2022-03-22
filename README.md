@@ -9,7 +9,9 @@ Hyper-heuristic implementers might find this environment helpful for comparing o
 
 ## List of available hyper-heuristics
 
-See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder.
+See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder. 
+
+The following table shows results from competition run with 60s timeout and 10 repeats.
 
 ![Hyper-heuristics](docs/heatmap_60_10.svg)
 
