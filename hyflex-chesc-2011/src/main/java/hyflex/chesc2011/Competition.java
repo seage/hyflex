@@ -27,7 +27,7 @@ public class Competition {
     "GISS",
     "Clean",
     "Clean02",
-    "CSeneticHiveHH",
+    "GenHive",
     "elomariSS",
     "HaeaHH",
     "HsiaoCHeSCHH",

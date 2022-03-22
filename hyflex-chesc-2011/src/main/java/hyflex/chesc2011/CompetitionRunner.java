@@ -188,7 +188,7 @@ public class CompetitionRunner extends Thread {
       case "Clean02":
         h = new Clean02(rnd.nextLong());
         break;
-      case "CSeneticHiveHH":
+      case "GenHive":
         h = new CSPUTGeneticHiveHyperHeuristic(rnd.nextLong());
         break;
       case "elomariSS":

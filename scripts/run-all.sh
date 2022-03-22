@@ -34,7 +34,7 @@ runAllHyperHeuristics(){
     hhIDs=(
         "GIHH LeanGIHH PearlHunter EPH ISEA HaeaHH"
         "GISS ACO_HH elomariSS LaroseML sa_ilsHH HsiaoCHeSCHH"
-        "CSeneticHiveHH JohnstonBiasILS JohnstonDynamicILS LehrbaumHAHA MyHH Ant_Q"
+        "GenHive JohnstonBiasILS JohnstonDynamicILS LehrbaumHAHA MyHH Ant_Q"
         "ShafiXCJ SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS Clean Clean02"
     )
     IFS=""

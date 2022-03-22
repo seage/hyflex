@@ -50,7 +50,7 @@ public class CompetitionComputationCommand extends Command {
       "GISS," +
       "Clean," +
       "Clean02," +
-      "CSeneticHiveHH," +
+      "GenHive," +
       "elomariSS," +
       "HaeaHH," +
       "HsiaoCHeSCHH," +
