@@ -21,7 +21,7 @@ hh_info = {
         "name": 'Ant colony optimization',
         "author": 'José Luis Núñez'
     },
-    "AsapHH-GIHH": {
+    "AdapHH-GIHH": {
         "name": 'Genetic Iterative Hyper-heuristic',
         "author": 'Mustafa Misir'
     },
