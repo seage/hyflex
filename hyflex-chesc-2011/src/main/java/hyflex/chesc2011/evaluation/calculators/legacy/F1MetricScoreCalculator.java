@@ -27,7 +27,7 @@ import java.util.Collections;
  * please report any bugs to Matthew Hyde at mvh@cs.nott.ac.uk
  */
 
-public class ScoreCalculator {
+public class F1MetricScoreCalculator {
 
   //please replace the ten '0's in each problem domain 
   //with your scores for each of the 10 training instances

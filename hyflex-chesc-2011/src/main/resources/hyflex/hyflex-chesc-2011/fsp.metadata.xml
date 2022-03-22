@@ -24,7 +24,7 @@
         <Instance greedy="12222" id="tai200_10_10" optimum="10616" random="12215" size="200"/>
         <Instance greedy="13501" id="tai200_20_01" optimum="10979" random="13591" size="200"/>
         <Instance greedy="1309" id="tai20_05_01" optimum="1232" random="1416" size="20"/>
-        <Instance greedy="30391" id="tai500_20_01" optimum="25922" random="30235" size="500"/>
+        <Instance greedy="30391" id="tai500_20_01" optimum="25922" random="30235" size="500"/> 
         <Instance greedy="30483" id="tai500_20_02" optimum="26353" random="30846" size="500"/>
         <Instance greedy="29924" id="tai500_20_03" optimum="26320" random="30456" size="500"/>
         <Instance greedy="30346" id="tai500_20_04" optimum="26424" random="30496" size="500"/>

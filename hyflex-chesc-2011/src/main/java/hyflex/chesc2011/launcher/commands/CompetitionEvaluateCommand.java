@@ -50,10 +50,10 @@ public class CompetitionEvaluateCommand extends Command {
 
     switch (metric) {
       case "UnitMetric":
-        new hyflex.chesc2011.evaluation.calculators.BenchmarkCalculator().run(id, metric);
+        new hyflex.chesc2011.evaluation.scorecard.ScoreCardBenchmarkCalculator().run(id, metric);
         break;
       case "F1Metric":
-        new hyflex.chesc2011.evaluation.calculators.legacy.BenchmarkCalculator().run(id);
+        new hyflex.chesc2011.evaluation.calculators.legacy.F1MetricBenchmarkCalculator().run(id);
         break;
       default:
     }

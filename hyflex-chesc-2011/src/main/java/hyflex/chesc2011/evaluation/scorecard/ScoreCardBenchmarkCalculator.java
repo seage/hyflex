@@ -1,11 +1,9 @@
-package hyflex.chesc2011.evaluation.calculators;
+package hyflex.chesc2011.evaluation.scorecard;
 
 import hyflex.chesc2011.Competition;
+import hyflex.chesc2011.evaluation.calculators.UnitMetricScoreCalculator;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadataReader;
-import hyflex.chesc2011.evaluation.scorecard.ScoreCard;
-import hyflex.chesc2011.evaluation.scorecard.ScoreCardHelper;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,9 +38,9 @@ import java.util.logging.Logger;
  * 
  * @author David Omrai
  */
-public class BenchmarkCalculator {
+public class ScoreCardBenchmarkCalculator {
   private static final Logger logger = 
-      Logger.getLogger(BenchmarkCalculator.class.getName());
+      Logger.getLogger(ScoreCardBenchmarkCalculator.class.getName());
   // Path where the results are stored
   String resultsPath = "./results";
   // Path where the metadata are stored
@@ -70,7 +68,7 @@ public class BenchmarkCalculator {
       problems.add("FSP");
       problems.add("QAP");
 
-      BenchmarkCalculator ibc = new BenchmarkCalculator();
+      ScoreCardBenchmarkCalculator ibc = new ScoreCardBenchmarkCalculator();
       ibc.run(args[0], args[1]);
     } catch (Exception e) {
       logger.severe(e.getMessage());

@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Launch MetadataGenerator",
+      "request": "launch",
+      "mainClass": "hyflex.chesc2011.evaluation.metadata.MetadataGenerator",
+      "projectName": "hyflex-chesc-2011"
+    },
+    {
+      "type": "java",
       "name": "Debug Competiton",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.launcher.Launcher",
@@ -50,6 +57,6 @@
       "mainClass": "hyflex.chesc2011.metrics.BenchmarkCalculator",
       "projectName": "hyflex-chesc-2011",
       "args": "1616856133479"
-    },
+    }
   ]
 }

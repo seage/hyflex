@@ -75,9 +75,9 @@ import org.w3c.dom.Element;
  * please report any bugs to Dr Matthew Hyde at mvh@cs.nott.ac.uk
  */
 
-public class BenchmarkCalculator {
+public class F1MetricBenchmarkCalculator {
   private static final Logger logger = 
-      Logger.getLogger(BenchmarkCalculator.class.getName());
+      Logger.getLogger(F1MetricBenchmarkCalculator.class.getName());
     
   final String defaultDirectory = "./results";
 
