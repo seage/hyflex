@@ -97,7 +97,7 @@ hh_info = {
         "name": 'Pearl Hunter: A Hyper-heuristic that Compiles Iterated Local Search Algorithms',
         "author": 'Fan Xue'
     },
-    "SA_ILS": {
+    "SA-ILS": {
         "name": '',
         "author": 'He Jiang'
     },
