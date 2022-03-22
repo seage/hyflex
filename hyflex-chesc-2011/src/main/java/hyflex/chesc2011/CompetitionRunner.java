@@ -194,7 +194,7 @@ public class CompetitionRunner extends Thread {
       case "SelfSearch":
         h = new elomariSS(rnd.nextLong());
         break;
-      case "HaeaHH":
+      case "HAEA":
         h = new HaeaHH(rnd.nextLong());
         break;
       case "HsiaoCHeSCHH":

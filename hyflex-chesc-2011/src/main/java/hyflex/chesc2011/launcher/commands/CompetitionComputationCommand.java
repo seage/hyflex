@@ -52,7 +52,7 @@ public class CompetitionComputationCommand extends Command {
       "Clean02," +
       "GenHive," +
       "SelfSearch," +
-      "HaeaHH," +
+      "HAEA," +
       "HsiaoCHeSCHH," +
       "SA_ILS," +
       "DynILS_b," +

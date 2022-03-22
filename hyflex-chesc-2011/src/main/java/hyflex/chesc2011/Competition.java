@@ -29,7 +29,7 @@ public class Competition {
     "Clean02",
     "GenHive",
     "SelfSearch",
-    "HaeaHH",
+    "HAEA",
     "HsiaoCHeSCHH",
     "SA_ILS",
     "DynILS_b",
