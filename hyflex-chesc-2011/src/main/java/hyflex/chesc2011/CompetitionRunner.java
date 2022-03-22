@@ -159,86 +159,86 @@ public class CompetitionRunner extends Thread {
   public HyperHeuristic loadHyperHeuristic(String algorithmID, long timeLimit) throws Exception {
     HyperHeuristic h;
     switch (algorithmID) {
-      case "ExampleHyperHeuristic1":
-        h = new ExampleHyperHeuristic1(rnd.nextLong());
+      case "ACO-HH":
+        h = new ACO_HH(rnd.nextLong());
         break;
-      case "EPH":
-        h = new EPH(rnd.nextLong());
-        break;
-      case "LeanGIHH":
-        h = new LeanGIHH(rnd.nextLong());
-        break;
-      case "PearlHunter":
-        h = new PearlHunter(rnd.nextLong());
-        break;
-      case "GIHH":
+      case "AdapHH-GIHH":
         h = new GIHH(rnd.nextLong(), loadProblemDomain(problemID).getNumberOfHeuristics(), time,
             "gihh", SelectionMethodType.AdaptiveLimitedLAassistedDHSMentorSTD,
             AcceptanceCriterionType.AdaptiveIterationLimitedListBasedTA);
         break;
-      case "ISEA":
-        h = new EvoCOPHyperHeuristic(rnd.nextLong());
+      case "Ant-Q":
+        h = new Ant_Q(rnd.nextLong());
         break;
-      case "GISS":
-        h = new GISS(rnd.nextLong());
+      case "AVEG-Nep":
+        h = new Urli_AVEG_NeptuneHyperHeuristic(rnd.nextLong());
+        break;
+      case "BiasILS":
+        h = new JohnstonBiasILS(rnd.nextLong());
         break;
       case "Clean":
         h = new Clean(rnd.nextLong());
         break;
-      case "Clean02":
+      case "Clean-2":
         h = new Clean02(rnd.nextLong());
         break;
-      case "CSeneticHiveHH":
-        h = new CSPUTGeneticHiveHyperHeuristic(rnd.nextLong());
-        break;
-      case "elomariSS":
-        h = new elomariSS(rnd.nextLong());
-        break;
-      case "HaeaHH":
-        h = new HaeaHH(rnd.nextLong());
-        break;
-      case "HsiaoCHeSCHH":
-        h = new HsiaoCHeSCHyperheuristic(rnd.nextLong());
-        break;
-      case "sa_ilsHH":
-        h = new sa_ilsHyperHeuristic(rnd.nextLong());
-        break;
-      case "JohnstonBiasILS":
-        h = new JohnstonBiasILS(rnd.nextLong());
-        break;
-      case "JohnstonDynamicILS":
+      case "DynILS":
         h = new JohnstonDynamicILS(rnd.nextLong());
         break;
-      case "LaroseML":
-        h = new LaroseML(rnd.nextLong());
+      case "EPH":
+        h = new EPH(rnd.nextLong());
         break;
-      case "LehrbaumHAHA":
+      case "ExampleHyperHeuristic1":
+        h = new ExampleHyperHeuristic1(rnd.nextLong());
+        break;
+      case "GenHive":
+        h = new CSPUTGeneticHiveHyperHeuristic(rnd.nextLong());
+        break;
+      case "GISS":
+        h = new GISS(rnd.nextLong());
+        break;
+      case "HAEA":
+        h = new HaeaHH(rnd.nextLong());
+        break;
+      case "HAHA":
         h = new LehrbaumHAHA(rnd.nextLong());
         break;
-      case "MyHyperHeuristic":
-        h = new MyHyperHeuristic(rnd.nextLong());
+      case "ISEA":
+        h = new EvoCOPHyperHeuristic(rnd.nextLong());
         break;
-      case "Ant_Q":
-        h = new Ant_Q(rnd.nextLong());
-        break;
-      case "ShafiXCJ":
-        h = new ShafiXCJ(rnd.nextLong());
-        break;
-      case "ACO_HH":
-        h = new ACO_HH(rnd.nextLong());
-        break;
-      case "SimSATS_HH":
+      case "KSATS-HH":
         h = new SimSATS_HH(rnd.nextLong());
         break;
-      case "Urli_AVEG_NeptuneHH":
-        h = new Urli_AVEG_NeptuneHyperHeuristic(rnd.nextLong());
+      case "LeanGIHH":
+        h = new LeanGIHH(rnd.nextLong());
         break;
-      case "McClymontMCHHS":
+      case "MCHH-S":
         h = new McClymontMCHHS(rnd.nextLong());
+        break;
+      case "ML":
+        h = new LaroseML(rnd.nextLong());
+        break;
+      case "NAHH":
+        h = new MyHyperHeuristic(rnd.nextLong());
+        break;
+      case "PHUNTER":
+        h = new PearlHunter(rnd.nextLong());
+        break;
+      case "SA-ILS":
+        h = new sa_ilsHyperHeuristic(rnd.nextLong());
+        break;
+      case "SelfSearch":
+        h = new elomariSS(rnd.nextLong());
+        break;
+      case "VNS-TW":
+        h = new HsiaoCHeSCHyperheuristic(rnd.nextLong());
+        break;
+      case "XCJ":
+        h = new ShafiXCJ(rnd.nextLong());
         break;
       default:
         throw new Exception("There is no hyper-heuristic with this id: " + algorithmID);
-    }
+      }
     h.setTimeLimit(timeLimit);
     return h;
   }

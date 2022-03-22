@@ -54,6 +54,7 @@
                 <table aria-describedby="results" class="styled-table">
                     <thead>
                         <tr>
+                            <th id="hh_head"></th>
                             <th id="hh_head">Hyper-heuristic</th>
                             <th id="hh_head">Author</th>
                             {% for problem in problems %}
@@ -66,6 +67,7 @@
                     <tbody>
                         {% for hh in results %}
                             <tr>
+                                <td>{{loop.index}}</td>
                                 <td id="hh_name">{{hh.name}}</td>
                                 <td id="hh_name">{{hh_info[hh.name]["author"]}}</td>
 

@@ -32,10 +32,10 @@ runAllHyperHeuristics(){
 
     #All hyper-heuristics names
     hhIDs=(
-        "GIHH LeanGIHH PearlHunter EPH ISEA HaeaHH"
-        "GISS ACO_HH elomariSS LaroseML sa_ilsHH HsiaoCHeSCHH"
-        "CSeneticHiveHH JohnstonBiasILS JohnstonDynamicILS LehrbaumHAHA MyHH Ant_Q"
-        "ShafiXCJ SimSATS_HH Urli_AVEG_NeptuneHH McClymontMCHHS Clean Clean02"
+        "AdapHH-GIHH LeanGIHH PHUNTER EPH ISEA HAEA"
+        "GISS ACO-HH SelfSearch ML SA-ILS VNS-TW"
+        "GenHive BiasILS DynILS HAHA NAHH Ant-Q"
+        "XCJ KSATS-HH AVEG-Nep MCHH-S Clean Clean-2"
     )
     IFS=""
     for hhBatch in ${hhIDs[*]} 
