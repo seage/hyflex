@@ -11,7 +11,7 @@ Hyper-heuristic implementers might find this environment helpful for comparing o
 
 See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder.
 
-![Hyper-heuristics](docs/heatmap.svg)
+![Hyper-heuristics](docs/heatmap_60_10.svg)
 
 ## Build and run the project
 ```
