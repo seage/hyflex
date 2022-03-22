@@ -105,7 +105,7 @@ hh_info = {
         "name": 'Generic Iterative Simulated-Annealing Search',
         "author": 'Alberto Acuna'
     },
-    "GIHH": {
+    "AsapHH": {
         "name": 'Genetic Iterative Hyper-heuristic',
         "author": 'Mustafa Misir'
     },

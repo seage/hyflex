@@ -171,7 +171,7 @@ public class CompetitionRunner extends Thread {
       case "PHUNTER":
         h = new PearlHunter(rnd.nextLong());
         break;
-      case "GIHH":
+      case "AdapHH":
         h = new GIHH(rnd.nextLong(), loadProblemDomain(problemID).getNumberOfHeuristics(), time,
             "gihh", SelectionMethodType.AdaptiveLimitedLAassistedDHSMentorSTD,
             AcceptanceCriterionType.AdaptiveIterationLimitedListBasedTA);

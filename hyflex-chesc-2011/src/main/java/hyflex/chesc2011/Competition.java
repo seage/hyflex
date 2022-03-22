@@ -19,7 +19,7 @@ import java.util.Optional;
  */
 public class Competition {
   public static final String[] algorithmIDs = {
-    "GIHH",
+    "AdapHH",
     "LeanGIHH",
     "PHUNTER",
     "EPH",

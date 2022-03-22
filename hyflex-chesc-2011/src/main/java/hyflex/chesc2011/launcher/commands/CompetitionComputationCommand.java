@@ -42,7 +42,7 @@ public class CompetitionComputationCommand extends Command {
       variableArity = true,
       description = "Names of hyper-heuristics to be used in competition " + 
       "available values are:" +
-      "GIHH," + 
+      "AdapHH," + 
       "LeanGIHH," + 
       "EPH," + 
       "PHUNTER," + 

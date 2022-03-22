@@ -32,7 +32,7 @@ runAllHyperHeuristics(){
 
     #All hyper-heuristics names
     hhIDs=(
-        "GIHH LeanGIHH PHUNTER EPH ISEA HaeaHH"
+        "AdapHH LeanGIHH PHUNTER EPH ISEA HaeaHH"
         "GISS ACO_HH SelfSearch LaroseML SA_ILS HsiaoCHeSCHH"
         "GenHive DynILS_b DynILS HAHA NAHH Ant_Q"
         "XCJ KSATS_HH AVEG_Nep MCHH_S Clean Clean02"

@@ -55,7 +55,7 @@ project(':hyflex-chesc-2011') {
         implementation project(':hyflex-hh-avegnep')
         implementation project(':hyflex-hh-eph')
         implementation project(':hyflex-hh-eph')
-        implementation project(':hyflex-hh-gihh')
+        implementation project(':hyflex-hh-adaphh')
         implementation project(':hyflex-hh-isea')
         implementation project(':hyflex-hh-leangihh')
         implementation project(':hyflex-hh-phunter')
