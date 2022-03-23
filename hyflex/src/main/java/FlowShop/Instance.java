@@ -82,6 +82,10 @@ class Instance {
 			number = 111;
 		} else if (insnumber == 9) {
 			number = 113;
+		} else if (insnumber == 10) {
+			number = 100;
+		} else if (insnumber == 11) {
+			number = 112;
 		} else {
 			number = -1;
 			System.err.println("instance does not exist " + insnumber);
@@ -186,14 +190,12 @@ class Instance {
 		try {
 			FileReader fr = new FileReader(file);
 			BufferedReader bfr = new BufferedReader(fr);
-			if (bfr != null) {
+			{
 				String strLine = null;
 				while ((strLine = bfr.readLine()) != null) {
 					sbf.append(strLine + "\n");
 				}
 				bfr.close();
-			} else {
-				System.out.println("Error: Unable to retrieve InputStream");
 			}
 		} catch (Exception e) {
 			throw e;
@@ -206,14 +208,12 @@ class Instance {
 		try {
 			BufferedReader bfr = new BufferedReader(new InputStreamReader(this
 					.getClass().getClassLoader().getResourceAsStream(file)));
-			if (bfr != null) {
+			{
 				String strLine = null;
 				while ((strLine = bfr.readLine()) != null) {
 					sbf.append(strLine + "\n");
 				}
 				bfr.close();
-			} else {
-				System.out.println("Error: Unable to retrieve InputStream");
 			}
 		} catch (Exception e) {
 			throw e;

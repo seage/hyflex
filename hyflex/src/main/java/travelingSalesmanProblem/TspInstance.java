@@ -125,10 +125,50 @@ public class TspInstance {
 				System.err.print("problem when opening file "+fileName);				
 			}
 		}
+		
+//		this.name = instanceNames[number];
+//		String fileName = "data/tsp/"+instanceNames[number]+".tsp";	
+//		BufferedReader bfr;
+//		try{
+//			FileReader fr = new FileReader(fileName);
+//			bfr = new BufferedReader(fr);
+//			loadData(bfr);
+//		}catch(Exception ex1){
+//			try{
+//			bfr = new BufferedReader(new InputStreamReader(this
+//					.getClass().getClassLoader().getResourceAsStream(fileName)));
+//			loadData(bfr);
+//			}catch(Exception ex2) {
+//				ex1.printStackTrace();
+//				ex2.printStackTrace();
+//				System.err.print("problem when opening file "+fileName);				
+//			}
+//		}
+//		
+		
 		this.loadNearestCities();
 	}
 	
-	public void loadNearestCities(){
+	public void loadNearestCities() {
+		
+
+//		String fileName = "data/tsp/"+name+"NearestCities.txt";
+//		BufferedReader bfr;
+//		try{
+//			FileReader fr = new FileReader(fileName);
+//			bfr = new BufferedReader(fr);
+//			readTable(bfr);
+//		}catch(Exception ex1){
+//			try {
+//			bfr = new BufferedReader(new InputStreamReader(this
+//					.getClass().getClassLoader().getResourceAsStream(fileName)));
+//			readTable(bfr);
+//			}catch(Exception ex2) {
+//				ex1.printStackTrace();
+//				ex2.printStackTrace();
+//				System.err.print("problem when opening file "+fileName);				
+//			}
+//		}
 		
 		String fileName = "data\\tsp\\"+name+"NearestCities.txt";	
 		try{
@@ -137,7 +177,7 @@ public class TspInstance {
 			readTable(bfr);
 		}catch(Exception ex1){
 			try{
-			fileName = "data/tsp/"+name+".NearestCities.txt";	
+			fileName = "data/tsp/"+name+"NearestCities.txt";	
 			BufferedReader bfr = new BufferedReader(new InputStreamReader(this
 					.getClass().getClassLoader().getResourceAsStream(fileName)));
 			readTable(bfr);
@@ -147,8 +187,7 @@ public class TspInstance {
 				System.err.print("problem when opening file "+fileName);				
 			}
 		}
-		
-		//calculateNearest(this.N);		
+
 		
 	}
 	

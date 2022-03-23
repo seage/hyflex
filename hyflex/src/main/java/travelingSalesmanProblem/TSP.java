@@ -8,13 +8,13 @@ import AbstractClasses.ProblemDomain;
 public class TSP extends ProblemDomain {
 
 	/* MEMBERS */
-	
+
 	public TspInstance instance;
 	private TspSolution[] memory = new TspSolution[2];
 	private TspSolution bestSoFar;
 	//public TspInstance probInstance;	
 	public TspBasicAlgorithms algorithms;
-	
+
 	public TSP(long seed) {
 		super(seed);
 	}
@@ -22,67 +22,70 @@ public class TSP extends ProblemDomain {
 	@Override
 	public double applyHeuristic(int llhID, int solutionSourceIndex,
 			int solutionDestinationIndex) {
-		
+
 		long startTime = System.currentTimeMillis();
-		
-		this.heuristicCallRecord[llhID]++;
-		switch (llhID) {
-		case 0:
-			randomReinsertion(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 1:
-			swapTwo(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 2:
-			shuffle(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 3:
-			shuffleSubSequence(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 4:
-			nOptMove(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 5:
-			iteratedGreedy(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 6:
-			twoOptLocalSearch(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 7:
-			bestImpTwoOptLocalSearch(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 8:
-			threeOptLocalSearch(solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 9:
-			ox(solutionSourceIndex, solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 10:
-			pmx(solutionSourceIndex, solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 11:
-			ppx(solutionSourceIndex, solutionSourceIndex, solutionDestinationIndex);
-			break;
-		case 12:
-			oneX(solutionSourceIndex, solutionSourceIndex, solutionDestinationIndex);
-			break;
+
+		boolean isCrossover = false;
+		int[] crossovers = getHeuristicsOfType(HeuristicType.CROSSOVER);
+		if (!(crossovers == null)) {
+			for (int x = 0; x < crossovers.length; x++) {
+				if (crossovers[x] == llhID) {
+					isCrossover = true;
+					break;}
+			}//end for looping the crossover heuristics
+		}//end if
+		if (isCrossover) {//copy over the solution
+			copySolution(solutionSourceIndex, solutionDestinationIndex);
+		} else {
+			switch (llhID) {
+			case 0:
+				randomReinsertion(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			case 1:
+				swapTwo(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			case 2:
+				shuffle(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			case 3:
+				shuffleSubSequence(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			case 4:
+				nOptMove(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			case 5:
+				iteratedGreedy(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			case 6:
+				twoOptLocalSearch(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			case 7:
+				bestImpTwoOptLocalSearch(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			case 8:
+				threeOptLocalSearch(solutionSourceIndex, solutionDestinationIndex);
+				break;
+			default:
+				System.err.println("heuristic does not exist, or the crossover index array is not set up correctly");
+				System.exit(-1);
+			}
 		}
-		
+		this.heuristicCallRecord[llhID]++;
 		this.heuristicCallTimeRecord[llhID]+= (System.currentTimeMillis() - startTime);
-		
+
 		this.verifyBestSolution(memory[solutionDestinationIndex]);
-		
+
 		assert algorithms.verifyPermutation(memory[solutionDestinationIndex].permutation, instance.numbCities);
-		
+
 		return memory[solutionDestinationIndex].Cost;
 	}
 
 	@Override
 	public double applyHeuristic(int llhID, int solutionSourceIndex1,
 			int solutionSourceIndex2, int solutionDestinationIndex) {
-		
+
 		long startTime = System.currentTimeMillis();
-		this.heuristicCallRecord[llhID]++;
+		
 		switch (llhID) {
 		case 0:
 			randomReinsertion(solutionSourceIndex1, solutionDestinationIndex);
@@ -123,12 +126,16 @@ public class TSP extends ProblemDomain {
 		case 12:
 			oneX(solutionSourceIndex1, solutionSourceIndex2, solutionDestinationIndex);
 			break;
+		default:
+			System.err.println("heuristic does not exist, or the crossover index array is not set up correctly");
+			System.exit(-1);
 		}
 		
+		this.heuristicCallRecord[llhID]++;
 		this.heuristicCallTimeRecord[llhID] += (System.currentTimeMillis() - startTime);
-		
+
 		this.verifyBestSolution(memory[solutionDestinationIndex]);
-		
+
 		assert algorithms.verifyPermutation(memory[solutionDestinationIndex].permutation, instance.numbCities);
 
 		return memory[solutionDestinationIndex].Cost;
@@ -238,9 +245,9 @@ public class TSP extends ProblemDomain {
 	public String toString() {
 		return this.instance.toString();
 	}
-	
+
 	/* HEURISTICS */	
-	
+
 	// MUTATION HEURISTICS	
 	/**
 	 * Makes a copy of the solution in sourceIndex, modifies it by removing a
@@ -255,11 +262,11 @@ public class TSP extends ProblemDomain {
 		int[] array = memory[sourceIndex].permutation.clone();
 		int i1 = rng.nextInt(array.length);
 		int i2;
-		
+
 		while ((i2 = rng.nextInt(array.length)) == i1);
-		
+
 		//double cost = algorithms.incrementalInsertionCost(array, memory[sourceIndex].Cost, i1, i2);
-		
+
 		int[] newArray = new int[array.length];
 		newArray[i2] = array[i1];
 		if (i1 < i2) {
@@ -373,7 +380,7 @@ public class TSP extends ProblemDomain {
 	 * @param targetIndex
 	 */
 	private void nOptMove(int sourceIndex, int targetIndex){
-		
+
 		int N = 2;
 		if(this.intensityOfMutation >= 0.25)
 			N = 3;
@@ -381,7 +388,7 @@ public class TSP extends ProblemDomain {
 			N = 4;
 		if(this.intensityOfMutation >= 0.75)
 			N = 5;
-		
+
 		int[] tour = memory[sourceIndex].permutation;		
 		int[] newTour = tour.clone();
 		int city1, city2;
@@ -394,8 +401,8 @@ public class TSP extends ProblemDomain {
 		memory[targetIndex] = new TspSolution(newTour, cost);
 		return;
 	}
-	
-	
+
+
 	// RUIN RECREATE HEURISTICS
 	/**
 	 * Makes a copy of the solution in sourceIndex. This is improved using an
@@ -407,10 +414,20 @@ public class TSP extends ProblemDomain {
 	 * @param targetIndex
 	 */
 	private void iteratedGreedy(int sourceIndex, int targetIndex) {
-		
 		int numbCities = instance.numbCities;
-		
-		int numbRemove = ((int) (this.getIntensityOfMutation() * (numbCities - 1))) + 1;
+		double mut = this.getIntensityOfMutation();
+		if (mut < 0.2) {
+			mut = 0.1;
+		} else if (mut < 0.4) {
+			mut = 0.2;
+		} else if (mut < 0.6) {
+			mut = 0.3;
+		} else if (mut < 0.8) {
+			mut = 0.4;
+		} else {
+			mut = 0.5;
+		}
+		int numbRemove = ((int) (mut * (numbCities - 1))) + 1;
 		int[] partialTour = new int[numbCities - numbRemove];
 		int[] citiesToInsert = new int[numbRemove];
 		int[] list = memory[sourceIndex].permutation.clone();
@@ -438,7 +455,7 @@ public class TSP extends ProblemDomain {
 		double cost = algorithms.computeCost(partialTour);
 		int[] permutation = algorithms.greedyInsertion(partialTour, citiesToInsert, cost);
 		cost = algorithms.computeCost(permutation);
-		
+
 		memory[targetIndex] = new TspSolution(permutation, cost);
 	}
 
@@ -531,7 +548,7 @@ public class TSP extends ProblemDomain {
 		int[] p22 = memory[sourceIndex2].permutation;
 		if (p1.length <= 1 || p22.length <= 1 || p1.length != p22.length) {
 			System.out
-					.println("Error in ox (order crossover) input permutation are not of the same length or one of them is of size <= 1");
+			.println("Error in ox (order crossover) input permutation are not of the same length or one of them is of size <= 1");
 			System.exit(0);
 		}
 		int[] p2 = p22.clone();
@@ -607,7 +624,7 @@ public class TSP extends ProblemDomain {
 
 		if (p1.length <= 1 || p2.length <= 1 || p1.length != p2.length) {
 			System.out
-					.println("Error in ox (order crossover) input permutation are not of the same length or one of them is of size <= 1");
+			.println("Error in ox (order crossover) input permutation are not of the same length or one of them is of size <= 1");
 			System.exit(0);
 		}
 		// STEP 1: selecting two crossing points
@@ -751,5 +768,5 @@ public class TSP extends ProblemDomain {
 		if (bestSoFar == null || solution.Cost < bestSoFar.Cost)
 			bestSoFar = solution;
 	}
-	
+
 }

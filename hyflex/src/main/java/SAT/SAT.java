@@ -429,8 +429,12 @@ public class SAT extends ProblemDomain {
 					break;}
 			}//end for looping the crossover heuristics
 		}//end if
-		if (isCrossover) {
-			//nothing happens, because the crossovers will result in the same solution if the 2 inputs are the same
+		if (isCrossover) {//copy over the solution
+			if (solutionMemory[solutionDestinationIndex] == null) {// if the destination index does not contain an initialised solution then initialise it
+				solutionMemory[solutionDestinationIndex] = new Solution();
+			}
+			solutionMemory[solutionDestinationIndex] = deepCopyTheSolution(solutionMemory[solutionSourceIndex]);
+			solutionMemory[solutionDestinationIndex].incrementAge();
 		} else {
 			if (temporarysolution.numberOfBrokenClauses() == 0) {//the solution is perfect
 				//nothing happens
@@ -623,7 +627,7 @@ public class SAT extends ProblemDomain {
 	}
 
 	public int getNumberOfInstances() {
-		return 10;
+		return 12;
 	}
 
 	public void initialiseSolution(int index) {
@@ -720,8 +724,12 @@ public class SAT extends ProblemDomain {
 			folder = "ms_random/highgirth/3SAT/HG-3SAT-V250-C1000-2.txt";
 		} else if (instanceID < 9) {
 			folder = "ms_random/highgirth/3SAT/HG-3SAT-V300-C1200-2.txt";
-		} else if (instanceID <10) {
+		} else if (instanceID < 10) {
 			folder = "ms_crafted/MAXCUT/SPINGLASS/t7pm3-9999.spn.txt";
+		} else if (instanceID  < 11) {
+			folder = "sat07/industrial/jarvisalo/eq.atree.braun.8.unsat.txt";
+		} else if (instanceID  < 12) {
+			folder = "ms_random/highgirth/3SAT/HG-3SAT-V300-C1200-4.txt";
 		} else {
 			System.err.println("instance does not exist " + instanceID);
 			System.exit(-1);

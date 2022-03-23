@@ -1,6 +1,5 @@
 package VRP;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,68 +14,67 @@ public class Instance
 	private String instanceName;
 	private int vehicleNumber;
 	private int vehicleCapacity;
+	private Location depot;
 
 	public Instance(int id)
 	{
 
 		String fileName = "data/vrp/";
-		if(id<17)
+		if(id==0)
 		{
-			fileName = fileName+"C/C";
-			if(id<9)
-			{
-				fileName = fileName+"10"+(id+1)+".txt";
-			}
-			else
-			{
-				fileName = fileName+"20"+(id-8)+".txt";
-			}
+			fileName += ("Solomon_100_customer_instances/RC/RC207.txt");
 		}
-		else if(id<40)
+		else if(id==1)
 		{
-			fileName = fileName+"R/R";
-			if(id<26)
-			{
-				fileName = fileName+"10"+(id-16)+".txt";
-			}
-			else if(id<29)
-			{
-				fileName = fileName+"11"+(id-26)+".txt";
-			}
-			else if(id<38)
-			{
-				fileName = fileName+"20"+(id-28)+".txt";
-			}
-			else
-			{
-				fileName = fileName+"21"+(id-38)+".txt";
-			}
+			fileName += ("Solomon_100_customer_instances/R/R101.txt");
 		}
-		else
+		else if(id==2)
 		{
-			fileName = fileName+"RC/RC";
-			if(id<48)
-			{
-				fileName = fileName+"10"+(id-39)+".txt";
-			}
-			else
-			{
-				fileName = fileName+"20"+(id-47)+".txt";
-			}
+			fileName += ("Solomon_100_customer_instances/RC/RC103.txt");
+		}
+		else if(id==3)
+		{
+			fileName += ("Solomon_100_customer_instances/R/R201.txt");
+		}
+		else if(id==4)
+		{
+			fileName += ("Solomon_100_customer_instances/R/R106.txt");
+		}
+		else if(id==5)
+		{
+			fileName += ("Homberger_1000_customer_instances/C/C1_10_1.TXT");
+		}
+		else if(id==6)
+		{
+			fileName += ("Homberger_1000_customer_instances/RC/RC2_10_1.TXT");
+		}
+		else if(id==7)
+		{
+			fileName += ("Homberger_1000_customer_instances/R/R1_10_1.TXT");
+		}
+		else if(id==8)
+		{
+			fileName += ("Homberger_1000_customer_instances/C/C1_10_8.TXT");
+		}
+		else if(id==9)
+		{
+			fileName += ("Homberger_1000_customer_instances/RC/RC1_10_5.TXT");
 		}
 		
 		BufferedReader reader = null;
-		try	{
-			reader = new BufferedReader(new FileReader(new File(fileName)));
+		try {
+			FileReader read = new FileReader(fileName);
+			reader = new BufferedReader(read);
 		} catch (FileNotFoundException a) {
 			try {
 				InputStream fis = this.getClass().getClassLoader().getResourceAsStream(fileName); 
-				reader = new BufferedReader(new InputStreamReader(fis));	
+				reader = new BufferedReader(new InputStreamReader(fis));
 			} catch(NullPointerException n) {
 				System.err.println("cannot find file " + fileName);
 				System.exit(-1);
 			}
-		}
+		}//end catch
+		
 			
 		try
 		{
@@ -98,6 +96,7 @@ public class Instance
 				Location loc = new Location(Integer.parseInt(info.nextToken()), Integer.parseInt(info.nextToken()), Integer.parseInt(info.nextToken()), Integer.parseInt(info.nextToken()), Integer.parseInt(info.nextToken()), Integer.parseInt(info.nextToken()), Integer.parseInt(info.nextToken()));
 				demands.add(loc);
 			}
+			setDepot(demands.get(0));
 			/*
 			System.out.println("Instance name is " + instanceName + ", there are " + vehicleNumber + " vehicles with capacity of " + vehicleCapacity);
 			for(int i=0; i<demands.size(); i++)
@@ -145,5 +144,13 @@ public class Instance
 
 	public void setVehicleCapacity(int vehicleCapacity) {
 		this.vehicleCapacity = vehicleCapacity;
+	}
+
+	public void setDepot(Location depot) {
+		this.depot = depot;
+	}
+
+	public Location getDepot() {
+		return depot;
 	}
 }

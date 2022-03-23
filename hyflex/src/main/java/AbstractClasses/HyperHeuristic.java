@@ -29,6 +29,7 @@ public abstract class HyperHeuristic {
 	//private PrintWriter buffprint;
 	private double[] trace;
 	private static final int tracecheckpoints = 101;
+	private boolean timelimitset;
 
 	/**
 	 * Constructs a new HyperHeuristic object, and creates a new random number generator
@@ -40,6 +41,7 @@ public abstract class HyperHeuristic {
 	public HyperHeuristic(long seed){
 		this.lastbestsolution = -1;
 		this.rng = new Random(seed);
+		timelimitset = false;
 	}
 
 	/**
@@ -49,6 +51,7 @@ public abstract class HyperHeuristic {
 	public HyperHeuristic(){
 		this.lastbestsolution = -1;
 		this.rng = new Random();
+		timelimitset = false;
 	}
 
 	/**
@@ -56,12 +59,18 @@ public abstract class HyperHeuristic {
 	 * This method must be called before the run() method.
 	 * @param time_in_milliseconds The time limit for the hyper-heuristic in milliseconds (CPU time)
 	 */
-	public void setTimeLimit(long time_in_milliseconds){
-		this.timeLimit = time_in_milliseconds*1000000;//change to nanoseconds
-		this.printfraction = time_in_milliseconds*10000;
-		this.printlimit = printfraction;
-		this.initialprint = false;
-		this.lastprint = 0;
+	public void setTimeLimit(long time_in_milliseconds) {
+		if (!timelimitset) {
+			this.timeLimit = time_in_milliseconds*1000000;//change to nanoseconds
+			this.printfraction = time_in_milliseconds*10000;
+			this.printlimit = printfraction;
+			this.initialprint = false;
+			this.lastprint = 0;
+			timelimitset = true;
+		} else {
+			System.err.println("The time limit cannot be set twice. " + this.toString());
+			System.exit(-1);
+		}
 	}
 
 	/**
@@ -88,7 +97,7 @@ public abstract class HyperHeuristic {
 	 * method has been called at least once.
 	 * @return the objective function value of the best solution found within the time limit
 	 * */
-	public double getBestSolutionValue()
+	public final double getBestSolutionValue()
 	{
 		if (lastbestsolution == -1) {
 			System.err.println("The hasTimeExpired() method has not been called yet. It must be called at least once before a call to getBestSolutionValue()");
@@ -96,7 +105,7 @@ public abstract class HyperHeuristic {
 		}
 		return lastbestsolution;
 	}
-	
+
 	/**
 	 * Gets an array of the fitness of the best initial solution and the fitness of the best solutions found at 100 checkpoints through the search.
 	 * Before a run, the timelimit is divided by 100, to obtain the length of the interval between checkpoints.

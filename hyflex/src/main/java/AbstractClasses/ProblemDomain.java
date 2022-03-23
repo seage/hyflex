@@ -8,7 +8,7 @@ import java.util.Random;
  * 
  * Sub-classes of ProblemDomain provide the representations of the various problem
  * domains for the competition.
- * @author Antonio Vazquez, Matthew Hyde, Gabriela Ochoa, Tim Curtois. [jav,mvh,gxo,tec]@cs.nott.ac.uk
+ * @author Antonio Vázquez, Matthew Hyde, Gabriela Ochoa, Tim Curtois. [jav,mvh,gxo,tec]@cs.nott.ac.uk
  */
 public abstract class ProblemDomain {
 
@@ -254,7 +254,9 @@ public abstract class ProblemDomain {
 	  * Apply the heuristic specified by heuristicID to the solutions at
 	  * position solutionSourceIndex1 and position solutionSourceIndex2 and put
 	  * the resulting solution at position solutionDestinationIndex.
-	  * The heuristic can be of any type (including CROSSOVER).
+	  * The heuristic can be of any type (including CROSSOVER). If a non-CROSSOVER type
+	  * heuristic is chosen, the heuristic is applied to the solution at solutionSourceIndex1
+	  * only, and solutionSourceIndex2 is not used.
 	  * @param heuristicID the heuristic to apply (starts at zero)
 	  * @param solutionSourceIndex1
 	  * @param solutionSourceIndex2

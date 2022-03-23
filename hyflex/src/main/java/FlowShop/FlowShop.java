@@ -83,65 +83,71 @@ public class FlowShop extends ProblemDomain {
 
 	public double applyHeuristic(int llhID, int solutionSourceIndex,
 			int solutionTargetIndex) {
-		this.heuristicCallRecord[llhID]++;
-		switch (llhID) {
-		case 0:
-			randomReinsertion(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 1:
-			swapTwo(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 2:
-			shuffle(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 3:
-			shuffleSubSequence(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 4:
-			useNEH(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 5:
-			iteratedGreedy(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 6:
-			deepIteratedGreedy(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 7:
-			localSearch(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 8:
-			fImpLocalSearch(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 9:
-			randomLocalSearch(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 10:
-			randomFImpLocalSearch(solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 11:
-			ox(solutionSourceIndex, solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 12:
-			ppx(solutionSourceIndex, solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 13:
-			pmx(solutionSourceIndex, solutionSourceIndex, solutionTargetIndex);
-			break;
-		case 14:
-			oneX(solutionSourceIndex, solutionSourceIndex, solutionTargetIndex);
-			break;
-//		case 15:
-//			lsXOver(solutionSourceIndex, solutionSourceIndex,
-//					solutionTargetIndex);
-//			break;
+		long startTime = System.currentTimeMillis();
+		
+		boolean isCrossover = false;
+		int[] crossovers = getHeuristicsOfType(HeuristicType.CROSSOVER);
+		if (!(crossovers == null)) {
+			for (int x = 0; x < crossovers.length; x++) {
+				if (crossovers[x] == llhID) {
+					isCrossover = true;
+					break;}
+			}//end for looping the crossover heuristics
+		}//end if
+		if (isCrossover) {//copy over the solution
+			copySolution(solutionSourceIndex, solutionTargetIndex);
+		} else {
+			switch (llhID) {
+			case 0:
+				randomReinsertion(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 1:
+				swapTwo(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 2:
+				shuffle(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 3:
+				shuffleSubSequence(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 4:
+				useNEH(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 5:
+				iteratedGreedy(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 6:
+				deepIteratedGreedy(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 7:
+				localSearch(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 8:
+				fImpLocalSearch(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 9:
+				randomLocalSearch(solutionSourceIndex, solutionTargetIndex);
+				break;
+			case 10:
+				randomFImpLocalSearch(solutionSourceIndex, solutionTargetIndex);
+				break;
+			default: 
+				System.err.println("heuristic does not exist, or the crossover index array is not set up correctly");
+				System.exit(-1);
+			}
 		}
+		
+		this.heuristicCallRecord[llhID]++;
+		heuristicCallTimeRecord[llhID] += (int)(System.currentTimeMillis() - startTime);
+		
 		this.verifyBestSolution(memory[solutionTargetIndex]);
 		return memory[solutionTargetIndex].Cmax;
 	}
 
 	public double applyHeuristic(int llhID, int solutionSourceIndex1,
 			int solutionSourceIndex2, int solutionTargetIndex) {
-		this.heuristicCallRecord[llhID]++;
+		long startTime = System.currentTimeMillis();
+		
 		switch (llhID) {
 		case 0:
 			randomReinsertion(solutionSourceIndex1, solutionTargetIndex);
@@ -189,11 +195,14 @@ public class FlowShop extends ProblemDomain {
 			oneX(solutionSourceIndex1, solutionSourceIndex2,
 					solutionTargetIndex);
 			break;
-//		case 15:
-//			lsXOver(solutionSourceIndex1, solutionSourceIndex2,
-//					solutionTargetIndex);
-//			break;
+		default: 
+			System.err.println("heuristic does not exist, or the crossover index array is not set up correctly");
+			System.exit(-1);
 		}
+		
+		this.heuristicCallRecord[llhID]++;
+		heuristicCallTimeRecord[llhID] += (int)(System.currentTimeMillis() - startTime);
+		
 		this.verifyBestSolution(memory[solutionTargetIndex]);
 		return memory[solutionTargetIndex].Cmax;
 	}
@@ -220,7 +229,7 @@ public class FlowShop extends ProblemDomain {
 	}
 
 	public int getNumberOfInstances() {
-		return 10;
+		return 12;
 	}
 
 	public Object getProblemData(String args) {
@@ -381,87 +390,87 @@ public class FlowShop extends ProblemDomain {
 	}
 
 	// RUIN RECREATE HEURISTICS
-    /**
-     * Makes a copy of the solution in sourceIndex. This is improved using an
-     * iterated procedure in which a number of elements of the permutation are
-     * removed and placed back using the re-insertion procedure of NEH. 
+	/**
+	 * Makes a copy of the solution in sourceIndex. This is improved using an
+	 * iterated procedure in which a number of elements of the permutation are
+	 * removed and placed back using the re-insertion procedure of NEH. 
 The new
-     * solution is placed in memory in targetIndex.
-     *
-     * @param sourceIndex
-     * @param targetIndex
-     */
-    private void iteratedGreedy(int sourceIndex, int targetIndex) {
-        int numbRemove = ((int) (this.getIntensityOfMutation() * (this.probInstance.n - 1)*0.5)) + 1;
-        int[] partialSequence = new int[probInstance.n - numbRemove];
-        int[] jobsToInsert = new int[numbRemove];
-        int[] list = memory[sourceIndex].permutation.clone();
-        int id;
-        for (int i = 0; i < numbRemove; i++) {
-            id = rng.nextInt(probInstance.n);
-            while (list[id] < 0)
-                id = rng.nextInt(probInstance.n);
-            jobsToInsert[i] = list[id];
-            list[id] = -1;
-        }
-        for (int i = 0, j = 0; i < probInstance.n; i++, j++) {
-            try {
-                if (list[i] > -1) {
-                    partialSequence[j] = list[i];
-                } else
-                    j--;
-            } catch (Exception ex) {
-                System.out.println(" " + partialSequence.length + " "
-                        + list.length + " j " + j + " i " + i);
-                System.exit(0);
-            }
-        }
-        int[] permutation = heuristics.nehPartialSchedule(probInstance,
-                partialSequence, jobsToInsert);
-        double Cmax = evaluatePermutation(permutation, probInstance);
-        memory[targetIndex] = new Solution(permutation, Cmax);
-    }
+	 * solution is placed in memory in targetIndex.
+	 *
+	 * @param sourceIndex
+	 * @param targetIndex
+	 */
+	private void iteratedGreedy(int sourceIndex, int targetIndex) {
+		int numbRemove = ((int) (this.getIntensityOfMutation() * (this.probInstance.n - 1)*0.5)) + 1;
+		int[] partialSequence = new int[probInstance.n - numbRemove];
+		int[] jobsToInsert = new int[numbRemove];
+		int[] list = memory[sourceIndex].permutation.clone();
+		int id;
+		for (int i = 0; i < numbRemove; i++) {
+			id = rng.nextInt(probInstance.n);
+			while (list[id] < 0)
+				id = rng.nextInt(probInstance.n);
+			jobsToInsert[i] = list[id];
+			list[id] = -1;
+		}
+		for (int i = 0, j = 0; i < probInstance.n; i++, j++) {
+			try {
+				if (list[i] > -1) {
+					partialSequence[j] = list[i];
+				} else
+					j--;
+			} catch (Exception ex) {
+				System.out.println(" " + partialSequence.length + " "
+						+ list.length + " j " + j + " i " + i);
+				System.exit(0);
+			}
+		}
+		int[] permutation = heuristics.nehPartialSchedule(probInstance,
+				partialSequence, jobsToInsert);
+		double Cmax = evaluatePermutation(permutation, probInstance);
+		memory[targetIndex] = new Solution(permutation, Cmax);
+	}
 
-    /**
-     * Makes a copy of the solution in sourceIndex. The copy is improved using
-     * an iterated procedure in which a number of elements of the permutation
-     * are removed and placed back using the re-insertion procedure of NEH. For
-     * each of the removed elements, the procedures keeps record of a certain
-     * best possible positions for the element. The next element is considered
-     * in all possible positions on all of the best partial solutions. 
+	/**
+	 * Makes a copy of the solution in sourceIndex. The copy is improved using
+	 * an iterated procedure in which a number of elements of the permutation
+	 * are removed and placed back using the re-insertion procedure of NEH. For
+	 * each of the removed elements, the procedures keeps record of a certain
+	 * best possible positions for the element. The next element is considered
+	 * in all possible positions on all of the best partial solutions. 
 The new
-     * solution is placed in memory in targetIndex.
-     *
-     * @param sourceIndex
-     * @param targetIndex
-     */
-    private void deepIteratedGreedy(int sourceIndex, int targetIndex) {
+	 * solution is placed in memory in targetIndex.
+	 *
+	 * @param sourceIndex
+	 * @param targetIndex
+	 */
+	private void deepIteratedGreedy(int sourceIndex, int targetIndex) {
 
-        int numbRemove = ((int) (this.getIntensityOfMutation() * (this.probInstance.n - 1)*0.5)) + 1;
-        int depthOfSearch = ((int) (this.getDepthOfSearch() * (numbRemove - 1))) + 1;
+		int numbRemove = ((int) (this.getIntensityOfMutation() * (this.probInstance.n - 1)*0.5)) + 1;
+		int depthOfSearch = ((int) (this.getDepthOfSearch() * (numbRemove - 1))) + 1;
 
-        int[] partialSequence = new int[probInstance.n - numbRemove];
-        int[] jobsToInsert = new int[numbRemove];
-        int[] list = memory[sourceIndex].permutation.clone();
-        int id;
-        for (int i = 0; i < numbRemove; i++) {
-            id = rng.nextInt(probInstance.n);
-            while (list[id] < 0)
-                id = rng.nextInt(probInstance.n);
-            jobsToInsert[i] = list[id];
-            list[id] = -1;
-        }
-        for (int i = 0, j = 0; i < probInstance.n; i++, j++) {
-            if (list[i] > -1)
-                partialSequence[j] = list[i];
-            else
-                j--;
-        }
-        int[] permutation = heuristics.nehPartScheduleBT(probInstance,
-                partialSequence, jobsToInsert, depthOfSearch);
-        double Cmax = evaluatePermutation(permutation, probInstance);
-        memory[targetIndex] = new Solution(permutation, Cmax);
-    }
+		int[] partialSequence = new int[probInstance.n - numbRemove];
+		int[] jobsToInsert = new int[numbRemove];
+		int[] list = memory[sourceIndex].permutation.clone();
+		int id;
+		for (int i = 0; i < numbRemove; i++) {
+			id = rng.nextInt(probInstance.n);
+			while (list[id] < 0)
+				id = rng.nextInt(probInstance.n);
+			jobsToInsert[i] = list[id];
+			list[id] = -1;
+		}
+		for (int i = 0, j = 0; i < probInstance.n; i++, j++) {
+			if (list[i] > -1)
+				partialSequence[j] = list[i];
+			else
+				j--;
+		}
+		int[] permutation = heuristics.nehPartScheduleBT(probInstance,
+				partialSequence, jobsToInsert, depthOfSearch);
+		double Cmax = evaluatePermutation(permutation, probInstance);
+		memory[targetIndex] = new Solution(permutation, Cmax);
+	}
 
 
 	// LOCAL SEARCH HEURISTICS
@@ -787,44 +796,44 @@ The new
 
 	}
 
-//	// PROTOTYPE HEURISTICS TODO
-//	/**
-//	 * Creates a new solution by applying Local Search Guided Crossover to the
-//	 * two parents. The new solution is stored in memory in targetIndex.
-//	 * 
-//	 * @param sourceIndex1
-//	 * @param sourceIndex2
-//	 * @param targetIndex
-//	 */
-//	private void lsXOver(int sourceIndex1, int sourceIndex2, int targetIndex) {
-//		int[] p2 = memory[sourceIndex2].permutation;
-//		int[] inverse = new int[p2.length];
-//		for (int i = 0; i < p2.length; i++) {
-//			inverse[p2[i]] = i;
-//		}
-//		int inv;
-//		int[] p1 = memory[sourceIndex1].permutation;
-//		int[] newArray;
-//		double Xo = memory[sourceIndex1].Cmax;
-//		double X1;
-//		for (int i = 0; i < p1.length; i++) {
-//			inv = inverse[p1[i]];
-//			if (i != inv) {
-//				newArray = shift(p1, i, inv);
-//				X1 = evaluatePermutation(newArray, probInstance);
-//				if (X1 < Xo || rng.nextDouble() < this.intensityOfMutation) {
-//					p1 = newArray;
-//					Xo = X1;
-//					if (i < inv) {
-//						i--;
-//					} else {
-//						i++;
-//					}
-//				}
-//			}
-//		}
-//		memory[targetIndex] = new Solution(p1, Xo);
-//	}
+	//	// PROTOTYPE HEURISTICS
+	//	/**
+	//	 * Creates a new solution by applying Local Search Guided Crossover to the
+	//	 * two parents. The new solution is stored in memory in targetIndex.
+	//	 * 
+	//	 * @param sourceIndex1
+	//	 * @param sourceIndex2
+	//	 * @param targetIndex
+	//	 */
+	//	private void lsXOver(int sourceIndex1, int sourceIndex2, int targetIndex) {
+	//		int[] p2 = memory[sourceIndex2].permutation;
+	//		int[] inverse = new int[p2.length];
+	//		for (int i = 0; i < p2.length; i++) {
+	//			inverse[p2[i]] = i;
+	//		}
+	//		int inv;
+	//		int[] p1 = memory[sourceIndex1].permutation;
+	//		int[] newArray;
+	//		double Xo = memory[sourceIndex1].Cmax;
+	//		double X1;
+	//		for (int i = 0; i < p1.length; i++) {
+	//			inv = inverse[p1[i]];
+	//			if (i != inv) {
+	//				newArray = shift(p1, i, inv);
+	//				X1 = evaluatePermutation(newArray, probInstance);
+	//				if (X1 < Xo || rng.nextDouble() < this.intensityOfMutation) {
+	//					p1 = newArray;
+	//					Xo = X1;
+	//					if (i < inv) {
+	//						i--;
+	//					} else {
+	//						i++;
+	//					}
+	//				}
+	//			}
+	//		}
+	//		memory[targetIndex] = new Solution(p1, Xo);
+	//	}
 
 	// UTILITY METHODS
 	private void shufflePermutation(int[] array) {
@@ -882,32 +891,32 @@ The new
 		return time;
 	}
 
-	private int[] shift(int[] array, int i1, int i2) {
-		int[] newArray = new int[array.length];
-		newArray[i2] = array[i1];
-		if (i1 < i2) {
-			for (int i = 0, count = 0; count < array.length; i++, count++) {
-				if (i == i1)
-					count++;
-				if (i == i2) {
-					count--;
-					continue;
-				}
-				newArray[i] = array[count];
-			}
-		} else {
-			for (int i = 0, count = 0; count < array.length; i++, count++) {
-				if (i == i2) {
-					count--;
-					continue;
-				}
-				newArray[i] = array[count];
-				if (i == i1)
-					count++;
-			}
-		}
-		return newArray;
-	}
+//	private int[] shift(int[] array, int i1, int i2) {
+//		int[] newArray = new int[array.length];
+//		newArray[i2] = array[i1];
+//		if (i1 < i2) {
+//			for (int i = 0, count = 0; count < array.length; i++, count++) {
+//				if (i == i1)
+//					count++;
+//				if (i == i2) {
+//					count--;
+//					continue;
+//				}
+//				newArray[i] = array[count];
+//			}
+//		} else {
+//			for (int i = 0, count = 0; count < array.length; i++, count++) {
+//				if (i == i2) {
+//					count--;
+//					continue;
+//				}
+//				newArray[i] = array[count];
+//				if (i == i1)
+//					count++;
+//			}
+//		}
+//		return newArray;
+//	}
 
 	private int[] returnInversePermutation(int[] p) {
 		int[] inv = new int[p.length];
