@@ -1,0 +1,1342 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod ID="SINTEF" 
+                  OrganisationID="356561916 : 7283"  
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                  xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+ <StartDate>2006-10-02</StartDate>
+ <EndDate>2006-10-22</EndDate>
+
+  <Skills>
+    <Skill ID="355169864"><Label>355169864</Label></Skill>
+    <Skill ID="VAF"><Label>VAF</Label></Skill>
+  </Skills>
+  
+ <ShiftTypes>
+   <Shift ID="260010986"> 
+     <Colour>#00FF00</Colour>
+     <Label>A</Label>
+     <Description>category=2(EVENING), groupid=-1</Description>
+     <StartTime>15:00:00</StartTime>
+     <EndTime>22:30:00</EndTime>
+     <HoursWorked>7.5</HoursWorked>
+     <FreeTimeBefore>480</FreeTimeBefore> 
+     <FreeTimeAfter>480</FreeTimeAfter>
+   </Shift>
+   <Shift ID="260076325"> 
+     <Colour>#0000FF</Colour>
+     <Label>N</Label>
+     <Description>category=3(NIGHT), groupid=355169864</Description>
+     <StartTime>22:00:00</StartTime>
+     <EndTime>07:45:00</EndTime>
+     <HoursWorked>9.75</HoursWorked>
+     <FreeTimeBefore>480</FreeTimeBefore> 
+     <FreeTimeAfter>480</FreeTimeAfter>
+     <Skills>
+       <Skill>355169864</Skill>
+     </Skills>
+   </Shift>
+   <Shift ID="260086974"> 
+     <Colour>#FF0000</Colour>
+     <Label>D</Label>
+     <Description>category=1(DAY), groupid=-1</Description>
+     <StartTime>07:30:00</StartTime>
+     <EndTime>15:30:00</EndTime>
+     <HoursWorked>7.5</HoursWorked>
+     <FreeTimeBefore>480</FreeTimeBefore> 
+     <FreeTimeAfter>480</FreeTimeAfter>
+   </Shift>
+   <Shift ID="356418668"> 
+     <Colour>#00FF00</Colour>
+     <Label>AV</Label>
+     <Description>category=2(EVENING), groupid=-1</Description>
+     <StartTime>15:00:00</StartTime>
+     <EndTime>22:30:00</EndTime>
+     <HoursWorked>7.5</HoursWorked>
+     <FreeTimeBefore>480</FreeTimeBefore> 
+     <FreeTimeAfter>480</FreeTimeAfter>
+     <Skills>
+       <Skill>VAF</Skill>
+     </Skills>
+   </Shift>
+   <Shift ID="356461638"> 
+     <Colour>#FF0000</Colour>
+     <Label>DV</Label>
+     <Description>category=1(DAY), groupid=-1</Description>
+     <StartTime>07:30:00</StartTime>
+     <EndTime>15:30:00</EndTime>
+     <HoursWorked>7.5</HoursWorked>
+     <FreeTimeBefore>480</FreeTimeBefore> 
+     <FreeTimeAfter>480</FreeTimeAfter>
+   </Shift>
+ </ShiftTypes>
+ <ShiftGroups>
+    <ShiftGroup ID="D">
+      <Shift>356461638</Shift>
+      <Shift>260086974</Shift>
+    </ShiftGroup>
+    <ShiftGroup ID="E">
+      <Shift>260010986</Shift>
+      <Shift>356418668</Shift>
+    </ShiftGroup>
+    <ShiftGroup ID="N">
+      <Shift>260076325</Shift>
+    </ShiftGroup>
+  </ShiftGroups>
+ <Contracts>
+
+      <Contract ID="356502047">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">73.95</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">62.20</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356503112">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">73.95</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">62.20</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356508469">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">85.63</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">73.88</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356509813">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">85.63</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">73.88</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356512165">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">85.63</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">73.88</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356516014">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">59.07</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">47.32</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356517860">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">112.25</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">100.50</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356518605">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">112.25</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">100.50</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356518657">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">112.25</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">100.50</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356522107">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">59.07</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">47.32</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356525317">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">28.20</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">16.45</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356533574">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">73.95</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">62.20</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356534322">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">28.20</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">16.45</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356535779">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">112.25</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">100.50</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356538961">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">73.95</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">62.20</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356550381">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">112.25</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">100.50</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356552667">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">28.20</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">16.45</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356554822">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">28.20</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">16.45</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356564008">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">59.07</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">47.32</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356565228">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">73.95</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">62.20</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356568238">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">73.95</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">62.20</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356570786">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">28.20</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">16.45</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356576740">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">112.25</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">100.50</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+      <Contract ID="356599307">
+
+      <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveShiftTypes on="1" weight="1">
+      <MinConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>E</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+      <MinConsecutiveShiftType><ShiftGroup>D</ShiftGroup><Value>2</Value></MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes on="1" weight="1">
+      <MaxConsecutiveShiftType><ShiftGroup>N</ShiftGroup><Value>3</Value></MaxConsecutiveShiftType>
+    </MaxConsecutiveShiftTypes>
+     
+      <MaxShiftTypes on="1">
+ <MaxShiftType><ShiftGroup>N</ShiftGroup><Value>28</Value></MaxShiftType>
+</MaxShiftTypes>
+
+      <MinShiftTypes   on="1">
+</MinShiftTypes>
+
+      <MaxHoursWorked on="1" threshold="0.0">28.20</MaxHoursWorked>
+      <MinHoursWorked on="1" threshold="0.0">16.45</MinHoursWorked>
+      <StandardPerformance>0.0</StandardPerformance>
+      <MaxHoursPerWeek on="1">54</MaxHoursPerWeek>
+      
+    </Contract>
+        
+ </Contracts>
+
+ <Employees>
+
+    <Employee ID="356502047">
+     <Name>A</Name>
+     <ContractID>356502047</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">355169864</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356503112">
+     <Name>B</Name>
+     <ContractID>356503112</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">355169864</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356508469">
+     <Name>C</Name>
+     <ContractID>356508469</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356509813">
+     <Name>D</Name>
+     <ContractID>356509813</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356512165">
+     <Name>E</Name>
+     <ContractID>356512165</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356516014">
+     <Name>F</Name>
+     <ContractID>356516014</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356517860">
+     <Name>G</Name>
+     <ContractID>356517860</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+    <Employee ID="356518605">
+     <Name>H</Name>
+     <ContractID>356518605</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356518657">
+     <Name>I</Name>
+     <ContractID>356518657</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356522107">
+     <Name>J</Name>
+     <ContractID>356522107</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356525317">
+     <Name>K</Name>
+     <ContractID>356525317</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+    <Employee ID="356533574">
+     <Name>L</Name>
+     <ContractID>356533574</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">355169864</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356534322">
+     <Name>M</Name>
+     <ContractID>356534322</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+    <Employee ID="356535779">
+     <Name>N</Name>
+     <ContractID>356535779</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+    <Employee ID="356538961">
+     <Name>O</Name>
+     <ContractID>356538961</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">355169864</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356550381">
+     <Name>P</Name>
+     <ContractID>356550381</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+    <Employee ID="356552667">
+     <Name>Q</Name>
+     <ContractID>356552667</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+    <Employee ID="356554822">
+     <Name>R</Name>
+     <ContractID>356554822</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+    <Employee ID="356564008">
+     <Name>S</Name>
+     <ContractID>356564008</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356565228">
+     <Name>T</Name>
+     <ContractID>356565228</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">355169864</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356568238">
+     <Name>U</Name>
+     <ContractID>356568238</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">355169864</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356570786">
+     <Name>V</Name>
+     <ContractID>356570786</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+    <Employee ID="356576740">
+     <Name>W</Name>
+     <ContractID>356576740</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+     <Skills>
+      <Skill Type="Primary">VAF</Skill>
+     </Skills>
+    </Employee>
+    <Employee ID="356599307">
+     <Name>X</Name>
+     <ContractID>356599307</ContractID>
+     <EmploymentStartDate>2006-10-02</EmploymentStartDate>
+    </Employee>
+ </Employees>
+<CoverRequirements><DayOfWeekCover><Day>Monday</Day>
+  <Cover><Shift>356418668</Shift><Preferred>1</Preferred></Cover>
+  <Cover><Shift>356461638</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260010986</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260076325</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260086974</Shift><Preferred>3</Preferred></Cover>
+</DayOfWeekCover>
+ <DayOfWeekCover><Day>Tuesday</Day>
+  <Cover><Shift>356418668</Shift><Preferred>1</Preferred></Cover>
+  <Cover><Shift>356461638</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260010986</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260076325</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260086974</Shift><Preferred>3</Preferred></Cover>
+</DayOfWeekCover>
+ <DayOfWeekCover><Day>Wednesday</Day>
+  <Cover><Shift>356418668</Shift><Preferred>1</Preferred></Cover>
+  <Cover><Shift>356461638</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260010986</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260076325</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260086974</Shift><Preferred>3</Preferred></Cover>
+</DayOfWeekCover>
+ <DayOfWeekCover><Day>Thursday</Day>
+  <Cover><Shift>356418668</Shift><Preferred>1</Preferred></Cover>
+  <Cover><Shift>356461638</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260010986</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260076325</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260086974</Shift><Preferred>3</Preferred></Cover>
+</DayOfWeekCover>
+ <DayOfWeekCover><Day>Friday</Day>
+  <Cover><Shift>356418668</Shift><Preferred>1</Preferred></Cover>
+  <Cover><Shift>356461638</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260010986</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260076325</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260086974</Shift><Preferred>3</Preferred></Cover>
+</DayOfWeekCover>
+ <DayOfWeekCover><Day>Saturday</Day>
+  <Cover><Shift>356418668</Shift><Preferred>1</Preferred></Cover>
+  <Cover><Shift>356461638</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260010986</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260076325</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260086974</Shift><Preferred>1</Preferred></Cover>
+</DayOfWeekCover>
+ <DayOfWeekCover><Day>Sunday</Day>
+  <Cover><Shift>356418668</Shift><Preferred>1</Preferred></Cover>
+  <Cover><Shift>356461638</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260010986</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260076325</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Shift>260086974</Shift><Preferred>1</Preferred></Cover>
+</DayOfWeekCover>
+
+</CoverRequirements>
+
+   <MasterWeights>
+    <MinTimeBetweenShifts>1</MinTimeBetweenShifts>
+    <MaxConsecutiveWorkingDays>1</MaxConsecutiveWorkingDays>
+    <ValidNumConsecutiveShiftTypes>1</ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes>1</MaxShiftTypes>
+    <MinShiftTypes>1</MinShiftTypes>
+    <MaxHoursWorked>1</MaxHoursWorked>
+    <MinHoursWorked>1</MinHoursWorked>
+    <MaxHoursPerWeek>1</MaxHoursPerWeek>
+    <PrefOverStaffing>1000</PrefOverStaffing>
+    <PrefUnderStaffing>1000</PrefUnderStaffing>
+    <MaxOverStaffing>1000</MaxOverStaffing>
+    <MinUnderStaffing>1000</MinUnderStaffing>
+    <SkilledShifts>10000</SkilledShifts>
+  </MasterWeights>
+  
+
+    <DayOffRequests>
+  <DayOff weight="1">
+   <EmployeeID>356502047</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356502047</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356502047</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356502047</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356503112</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356503112</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356503112</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356503112</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356508469</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356508469</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356508469</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356508469</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356509813</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356509813</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356509813</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356509813</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356512165</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356512165</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356512165</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356512165</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356516014</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356516014</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356516014</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356516014</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356517860</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356517860</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356517860</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356517860</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356518605</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356518605</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356518605</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356518605</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356518657</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356518657</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356518657</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356518657</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356522107</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356522107</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356522107</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356522107</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356525317</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356525317</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356525317</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356525317</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356533574</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356533574</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356533574</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356533574</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356534322</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356534322</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356534322</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356534322</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356535779</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356535779</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356535779</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356535779</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356538961</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356538961</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356538961</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356538961</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356550381</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356550381</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356550381</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356550381</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356552667</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356552667</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356552667</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356552667</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356554822</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356554822</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356554822</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356554822</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356564008</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356564008</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356564008</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356564008</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356565228</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356565228</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356565228</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356565228</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356568238</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356568238</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356568238</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356568238</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356570786</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356570786</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356570786</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356570786</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356576740</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356576740</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356576740</EmployeeID>
+   <Date>2006-10-21</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356576740</EmployeeID>
+   <Date>2006-10-22</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356599307</EmployeeID>
+   <Date>2006-10-07</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356599307</EmployeeID>
+   <Date>2006-10-08</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356599307</EmployeeID>
+   <Date>2006-10-14</Date>
+  </DayOff>
+  <DayOff weight="1">
+   <EmployeeID>356599307</EmployeeID>
+   <Date>2006-10-15</Date>
+  </DayOff>
+ </DayOffRequests>
+
+
+    <ShiftOnRequests>
+ </ShiftOnRequests>
+
+</SchedulingPeriod>

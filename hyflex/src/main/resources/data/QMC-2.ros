@@ -1,0 +1,2277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod ID="QMC-2" 
+              OrganisationID="Queen's Medical Centre University Hospital NHS Trust, Nottingham, UK" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+  <StartDate>2001-03-05</StartDate>
+  <EndDate>2001-04-01</EndDate>
+  <Skills>
+    <Skill ID="RegisteredNurse"><Label>Registered Nurse</Label></Skill>
+    <Skill ID="EyeTrained"><Label>Eye Trained</Label></Skill>
+  </Skills>
+  <ShiftTypes>
+    <Shift ID="E">
+      <Label>E</Label>
+      <Colour>#66FF00</Colour>
+      <Description>Early</Description>
+      <StartTime>07:00:00</StartTime>
+      <EndTime>14:45:00</EndTime>
+      <HoursWorked>7.5</HoursWorked>
+    </Shift>
+   
+    <Shift ID="L" >
+      <Label>L</Label>
+      <Colour>#3399FF</Colour>
+      <Description>Late</Description>
+      <StartTime>13:30:00</StartTime>
+      <EndTime>21:15:00</EndTime>
+      <HoursWorked>7.5</HoursWorked>
+    </Shift>
+    
+    <Shift ID="N" >
+      <Label>N</Label>
+      <Colour>#C8C8C8</Colour>
+      <Description>Night</Description>
+      <StartTime>21:00:00</StartTime>
+      <EndTime>07:15:00</EndTime>
+      <HoursWorked>10</HoursWorked>
+    </Shift>
+    
+  </ShiftTypes>
+  <!--
+  <ShiftGroups>
+    <ShiftGroup ID="N">
+      <Shift>N</Shift>
+    </ShiftGroup>
+    <ShiftGroup ID="L">
+      <Shift>L</Shift>
+    </ShiftGroup>
+    <ShiftGroup ID="E">
+      <Shift>E</Shift>
+    </ShiftGroup>
+  </ShiftGroups>
+  -->
+  <Contracts>
+  <Contract ID="FullTime">
+    <MaxShiftsPerDay>1</MaxShiftsPerDay>
+    <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+    <MaxWorkingWeekendsInFourWeeks>3</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>SaturdaySunday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <MinConsecutiveShiftTypes>
+      <MinConsecutiveShiftType>
+        <ShiftType>N</ShiftType>
+        <Value>2</Value>
+      </MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxHoursPerFortnight>75</MaxHoursPerFortnight>
+    <BadPatterns>
+      <Pattern weight="1000"><Shift>N</Shift><Shift>E</Shift></Pattern>
+      <Pattern weight="1000"><Shift>N</Shift><Shift>L</Shift></Pattern>
+    </BadPatterns>
+  </Contract>
+  <Contract ID="PartTimE5">
+    <MaxShiftsPerDay>1</MaxShiftsPerDay>
+    <MaxConsecutiveWorkingDays  on="1">6</MaxConsecutiveWorkingDays>
+    <MaxWorkingWeekendsInFourWeeks  on="1">3</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>SaturdaySunday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <MaxHoursPerFortnight>30</MaxHoursPerFortnight>
+    <BadPatterns>
+      <Pattern weight="1000"><Shift>N</Shift><Shift>E</Shift></Pattern>
+      <Pattern weight="1000"><Shift>N</Shift><Shift>L</Shift></Pattern>
+    </BadPatterns>
+  </Contract>
+  <Contract ID="PartTime23">
+    <MaxShiftsPerDay>1</MaxShiftsPerDay>
+    <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+    <MaxWorkingWeekendsInFourWeeks>3</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>SaturdaySunday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <MaxAssignmentsForDayOfWeek>
+    </MaxAssignmentsForDayOfWeek>
+    <MinConsecutiveShiftTypes>
+      <MinConsecutiveShiftType>
+        <ShiftType>N</ShiftType>
+        <Value>2</Value>
+      </MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxHoursPerFortnight>46</MaxHoursPerFortnight>
+    <BadPatterns>
+      <Pattern weight="1000"><Shift>N</Shift><Shift>E</Shift></Pattern>
+      <Pattern weight="1000"><Shift>N</Shift><Shift>L</Shift></Pattern>
+    </BadPatterns>
+  </Contract>
+  <Contract ID="PartTime30">
+    <Label>Part Time 30</Label>
+    <MaxShiftsPerDay>1</MaxShiftsPerDay>
+    <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+    <MaxWorkingWeekendsInFourWeeks>3</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>SaturdaySunday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <MinConsecutiveShiftTypes>
+      <MinConsecutiveShiftType>
+        <ShiftType>N</ShiftType>
+        <Value>2</Value>
+      </MinConsecutiveShiftType>
+    </MinConsecutiveShiftTypes>
+    <MaxHoursPerFortnight>60</MaxHoursPerFortnight>
+    <BadPatterns>
+      <Pattern weight="1000"><Shift>N</Shift><Shift>E</Shift></Pattern>
+      <Pattern weight="1000"><Shift>N</Shift><Shift>L</Shift></Pattern>
+    </BadPatterns>
+  </Contract>
+  </Contracts>
+  
+  <Employees>
+    <Employee ID="A">
+    <Name>A</Name>
+    <ContractID>FullTime</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="B">
+    <Name>B</Name>
+    <ContractID>FullTime</ContractID>
+    </Employee>
+    <Employee ID="C">
+    <Name>C</Name>
+    <ContractID>PartTime30</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="D">
+    <Name>D</Name>
+    <ContractID>PartTimE5</ContractID>
+    <Skills>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="E">
+    <Name>E</Name>
+    <ContractID>FullTime</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="F">
+    <Name>F</Name>
+    <ContractID>FullTime</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="G">
+    <Name>G</Name>
+    <ContractID>FullTime</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="H">
+    <Name>H</Name>
+    <ContractID>PartTime23</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="I">
+    <Name>I</Name>
+    <ContractID>PartTime30</ContractID>
+    <Skills>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="J">
+    <Name>J</Name>
+    <ContractID>PartTime23</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="K">
+    <Name>K</Name>
+    <ContractID>PartTime30</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="L">
+    <Name>L</Name>
+    <ContractID>PartTime30</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="M">
+    <Name>M</Name>
+    <ContractID>FullTime</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="N">
+    <Name>N</Name>
+    <ContractID>FullTime</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="O">
+    <Name>O</Name>
+    <ContractID>PartTime30</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="P">
+    <Name>P</Name>
+    <ContractID>PartTime30</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="Q">
+    <Name>Q</Name>
+    <ContractID>PartTime30</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="R">
+    <Name>R</Name>
+    <ContractID>PartTime30</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+      <Skill>EyeTrained</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="S">
+    <Name>S</Name>
+    <ContractID>FullTime</ContractID>
+    <Skills>
+      <Skill>RegisteredNurse</Skill>
+    </Skills>
+    </Employee>
+  </Employees>
+  <CoverRequirements>
+    <DayOfWeekCover>
+      <Day>Saturday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Min>2</Min>
+        <Max>5</Max>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+         <Min>1</Min>
+        <Max>4</Max>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Min>1</Min>
+        <Max>3</Max>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>N</Shift>
+        <Min>1</Min>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Sunday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Min>2</Min>
+        <Max>5</Max>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+         <Min>1</Min>
+        <Max>4</Max>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Min>1</Min>
+        <Max>3</Max>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>N</Shift>
+        <Min>1</Min>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Monday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Min>2</Min>
+        <Max>6</Max>
+        <Preferred>4</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+         <Min>2</Min>
+        <Max>5</Max>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Min>1</Min>
+        <Max>2</Max>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>N</Shift>
+        <Min>1</Min>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Tuesday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Min>2</Min>
+        <Max>6</Max>
+        <Preferred>4</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+         <Min>2</Min>
+        <Max>5</Max>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Min>1</Min>
+        <Max>2</Max>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>N</Shift>
+        <Min>1</Min>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Wednesday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Min>2</Min>
+        <Max>6</Max>
+        <Preferred>4</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+         <Min>2</Min>
+        <Max>5</Max>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Min>1</Min>
+        <Max>2</Max>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>N</Shift>
+        <Min>1</Min>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Thursday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Min>2</Min>
+        <Max>6</Max>
+        <Preferred>4</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+         <Min>2</Min>
+        <Max>5</Max>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Min>1</Min>
+        <Max>2</Max>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>N</Shift>
+        <Min>1</Min>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Friday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Min>2</Min>
+        <Max>6</Max>
+        <Preferred>4</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>E</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+         <Min>2</Min>
+        <Max>5</Max>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Skill>RegisteredNurse</Skill>
+        <Shift>L</Shift>
+        <Min>1</Min>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Min>1</Min>
+        <Max>2</Max>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Skill>EyeTrained</Skill>
+        <Shift>N</Shift>
+        <Min>1</Min>
+      </Cover>
+    </DayOfWeekCover>
+  </CoverRequirements>
+  <MasterWeights>
+    <MinTimeBetweenShifts>1000</MinTimeBetweenShifts>
+    <MaxNumAssignments>1</MaxNumAssignments>
+    <MaxConsecutiveWorkingDays>1000</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays>1000</MinConsecutiveWorkingDays>
+    <MaxWorkingBankHolidays>1</MaxWorkingBankHolidays>
+    <MaxConsecutiveFreeDays>1</MaxConsecutiveFreeDays>
+    <MinConsecutiveFreeDays>1</MinConsecutiveFreeDays>
+    <MaxConsecutiveWorkingWeekends>1</MaxConsecutiveWorkingWeekends>
+    <MaxWorkingWeekendsInFourWeeks>1</MaxWorkingWeekendsInFourWeeks>
+    <CompleteWeekends>1</CompleteWeekends>
+    <IdenticalShiftTypesDuringWeekend>1</IdenticalShiftTypesDuringWeekend>
+    <TwoFreeDaysAfterNightShifts>1</TwoFreeDaysAfterNightShifts>
+    <MaxAssignmentsForDayOfWeek>1</MaxAssignmentsForDayOfWeek>
+    <ValidNumConsecutiveShiftTypes>1</ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes>1</MaxShiftTypes>
+    <MaxShiftTypesPerWeek>1</MaxShiftTypesPerWeek>
+    <MaxHoursWorked>1000</MaxHoursWorked>
+    <MaxHoursPerFortnight>1000</MaxHoursPerFortnight>
+    <ValidShiftTypeSuccessions>1000</ValidShiftTypeSuccessions>
+    <AlternativeSkillCategory>1</AlternativeSkillCategory>
+    <Tutorship>1</Tutorship>
+    <WorkSeparately>1</WorkSeparately>
+    <MinConsecutiveShiftTypes>1</MinConsecutiveShiftTypes>
+    <PrefOverStaffing>1</PrefOverStaffing>
+    <PrefUnderStaffing>1</PrefUnderStaffing>
+    <MaxOverStaffing>1000</MaxOverStaffing>
+    <MinUnderStaffing>1000</MinUnderStaffing>
+    <MaxShiftsPerDay>1000</MaxShiftsPerDay>
+  </MasterWeights>
+  <DayOffRequests>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-11</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-14</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-16</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-08</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-09</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-19</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-26</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-27</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-05</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-11</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-15</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-16</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-26</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>D</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>D</EmployeeID>
+      <Date>2001-03-11</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>D</EmployeeID>
+      <Date>2001-03-13</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>D</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>D</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>E</EmployeeID>
+      <Date>2001-03-05</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>E</EmployeeID>
+      <Date>2001-03-06</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>E</EmployeeID>
+      <Date>2001-03-08</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>E</EmployeeID>
+      <Date>2001-03-15</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>E</EmployeeID>
+      <Date>2001-03-16</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-15</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-19</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-26</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-27</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-28</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-06</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-08</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-12</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-13</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-14</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-15</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-27</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-28</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>I</EmployeeID>
+      <Date>2001-03-19</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>I</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>I</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>I</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>I</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>I</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-05</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-06</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-07</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-08</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-09</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-14</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-15</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-16</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-26</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-27</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-28</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-05</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-06</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-07</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-11</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-13</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-15</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-16</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-19</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-26</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-27</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-28</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-05</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-09</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-11</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-12</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-13</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-14</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-15</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-16</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-19</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-28</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-09</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-11</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-12</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-14</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-28</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-05</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-06</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-14</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-27</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-05</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-09</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-12</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-13</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-16</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-19</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-26</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-07</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-08</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-09</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-16</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-28</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-29</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-30</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-06</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-10</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-11</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-13</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-15</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-19</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-31</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-04-01</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-17</Date>
+    </DayOff>
+    <DayOff weight="1">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-18</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-20</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-21</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-22</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-23</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-24</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-25</Date>
+    </DayOff>
+    <DayOff weight="1000">
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-26</Date>
+    </DayOff>
+  </DayOffRequests>
+
+  <ShiftOnRequests>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-05</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-06</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-08</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-09</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-12</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-13</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-15</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-20</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-23</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-24</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-25</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-26</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-27</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-28</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-03-31</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>A</EmployeeID>
+      <Date>2001-04-01</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-10</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-11</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-15</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-16</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-28</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-29</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-30</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2001-03-31</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-06</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-08</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-09</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-12</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-13</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-18</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-20</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-21</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-22</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>C</EmployeeID>
+      <Date>2001-03-23</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>E</EmployeeID>
+      <Date>2001-03-14</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>E</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-06</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-09</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-11</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-13</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-14</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-16</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>F</EmployeeID>
+      <Date>2001-03-17</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>G</EmployeeID>
+      <Date>2001-03-05</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>G</EmployeeID>
+      <Date>2001-03-28</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>G</EmployeeID>
+      <Date>2001-03-29</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-05</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-09</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-10</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-11</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-16</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-18</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-23</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-25</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-26</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-03-30</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>H</EmployeeID>
+      <Date>2001-04-01</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-11</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-12</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-13</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>J</EmployeeID>
+      <Date>2001-03-20</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-09</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-10</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-12</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-14</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-18</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-21</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-23</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>K</EmployeeID>
+      <Date>2001-03-24</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-06</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-08</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-23</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-24</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-25</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-26</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>L</EmployeeID>
+      <Date>2001-03-27</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-05</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-06</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-08</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-11</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-12</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-14</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-15</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-16</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-20</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-21</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-22</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-23</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-27</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-28</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-29</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2001-03-30</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-05</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-08</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-09</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-13</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-15</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-16</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-17</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-18</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-20</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-22</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-25</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-26</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>N</EmployeeID>
+      <Date>2001-03-27</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-09</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-11</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-12</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-25</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>O</EmployeeID>
+      <Date>2001-03-26</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-06</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-08</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-11</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-14</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-15</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-20</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-21</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-22</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-25</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-27</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>P</EmployeeID>
+      <Date>2001-03-28</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-05</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-06</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-10</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-11</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-12</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-13</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-14</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-15</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-20</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-21</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-22</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-26</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-27</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-03-31</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>Q</EmployeeID>
+      <Date>2001-04-01</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-07</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>R</EmployeeID>
+      <Date>2001-03-26</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-16</Date>
+    </ShiftOn>
+    <ShiftOn weight="1">
+      <ShiftTypeID>L</ShiftTypeID>
+      <EmployeeID>S</EmployeeID>
+      <Date>2001-03-19</Date>
+    </ShiftOn>
+  </ShiftOnRequests>
+
+</SchedulingPeriod>

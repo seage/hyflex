@@ -1,4 +1,5 @@
 rootProject.name = 'hyflex'
+include('hyflex')
 include('hyflex-chesc-2011')
 include('hyflex-ext')
 

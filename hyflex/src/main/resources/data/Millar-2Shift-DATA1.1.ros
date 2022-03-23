@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod ID="Millar-2Shift-DATA1.1" 
+                OrganisationID="Victoria General Hospital, Halifax"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+              
+  <StartDate>1993-11-01</StartDate>
+  <EndDate>1993-11-14</EndDate>
+
+  <ShiftTypes>
+    <Shift ID="TD">
+      <Label>TD</Label>
+      <Colour>HotPink</Colour>
+      <Description>Day</Description>
+      <StartTime>06:00:00</StartTime>
+      <EndTime>18:00:00</EndTime>
+    </Shift>
+    <Shift ID="TN">
+      <Label>TN</Label>
+      <Colour>LawnGreen</Colour>
+      <Description>Night</Description>
+      <StartTime>18:00:00</StartTime>
+      <EndTime>06:00:00</EndTime>
+    </Shift>
+  </ShiftTypes>
+  
+  <ShiftGroups>
+    <ShiftGroup ID="All">
+      <Shift>TN</Shift>
+      <Shift>TD</Shift>
+    </ShiftGroup>
+  </ShiftGroups>
+  
+  <Contracts>
+    <Contract ID="All">
+      <MaxShiftsPerDay weight="1000">1</MaxShiftsPerDay>
+      <MaxNumAssignments weight="100">7</MaxNumAssignments>
+      <MaxWorkingWeekends weight="1000">1</MaxWorkingWeekends>
+      
+      <!-- <MaxConsecutiveWorkingDays weight="100">4</MaxConsecutiveWorkingDays> -->
+      <MinConsecutiveWorkingDays weight="100">2</MinConsecutiveWorkingDays>
+      <!-- <MaxConsecutiveFreeDays weight="100">4</MaxConsecutiveFreeDays> -->
+      <!-- <MaxConsecutiveShiftTypes weight="100">
+        <MaxConsecutiveShiftType><ShiftType>TN</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes> -->
+      <BadPatterns>
+         <Pattern weight="100">
+           <Shift></Shift>
+           <Shift></Shift>
+           <Shift></Shift>
+           <Shift></Shift>
+           <Shift></Shift>
+         </Pattern>
+         <Pattern weight="100">
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+         </Pattern>
+         <Pattern weight="100">
+           <Shift>TN</Shift>
+           <Shift>TN</Shift>
+           <Shift>TN</Shift>
+           <Shift>TN</Shift>
+         </Pattern>
+         <Pattern weight="100">
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <Shift></Shift>
+           <ShiftGroup>All</ShiftGroup>
+         </Pattern>
+         <Pattern weight="100">
+           <Shift>TN</Shift>
+           <Shift>TD</Shift>
+         </Pattern>
+      </BadPatterns>
+      
+      <!--
+      <MinDaysOff weight="100">7</MinDaysOff>
+      <MaxDaysOff weight="100">7</MaxDaysOff>
+      <MaxWeekendsOff weight="1000">1</MaxWeekendsOff>
+      <MaxShiftTypes weight="100">
+        <MaxShiftType><ShiftType>TD</ShiftType><Value>4</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>TN</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes weight="100">
+        <MinShiftType><ShiftType>TD</ShiftType><Value>3</Value></MinShiftType>
+        <MinShiftType><ShiftType>TN</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      -->
+
+    </Contract> 
+
+  </Contracts>
+  
+  <Employees>
+    <Employee ID="1">
+      <ContractID>All</ContractID>
+    </Employee>
+    <Employee ID="2">
+      <ContractID>All</ContractID>
+    </Employee>
+    <Employee ID="3">
+      <ContractID>All</ContractID>
+    </Employee>
+    <Employee ID="4">
+      <ContractID>All</ContractID>
+    </Employee>
+    <Employee ID="5">
+      <ContractID>All</ContractID>
+    </Employee>
+    <Employee ID="6">
+      <ContractID>All</ContractID>
+    </Employee>
+    <Employee ID="7">
+      <ContractID>All</ContractID>
+    </Employee>
+    <Employee ID="8">
+      <ContractID>All</ContractID>
+    </Employee>
+  </Employees>
+  
+  <CoverRequirements>
+    <DayOfWeekCover>
+      <Day>Monday</Day>
+      <Cover><Shift>TN</Shift><Preferred>2</Preferred></Cover>
+      <Cover><Shift>TD</Shift><Preferred>2</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Tuesday</Day>
+      <Cover><Shift>TN</Shift><Preferred>2</Preferred></Cover>
+      <Cover><Shift>TD</Shift><Preferred>2</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Wednesday</Day>
+      <Cover><Shift>TN</Shift><Preferred>2</Preferred></Cover>
+      <Cover><Shift>TD</Shift><Preferred>2</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Thursday</Day>
+      <Cover><Shift>TN</Shift><Preferred>2</Preferred></Cover>
+      <Cover><Shift>TD</Shift><Preferred>2</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Friday</Day>
+      <Cover><Shift>TN</Shift><Preferred>2</Preferred></Cover>
+      <Cover><Shift>TD</Shift><Preferred>2</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Saturday</Day>
+      <Cover><Shift>TN</Shift><Preferred>2</Preferred></Cover>
+      <Cover><Shift>TD</Shift><Preferred>2</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Sunday</Day>
+      <Cover><Shift>TN</Shift><Preferred>2</Preferred></Cover>
+      <Cover><Shift>TD</Shift><Preferred>2</Preferred></Cover>
+    </DayOfWeekCover>
+  </CoverRequirements>
+  
+  <MasterWeights>
+    <PrefOverStaffing>100</PrefOverStaffing>
+    <PrefUnderStaffing>100</PrefUnderStaffing>
+  </MasterWeights>
+
+</SchedulingPeriod>

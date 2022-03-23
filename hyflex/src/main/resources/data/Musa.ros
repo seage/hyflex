@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod 
+              ID="Musa" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+  <StartDate>1984-09-10</StartDate>
+  <EndDate>1984-09-23</EndDate>
+  
+<Skills>
+ <Skill ID="RN"><Label>RN</Label></Skill>
+ <Skill ID="LPN"><Label>LPN</Label></Skill>
+ <Skill ID="NA"><Label>NA</Label></Skill>
+</Skills>
+
+<SkillGroups>
+</SkillGroups>
+
+  <ShiftTypes>
+    <Shift ID="D">
+      <Label>D</Label>
+      <Colour>Blue</Colour>
+      <Description>Day</Description>
+      <StartTime>08:00:00</StartTime>
+      <EndTime>17:00:00</EndTime>
+      <HoursWorked>8.0</HoursWorked>
+    </Shift>
+  </ShiftTypes>
+
+
+<Contracts>
+ <Contract ID="FullTime_1">
+  <MaxNumAssignments weight="9">10</MaxNumAssignments>
+  <MaxDaysOff weight="9">4</MaxDaysOff>
+  <MaxShiftTypesPerWeek weight="5"><MaxShiftTypePerWeek><ShiftType>D</ShiftType><Week>2</Week><Value>5</Value></MaxShiftTypePerWeek></MaxShiftTypesPerWeek>
+  <BadPatterns>
+   <Pattern weight="5"><Shift></Shift><Shift></Shift><Shift></Shift></Pattern>
+  </BadPatterns>
+ </Contract>
+ <Contract ID="FullTime_2">
+  <MaxNumAssignments weight="9">5</MaxNumAssignments>
+  <MaxDaysOff weight="9">9</MaxDaysOff>
+  <MaxShiftTypesPerWeek weight="5"><MaxShiftTypePerWeek><ShiftType>D</ShiftType><Week>1</Week><Value>5</Value></MaxShiftTypePerWeek></MaxShiftTypesPerWeek>
+  <BadPatterns>
+   <Pattern weight="5"><Shift></Shift><Shift></Shift><Shift></Shift></Pattern>
+  </BadPatterns>
+ </Contract>
+<Contract ID="FullTime_5">
+  <MaxNumAssignments weight="9">10</MaxNumAssignments>
+  <MaxDaysOff weight="9">4</MaxDaysOff>
+  <MaxShiftTypesPerWeek weight="5"><MaxShiftTypePerWeek><ShiftType>D</ShiftType><Week>1</Week><Value>5</Value></MaxShiftTypePerWeek></MaxShiftTypesPerWeek>
+  <BadPatterns>
+   <Pattern weight="5"><Shift></Shift><Shift></Shift><Shift></Shift></Pattern>
+  </BadPatterns>
+ </Contract>
+ <Contract ID="FullTime_6">
+  <MaxNumAssignments weight="9">10</MaxNumAssignments>
+  <MaxDaysOff weight="9">4</MaxDaysOff>
+  <MaxShiftTypesPerWeek weight="5"><MaxShiftTypePerWeek><ShiftType>D</ShiftType><Week>2</Week><Value>5</Value></MaxShiftTypePerWeek></MaxShiftTypesPerWeek>
+  <BadPatterns>
+   <Pattern weight="5"><Shift></Shift><Shift></Shift><Shift></Shift></Pattern>
+  </BadPatterns>
+ </Contract>
+ <Contract ID="FullTime_7">
+  <MaxNumAssignments weight="9">10</MaxNumAssignments>
+  <MaxDaysOff weight="9">4</MaxDaysOff>
+  <MaxShiftTypesPerWeek weight="5"><MaxShiftTypePerWeek><ShiftType>D</ShiftType><Week>2</Week><Value>5</Value></MaxShiftTypePerWeek></MaxShiftTypesPerWeek>
+  <BadPatterns>
+   <Pattern weight="5"><Shift></Shift><Shift></Shift><Shift></Shift></Pattern>
+  </BadPatterns>
+ </Contract>
+ <Contract ID="FullTime_9">
+  <MaxNumAssignments weight="9">10</MaxNumAssignments>
+  <MaxDaysOff weight="9">4</MaxDaysOff>
+  <MaxShiftTypesPerWeek weight="5"><MaxShiftTypePerWeek><ShiftType>D</ShiftType><Week>1</Week><Value>5</Value></MaxShiftTypePerWeek></MaxShiftTypesPerWeek>
+  <BadPatterns>
+   <Pattern weight="5"><Shift></Shift><Shift></Shift><Shift></Shift></Pattern>
+  </BadPatterns>
+ </Contract>
+ <Contract ID="FullTime_10">
+  <MaxNumAssignments weight="9">10</MaxNumAssignments>
+  <MaxDaysOff weight="9">4</MaxDaysOff>
+  <MaxShiftTypesPerWeek weight="5"><MaxShiftTypePerWeek><ShiftType>D</ShiftType><Week>1</Week><Value>5</Value></MaxShiftTypePerWeek></MaxShiftTypesPerWeek>
+  <BadPatterns>
+   <Pattern weight="5"><Shift></Shift><Shift></Shift><Shift></Shift></Pattern>
+  </BadPatterns>
+ </Contract>
+ 
+ <Contract ID="PartTime6">
+  <MaxNumAssignments weight="9">6</MaxNumAssignments>
+  <MaxDaysOff weight="9">8</MaxDaysOff>
+ </Contract>
+ <Contract ID="PartTime4">
+  <MaxNumAssignments weight="9">4</MaxNumAssignments>
+  <MaxDaysOff weight="9">10</MaxDaysOff>
+ </Contract>
+ <Contract ID="PartTime2">
+  <MaxNumAssignments weight="9">2</MaxNumAssignments>
+  <MaxDaysOff weight="9">12</MaxDaysOff>
+ </Contract>
+</Contracts>
+
+<Employees>
+ <Employee ID="1">
+  <ContractID>FullTime_1</ContractID>
+  <Name>1</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="2">
+  <ContractID>FullTime_2</ContractID>
+  <Name>2</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="3">
+  <ContractID>PartTime4</ContractID>
+  <Name>3</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="4">
+  <ContractID>PartTime6</ContractID>
+  <Name>4</Name>
+  <Skills><Skill>LPN</Skill></Skills>
+ </Employee>
+ <Employee ID="5">
+  <ContractID>FullTime_5</ContractID>
+  <Name>5</Name>
+  <Skills><Skill>LPN</Skill></Skills>
+ </Employee>
+ <Employee ID="6">
+  <ContractID>FullTime_6</ContractID>
+  <Name>6</Name>
+  <Skills><Skill>NA</Skill></Skills>
+ </Employee>
+ <Employee ID="7">
+  <ContractID>FullTime_7</ContractID>
+  <Name>7</Name>
+  <Skills><Skill>NA</Skill></Skills>
+ </Employee>
+ <Employee ID="8">
+  <ContractID>PartTime4</ContractID>
+  <Name>8</Name>
+  <Skills><Skill>NA</Skill></Skills>
+ </Employee>
+ <Employee ID="9">
+  <ContractID>FullTime_9</ContractID>
+  <Name>9</Name>
+  <Skills><Skill>NA</Skill></Skills>
+ </Employee>
+ <Employee ID="10">
+  <ContractID>FullTime_10</ContractID>
+  <Name>10</Name>
+  <Skills><Skill>NA</Skill></Skills>
+ </Employee>
+ <Employee ID="11">
+  <ContractID>PartTime2</ContractID>
+  <Name>11</Name>
+  <Skills><Skill>NA</Skill></Skills>
+ </Employee>
+</Employees>
+
+<CoverRequirements>
+ <DayOfWeekCover>
+  <Day>Monday</Day>
+  <Cover><Skill>RN</Skill><Shift>D</Shift><Min>1</Min><Preferred>3</Preferred></Cover>
+  <Cover><Skill>LPN</Skill><Shift>D</Shift><Min>1</Min><Preferred>2</Preferred></Cover>
+  <Cover><Skill>NA</Skill><Shift>D</Shift><Min>2</Min><Preferred>2</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Tuesday</Day>
+  <Cover><Skill>RN</Skill><Shift>D</Shift><Min>1</Min><Preferred>3</Preferred></Cover>
+  <Cover><Skill>LPN</Skill><Shift>D</Shift><Min>1</Min><Preferred>2</Preferred></Cover>
+  <Cover><Skill>NA</Skill><Shift>D</Shift><Min>2</Min><Preferred>2</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Wednesday</Day>
+  <Cover><Skill>RN</Skill><Shift>D</Shift><Min>1</Min><Preferred>3</Preferred></Cover>
+  <Cover><Skill>LPN</Skill><Shift>D</Shift><Min>1</Min><Preferred>2</Preferred></Cover>
+  <Cover><Skill>NA</Skill><Shift>D</Shift><Min>2</Min><Preferred>2</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Thursday</Day>
+  <Cover><Skill>RN</Skill><Shift>D</Shift><Min>1</Min><Preferred>3</Preferred></Cover>
+  <Cover><Skill>LPN</Skill><Shift>D</Shift><Min>1</Min><Preferred>2</Preferred></Cover>
+  <Cover><Skill>NA</Skill><Shift>D</Shift><Min>2</Min><Preferred>2</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Friday</Day>
+  <Cover><Skill>RN</Skill><Shift>D</Shift><Min>1</Min><Preferred>3</Preferred></Cover>
+  <Cover><Skill>LPN</Skill><Shift>D</Shift><Min>1</Min><Preferred>2</Preferred></Cover>
+  <Cover><Skill>NA</Skill><Shift>D</Shift><Min>2</Min><Preferred>2</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Saturday</Day>
+  <Cover><Skill>RN</Skill><Shift>D</Shift><Min>1</Min><Preferred>3</Preferred></Cover>
+  <Cover><Skill>LPN</Skill><Shift>D</Shift><Min>1</Min><Preferred>2</Preferred></Cover>
+  <Cover><Skill>NA</Skill><Shift>D</Shift><Min>2</Min><Preferred>2</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Sunday</Day>
+  <Cover><Skill>RN</Skill><Shift>D</Shift><Min>1</Min><Preferred>3</Preferred></Cover>
+  <Cover><Skill>LPN</Skill><Shift>D</Shift><Min>1</Min><Preferred>2</Preferred></Cover>
+  <Cover><Skill>NA</Skill><Shift>D</Shift><Min>2</Min><Preferred>2</Preferred></Cover>
+ </DayOfWeekCover>
+</CoverRequirements>
+
+<MasterWeights>
+<MinUnderStaffing>7</MinUnderStaffing>
+<MaxOverStaffing>0</MaxOverStaffing>
+<PrefOverStaffing>0</PrefOverStaffing>
+<PrefUnderStaffing>5</PrefUnderStaffing>
+</MasterWeights>
+
+<DayOffRequests>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>1</EmployeeID>
+  <Date>1984-09-23</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>1</EmployeeID>
+  <Date>1984-09-22</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-16</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-15</Date>
+ </DayOff>
+ <DayOff weight="3" holiday="false" working="false">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-16</Date>
+ </DayOff>
+ <DayOff weight="3" holiday="false" working="false">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-15</Date>
+ </DayOff>
+ <DayOff weight="3" holiday="false" working="false">
+  <EmployeeID>4</EmployeeID>
+  <Date>1984-09-23</Date>
+ </DayOff>
+ <DayOff weight="3" holiday="false" working="false">
+  <EmployeeID>4</EmployeeID>
+  <Date>1984-09-22</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>5</EmployeeID>
+  <Date>1984-09-16</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>5</EmployeeID>
+  <Date>1984-09-15</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>6</EmployeeID>
+  <Date>1984-09-23</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>6</EmployeeID>
+  <Date>1984-09-22</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>7</EmployeeID>
+  <Date>1984-09-23</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>7</EmployeeID>
+  <Date>1984-09-22</Date>
+ </DayOff>
+ <DayOff weight="3" holiday="false" working="false">
+  <EmployeeID>8</EmployeeID>
+  <Date>1984-09-23</Date>
+ </DayOff>
+ <DayOff weight="3" holiday="false" working="false">
+  <EmployeeID>8</EmployeeID>
+  <Date>1984-09-22</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>9</EmployeeID>
+  <Date>1984-09-15</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>9</EmployeeID>
+  <Date>1984-09-16</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>10</EmployeeID>
+  <Date>1984-09-15</Date>
+ </DayOff>
+ <DayOff weight="5" holiday="false" working="false">
+  <EmployeeID>10</EmployeeID>
+  <Date>1984-09-16</Date>
+ </DayOff>
+ <DayOff weight="3" holiday="false" working="false">
+  <EmployeeID>11</EmployeeID>
+  <Date>1984-09-23</Date>
+ </DayOff>
+ <DayOff weight="3" holiday="false" working="false">
+  <EmployeeID>11</EmployeeID>
+  <Date>1984-09-22</Date>
+ </DayOff>
+ 
+ 
+  <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-17</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-18</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-19</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-20</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-21</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-22</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>2</EmployeeID>
+  <Date>1984-09-23</Date>
+ </DayOff>
+ 
+  <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-15</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-14</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-13</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-12</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-11</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-10</Date>
+ </DayOff>
+ <DayOff weight="10000" holiday="false" working="true">
+  <EmployeeID>3</EmployeeID>
+  <Date>1984-09-16</Date>
+ </DayOff>
+ 
+</DayOffRequests>
+
+<DayOnRequests>
+</DayOnRequests>
+
+<ShiftOffRequests>
+</ShiftOffRequests>
+
+<ShiftOnRequests>
+</ShiftOnRequests>
+
+
+<FrozenDays>
+</FrozenDays>
+
+</SchedulingPeriod>

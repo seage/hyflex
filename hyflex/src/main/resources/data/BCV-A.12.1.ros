@@ -1,0 +1,968 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod ID="BCV-A.12.1" 
+              OrganisationID="HospitalX" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+  <StartDate>2005-01-01</StartDate>
+  <EndDate>2005-01-31</EndDate>
+  <Skills>
+    <Skill ID="HeadNurse"><Label>Head Nurse</Label></Skill>
+    <Skill ID="Nurse"><Label>Nurse</Label></Skill>
+  </Skills>
+  <ShiftTypes>
+    <Shift ID="E" >
+      <Label>E</Label>
+      <Colour>#66FF66</Colour>
+      <Description>Early Shift</Description>
+      <StartTime>06:00:00</StartTime>
+      <EndTime>14:00:00</EndTime>
+      <HoursWorked>8.0</HoursWorked>
+      <FreeTimeBefore>720</FreeTimeBefore>
+      <FreeTimeAfter>480</FreeTimeAfter>
+    </Shift>
+    <Shift ID="D1" >
+      <Label>D1</Label>
+      <Colour>Yellow</Colour>
+      <Description>Head Nurse Day Shift</Description>
+      <StartTime>09:00:00</StartTime>
+      <EndTime>17:00:00</EndTime>
+      <HoursWorked>8.0</HoursWorked>
+      <FreeTimeBefore>660</FreeTimeBefore>
+      <FreeTimeAfter>480</FreeTimeAfter>
+      <Skills>
+        <Skill>HeadNurse</Skill>
+      </Skills>
+    </Shift>
+    <Shift ID="D2" >
+      <Label>D2</Label>
+      <Description>Ordinary Day Shift</Description>
+      <StartTime>09:00:00</StartTime>
+      <EndTime>17:00:00</EndTime>
+      <HoursWorked>8.0</HoursWorked>
+      <FreeTimeBefore>660</FreeTimeBefore>
+      <FreeTimeAfter>480</FreeTimeAfter>
+      <Skills>
+        <Skill>Nurse</Skill>
+      </Skills>
+    </Shift>
+    <Shift ID="L" >
+      <Label>L</Label>
+      <Colour>CornflowerBlue</Colour>
+      <Description>Late Shift</Description>
+      <StartTime>14:00:00</StartTime>
+      <EndTime>22:00:00</EndTime>
+      <HoursWorked>8.0</HoursWorked>
+      <FreeTimeBefore>720</FreeTimeBefore>
+      <FreeTimeAfter>480</FreeTimeAfter>
+    </Shift>
+    <Shift ID="N" >
+      <Label>N</Label>
+      <Colour>Silver</Colour>
+      <Description>Night Shift</Description>
+      <StartTime>22:00:00</StartTime>
+      <EndTime>06:00:00</EndTime>
+      <HoursWorked>8.0</HoursWorked>
+      <FreeTimeBefore>720</FreeTimeBefore>
+      <FreeTimeAfter>720</FreeTimeAfter>
+    </Shift>
+  </ShiftTypes>
+  <Contracts>
+  <Contract ID="Nurse">
+    <MaxNumAssignments          on="1">20</MaxNumAssignments>
+    <MinNumAssignments          on="1">15</MinNumAssignments>
+    <MaxConsecutiveWorkingDays  on="1">4</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays  on="1">2</MinConsecutiveWorkingDays>
+    <MaxWorkingBankHolidays     on="1">1</MaxWorkingBankHolidays>
+    <MaxConsecutiveFreeDays     on="1">4</MaxConsecutiveFreeDays>
+    <MinConsecutiveFreeDays     on="1">2</MinConsecutiveFreeDays>
+    <MaxConsecutiveWorkingWeekends  on="1">2</MaxConsecutiveWorkingWeekends>
+    <MaxWorkingWeekendsInFourWeeks  on="1">2</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>FridaySaturdaySundayMonday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <IdenticalShiftTypesDuringWeekend>true</IdenticalShiftTypesDuringWeekend>
+    <NoNightShiftBeforeFreeWeekend>true</NoNightShiftBeforeFreeWeekend>
+    <TwoFreeDaysAfterNightShifts>true</TwoFreeDaysAfterNightShifts>
+    <AlternativeSkillCategory>true</AlternativeSkillCategory>
+    <MaxAssignmentsForDayOfWeek on="1">
+      <MaxAssignments><Day>Wednesday</Day><Value>2</Value></MaxAssignments>
+      <MaxAssignments><Day>Saturday</Day><Value>2</Value></MaxAssignments>
+      <MaxAssignments><Day>Sunday</Day><Value>2</Value></MaxAssignments>
+    </MaxAssignmentsForDayOfWeek>
+    <ValidNumConsecutiveShiftTypes on="1">
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>N</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+    </ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes on="1">
+      <MaxShiftType><ShiftType>L</ShiftType><Value>6</Value></MaxShiftType>
+      <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+    </MaxShiftTypes>
+    <MaxShiftTypesPerWeek on="1">
+      <MaxShiftTypePerWeek><ShiftType>D2</ShiftType><Week>1</Week><Value>0</Value></MaxShiftTypePerWeek>
+      <MaxShiftTypePerWeek><ShiftType>L</ShiftType><Week>4</Week><Value>2</Value></MaxShiftTypePerWeek>
+    </MaxShiftTypesPerWeek>
+    <MaxHoursWorked on="1"  threshold="10.0">160.00</MaxHoursWorked>
+    <MinHoursWorked on="1"  threshold="0">140.00</MinHoursWorked>
+    <StandardPerformance>6.0</StandardPerformance>
+    <MaxHoursPerWeek on="0">0.0</MaxHoursPerWeek>
+    <ValidShiftTypeSuccessions on="1">
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+    </ValidShiftTypeSuccessions>
+  </Contract>
+  <Contract ID="HeadNurse">
+    <MaxNumAssignments          on="1">20</MaxNumAssignments>
+    <MinNumAssignments          on="1">12</MinNumAssignments>
+    <MaxConsecutiveWorkingDays  on="1">4</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays  on="1">2</MinConsecutiveWorkingDays>
+    <MaxWorkingBankHolidays     on="1">1</MaxWorkingBankHolidays>
+    <MaxConsecutiveFreeDays     on="1">3</MaxConsecutiveFreeDays>
+    <MinConsecutiveFreeDays     on="1">2</MinConsecutiveFreeDays>
+    <MaxConsecutiveWorkingWeekends  on="1">1</MaxConsecutiveWorkingWeekends>
+    <MaxWorkingWeekendsInFourWeeks  on="1">2</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>SaturdaySunday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <IdenticalShiftTypesDuringWeekend>true</IdenticalShiftTypesDuringWeekend>
+    <NoNightShiftBeforeFreeWeekend>true</NoNightShiftBeforeFreeWeekend>
+    <TwoFreeDaysAfterNightShifts>true</TwoFreeDaysAfterNightShifts>
+    <AlternativeSkillCategory>true</AlternativeSkillCategory>
+    <MaxAssignmentsForDayOfWeek on="1">
+    </MaxAssignmentsForDayOfWeek>
+    <ValidNumConsecutiveShiftTypes on="1">
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>1</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>5</Value></NumConsecutiveShiftType>
+    </ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes on="1">
+    </MaxShiftTypes>
+    <MaxShiftTypesPerWeek on="1">
+    </MaxShiftTypesPerWeek>
+    <MaxHoursWorked on="1"  threshold="10.0">160.00</MaxHoursWorked>
+    <MinHoursWorked on="1"  threshold="0">140.00</MinHoursWorked>
+    <StandardPerformance>6.0</StandardPerformance>
+    <MaxHoursPerWeek on="0">0.0</MaxHoursPerWeek>
+    <ValidShiftTypeSuccessions on="1">
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+    </ValidShiftTypeSuccessions>
+  </Contract>
+  <Contract ID="PartTime">
+    <MaxNumAssignments          on="1">14</MaxNumAssignments>
+    <MinNumAssignments          on="1">10</MinNumAssignments>
+    <MaxConsecutiveWorkingDays  on="1">2</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays  on="1">1</MinConsecutiveWorkingDays>
+    <MaxWorkingBankHolidays     on="1">1</MaxWorkingBankHolidays>
+    <MaxConsecutiveFreeDays     on="1">4</MaxConsecutiveFreeDays>
+    <MinConsecutiveFreeDays     on="1">3</MinConsecutiveFreeDays>
+    <MaxConsecutiveWorkingWeekends  on="1">1</MaxConsecutiveWorkingWeekends>
+    <MaxWorkingWeekendsInFourWeeks  on="1">1</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>SaturdaySunday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <IdenticalShiftTypesDuringWeekend>true</IdenticalShiftTypesDuringWeekend>
+    <NoNightShiftBeforeFreeWeekend>true</NoNightShiftBeforeFreeWeekend>
+    <TwoFreeDaysAfterNightShifts>true</TwoFreeDaysAfterNightShifts>
+    <AlternativeSkillCategory>true</AlternativeSkillCategory>
+    <MaxAssignmentsForDayOfWeek on="1">
+      <MaxAssignments><Day>Monday</Day><Value>1</Value></MaxAssignments>
+      <MaxAssignments><Day>Friday</Day><Value>1</Value></MaxAssignments>
+      <MaxAssignments><Day>Saturday</Day><Value>1</Value></MaxAssignments>
+      <MaxAssignments><Day>Sunday</Day><Value>1</Value></MaxAssignments>
+    </MaxAssignmentsForDayOfWeek>
+    <ValidNumConsecutiveShiftTypes on="1">
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+    </ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes on="1">
+      <MaxShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxShiftType>
+      <MaxShiftType><ShiftType>N</ShiftType><Value>3</Value></MaxShiftType>
+    </MaxShiftTypes>
+    <MaxShiftTypesPerWeek on="1">
+      <MaxShiftTypePerWeek><ShiftType>L</ShiftType><Week>3</Week><Value>2</Value></MaxShiftTypePerWeek>
+    </MaxShiftTypesPerWeek>
+    <MaxHoursWorked on="1"  threshold="6.0">108</MaxHoursWorked>
+    <MinHoursWorked on="1"  threshold="0">80</MinHoursWorked>
+    <StandardPerformance>6.0</StandardPerformance>
+    <MaxHoursPerWeek on="0">0.0</MaxHoursPerWeek>
+    <ValidShiftTypeSuccessions on="1">
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+    </ValidShiftTypeSuccessions>
+  </Contract>
+  <Contract ID="Trainee">
+    <MaxNumAssignments          on="1">15</MaxNumAssignments>
+    <MinNumAssignments          on="1">8</MinNumAssignments>
+    <MaxConsecutiveWorkingDays  on="1">4</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays  on="1">2</MinConsecutiveWorkingDays>
+    <MaxWorkingBankHolidays     on="1">2</MaxWorkingBankHolidays>
+    <MaxConsecutiveFreeDays     on="1">4</MaxConsecutiveFreeDays>
+    <MinConsecutiveFreeDays     on="1">2</MinConsecutiveFreeDays>
+    <MaxConsecutiveWorkingWeekends  on="1">2</MaxConsecutiveWorkingWeekends>
+    <MaxWorkingWeekendsInFourWeeks  on="1">2</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>FridaySaturdaySunday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <IdenticalShiftTypesDuringWeekend>false</IdenticalShiftTypesDuringWeekend>
+    <NoNightShiftBeforeFreeWeekend>true</NoNightShiftBeforeFreeWeekend>
+    <TwoFreeDaysAfterNightShifts>true</TwoFreeDaysAfterNightShifts>
+    <AlternativeSkillCategory>true</AlternativeSkillCategory>
+    <MaxAssignmentsForDayOfWeek on="1">
+      <MaxAssignments><Day>Tuesday</Day><Value>1</Value></MaxAssignments>
+      <MaxAssignments><Day>Wednesday</Day><Value>1</Value></MaxAssignments>
+      <MaxAssignments><Day>Thursday</Day><Value>1</Value></MaxAssignments>
+    </MaxAssignmentsForDayOfWeek>
+    <ValidNumConsecutiveShiftTypes on="1">
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>1</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>1</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+    </ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes on="1">
+      <MaxShiftType><ShiftType>N</ShiftType><Value>0</Value></MaxShiftType>
+    </MaxShiftTypes>
+    <MaxShiftTypesPerWeek on="1">
+      <MaxShiftTypePerWeek><ShiftType>E</ShiftType><Week>1</Week><Value>2</Value></MaxShiftTypePerWeek>
+      <MaxShiftTypePerWeek><ShiftType>L</ShiftType><Week>4</Week><Value>2</Value></MaxShiftTypePerWeek>
+    </MaxShiftTypesPerWeek>
+    <MaxHoursWorked on="1"  threshold="10.0">140.00</MaxHoursWorked>
+    <MinHoursWorked on="1"  threshold="0">100.00</MinHoursWorked>
+    <StandardPerformance>6.0</StandardPerformance>
+    <MaxHoursPerWeek on="0">0.0</MaxHoursPerWeek>
+    <ValidShiftTypeSuccessions on="1">
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+    </ValidShiftTypeSuccessions>
+  </Contract>
+  <Contract ID="NurseQ">
+    <MaxNumAssignments          on="1">12</MaxNumAssignments>
+    <MinNumAssignments          on="1">10</MinNumAssignments>
+    <MaxConsecutiveWorkingDays  on="0">4</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays  on="1">2</MinConsecutiveWorkingDays>
+    <MaxWorkingBankHolidays     on="1">2</MaxWorkingBankHolidays>
+    <MaxConsecutiveFreeDays     on="0">4</MaxConsecutiveFreeDays>
+    <MinConsecutiveFreeDays     on="1">2</MinConsecutiveFreeDays>
+    <MaxConsecutiveWorkingWeekends  on="1">2</MaxConsecutiveWorkingWeekends>
+    <MaxWorkingWeekendsInFourWeeks  on="1">2</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>FridaySaturdaySundayMonday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <IdenticalShiftTypesDuringWeekend>true</IdenticalShiftTypesDuringWeekend>
+    <NoNightShiftBeforeFreeWeekend>true</NoNightShiftBeforeFreeWeekend>
+    <TwoFreeDaysAfterNightShifts>true</TwoFreeDaysAfterNightShifts>
+    <AlternativeSkillCategory>true</AlternativeSkillCategory>
+    <MaxAssignmentsForDayOfWeek on="1">
+      <MaxAssignments><Day>Wednesday</Day><Value>2</Value></MaxAssignments>
+      <MaxAssignments><Day>Saturday</Day><Value>2</Value></MaxAssignments>
+      <MaxAssignments><Day>Sunday</Day><Value>2</Value></MaxAssignments>
+    </MaxAssignmentsForDayOfWeek>
+    <ValidNumConsecutiveShiftTypes on="1">
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>N</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+    </ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes on="1">
+      <MaxShiftType><ShiftType>L</ShiftType><Value>6</Value></MaxShiftType>
+      <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+    </MaxShiftTypes>
+    <MaxShiftTypesPerWeek on="1">
+      <MaxShiftTypePerWeek><ShiftType>D2</ShiftType><Week>1</Week><Value>0</Value></MaxShiftTypePerWeek>
+      <MaxShiftTypePerWeek><ShiftType>L</ShiftType><Week>4</Week><Value>2</Value></MaxShiftTypePerWeek>
+    </MaxShiftTypesPerWeek>
+    <MaxHoursWorked on="1"  threshold="10.0">96.00</MaxHoursWorked>
+    <MinHoursWorked on="1"  threshold="0">80.00</MinHoursWorked>
+    <StandardPerformance>6.0</StandardPerformance>
+    <MaxHoursPerWeek on="0">0.0</MaxHoursPerWeek>
+    <ValidShiftTypeSuccessions on="1">
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+    </ValidShiftTypeSuccessions>
+  </Contract>
+  <Contract ID="NurseA">
+    <MaxNumAssignments          on="1">10</MaxNumAssignments>
+    <MinNumAssignments          on="1">10</MinNumAssignments>
+    <MaxConsecutiveWorkingDays  on="1">4</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays  on="1">2</MinConsecutiveWorkingDays>
+    <MaxWorkingBankHolidays     on="1">2</MaxWorkingBankHolidays>
+    <MaxConsecutiveFreeDays     on="0">4</MaxConsecutiveFreeDays>
+    <MinConsecutiveFreeDays     on="1">2</MinConsecutiveFreeDays>
+    <MaxConsecutiveWorkingWeekends  on="1">2</MaxConsecutiveWorkingWeekends>
+    <MaxWorkingWeekendsInFourWeeks  on="1">2</MaxWorkingWeekendsInFourWeeks>
+    <WeekendDefinition>FridaySaturdaySundayMonday</WeekendDefinition>
+    <CompleteWeekends>true</CompleteWeekends>
+    <IdenticalShiftTypesDuringWeekend>true</IdenticalShiftTypesDuringWeekend>
+    <NoNightShiftBeforeFreeWeekend>true</NoNightShiftBeforeFreeWeekend>
+    <TwoFreeDaysAfterNightShifts>true</TwoFreeDaysAfterNightShifts>
+    <AlternativeSkillCategory>true</AlternativeSkillCategory>
+    <MaxAssignmentsForDayOfWeek on="1">
+      <MaxAssignments><Day>Wednesday</Day><Value>2</Value></MaxAssignments>
+      <MaxAssignments><Day>Saturday</Day><Value>2</Value></MaxAssignments>
+      <MaxAssignments><Day>Sunday</Day><Value>2</Value></MaxAssignments>
+    </MaxAssignmentsForDayOfWeek>
+    <ValidNumConsecutiveShiftTypes on="1">
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>E</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D1</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>D2</ShiftType><Value>4</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>L</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></NumConsecutiveShiftType>
+      <NumConsecutiveShiftType><ShiftType>N</ShiftType><Value>3</Value></NumConsecutiveShiftType>
+    </ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes on="1">
+      <MaxShiftType><ShiftType>L</ShiftType><Value>6</Value></MaxShiftType>
+      <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+    </MaxShiftTypes>
+    <MaxShiftTypesPerWeek on="1">
+      <MaxShiftTypePerWeek><ShiftType>D2</ShiftType><Week>1</Week><Value>0</Value></MaxShiftTypePerWeek>
+      <MaxShiftTypePerWeek><ShiftType>L</ShiftType><Week>4</Week><Value>2</Value></MaxShiftTypePerWeek>
+    </MaxShiftTypesPerWeek>
+    <MaxHoursWorked on="1"  threshold="10.0">80.00</MaxHoursWorked>
+    <MinHoursWorked on="1"  threshold="0">64.00</MinHoursWorked>
+    <StandardPerformance>6.0</StandardPerformance>
+    <MaxHoursPerWeek on="0">0.0</MaxHoursPerWeek>
+    <ValidShiftTypeSuccessions on="1">
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>E</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1></ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D1</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>E</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>D2</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>D1</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>D2</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>L</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2></ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2>L</ShiftTypeID2></Succession>
+      <Succession><ShiftTypeID1>N</ShiftTypeID1><ShiftTypeID2>N</ShiftTypeID2></Succession>
+    </ValidShiftTypeSuccessions>
+  </Contract>
+  </Contracts>
+  <Employees>
+    <Employee ID="A">
+    <Name>A</Name>
+    <ContractID>NurseA</ContractID>
+    <EmploymentStartDate>2005-01-18</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="B">
+    <Name>B</Name>
+    <ContractID>HeadNurse</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">HeadNurse</Skill>
+      <Skill Type="Secondary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="C">
+    <Name>C</Name>
+    <ContractID>HeadNurse</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">HeadNurse</Skill>
+      <Skill Type="Secondary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="D">
+    <Name>D</Name>
+    <ContractID>Nurse</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="E">
+    <Name>E</Name>
+    <ContractID>Nurse</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="F">
+    <Name>F</Name>
+    <ContractID>Trainee</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    </Employee>
+    <Employee ID="G">
+    <Name>G</Name>
+    <ContractID>Nurse</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="H">
+    <Name>H</Name>
+    <ContractID>Nurse</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="M">
+    <Name>M</Name>
+    <ContractID>PartTime</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="O">
+    <Name>O</Name>
+    <ContractID>PartTime</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="Q">
+    <Name>Q</Name>
+    <ContractID>NurseQ</ContractID>
+    <EmploymentStartDate>2005-01-03</EmploymentStartDate>
+    <EmploymentEndDate>2005-01-18</EmploymentEndDate>
+    <Skills>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+    <Employee ID="T">
+    <Name>T</Name>
+    <ContractID>HeadNurse</ContractID>
+    <EmploymentStartDate>2005-01-01</EmploymentStartDate>
+    <Skills>
+      <Skill Type="Primary">HeadNurse</Skill>
+      <Skill Type="Primary">Nurse</Skill>
+    </Skills>
+    </Employee>
+  </Employees>
+  <CoverRequirements>
+    <DayOfWeekCover>
+      <Day>Saturday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Sunday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Monday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Tuesday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Wednesday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Thursday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Friday</Day>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DayOfWeekCover>
+    <DateSpecificCover>
+      <Date>2005-01-06</Date>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DateSpecificCover>
+    <DateSpecificCover>
+      <Date>2005-01-07</Date>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>0</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+    </DateSpecificCover>
+    <DateSpecificCover>
+      <Date>2005-01-13</Date>
+      <Cover>
+        <Shift>E</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D1</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>D2</Shift>
+        <Preferred>1</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>L</Shift>
+        <Preferred>3</Preferred>
+      </Cover>
+      <Cover>
+        <Shift>N</Shift>
+        <Preferred>2</Preferred>
+      </Cover>
+    </DateSpecificCover>
+  </CoverRequirements>
+  <MasterWeights>
+    <MinTimeBetweenShifts>5</MinTimeBetweenShifts>
+    <MaxNumAssignments>10</MaxNumAssignments>
+    <MaxConsecutiveWorkingDays>40</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays>5</MinConsecutiveWorkingDays>
+    <MaxWorkingBankHolidays>50</MaxWorkingBankHolidays>
+    <MaxConsecutiveFreeDays>10</MaxConsecutiveFreeDays>
+    <MinConsecutiveFreeDays>10</MinConsecutiveFreeDays>
+    <MaxConsecutiveWorkingWeekends>20</MaxConsecutiveWorkingWeekends>
+    <MaxWorkingWeekendsInFourWeeks>20</MaxWorkingWeekendsInFourWeeks>
+    <CompleteWeekends>20</CompleteWeekends>
+    <IdenticalShiftTypesDuringWeekend>20</IdenticalShiftTypesDuringWeekend>
+    <NoNightShiftBeforeFreeWeekend>20</NoNightShiftBeforeFreeWeekend>
+    <TwoFreeDaysAfterNightShifts>5</TwoFreeDaysAfterNightShifts>
+    <MaxAssignmentsForDayOfWeek>10</MaxAssignmentsForDayOfWeek>
+    <ValidNumConsecutiveShiftTypes>5</ValidNumConsecutiveShiftTypes>
+    <MaxShiftTypes>10</MaxShiftTypes>
+    <MaxShiftTypesPerWeek>5</MaxShiftTypesPerWeek>
+    <MinShiftTypes>0</MinShiftTypes>
+    <MaxHoursWorked>10</MaxHoursWorked>
+    <MinHoursWorked>5</MinHoursWorked>
+    <MaxHoursPerWeek>0</MaxHoursPerWeek>
+    <ValidShiftTypeSuccessions>5</ValidShiftTypeSuccessions>
+    <AlternativeSkillCategory>10</AlternativeSkillCategory>
+    <Tutorship>100</Tutorship>
+    <WorkSeparately>80</WorkSeparately>
+    <PrefOverStaffing>10000</PrefOverStaffing>
+    <PrefUnderStaffing>10000</PrefUnderStaffing>
+    <SkilledShifts>10000</SkilledShifts>
+    <EmployeeAvailability>10000</EmployeeAvailability>
+  </MasterWeights>
+  <DayOffRequests>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>B</EmployeeID>
+      <Date>2005-01-03</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>B</EmployeeID>
+      <Date>2005-01-04</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>B</EmployeeID>
+      <Date>2005-01-05</Date>
+    </DayOff>
+    <DayOff weight="10" holiday="true">
+      <EmployeeID>B</EmployeeID>
+      <Date>2005-01-24</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>A</EmployeeID>
+      <Date>2005-01-20</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>F</EmployeeID>
+      <Date>2005-01-20</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>C</EmployeeID>
+      <Date>2005-01-10</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>C</EmployeeID>
+      <Date>2005-01-11</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>C</EmployeeID>
+      <Date>2005-01-12</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>C</EmployeeID>
+      <Date>2005-01-13</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>C</EmployeeID>
+      <Date>2005-01-14</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>C</EmployeeID>
+      <Date>2005-01-15</Date>
+    </DayOff>
+    <DayOff weight="1000" holiday="true">
+      <EmployeeID>C</EmployeeID>
+      <Date>2005-01-16</Date>
+    </DayOff>
+  </DayOffRequests>
+  <DayOnRequests>
+  </DayOnRequests>
+  <ShiftOffRequests>
+    <ShiftOff weight="2">
+      <ShiftTypeID>D1</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2005-01-12</Date>
+    </ShiftOff>
+    <ShiftOff weight="2">
+      <ShiftTypeID>D1</ShiftTypeID>
+      <EmployeeID>B</EmployeeID>
+      <Date>2005-01-19</Date>
+    </ShiftOff>
+    <ShiftOff weight="7">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2005-01-27</Date>
+    </ShiftOff>
+    <ShiftOff weight="7">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>M</EmployeeID>
+      <Date>2005-01-28</Date>
+    </ShiftOff>
+  </ShiftOffRequests>
+  <ShiftOnRequests>
+    <ShiftOn weight="3">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>O</EmployeeID>
+      <Date>2005-01-29</Date>
+    </ShiftOn>
+    <ShiftOn weight="3">
+      <ShiftTypeID>E</ShiftTypeID>
+      <EmployeeID>O</EmployeeID>
+      <Date>2005-01-30</Date>
+    </ShiftOn>
+  </ShiftOnRequests>
+  <Partnerships>
+    <Partnership Type="Tutorship">
+      <Employee1ID>D</Employee1ID>
+      <Employee2ID>A</Employee2ID>
+    </Partnership>
+    <Partnership Type="Tutorship">
+      <Employee1ID>G</Employee1ID>
+      <Employee2ID>B</Employee2ID>
+    </Partnership>
+    <Partnership Type="Tutorship">
+      <Employee1ID>B</Employee1ID>
+      <Employee2ID>G</Employee2ID>
+    </Partnership>
+    <Partnership Type="Separation">
+      <Employee1ID>G</Employee1ID>
+      <Employee2ID>H</Employee2ID>
+    </Partnership>
+    <Partnership Type="Separation">
+      <Employee1ID>H</Employee1ID>
+      <Employee2ID>G</Employee2ID>
+    </Partnership>
+  </Partnerships>
+  <BankHolidays>
+    <BankHoliday ID="1JAN">
+      <Name>New Year</Name>
+      <Date>2005-01-01</Date>
+    </BankHoliday>
+    <BankHoliday ID="FictionalHoliday">
+      <Name>Fictional Holiday</Name>
+      <Date>2005-01-17</Date>
+    </BankHoliday>
+  </BankHolidays>
+
+  <SchedulingHistory></SchedulingHistory>
+
+  
+</SchedulingPeriod>
