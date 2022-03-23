@@ -11,9 +11,9 @@ Hyper-heuristic implementers might find this environment helpful for comparing o
 
 See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder. 
 
-The following table shows results from competition run with 60s timeout and 10 repeats.
+The following table shows results from competition run with 120s timeout and 5 repeats.
 
-![Hyper-heuristics](docs/heatmap_60_10.svg)
+![Hyper-heuristics](docs/heatmap_120_5.svg)
 
 ## Build and run the project
 ```

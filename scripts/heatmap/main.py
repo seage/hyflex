@@ -12,7 +12,7 @@ from numpy import double
 supported_problems = ["SAT", "TSP", "FSP", "QAP"]
 
 c = ["darkred", "red", "yellow", "green", "darkgreen"]
-v = [0, .5, .65, .85, 1]
+v = [0, .5, .75, .98, 1]
 l = list(zip(v, c))
 cmap = LinearSegmentedColormap.from_list('rg',l, N=256)
 
