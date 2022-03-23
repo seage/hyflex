@@ -89,5 +89,5 @@ The final result will be stores as xml file in the `results/competiton1` folder
 ./scripts/create-heatmap.sh competition1
 ```
 
-The result page will be stored in the competition1 folder as the `heatmap.svg` file.
+The heat map will be stored in the `./results/competition1/heatmap.svg` file.
 
