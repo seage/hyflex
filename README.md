@@ -81,13 +81,13 @@ Evaluate the competition with id `competition1`
 ./scripts/run.sh evaluation --id competition1
 ```
 
-The final result will be stores as xml file in the competiton1 folder
+The final result will be stores as xml file in the `results/competiton1` folder
 
 
-### Create a page with a heat map of competition results
+### Create a heat map of competition results
 ```
-./scripts/build-page.sh competition1
+./scripts/create-heatmap.sh competition1
 ```
 
-The result page will be stored in the competition1 folder as index.html file.
+The result page will be stored in the competition1 folder as the `heatmap.svg` file.
 
