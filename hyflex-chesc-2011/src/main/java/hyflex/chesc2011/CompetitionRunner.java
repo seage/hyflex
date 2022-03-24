@@ -40,7 +40,7 @@ import johnston.JohnstonBiasILS;
 import johnston.JohnstonDynamicILS;
 import laroseml.LaroseML;
 import lehrbaum.LehrbaumHAHA;
-import iridia.MyHyperHeuristic;
+import iridia.CandidateHyperHeuristic;
 import khmassi.Ant_Q;
 import shafi.ShafiXCJ;
 import aco.ACO_HH;
@@ -219,7 +219,7 @@ public class CompetitionRunner extends Thread {
         h = new LaroseML(rnd.nextLong());
         break;
       case "NAHH":
-        h = new MyHyperHeuristic(rnd.nextLong());
+        h = new CandidateHyperHeuristic(rnd.nextLong());
         break;
       case "PHUNTER":
         h = new PearlHunter(rnd.nextLong());

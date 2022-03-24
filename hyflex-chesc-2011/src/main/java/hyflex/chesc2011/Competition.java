@@ -194,6 +194,10 @@ public class Competition {
   public static Double getMedianFromInstanceResults(List<Double> instanceResults) throws Exception {
     int middle = 0;
 
+    if (instanceResults.size() == 0) {
+      return Double.MAX_VALUE;
+    }
+
     if (instanceResults.size() == 1) {
       return instanceResults.get(0);
     }
