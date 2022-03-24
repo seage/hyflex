@@ -199,7 +199,7 @@ abstract public class BasicProblemDomain<T extends BasicSolution<P>, P extends B
 			case MUTATION: return llhs_mut;
 			case RUIN_RECREATE: return llhs_rc;
 			case CROSSOVER: return llhs_xo;
-			default: return new int[0];
+			default: return null;
 		}
 	}
 
