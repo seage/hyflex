@@ -1,13 +1,26 @@
 # HyFlex
 HyFlex (Hyper-heuristics Flexible framework) is a Java object oriented framework for the implementation and comparison of different iterative general-purpose heuristic search algorithms (also called hyper-heuristics).
 
-See the HyFlex web site for details: http://www.asap.cs.nott.ac.uk/external/chesc2011 
+See the HyFlex web site for details: http://www.asap.cs.nott.ac.uk/external/chesc2011 - [web archive](https://web.archive.org/web/20210518021139/http://www.asap.cs.nott.ac.uk/external/chesc2011/)
 
 The goal of this project is to collect hyper-heurisics from CHeSC 2011 (Cross-domain Heuristic Search Challenge) and enable  to reproduce the results of the challenge.
 
 Hyper-heuristic implementers might find this environment helpful for comparing own results with other approaches.
 
 ## Unit metric
+We have developed a metric that assigns to the hyper-heuristic's results quality a number from the unit interval `<0, 1>` (that's why we call it the unit metric).
+
+The lower bound value of the interval corresponds to the quality of an easily obtainable solution (e.g. a greedy solution) and the upper bound is the quality of the optimal solution. 
+
+The more the hyper-heuristic gets the evaluation closer to `1.0` the better results it provides closer to the optimal solutions.
+
+On the other hand closer to `0.0`, the hyper-heuristic is not much better that a greedy solution generator.
+
+The overall unit metric value is an aggregation of partial evaluations.
+First, solutions for each problem instances (provided by the hyper-heuristic) are evaluated and mapped onto the unit interval. 
+Second, the problem evaluation is an aggregation of the problem instances evaluations obtained in the previous step. The weighted mean is calculated with weights corresponding to instance sizes.
+Finally, the overall value is obtained as a simple mean of the problem evaluations. See the formula below.
+
 ![Unit-metric](docs/unit-metric/unit-metric-formula.svg)
 
 ## List of available hyper-heuristics
@@ -15,20 +28,6 @@ Hyper-heuristic implementers might find this environment helpful for comparing o
 See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder. 
 
 The following table shows evaluated solutions of each hhs from competition run with 120s timeout and 5 repeats.
-
-Every hhs solves 5 of instances of each domain. The results are then evaluated using our new Unit metric.
-
-The equation of Unit metric is quite simple. All the neccessary parts for it are stored in metadata. For each instance of problem there is the optimal solution, greedy solution and few more infos. 
-
-**Instance = unit_metric_instance(instance, optimal, greedy) e [0,1]**
-
-After having evaluated results the overall result of each domain is then calculated using weighted mean. Some instances are larger than other, therefore the size is used as weight.
-
-**Problem = weighted_mean({allUi(instance_i}, instances_sizes)**
-
-And finaly with all evaluated domain the score of the hhs is calculated using simple mean.
-
-**Score = 1/n * sum(ProblemScores)**
 
 ![Hyper-heuristics](docs/heatmap_120_5.svg)
 

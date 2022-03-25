@@ -1,4 +1,4 @@
-<svg viewBox="0 0 850 800" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 850 850" xmlns="http://www.w3.org/2000/svg">
     <style>
         table {
             border: 1px solid;
@@ -110,6 +110,24 @@
                         
                             <tr>
                                 <td>3</td>
+                                <td id="hh_name">NAHH</td>
+                                <td id="hh_name">Franco Mascia</td>
+
+                                
+                                <td id="hh_score" style="background-color:rgba(60.434782608695684, 158.0988917306053, 0.0, 1)">0.92324</td>
+                                
+                                <td id="hh_score" style="background-color:rgba(182.17391304347828, 218.72975277067349, 0.0, 1)">0.81596</td>
+                                
+                                <td id="hh_score" style="background-color:rgba(99.56521739130437, 177.58738277919863, 0.0, 1)">0.88814</td>
+                                
+                                <td id="hh_score" style="background-color:rgba(208.2608695652174, 231.72208013640238, 0.0, 1)">0.7921</td>
+                                
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba(138.69565217391306, 197.075873827792, 0.0, 1)">0.85486</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>4</td>
                                 <td id="hh_name">VNS-TW</td>
                                 <td id="hh_name">Ping-Che Hsiao</td>
 
@@ -127,7 +145,7 @@
                             </tr>
                         
                             <tr>
-                                <td>4</td>
+                                <td>5</td>
                                 <td id="hh_name">HAEA</td>
                                 <td id="hh_name">Jonatan Gómez</td>
 
@@ -145,7 +163,7 @@
                             </tr>
                         
                             <tr>
-                                <td>5</td>
+                                <td>6</td>
                                 <td id="hh_name">ML</td>
                                 <td id="hh_name">Mathieu Larose</td>
 
@@ -163,7 +181,7 @@
                             </tr>
                         
                             <tr>
-                                <td>6</td>
+                                <td>7</td>
                                 <td id="hh_name">HAHA</td>
                                 <td id="hh_name">Andreas Lehrbaum</td>
 
@@ -181,7 +199,7 @@
                             </tr>
                         
                             <tr>
-                                <td>7</td>
+                                <td>8</td>
                                 <td id="hh_name">ISEA</td>
                                 <td id="hh_name">Jiří Kubalík</td>
 
@@ -199,7 +217,7 @@
                             </tr>
                         
                             <tr>
-                                <td>8</td>
+                                <td>9</td>
                                 <td id="hh_name">EPH</td>
                                 <td id="hh_name">David Meignan</td>
 
@@ -217,7 +235,7 @@
                             </tr>
                         
                             <tr>
-                                <td>9</td>
+                                <td>10</td>
                                 <td id="hh_name">XCJ</td>
                                 <td id="hh_name">Kamran Shafi</td>
 
@@ -235,7 +253,7 @@
                             </tr>
                         
                             <tr>
-                                <td>10</td>
+                                <td>11</td>
                                 <td id="hh_name">PHUNTER</td>
                                 <td id="hh_name">Fan Xue</td>
 
@@ -253,7 +271,7 @@
                             </tr>
                         
                             <tr>
-                                <td>11</td>
+                                <td>12</td>
                                 <td id="hh_name">MCHH-S</td>
                                 <td id="hh_name">Kent McClymont</td>
 
@@ -271,7 +289,7 @@
                             </tr>
                         
                             <tr>
-                                <td>12</td>
+                                <td>13</td>
                                 <td id="hh_name">KSATS-HH</td>
                                 <td id="hh_name">Kevin Sim</td>
 
@@ -289,7 +307,7 @@
                             </tr>
                         
                             <tr>
-                                <td>13</td>
+                                <td>14</td>
                                 <td id="hh_name">SA-ILS</td>
                                 <td id="hh_name">He Jiang</td>
 
@@ -307,7 +325,7 @@
                             </tr>
                         
                             <tr>
-                                <td>14</td>
+                                <td>15</td>
                                 <td id="hh_name">GenHive</td>
                                 <td id="hh_name">Michal Frankiewicz</td>
 
@@ -325,7 +343,7 @@
                             </tr>
                         
                             <tr>
-                                <td>15</td>
+                                <td>16</td>
                                 <td id="hh_name">BiasILS</td>
                                 <td id="hh_name">Mark Johnston</td>
 
@@ -343,7 +361,7 @@
                             </tr>
                         
                             <tr>
-                                <td>16</td>
+                                <td>17</td>
                                 <td id="hh_name">DynILS</td>
                                 <td id="hh_name">Mark Johnston</td>
 
@@ -361,7 +379,7 @@
                             </tr>
                         
                             <tr>
-                                <td>17</td>
+                                <td>18</td>
                                 <td id="hh_name">GISS</td>
                                 <td id="hh_name">Alberto Acuna</td>
 
@@ -379,7 +397,7 @@
                             </tr>
                         
                             <tr>
-                                <td>18</td>
+                                <td>19</td>
                                 <td id="hh_name">Ant-Q</td>
                                 <td id="hh_name">Imen Khamassi</td>
 
@@ -397,7 +415,7 @@
                             </tr>
                         
                             <tr>
-                                <td>19</td>
+                                <td>20</td>
                                 <td id="hh_name">Clean</td>
                                 <td id="hh_name">Mohamed Bader-El-Den</td>
 
@@ -415,7 +433,7 @@
                             </tr>
                         
                             <tr>
-                                <td>20</td>
+                                <td>21</td>
                                 <td id="hh_name">Clean-2</td>
                                 <td id="hh_name">Mohamed Bader-El-Den</td>
 
