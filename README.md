@@ -17,11 +17,15 @@ Every hhs solves 5 of instances of each domain. The results are then evaluated u
 
 The equation of Unit metric is quite simple. All the neccessary parts for it are stored in metadata. For each instance of problem there is the optimal solution, greedy solution and few more infos. 
 
-**Ui(instance) = unit_metric_instance(instance, optimal, greedy) e [0,1]**
+**Instance = unit_metric_instance(instance, optimal, greedy) e [0,1]**
 
 After having evaluated results the overall result of each domain is then calculated using weighted mean. Some instances are larger than other, therefore the size is used as weight.
 
-**Up(problem) = weighted_mean({allUi(instance_i}, instances_sizes)**
+**Problem = weighted_mean({allUi(instance_i}, instances_sizes)**
+
+And finaly with all evaluated domain the score of the hhs is calculated using simple mean.
+
+**Score = 1/n * sum(ProblemScores)**
 
 ![Hyper-heuristics](docs/heatmap_120_5.svg)
 
