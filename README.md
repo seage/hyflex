@@ -17,7 +17,7 @@ The more the hyper-heuristic gets the evaluation closer to `1.0` the better resu
 On the other hand closer to `0.0`, the hyper-heuristic is not much better that a greedy solution generator.
 
 The overall unit metric value is an aggregation of partial evaluations.
-First, solutions for each problem instances (provided by the hyper-heuristic) are evaluated and mapped onto the unit interval. 
+First, solutions for each problem instance (provided by the hyper-heuristic) are evaluated and mapped onto the unit interval. 
 Second, the problem evaluation is an aggregation of the problem instances evaluations obtained in the previous step. The weighted mean is calculated with weights corresponding to instance sizes.
 Finally, the overall value is obtained as a simple mean of the problem evaluations. See the formula below.
 
@@ -31,6 +31,7 @@ The following table shows evaluated solutions of each hhs from competition run w
 
 ![Hyper-heuristics](docs/heatmap_120_5.svg)
 
+---
 ## Build and run the project
 ```
 ./scripts/build.sh
