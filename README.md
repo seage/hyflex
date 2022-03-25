@@ -8,13 +8,13 @@ The goal of this project is to collect hyper-heurisics from CHeSC 2011 (Cross-do
 Hyper-heuristic implementers might find this environment helpful for comparing own results with other approaches.
 
 ## Unit metric
-We have developed a metric that assigns to the hyper-heuristic's results quality a number from the unit interval `<0, 1>` (that's why we call it the unit metric).
+We have developed a metric that assigns to the hyper-heuristic's results quality a number from the unit interval `<0,1>` (that's why we call it the unit metric).
 
 The lower bound value of the interval corresponds to the quality of an easily obtainable solution (e.g. a greedy solution) and the upper bound is the quality of the optimal solution. 
 
 The more the hyper-heuristic gets the evaluation closer to `1.0` the better results it provides closer to the optimal solutions.
 
-On the other hand closer to `0.0`, the hyper-heuristic is not much better that a greedy solution generator.
+On the other hand, closer to the `0.0` value the hyper-heuristic is not much better than a greedy solution generator.
 
 The overall unit metric value is an aggregation of partial evaluations.
 First, solutions for each problem instance (provided by the hyper-heuristic) are evaluated and mapped onto the unit interval. 
@@ -24,10 +24,9 @@ Finally, the overall value is obtained as a simple mean of the problem evaluatio
 ![Unit-metric](docs/unit-metric/unit-metric-formula.svg)
 
 ## List of available hyper-heuristics
+The following is the list of CHeSC 2011 competition hyper-heuristics that are available in this repository. See details in the `hyflex-hyperheuristics` folder for each hyper-heuristic.
 
-See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder. 
-
-The following table shows evaluated solutions of each hhs from competition run with 120s timeout and 5 repeats.
+The table shows evaluated solutions for each hyper-heuristic (each run with 120s timeout and 5 repeats) using our unit metric.
 
 ![Hyper-heuristics](docs/heatmap_120_5.svg)
 
