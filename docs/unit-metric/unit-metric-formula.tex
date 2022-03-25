@@ -1,0 +1,10 @@
+\begin{aligned}
+& U = \frac{1}{|P|} \sum_{i=1}^{|P|}{U_{i}}\in \left\langle 0,1 \right\rangle
+&&\text{ where } P\in\{ SAT, TSP, FSP, QAP,... \}
+\\
+\\
+&U_i = \frac{\sum_{j=1}^{|P_i|}{w_{P_ij}U_{P_ij}}}{\sum_{j=1}^{|P_i|}{w_{P_ij}}} &&\text{ where } P_i \text{ are instances of } P \text{, } w_{P_ij} \text{ is size of }j\text{-th instance}
+\\
+\\
+&U_{P_ij} = 1-\frac{f_{P_i}(solution_{P_ij}) - optimum_{P_i}}{greedy_{P_i} - optimum_{P_i}} &&\text{ where } f_{P_i} \text{ is objective function of } P_i
+\end{aligned}
