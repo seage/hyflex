@@ -8,7 +8,7 @@ The goal of this project is to collect hyper-heurisics from CHeSC 2011 (Cross-do
 Hyper-heuristic implementers might find this environment helpful for comparing own results with other approaches.
 
 ## Unit metric
-We have developed a metric that assigns to the hyper-heuristic's results quality a number from the unit interval `<0,1>` (that's why we call it the unit metric).
+We have developed a metric that assigns a number from the unit interval `<0,1>` (that's why we call it the unit metric) to the hyper-heuristic's results quality.
 
 The lower bound value of the interval corresponds to the quality of an easily obtainable solution (e.g. a greedy solution) and the upper bound is the quality of the optimal solution. 
 
