@@ -7,6 +7,9 @@ The goal of this project is to collect hyper-heurisics from CHeSC 2011 (Cross-do
 
 Hyper-heuristic implementers might find this environment helpful for comparing own results with other approaches.
 
+## Unit metric
+![Unit-metric](docs/unit-metric/unit-metric-formula.svg)
+
 ## List of available hyper-heuristics
 
 See details for each hyper-heuristic in the `hyflex-hyperheuristics` folder. 
