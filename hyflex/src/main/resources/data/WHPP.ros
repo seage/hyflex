@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod ID="WHPP" 
+              OrganisationID="Weil, Heus, Francois and Poujade" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+  <StartDate>1995-07-03</StartDate>
+  <EndDate>1995-07-16</EndDate>
+  <ShiftTypes>
+    <Shift ID="D">
+      <Colour>Red</Colour>
+      <Description>Day</Description>
+      <StartTime>08:00:00</StartTime>
+      <EndTime>16:00:00</EndTime>
+      <HoursWorked>7.0</HoursWorked>
+    </Shift>
+    <Shift ID="E">
+      <Colour>Green</Colour>
+      <Description>Evening</Description>
+      <StartTime>14:00:00</StartTime>
+      <EndTime>22:00:00</EndTime>
+      <HoursWorked>7.0</HoursWorked>
+    </Shift>
+    <Shift ID="N">
+      <Colour>Gray</Colour>
+      <Description>Night</Description>
+      <StartTime>22:00:00</StartTime>
+      <EndTime>08:00:00</EndTime>
+      <HoursWorked>10.0</HoursWorked>
+    </Shift>
+  </ShiftTypes>
+  
+  <ShiftGroups>
+    <ShiftGroup ID="All">
+      <Shift>N</Shift>
+      <Shift>E</Shift>
+      <Shift>D</Shift>
+    </ShiftGroup>
+  </ShiftGroups>
+  
+  <Contracts>
+  <Contract ID="Standard">
+    <MaxShiftsPerDay weight="1000">1</MaxShiftsPerDay>
+    <MaxHoursWorked on="1" weight="1100">70</MaxHoursWorked>
+      <BadPatterns>
+         <Pattern weight="1200">
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+         </Pattern>
+         <Pattern weight="1300">
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <ShiftGroup>All</ShiftGroup>
+           <Shift></Shift>
+           <ShiftGroup>All</ShiftGroup>
+         </Pattern>
+         <Pattern weight="1400">
+           <Shift>N</Shift>
+           <Shift>N</Shift>
+           <Shift>N</Shift>
+           <Shift>N</Shift>
+           <Shift></Shift>
+           <ShiftGroup>All</ShiftGroup>
+         </Pattern>
+         <Pattern weight="1500">
+           <Shift>N</Shift>
+           <Shift>N</Shift>
+           <Shift>N</Shift>
+           <Shift>N</Shift>
+           <Shift>N</Shift>
+         </Pattern>
+         <Pattern weight="1600">
+           <Shift>N</Shift>
+           <Shift>D</Shift>
+         </Pattern>
+         <Pattern weight="1700">
+           <Shift>N</Shift>
+           <Shift>E</Shift>
+         </Pattern>
+         <Pattern weight="1800">
+           <Shift>E</Shift>
+           <Shift>D</Shift>
+         </Pattern>
+         <Pattern weight="1">
+           <ShiftGroup>All</ShiftGroup>
+           <Shift></Shift>
+           <ShiftGroup>All</ShiftGroup>
+         </Pattern>
+         <Pattern weight="1">
+           <Shift></Shift>
+           <ShiftGroup>All</ShiftGroup>
+           <Shift></Shift>
+         </Pattern>
+         <Pattern weight="1">
+          <StartDay>Saturday</StartDay>
+          <ShiftGroup>All</ShiftGroup>
+          <Shift></Shift>
+         </Pattern>
+         <Pattern weight="1">
+          <StartDay>Saturday</StartDay>
+          <Shift></Shift>
+          <ShiftGroup>All</ShiftGroup>
+         </Pattern>
+      </BadPatterns>
+      
+      <MaxConsecutiveWorkingWeekends on="1" weight="1">1</MaxConsecutiveWorkingWeekends> <!-- Can use patterns instead? -->
+   
+    </Contract>
+  </Contracts>
+  <Employees>
+    <Employee ID="1">
+    <Name>1</Name>
+    <ContractID>Standard</ContractID>
+    </Employee>
+    <Employee ID="2">
+    <Name>2</Name>
+    <ContractID>Standard</ContractID>
+    </Employee>
+    <Employee ID="3">
+    <Name>3</Name>
+    <ContractID>Standard</ContractID>
+    </Employee>
+    <Employee ID="4">
+    <Name>4</Name>
+    <ContractID>Standard</ContractID>
+    </Employee>
+    <Employee ID="5">
+    <Name>5</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="6">
+    <Name>6</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="7">
+    <Name>7</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="8">
+    <Name>8</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="9">
+    <Name>9</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="10">
+    <Name>10</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="11">
+    <Name>11</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="12">
+    <Name>12</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="13">
+    <Name>13</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="14">
+    <Name>14</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="15">
+    <Name>15</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="16">
+    <Name>16</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="17">
+    <Name>17</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="18">
+    <Name>18</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="19">
+    <Name>19</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="20">
+    <Name>20</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="21">
+    <Name>21</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="22">
+    <Name>22</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="23">
+    <Name>23</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="24">
+    <Name>24</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="25">
+    <Name>25</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="26">
+    <Name>26</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="27">
+    <Name>27</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="28">
+    <Name>28</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="29">
+    <Name>29</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+    <Employee ID="30">
+    <Name>30</Name>
+    <ContractID>Standard</ContractID>
+    
+    </Employee>
+  </Employees>
+  <CoverRequirements>
+    <DayOfWeekCover>
+      <Day>Saturday</Day>
+      <Cover><Shift>D</Shift><Preferred>5</Preferred></Cover>
+      <Cover><Shift>E</Shift><Preferred>5</Preferred></Cover>
+      <Cover><Shift>N</Shift><Preferred>5</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Sunday</Day>
+      <Cover><Shift>D</Shift><Preferred>5</Preferred></Cover>
+      <Cover><Shift>E</Shift><Preferred>5</Preferred></Cover>
+      <Cover><Shift>N</Shift><Preferred>5</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Monday</Day>
+      <Cover><Shift>D</Shift><Preferred>10</Preferred></Cover>
+      <Cover><Shift>E</Shift><Preferred>10</Preferred></Cover>
+      <Cover><Shift>N</Shift><Preferred>5</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Tuesday</Day>
+      <Cover><Shift>D</Shift><Preferred>10</Preferred></Cover>
+      <Cover><Shift>E</Shift><Preferred>10</Preferred></Cover>
+      <Cover><Shift>N</Shift><Preferred>5</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Wednesday</Day>
+      <Cover><Shift>D</Shift><Preferred>5</Preferred></Cover>
+      <Cover><Shift>E</Shift><Preferred>10</Preferred></Cover>
+      <Cover><Shift>N</Shift><Preferred>5</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Thursday</Day>
+      <Cover><Shift>D</Shift><Preferred>5</Preferred></Cover>
+      <Cover><Shift>E</Shift><Preferred>5</Preferred></Cover>
+      <Cover><Shift>N</Shift><Preferred>5</Preferred></Cover>
+    </DayOfWeekCover>
+    <DayOfWeekCover>
+      <Day>Friday</Day>
+      <Cover><Shift>D</Shift><Preferred>5</Preferred></Cover>
+      <Cover><Shift>E</Shift><Preferred>10</Preferred></Cover>
+      <Cover><Shift>N</Shift><Preferred>5</Preferred></Cover>
+    </DayOfWeekCover>
+  </CoverRequirements>
+  
+  <MasterWeights>
+    <PrefOverStaffing>1000</PrefOverStaffing>
+    <PrefUnderStaffing>1000</PrefUnderStaffing>
+  </MasterWeights>
+
+</SchedulingPeriod>

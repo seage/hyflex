@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SchedulingPeriod ID="LLR" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+              
+  <StartDate>2002-09-02</StartDate>
+  <EndDate>2002-09-08</EndDate>
+  
+  <ShiftTypes>
+    <Shift ID="3">
+      <StartTime>22:00:00</StartTime>
+      <EndTime>06:00:00</EndTime>
+      <Name>Night</Name>
+      <Label>N</Label>
+      <Colour>#FFA74F</Colour>
+      <HoursWorked>8</HoursWorked>
+    </Shift>
+    <Shift ID="1">
+      <StartTime>06:00:00</StartTime>
+      <EndTime>14:00:00</EndTime>
+      <Name>Morning</Name>
+      <Label>A</Label>
+      <Colour>#FF595E</Colour>
+      <HoursWorked>8</HoursWorked>
+    </Shift>
+    <Shift ID="2">
+      <StartTime>14:00:00</StartTime>
+      <EndTime>22:00:00</EndTime>
+      <Name>Afternoon</Name>
+      <Label>P</Label>
+      <Colour>#FFFF80</Colour>
+      <HoursWorked>8</HoursWorked>
+    </Shift>
+  </ShiftTypes>
+
+  
+ <Contracts>
+   <Contract ID="LLR">
+    <Label>LLR</Label>
+    <MaxShiftTypes weight="10000">
+     <MaxShiftType><ShiftType>3</ShiftType><Value>1</Value></MaxShiftType>
+    </MaxShiftTypes>
+    <MaxNumAssignments weight="10000">5</MaxNumAssignments>
+    <MaxShiftsPerDay weight="10000">1</MaxShiftsPerDay>
+    <BadPatterns>
+     <Pattern weight="10000"><Shift>3</Shift><Shift>1</Shift></Pattern>
+     <Pattern weight="6"><Shift>2</Shift><Shift>1</Shift></Pattern>
+     <Pattern weight="5"><Shift>1</Shift><Shift>$</Shift></Pattern>
+     <Pattern weight="5"><Shift></Shift><Shift></Shift></Pattern>
+     <Pattern weight="5"><Shift></Shift><Shift>1</Shift></Pattern>
+     <Pattern weight="1"><Shift></Shift><Shift>2</Shift></Pattern>
+    </BadPatterns>
+   </Contract>
+ </Contracts>
+  
+  <Employees>
+    <Employee ID="001">
+      <Name>001</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="002">
+      <Name>002</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="003">
+      <Name>003</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="004">
+      <Name>004</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="005">
+      <Name>005</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="006">
+      <Name>006</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="007">
+      <Name>007</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="008">
+      <Name>008</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="009">
+      <Name>009</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="010">
+      <Name>010</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="011">
+      <Name>011</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="012">
+      <Name>012</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="013">
+      <Name>013</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="014">
+      <Name>014</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="015">
+      <Name>015</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="016">
+      <Name>016</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="017">
+      <Name>017</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="018">
+      <Name>018</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="019">
+      <Name>019</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="020">
+      <Name>020</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="021">
+      <Name>021</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="022">
+      <Name>022</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="023">
+      <Name>023</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="024">
+      <Name>024</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="025">
+      <Name>025</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="026">
+      <Name>026</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+    <Employee ID="027">
+      <Name>027</Name>
+      <ContractID>LLR</ContractID>
+    </Employee>
+  </Employees>
+  
+  
+   
+<CoverRequirements>
+ <DayOfWeekCover>
+  <Day>Monday</Day>
+  <Cover><Shift>1</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>2</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>3</Shift><Preferred>3</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Tuesday</Day>
+  <Cover><Shift>1</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>2</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>3</Shift><Preferred>3</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Wednesday</Day>
+  <Cover><Shift>1</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>2</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>3</Shift><Preferred>3</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Thursday</Day>
+  <Cover><Shift>1</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>2</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>3</Shift><Preferred>3</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Friday</Day>
+  <Cover><Shift>1</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>2</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>3</Shift><Preferred>3</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Saturday</Day>
+  <Cover><Shift>1</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>2</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>3</Shift><Preferred>3</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Sunday</Day>
+  <Cover><Shift>1</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>2</Shift><Preferred>6</Preferred></Cover>
+  <Cover><Shift>3</Shift><Preferred>3</Preferred></Cover>
+ </DayOfWeekCover>
+</CoverRequirements>
+
+<MasterWeights>
+<MinUnderStaffing>10000</MinUnderStaffing>
+<MaxOverStaffing>10000</MaxOverStaffing>
+<PrefOverStaffing>10000</PrefOverStaffing>
+<PrefUnderStaffing>10000</PrefUnderStaffing>
+</MasterWeights>
+
+  
+  <DayOffRequests>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>006</EmployeeID>
+  <Date>2002-09-08</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>010</EmployeeID>
+  <Date>2002-09-08</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>010</EmployeeID>
+  <Date>2002-09-07</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>010</EmployeeID>
+  <Date>2002-09-06</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>012</EmployeeID>
+  <Date>2002-09-03</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>014</EmployeeID>
+  <Date>2002-09-08</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>014</EmployeeID>
+  <Date>2002-09-07</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>014</EmployeeID>
+  <Date>2002-09-06</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>014</EmployeeID>
+  <Date>2002-09-05</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>014</EmployeeID>
+  <Date>2002-09-04</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>014</EmployeeID>
+  <Date>2002-09-03</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>014</EmployeeID>
+  <Date>2002-09-02</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>019</EmployeeID>
+  <Date>2002-09-04</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>021</EmployeeID>
+  <Date>2002-09-07</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>023</EmployeeID>
+  <Date>2002-09-08</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>023</EmployeeID>
+  <Date>2002-09-07</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>023</EmployeeID>
+  <Date>2002-09-06</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>023</EmployeeID>
+  <Date>2002-09-05</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>023</EmployeeID>
+  <Date>2002-09-04</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>023</EmployeeID>
+  <Date>2002-09-03</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>023</EmployeeID>
+  <Date>2002-09-02</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>025</EmployeeID>
+  <Date>2002-09-08</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>025</EmployeeID>
+  <Date>2002-09-07</Date>
+ </DayOff>
+ <DayOff weight="10" holiday="false" working="false">
+  <EmployeeID>027</EmployeeID>
+  <Date>2002-09-08</Date>
+ </DayOff>
+</DayOffRequests>
+
+<DayOnRequests>
+</DayOnRequests>
+
+<ShiftOffRequests>
+</ShiftOffRequests>
+
+<ShiftOnRequests>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>001</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>001</EmployeeID>
+  <Date>2002-09-07</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>002</EmployeeID>
+  <Date>2002-09-03</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>003</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>003</EmployeeID>
+  <Date>2002-09-06</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>004</EmployeeID>
+  <Date>2002-09-03</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>004</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>006</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>006</EmployeeID>
+  <Date>2002-09-06</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>006</EmployeeID>
+  <Date>2002-09-05</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>007</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>007</EmployeeID>
+  <Date>2002-09-08</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>008</EmployeeID>
+  <Date>2002-09-03</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>008</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>010</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>011</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>013</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>015</EmployeeID>
+  <Date>2002-09-08</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>016</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>016</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>016</EmployeeID>
+  <Date>2002-09-05</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>017</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>017</EmployeeID>
+  <Date>2002-09-08</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>019</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>019</EmployeeID>
+  <Date>2002-09-05</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>020</EmployeeID>
+  <Date>2002-09-06</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>021</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>3</ShiftTypeID>
+  <EmployeeID>022</EmployeeID>
+  <Date>2002-09-08</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>022</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>025</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>025</EmployeeID>
+  <Date>2002-09-05</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>026</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>026</EmployeeID>
+  <Date>2002-09-04</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>2</ShiftTypeID>
+  <EmployeeID>027</EmployeeID>
+  <Date>2002-09-02</Date>
+ </ShiftOn>
+ <ShiftOn weight="10">
+  <ShiftTypeID>1</ShiftTypeID>
+  <EmployeeID>027</EmployeeID>
+  <Date>2002-09-03</Date>
+ </ShiftOn>
+</ShiftOnRequests>
+
+  
+</SchedulingPeriod>

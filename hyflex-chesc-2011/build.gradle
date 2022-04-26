@@ -14,7 +14,16 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation group: 'com.beust', name: 'jcommander', version: '1.78'
+    implementation project(':hyflex')
     implementation project(':hyflex-ext')
+    implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
+
+    // Add dependencies to HHs
+    new File("$projectDir/../hyflex-hyperheuristics/").listFiles().each {
+        if (it.directory && new File(it, 'build.gradle').exists()) {
+            implementation project(":${it.name}")
+        }
+    }
 }
 
 application {

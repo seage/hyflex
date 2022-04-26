@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod 
+              ID="Ozkarahan"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+  <StartDate>1988-09-05</StartDate>
+  <EndDate>1988-09-11</EndDate>
+<Skills>
+ <Skill ID="RN"><Label>RN</Label></Skill>
+ <Skill ID="AID"><Label>AID</Label></Skill>
+</Skills>
+
+<SkillGroups>
+</SkillGroups>
+
+  <ShiftTypes>
+    <Shift ID="12">
+      <StartTime>00:00:00</StartTime>
+      <EndTime>12:00:00</EndTime>
+      <Name>MidN</Name>
+      <Label>12</Label>
+      <Description>2</Description>
+      <Colour>Red</Colour>
+      <HoursWorked>12</HoursWorked>
+    </Shift>
+    <Shift ID="8">
+      <StartTime>04:00:00</StartTime>
+      <EndTime>12:00:00</EndTime>
+      <Name>4 AM</Name>
+      <Label>8</Label>
+      <Description>1</Description>
+      <Colour>Blue</Colour>
+      <HoursWorked>8</HoursWorked>
+    </Shift>
+  </ShiftTypes>
+
+
+<Contracts>
+ <Contract ID="1">
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>5</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>0</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>8</ShiftType><Value>5</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="2">
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>6</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>0</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>8</ShiftType><Value>6</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="3">
+  <MaxWorkingWeekends>0</MaxWorkingWeekends>
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>3</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>0</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>8</ShiftType><Value>3</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="4">
+  <MaxWorkingWeekends>0</MaxWorkingWeekends>
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>3</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>3</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="5">
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>4</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>4</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="6">
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>2</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>2</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="7">
+  <MaxWorkingWeekends>0</MaxWorkingWeekends>
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>3</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>3</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="8">
+  <MaxWorkingWeekends>0</MaxWorkingWeekends>
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>4</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>4</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="9">
+  <MaxWorkingWeekends>0</MaxWorkingWeekends>
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>4</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>4</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="10">
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>3</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>3</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="11">
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>3</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>3</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="12">
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>2</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>2</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="13">
+  <MaxWorkingWeekends>0</MaxWorkingWeekends>
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>3</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>3</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+ <Contract ID="14">
+  <MaxShiftTypes>
+   <MaxShiftType><ShiftType>8</ShiftType><Value>0</Value></MaxShiftType>
+   <MaxShiftType><ShiftType>12</ShiftType><Value>2</Value></MaxShiftType>
+  </MaxShiftTypes>
+  <MinShiftTypes>
+   <MinShiftType><ShiftType>12</ShiftType><Value>2</Value></MinShiftType>
+  </MinShiftTypes>
+ </Contract>
+</Contracts>
+
+<Employees>
+ <Employee ID="1">
+  <ContractID>1</ContractID>
+  <Name>RN1</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="2">
+  <ContractID>2</ContractID>
+  <Name>RN2</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="3">
+  <ContractID>3</ContractID>
+  <Name>RN3</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="4">
+  <ContractID>4</ContractID>
+  <Name>RN4</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="5">
+  <ContractID>5</ContractID>
+  <Name>RN5</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="6">
+  <ContractID>6</ContractID>
+  <Name>RN6</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="7">
+  <ContractID>7</ContractID>
+  <Name>RN7</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="8">
+  <ContractID>8</ContractID>
+  <Name>RN8</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="9">
+  <ContractID>9</ContractID>
+  <Name>RN9</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="10">
+  <ContractID>10</ContractID>
+  <Name>RN10</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="11">
+  <ContractID>11</ContractID>
+  <Name>RN11</Name>
+  <Skills><Skill>RN</Skill></Skills>
+ </Employee>
+ <Employee ID="12">
+  <ContractID>12</ContractID>
+  <Name>AID12</Name>
+  <Skills><Skill>AID</Skill></Skills>
+ </Employee>
+ <Employee ID="13">
+  <ContractID>13</ContractID>
+  <Name>AID13</Name>
+  <Skills><Skill>AID</Skill></Skills>
+ </Employee>
+ <Employee ID="14">
+  <ContractID>14</ContractID>
+  <Name>AID14</Name>
+  <Skills><Skill>AID</Skill></Skills>
+ </Employee>
+</Employees>
+
+<CoverRequirements>
+ <DayOfWeekCover>
+  <Day>Monday</Day>
+  <Cover><Skill>RN</Skill><Shift>8</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Skill>RN</Skill><Shift>12</Shift><Preferred>4</Preferred></Cover>
+  <Cover><Skill>AID</Skill><Shift>12</Shift><Preferred>1</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Tuesday</Day>
+  <Cover><Skill>RN</Skill><Shift>8</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Skill>RN</Skill><Shift>12</Shift><Preferred>4</Preferred></Cover>
+  <Cover><Skill>AID</Skill><Shift>12</Shift><Preferred>1</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Wednesday</Day>
+  <Cover><Skill>RN</Skill><Shift>8</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Skill>RN</Skill><Shift>12</Shift><Preferred>4</Preferred></Cover>
+  <Cover><Skill>AID</Skill><Shift>12</Shift><Preferred>1</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Thursday</Day>
+  <Cover><Skill>RN</Skill><Shift>8</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Skill>RN</Skill><Shift>12</Shift><Preferred>4</Preferred></Cover>
+  <Cover><Skill>AID</Skill><Shift>12</Shift><Preferred>1</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Friday</Day>
+  <Cover><Skill>RN</Skill><Shift>8</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Skill>RN</Skill><Shift>12</Shift><Preferred>4</Preferred></Cover>
+  <Cover><Skill>AID</Skill><Shift>12</Shift><Preferred>1</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Saturday</Day>
+  <Cover><Skill>RN</Skill><Shift>8</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Skill>RN</Skill><Shift>12</Shift><Preferred>3</Preferred></Cover>
+  <Cover><Skill>AID</Skill><Shift>12</Shift><Preferred>1</Preferred></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Sunday</Day>
+  <Cover><Skill>RN</Skill><Shift>8</Shift><Preferred>2</Preferred></Cover>
+  <Cover><Skill>RN</Skill><Shift>12</Shift><Preferred>3</Preferred></Cover>
+  <Cover><Skill>AID</Skill><Shift>12</Shift><Preferred>1</Preferred></Cover>
+ </DayOfWeekCover>
+</CoverRequirements>
+
+
+<MasterWeights>
+<MinUnderStaffing>200</MinUnderStaffing>
+<MaxOverStaffing>200</MaxOverStaffing>
+<PrefOverStaffing>200</PrefOverStaffing>
+<PrefUnderStaffing>200</PrefUnderStaffing>
+
+<MaxWorkingWeekends>400</MaxWorkingWeekends>
+<MaxShiftTypes>500</MaxShiftTypes>
+<MinShiftTypes>300</MinShiftTypes>
+
+</MasterWeights>
+
+<DayOffRequests>
+ <DayOff weight="100" holiday="false" working="false">
+  <EmployeeID>2</EmployeeID>
+  <Date>1988-09-06</Date>
+ </DayOff>
+ <DayOff weight="100" holiday="false" working="false">
+  <EmployeeID>5</EmployeeID>
+  <Date>1988-09-07</Date>
+ </DayOff>
+</DayOffRequests>
+
+
+<FrozenDays>
+</FrozenDays>
+
+</SchedulingPeriod>

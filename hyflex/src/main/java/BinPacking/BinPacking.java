@@ -154,6 +154,10 @@ public class BinPacking extends ProblemDomain {
 			ins = "data/binpacking/testdual4/binpack0.txt";
 		} else if (instanceID < 10) {
 			ins = "data/binpacking/testdual7/binpack0.txt";
+		} else if (instanceID < 11) {
+			ins = "data/binpacking/2000/50-90/instance1.txt";
+		} else if (instanceID < 12) {
+			ins = "data/binpacking/testdual10/binpack0.txt";
 		} else {
 			System.err.println("instance " + ins + "does not exist");
 			System.exit(-1);
@@ -161,7 +165,6 @@ public class BinPacking extends ProblemDomain {
 		//System.out.println(ins);
 		loadInstance(ins);//load the instance from the file
 		solutionMemory = new Solution[defaultmemorysize];//set solution memory size
-		//initialiseSolution(0);//load all of the pieces into the bins to initialise the solution
 	}
 
 	public void initialiseSolution(int index) {//pack an initial solution with 'first fit'
@@ -712,8 +715,11 @@ public class BinPacking extends ProblemDomain {
 					break;}
 			}//end for looping the crossover heuristics
 		}//end if
-		if (isCrossover) {
-			//a crossover has been asked to operate on just one solution. The solution will be returned unmodified
+		if (isCrossover) {//copy over the solution
+			if (solutionMemory[destination] == null) {// if the destination index does not contain an initialised solution then initialise it
+				solutionMemory[destination] = new Solution();
+			}
+			solutionMemory[destination].solution = deepCopyBins(solutionMemory[source].solution);
 		} else {
 			if (heuristicID == 0) {//swap a random piece with another random different piece
 				applyHeuristic0(temporaryBinVector);
@@ -913,7 +919,7 @@ public class BinPacking extends ProblemDomain {
 	}//end method setMemorySize
 
 	public int getNumberOfInstances() {
-		return 10;
+		return 12;
 	}
 
 	public String toString() {

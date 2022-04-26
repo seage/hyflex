@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod ID="Azaiez" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+    <StartDate>2000-10-02</StartDate>
+    <EndDate>2000-10-29</EndDate>
+    <Skills>
+        <Skill ID="0">
+            <Label>SN1</Label>
+        </Skill>
+        <Skill ID="1">
+            <Label>SN2</Label>
+        </Skill>
+        <Skill ID="2">
+            <Label>NA</Label>
+        </Skill>
+    </Skills>
+
+    <SkillGroups></SkillGroups>
+
+    <ShiftTypes>
+        <Shift ID="1">
+            <StartTime>07:00:00</StartTime>
+            <EndTime>19:00:00</EndTime>
+            <Name>Day</Name>
+            <Label>D</Label>
+            <Description>Day shift</Description>
+            <Colour>Green</Colour>
+            <HoursWorked>12</HoursWorked>
+        </Shift>
+        <Shift ID="2">
+            <StartTime>19:00:00</StartTime>
+            <EndTime>07:00:00</EndTime>
+            <Name>Night</Name>
+            <Label>N</Label>
+            <Description>Night shift</Description>
+            <Colour>White</Colour>
+            <HoursWorked>12</HoursWorked>
+        </Shift>
+    </ShiftTypes>
+
+
+    <Contracts>
+        <Contract ID="RKH">
+            <Label>RKH</Label>
+            <MaxShiftsPerDay weight="10000">1</MaxShiftsPerDay>
+            <MaxNumAssignments weight="20">15</MaxNumAssignments>
+            <BadPatterns>
+                <Pattern weight="10000">
+                    <Shift>$</Shift>
+                    <Shift>$</Shift>
+                    <Shift>$</Shift>
+                    <Shift>$</Shift>
+                    <Shift>$</Shift>
+                </Pattern>
+                <Pattern weight="3">
+                    <Shift>1</Shift>
+                    <Shift>2</Shift>
+                </Pattern>
+                <Pattern weight="10000">
+                    <Shift>2</Shift>
+                    <Shift>1</Shift>
+                </Pattern>
+                <Pattern weight="1">
+                    <Shift>$</Shift>
+                    <Shift></Shift>
+                    <Shift>$</Shift>
+                </Pattern>
+                <Pattern weight="1">
+                    <Shift></Shift>
+                    <Shift>$</Shift>
+                    <Shift></Shift>
+                </Pattern>
+            </BadPatterns>
+            <MinShiftTypes weight="5">
+                <MinShiftType>
+                    <ShiftType>1</ShiftType>
+                    <Value>8</Value>
+                </MinShiftType>
+                <MinShiftType>
+                    <ShiftType>2</ShiftType>
+                    <Value>7</Value>
+                </MinShiftType>
+            </MinShiftTypes>
+            <MaxShiftTypes weight="5">
+                <MaxShiftType>
+                    <ShiftType>1</ShiftType>
+                    <Value>8</Value>
+                </MaxShiftType>
+                <MaxShiftType>
+                    <ShiftType>2</ShiftType>
+                    <Value>7</Value>
+                </MaxShiftType>
+            </MaxShiftTypes>
+            <MinDaysOff weight="10000">12</MinDaysOff>
+            <MaxDaysOff weight="10000">14</MaxDaysOff>
+            <MaxWeekendDays weight="10000">4</MaxWeekendDays>
+        </Contract>
+ 
+ 
+
+    </Contracts>
+
+    <Employees>
+        <Employee ID="dffaa9afddff44b993950d270eecfada">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>G.M</FirstName>
+            <Skills>
+                <Skill Type="Primary">0</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="cf9963a1878e4bffac578bf0cd9ac397">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>E.H</FirstName>
+            <Skills>
+                <Skill Type="Primary">0</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="bc584b5349c84137ba5b4e63afe1e7b4">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>M.B</FirstName>
+            <Skills>
+                <Skill Type="Primary">0</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="a27b5b5cd8ab4c1fbf64576fb7b56506">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>M.R</FirstName>
+            <Skills>
+                <Skill Type="Primary">0</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="342a7b585af34a68b555e568cf1e9cb3">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>D.M</FirstName>
+            <Skills>
+                <Skill Type="Primary">0</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="238cb354ea504e3995dd29f82709912c">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>V.A</FirstName>
+            <Skills>
+                <Skill Type="Primary">1</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="15ca814cae754295acc361c37b5a832d">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>E.B</FirstName>
+            <Skills>
+                <Skill Type="Primary">1</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="5e289806ff2b4b85bc833c729b8b2b82">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>M.D</FirstName>
+            <Skills>
+                <Skill Type="Primary">1</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="7351546702f0456bbfb428762a485c2b">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>N.T</FirstName>
+            <Skills>
+                <Skill Type="Primary">1</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="31f138338366445b9ddb9dc30f5ff528">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>R.S</FirstName>
+            <Skills>
+                <Skill Type="Primary">1</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="57c169c486784a5aa06253d32e09fe2d">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>C.C</FirstName>
+            <Skills>
+                <Skill Type="Primary">1</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="824f0a1d3c2f46bfba36e20126065be6">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>R.C</FirstName>
+            <Skills>
+                <Skill Type="Primary">1</Skill>
+            </Skills>
+        </Employee>
+        <Employee ID="be8bf528d3d9451685b8ca1a06ae5d25">
+            <ContractID>RKH</ContractID>
+            <InRoster>true</InRoster>
+            <LastName></LastName>
+            <FirstName>M.N</FirstName>
+            <Skills>
+                <Skill Type="Primary">2</Skill>
+            </Skills>
+        </Employee>
+    </Employees>
+
+    <CoverRequirements>
+ <DayOfWeekCover>
+  <Day>Monday</Day>
+  <Cover><Shift>1</Shift><Min>3</Min></Cover>
+  <Cover><Shift>2</Shift><Min>3</Min></Cover>
+  <Cover><Skill>0</Skill><Shift>1</Shift><Min>1</Min></Cover>
+  <Cover><Skill>1</Skill><Shift>2</Shift><Min>1</Min></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Tuesday</Day>
+  <Cover><Shift>1</Shift><Min>3</Min></Cover>
+  <Cover><Shift>2</Shift><Min>3</Min></Cover>
+  <Cover><Skill>0</Skill><Shift>1</Shift><Min>1</Min></Cover>
+  <Cover><Skill>1</Skill><Shift>2</Shift><Min>1</Min></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Wednesday</Day>
+  <Cover><Shift>1</Shift><Min>3</Min></Cover>
+  <Cover><Shift>2</Shift><Min>3</Min></Cover>
+  <Cover><Skill>0</Skill><Shift>1</Shift><Min>1</Min></Cover>
+  <Cover><Skill>1</Skill><Shift>2</Shift><Min>1</Min></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Thursday</Day>
+  <Cover><Shift>1</Shift><Min>3</Min></Cover>
+  <Cover><Shift>2</Shift><Min>3</Min></Cover>
+  <Cover><Skill>0</Skill><Shift>1</Shift><Min>1</Min></Cover>
+  <Cover><Skill>1</Skill><Shift>2</Shift><Min>1</Min></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Friday</Day>
+  <Cover><Shift>1</Shift><Min>3</Min></Cover>
+  <Cover><Shift>2</Shift><Min>3</Min></Cover>
+  <Cover><Skill>0</Skill><Shift>1</Shift><Min>1</Min></Cover>
+  <Cover><Skill>1</Skill><Shift>2</Shift><Min>1</Min></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Saturday</Day>
+  <Cover><Shift>1</Shift><Min>3</Min></Cover>
+  <Cover><Shift>2</Shift><Min>3</Min></Cover>
+  <Cover><Skill>0</Skill><Shift>1</Shift><Min>1</Min></Cover>
+  <Cover><Skill>1</Skill><Shift>2</Shift><Min>1</Min></Cover>
+ </DayOfWeekCover>
+ <DayOfWeekCover>
+  <Day>Sunday</Day>
+  <Cover><Shift>1</Shift><Min>3</Min></Cover>
+  <Cover><Shift>2</Shift><Min>3</Min></Cover>
+  <Cover><Skill>0</Skill><Shift>1</Shift><Min>1</Min></Cover>
+  <Cover><Skill>1</Skill><Shift>2</Shift><Min>1</Min></Cover>
+ </DayOfWeekCover>
+</CoverRequirements>
+
+<MasterWeights>
+<MinUnderStaffing>10000</MinUnderStaffing>
+<MaxOverStaffing>10000</MaxOverStaffing>
+<PrefOverStaffing>10000</PrefOverStaffing>
+<PrefUnderStaffing>10000</PrefUnderStaffing>
+</MasterWeights>
+
+    <DayOffRequests></DayOffRequests>
+
+    <DayOnRequests></DayOnRequests>
+
+    <ShiftOffRequests></ShiftOffRequests>
+
+    <ShiftOnRequests></ShiftOnRequests>
+
+
+    <FrozenDays></FrozenDays>
+
+</SchedulingPeriod>

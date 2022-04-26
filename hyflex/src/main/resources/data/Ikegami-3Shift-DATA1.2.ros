@@ -1,0 +1,3510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?cocoon-format type="text/xml"?>
+<SchedulingPeriod ID="Ikegami-3Shift-DATA1.2" 
+                OrganisationID="Tokyo Women's Medical College Hospital"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:noNamespaceSchemaLocation="SchedulingPeriod-2.4.xsd">
+              
+  <StartDate>1995-11-01</StartDate>
+  <EndDate>1995-11-30</EndDate>
+
+
+  <Skills>
+   <Skill ID="GroupA"><Label>GroupA</Label></Skill>
+   <Skill ID="GroupB"><Label>GroupB</Label></Skill>
+   <Skill ID="1"><Label>1</Label></Skill>
+   <Skill ID="2"><Label>2</Label></Skill>
+   <Skill ID="3"><Label>3</Label></Skill>
+   <Skill ID="4"><Label>4</Label></Skill>
+   <Skill ID="5"><Label>5</Label></Skill>
+   <Skill ID="6"><Label>6</Label></Skill>
+   <Skill ID="9"><Label>9</Label></Skill>
+
+   <Skill ID="14"><Label>14</Label></Skill>
+   <Skill ID="15"><Label>15</Label></Skill>
+   <Skill ID="16"><Label>16</Label></Skill>
+   <Skill ID="17"><Label>17</Label></Skill>
+   <Skill ID="18"><Label>18</Label></Skill>
+   
+   <Skill ID="19"><Label>19</Label></Skill>
+   <Skill ID="20"><Label>20</Label></Skill>
+   <Skill ID="21"><Label>21</Label></Skill>
+   <Skill ID="22"><Label>22</Label></Skill>
+   <Skill ID="23"><Label>23</Label></Skill>
+   <Skill ID="24"><Label>24</Label></Skill>
+   <Skill ID="25"><Label>25</Label></Skill>
+  </Skills>
+  
+  <SkillGroups>
+    <SkillGroup ID="A_SS">
+      <Skill>1</Skill>
+      <Skill>2</Skill>
+      <Skill>3</Skill>
+      <Skill>4</Skill>
+      <Skill>5</Skill>
+      <Skill>6</Skill>
+    </SkillGroup>
+    
+    <SkillGroup ID="B_SS">
+      <Skill>14</Skill>
+      <Skill>15</Skill>
+      <Skill>16</Skill>
+      <Skill>17</Skill>
+      <Skill>18</Skill>
+    </SkillGroup>
+    
+    <SkillGroup ID="B_SS_s">
+      <Skill>14</Skill>
+      <Skill>15</Skill>
+      <Skill>16</Skill>
+      <Skill>17</Skill>
+      <Skill>18</Skill>
+      <Skill>25</Skill>
+    </SkillGroup>
+    
+    <SkillGroup ID="B_rq_s">
+      <Skill>19</Skill>
+      <Skill>20</Skill>
+      <Skill>21</Skill>
+      <Skill>22</Skill>
+      <Skill>23</Skill>
+      <Skill>24</Skill>
+      <Skill>25</Skill>
+    </SkillGroup>
+    
+    <SkillGroup ID="1_9">
+      <Skill>1</Skill>
+      <Skill>9</Skill>
+    </SkillGroup>
+  </SkillGroups>
+  
+  <ShiftTypes>
+    <Shift ID="N">
+      <Label>N</Label>
+      <Colour>LightBlue</Colour>
+      <Description>Night</Description>
+      <StartTime>18:00:00</StartTime>
+      <EndTime>06:00:00</EndTime>
+    </Shift>
+    <Shift ID="E">
+      <Label>E</Label>
+      <Colour>LightGreen</Colour>
+      <Description>Evening</Description>
+      <StartTime>12:00:00</StartTime>
+      <EndTime>20:00:00</EndTime>
+    </Shift>
+    <Shift ID="D">
+      <Label>D</Label>
+      <Colour>Yellow</Colour>
+      <Description>Day</Description>
+      <StartTime>06:00:00</StartTime>
+      <EndTime>16:00:00</EndTime>
+    </Shift>
+  </ShiftTypes>
+  
+  <Contracts>
+    <Contract ID="A01">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A02">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A03">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A04">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A05">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A06">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A07">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A08">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A09">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A10">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A11">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A12">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>17</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>2</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>2</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="A13">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B14">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B15">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B16">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B17">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B18">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B19">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>17</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>4</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>2</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>0</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B20">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B21">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B22">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B23">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B24">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>15</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>4</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>2</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract> 
+    <Contract ID="B25">
+      <MaxShiftsPerDay>1</MaxShiftsPerDay>
+      <MinConsecutiveWorkingDays>2</MinConsecutiveWorkingDays>
+      <MaxConsecutiveWorkingDays>6</MaxConsecutiveWorkingDays>
+      <MaxConsecutiveFreeDays>5</MaxConsecutiveFreeDays>
+      <TwoFreeDaysAfterNightShifts>false</TwoFreeDaysAfterNightShifts>
+      <MinDaysOff>9</MinDaysOff>
+      <MaxDaysOff>10</MaxDaysOff>
+      <MaxWeekendsOff>2</MaxWeekendsOff>
+      <MaxDaysBetweenShiftSeries>
+        <MaxDaysBetweenShifts><ShiftType>D</ShiftType><Value>6</Value></MaxDaysBetweenShifts>
+      </MaxDaysBetweenShiftSeries>
+      <MinDaysBetweenShiftSeries>
+        <MinDaysBetweenShifts><ShiftType>N</ShiftType><Value>6</Value></MinDaysBetweenShifts>
+      </MinDaysBetweenShiftSeries>
+      <MaxConsecutiveShiftTypes>
+        <MaxConsecutiveShiftType><ShiftType>D</ShiftType><Value>4</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>E</ShiftType><Value>3</Value></MaxConsecutiveShiftType>
+        <MaxConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MaxConsecutiveShiftType>
+      </MaxConsecutiveShiftTypes>
+      <MinConsecutiveShiftTypes>
+        <MinConsecutiveShiftType><ShiftType>N</ShiftType><Value>2</Value></MinConsecutiveShiftType>
+      </MinConsecutiveShiftTypes>
+      <MaxShiftTypes>
+        <MaxShiftType><ShiftType>D</ShiftType><Value>14</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>E</ShiftType><Value>6</Value></MaxShiftType>
+        <MaxShiftType><ShiftType>N</ShiftType><Value>6</Value></MaxShiftType>
+      </MaxShiftTypes>
+      <MinShiftTypes>
+        <MinShiftType><ShiftType>D</ShiftType><Value>0</Value></MinShiftType>
+        <MinShiftType><ShiftType>E</ShiftType><Value>4</Value></MinShiftType>
+        <MinShiftType><ShiftType>N</ShiftType><Value>3</Value></MinShiftType>
+      </MinShiftTypes>
+      <BadPatterns>
+       <Pattern weight="100"><Shift>N</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift>E</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>E</Shift><Shift>+</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>D</Shift></Pattern>
+       <Pattern weight="100"><Shift>N</Shift><Shift></Shift><Shift>+</Shift></Pattern>
+      </BadPatterns>
+    </Contract>
+  </Contracts>
+  
+  <Employees>
+    <Employee ID="A01">
+      <ContractID>A01</ContractID>
+      <Skills>
+       <Skill>1</Skill>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A02">
+      <ContractID>A02</ContractID>
+      <Skills>
+       <Skill>2</Skill>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A03">
+      <ContractID>A03</ContractID>
+      <Skills>
+       <Skill>3</Skill>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A04">
+      <ContractID>A04</ContractID>
+      <Skills>
+       <Skill>4</Skill>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A05">
+      <ContractID>A05</ContractID>
+      <Skills>
+       <Skill>5</Skill>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A06">
+      <ContractID>A06</ContractID>
+      <Skills>
+       <Skill>6</Skill>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A07">
+      <ContractID>A07</ContractID>
+      <Skills>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A08">
+      <ContractID>A08</ContractID>
+      <Skills>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A09">
+      <ContractID>A09</ContractID>
+      <Skills>
+       <Skill>9</Skill>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A10">
+      <ContractID>A10</ContractID>
+      <Skills>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A11">
+      <ContractID>A11</ContractID>
+      <Skills>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A12">
+      <ContractID>A12</ContractID>
+      <Skills>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="A13">
+      <ContractID>A13</ContractID>
+      <Skills>
+       <Skill>GroupA</Skill>
+      </Skills>
+    </Employee>
+    
+    <Employee ID="B14">
+      <ContractID>B14</ContractID>
+      <Skills>
+       <Skill>14</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B15">
+      <ContractID>B15</ContractID>
+      <Skills>
+       <Skill>15</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B16">
+      <ContractID>B16</ContractID>
+      <Skills>
+       <Skill>16</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B17">
+      <ContractID>B17</ContractID>
+      <Skills>
+       <Skill>17</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B18">
+      <ContractID>B18</ContractID>
+      <Skills>
+       <Skill>18</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B19">
+      <ContractID>B19</ContractID>
+      <Skills>
+       <Skill>19</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B20">
+      <ContractID>B20</ContractID>
+      <Skills>
+       <Skill>20</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B21">
+      <ContractID>B21</ContractID>
+      <Skills>
+       <Skill>21</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B22">
+      <ContractID>B22</ContractID>
+      <Skills>
+       <Skill>22</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B23">
+      <ContractID>B23</ContractID>
+      <Skills>
+       <Skill>23</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B24">
+      <ContractID>B24</ContractID>
+      <Skills>
+       <Skill>24</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+    <Employee ID="B25">
+      <ContractID>B25</ContractID>
+      <Skills>
+       <Skill>25</Skill>
+       <Skill>GroupB</Skill>
+      </Skills>
+    </Employee>
+  </Employees>
+  
+  <CoverRequirements>
+    <DateSpecificCover>
+      <Date>1995-11-01</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-02</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-03</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-04</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-05</Date>
+      <Cover><Shift>D</Shift><Min>7</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-06</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-07</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-08</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-09</Date>
+      <Cover><Shift>D</Shift><Min>7</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-10</Date>
+      <Cover><Shift>D</Shift><Min>7</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-11</Date>
+      <Cover><Shift>D</Shift><Min>7</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-12</Date>
+      <Cover><Shift>D</Shift><Min>7</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-13</Date>
+      <Cover><Shift>D</Shift><Min>7</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-14</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-15</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-16</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-17</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-18</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-19</Date>
+      <Cover><Shift>D</Shift><Min>7</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-20</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-21</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>5</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-22</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-23</Date>
+      <Cover><Shift>D</Shift><Min>13</Min><Max>18</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>6</Min><Max>9</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>5</Min><Max>9</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-24</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-25</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-26</Date>
+      <Cover><Shift>D</Shift><Min>7</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>3</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-27</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-28</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-29</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>6</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover>        
+    <DateSpecificCover>
+      <Date>1995-11-30</Date>
+      <Cover><Shift>D</Shift><Min>8</Min><Max>11</Max></Cover>
+      <Cover><Shift>E</Shift><Min>4</Min><Max>4</Max></Cover>
+      <Cover><Shift>N</Shift><Min>3</Min><Max>3</Max></Cover>
+      
+      <Cover><Skill>GroupA</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupA</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+      
+      <Cover><Skill>GroupB</Skill><Shift>D</Shift><Min>4</Min><Max>6</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>E</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><Skill>GroupB</Skill><Shift>N</Shift><Min>1</Min><Max>2</Max></Cover>
+
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>D</Shift><Min>2</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>A_SS</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>D</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_SS</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>3</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>B_SS_s</SkillGroup><Shift>N</Shift><Min>1</Min><Max>1</Max></Cover>
+      
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>D</Shift><Min>2</Min><Max>4</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>E</Shift><Min>1</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>B_rq_s</SkillGroup><Shift>N</Shift><Min>0</Min><Max>2</Max></Cover>
+      
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>D</Shift><Min>0</Min><Max>2</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>E</Shift><Min>0</Min><Max>1</Max></Cover>
+      <Cover><SkillGroup>1_9</SkillGroup><Shift>N</Shift><Min>0</Min><Max>1</Max></Cover>
+    </DateSpecificCover> 
+  </CoverRequirements>
+  
+  <MasterWeights>
+    <MaxOverStaffing>1</MaxOverStaffing>
+    <MinUnderStaffing>1</MinUnderStaffing>
+    <MaxShiftsPerDay>100</MaxShiftsPerDay>
+    <MinConsecutiveShiftTypes>100</MinConsecutiveShiftTypes>
+    <MaxConsecutiveShiftTypes>100</MaxConsecutiveShiftTypes>
+    <MaxWorkingDaysPerWeek>100</MaxWorkingDaysPerWeek>
+    <MaxConsecutiveFreeDays>100</MaxConsecutiveFreeDays>
+    <TwoFreeDaysAfterNightShifts>100</TwoFreeDaysAfterNightShifts>
+    <MaxDaysOff>0</MaxDaysOff> <!-- This doesn't seem to be used in the solution given.  -->
+    <MinDaysOff>100</MinDaysOff>
+    <MaxShiftTypes>100</MaxShiftTypes>
+    <MinShiftTypes>100</MinShiftTypes>
+    <MaxWeekendsOff>100</MaxWeekendsOff>
+    <MaxDaysBetweenShiftSeries>100</MaxDaysBetweenShiftSeries>
+    <MinDaysBetweenShiftSeries>100</MinDaysBetweenShiftSeries>
+    <MaxConsecutiveWorkingDays>100</MaxConsecutiveWorkingDays>
+    <MinConsecutiveWorkingDays>100</MinConsecutiveWorkingDays>
+  </MasterWeights>
+
+  <DayOffRequests>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A02</EmployeeID>
+      <Date>1995-11-02</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A02</EmployeeID>
+      <Date>1995-11-09</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>A02</EmployeeID>
+      <Date>1995-11-13</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A02</EmployeeID>
+      <Date>1995-11-18</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A03</EmployeeID>
+      <Date>1995-11-02</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A04</EmployeeID>
+      <Date>1995-11-11</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A04</EmployeeID>
+      <Date>1995-11-12</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>A04</EmployeeID>
+      <Date>1995-11-20</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A04</EmployeeID>
+      <Date>1995-11-25</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A04</EmployeeID>
+      <Date>1995-11-26</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A05</EmployeeID>
+      <Date>1995-11-22</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A05</EmployeeID>
+      <Date>1995-11-23</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A05</EmployeeID>
+      <Date>1995-11-24</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A05</EmployeeID>
+      <Date>1995-11-25</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A06</EmployeeID>
+      <Date>1995-11-16</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A06</EmployeeID>
+      <Date>1995-11-17</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A07</EmployeeID>
+      <Date>1995-11-01</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>A08</EmployeeID>
+      <Date>1995-11-10</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A08</EmployeeID>
+      <Date>1995-11-25</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A08</EmployeeID>
+      <Date>1995-11-26</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A09</EmployeeID>
+      <Date>1995-11-01</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A09</EmployeeID>
+      <Date>1995-11-12</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A09</EmployeeID>
+      <Date>1995-11-23</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>A10</EmployeeID>
+      <Date>1995-11-01</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>A10</EmployeeID>
+      <Date>1995-11-16</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A11</EmployeeID>
+      <Date>1995-11-09</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>A11</EmployeeID>
+      <Date>1995-11-16</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A12</EmployeeID>
+      <Date>1995-11-07</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A12</EmployeeID>
+      <Date>1995-11-08</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A12</EmployeeID>
+      <Date>1995-11-09</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>A12</EmployeeID>
+      <Date>1995-11-16</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>A13</EmployeeID>
+      <Date>1995-11-07</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A13</EmployeeID>
+      <Date>1995-11-09</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A13</EmployeeID>
+      <Date>1995-11-10</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A13</EmployeeID>
+      <Date>1995-11-11</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A13</EmployeeID>
+      <Date>1995-11-24</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A13</EmployeeID>
+      <Date>1995-11-25</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>A13</EmployeeID>
+      <Date>1995-11-26</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B14</EmployeeID>
+      <Date>1995-11-10</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B14</EmployeeID>
+      <Date>1995-11-11</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B14</EmployeeID>
+      <Date>1995-11-12</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B14</EmployeeID>
+      <Date>1995-11-13</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B14</EmployeeID>
+      <Date>1995-11-27</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B15</EmployeeID>
+      <Date>1995-11-18</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B16</EmployeeID>
+      <Date>1995-11-13</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B16</EmployeeID>
+      <Date>1995-11-20</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B16</EmployeeID>
+      <Date>1995-11-21</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B17</EmployeeID>
+      <Date>1995-11-13</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B17</EmployeeID>
+      <Date>1995-11-20</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B17</EmployeeID>
+      <Date>1995-11-21</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B18</EmployeeID>
+      <Date>1995-11-01</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B18</EmployeeID>
+      <Date>1995-11-10</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B18</EmployeeID>
+      <Date>1995-11-11</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B18</EmployeeID>
+      <Date>1995-11-20</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B19</EmployeeID>
+      <Date>1995-11-07</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B19</EmployeeID>
+      <Date>1995-11-16</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B19</EmployeeID>
+      <Date>1995-11-23</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B19</EmployeeID>
+      <Date>1995-11-24</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B19</EmployeeID>
+      <Date>1995-11-25</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B19</EmployeeID>
+      <Date>1995-11-26</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B20</EmployeeID>
+      <Date>1995-11-09</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B20</EmployeeID>
+      <Date>1995-11-18</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B20</EmployeeID>
+      <Date>1995-11-19</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B20</EmployeeID>
+      <Date>1995-11-30</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B21</EmployeeID>
+      <Date>1995-11-08</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B21</EmployeeID>
+      <Date>1995-11-30</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B22</EmployeeID>
+      <Date>1995-11-01</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B22</EmployeeID>
+      <Date>1995-11-09</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B22</EmployeeID>
+      <Date>1995-11-30</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B23</EmployeeID>
+      <Date>1995-11-09</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B23</EmployeeID>
+      <Date>1995-11-10</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="true">
+      <EmployeeID>B23</EmployeeID>
+      <Date>1995-11-30</Date>
+    </DayOff>
+    
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B24</EmployeeID>
+      <Date>1995-11-02</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B24</EmployeeID>
+      <Date>1995-11-03</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B24</EmployeeID>
+      <Date>1995-11-25</Date>
+    </DayOff>
+    <DayOff weight="100" holiday="false" working="false">
+      <EmployeeID>B24</EmployeeID>
+      <Date>1995-11-26</Date>
+    </DayOff>
+  </DayOffRequests>
+  
+  <ShiftOffRequests>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A02</EmployeeID>
+     <Date>1995-11-08</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A02</EmployeeID>
+     <Date>1995-11-17</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A03</EmployeeID>
+     <Date>1995-11-01</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A04</EmployeeID>
+     <Date>1995-11-10</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A04</EmployeeID>
+     <Date>1995-11-24</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A05</EmployeeID>
+     <Date>1995-11-21</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A06</EmployeeID>
+     <Date>1995-11-15</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A08</EmployeeID>
+     <Date>1995-11-24</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A09</EmployeeID>
+     <Date>1995-11-11</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A09</EmployeeID>
+     <Date>1995-11-22</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A11</EmployeeID>
+     <Date>1995-11-08</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A12</EmployeeID>
+     <Date>1995-11-06</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A13</EmployeeID>
+     <Date>1995-11-08</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>A13</EmployeeID>
+     <Date>1995-11-23</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B14</EmployeeID>
+     <Date>1995-11-26</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B15</EmployeeID>
+     <Date>1995-11-17</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B16</EmployeeID>
+     <Date>1995-11-19</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B17</EmployeeID>
+     <Date>1995-11-19</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B18</EmployeeID>
+     <Date>1995-11-09</Date>
+    </ShiftOff>
+
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B20</EmployeeID>
+     <Date>1995-11-08</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B20</EmployeeID>
+     <Date>1995-11-17</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B21</EmployeeID>
+     <Date>1995-11-07</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B22</EmployeeID>
+     <Date>1995-11-08</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B23</EmployeeID>
+     <Date>1995-11-08</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B24</EmployeeID>
+     <Date>1995-11-01</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B24</EmployeeID>
+     <Date>1995-11-24</Date>
+    </ShiftOff>
+    
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-01</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-01</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-02</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-02</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-03</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-03</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-06</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-06</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-08</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-08</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-09</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-09</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-10</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-10</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-13</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-13</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-14</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-14</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-15</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-15</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-17</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-17</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-20</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-20</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-21</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-21</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-22</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-22</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-27</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-27</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-28</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-28</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-29</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-29</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>N</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-30</Date>
+    </ShiftOff>
+    <ShiftOff weight="100">
+     <ShiftTypeID>E</ShiftTypeID>
+     <EmployeeID>B19</EmployeeID>
+     <Date>1995-11-30</Date>
+    </ShiftOff>
+  </ShiftOffRequests>
+  
+  <ShiftOnRequests>
+    <ShiftOn weight="100">
+      <ShiftTypeID>N</ShiftTypeID>
+      <EmployeeID>A02</EmployeeID>
+      <Date>1995-11-01</Date>
+    </ShiftOn>
+    <ShiftOn weight="100">
+      <ShiftTypeID>D</ShiftTypeID>
+      <EmployeeID>A03</EmployeeID>
+      <Date>1995-11-01</Date>
+    </ShiftOn>
+    <ShiftOn weight="100">
+      <ShiftTypeID>D</ShiftTypeID>
+      <EmployeeID>A07</EmployeeID>
+      <Date>1995-11-02</Date>
+    </ShiftOn>
+  </ShiftOnRequests>
+  
+  <SchedulingHistory>
+  
+    <EmployeeHistory EmployeeID="A01">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>2</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>2</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>2</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>4</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A02">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>3</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>3</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>N</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A03">
+        <PreviousAssignments>
+            <Day><Shift>N</Shift></Day>
+            <Day></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>+</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>4</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>4</PreviousConsecutiveWorkingDaysAndHoliday>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>1</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>5</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A04">
+        <PreviousAssignments>
+            <Day><Shift>+</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveFreeDays>1</PreviousConsecutiveFreeDays>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>3</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>1</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A05">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveFreeDays>4</PreviousConsecutiveFreeDays>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>4</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A06">
+        <PreviousAssignments>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>2</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>2</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>E</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>0</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>3</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A07">
+        <PreviousAssignments>
+            <Day><Shift>E</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>3</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>3</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>E</ShiftTypeID><Count>3</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A08">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>1</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>1</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A09">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>3</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>3</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>N</ShiftTypeID><Count>2</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>2</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A10">
+        <PreviousAssignments>
+            <Day></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>4</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>4</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>4</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A11">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>2</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>2</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>2</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A12">
+        <PreviousAssignments>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveFreeDays>3</PreviousConsecutiveFreeDays>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>3</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="A13">
+        <PreviousAssignments>
+            <Day></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>1</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>1</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>3</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B14">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>3</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>3</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>3</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>4</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B15">
+        <PreviousAssignments>
+            <Day><Shift>E</Shift></Day>
+            <Day></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day></Day>
+            <Day><Shift>+</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>1</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>1</PreviousConsecutiveWorkingDaysAndHoliday>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>5</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>2</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B16">
+        <PreviousAssignments>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveFreeDays>1</PreviousConsecutiveFreeDays>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>2</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>1</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B17">
+        <PreviousAssignments>
+            <Day><Shift>N</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>2</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>2</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>E</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>0</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>4</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B18">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>6</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>6</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>N</ShiftTypeID><Count>2</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>4</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>2</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B19">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>1</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>1</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>2</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B20">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>1</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>1</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B21">
+        <PreviousAssignments>
+            <Day><Shift>+</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>4</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>4</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>E</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B22">
+        <PreviousAssignments>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>2</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>2</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>2</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>3</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B23">
+        <PreviousAssignments>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day><Shift>E</Shift></Day>
+            <Day></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveFreeDays>1</PreviousConsecutiveFreeDays>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>3</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>E</ShiftTypeID><Count>1</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B24">
+        <PreviousAssignments>
+            <Day><Shift>N</Shift></Day>
+            <Day><Shift>N</Shift></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>3</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>3</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>3</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+         <DaysSinceShift><ShiftTypeID>N</ShiftTypeID><Count>4</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    <EmployeeHistory EmployeeID="B25">
+        <PreviousAssignments>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day><Shift>D</Shift></Day>
+            <Day></Day>
+            <Day></Day>
+            <Day><Shift>D</Shift></Day>
+        </PreviousAssignments>
+        <PreviousConsecutiveWorkingDays>1</PreviousConsecutiveWorkingDays>
+        <PreviousConsecutiveWorkingDaysAndHoliday>1</PreviousConsecutiveWorkingDaysAndHoliday>
+        <PreviousConsecutiveShifts>
+          <PreviousConsecutiveShift><ShiftTypeID>D</ShiftTypeID><Count>1</Count></PreviousConsecutiveShift>
+        </PreviousConsecutiveShifts>
+        <DaysSinceShifts>
+         <DaysSinceShift><ShiftTypeID>D</ShiftTypeID><Count>0</Count></DaysSinceShift>
+        </DaysSinceShifts>
+    </EmployeeHistory>
+    
+  </SchedulingHistory>
+  
+</SchedulingPeriod>

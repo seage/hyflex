@@ -1,6 +1,5 @@
 package travelingSalesmanProblem;
 
-import java.util.Random;
 
 
 /**
