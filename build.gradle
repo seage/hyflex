@@ -1,8 +1,9 @@
 allprojects {
     group 'hyflex'
     version '1.0-SNAPSHOT'
+    
 }
-
+   
 subprojects {
     apply plugin: 'java'
    
@@ -10,10 +11,6 @@ subprojects {
 
     repositories {
         jcenter()
-
-        maven {
-            url "file://$projectDir/../../maven-repo"
-        }
     }
 
     dependencies {
@@ -22,11 +19,6 @@ subprojects {
 
         // Use JUnit Jupiter Engine for testing.
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-
-        implementation project(':hyflex')
-        implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
-        // implementation group: 'hyflex', name: 'chesc-fixed-no-ps', version: '2019.03.17'
-        // implementation group: 'hyflex', name: 'hyflex_ext', version: '2015.04.17'
     }
 
     tasks.named('test') {
@@ -35,29 +27,20 @@ subprojects {
     }
 }
 
-project(':hyflex-chesc-2011') {
-    dependencies {
-        implementation project(':hyflex-hh-aco')
-        implementation project(':hyflex-hh-adaphh')
-        implementation project(':hyflex-hh-antq')
-        implementation project(':hyflex-hh-avegnep')
-        implementation project(':hyflex-hh-bader')
-        implementation project(':hyflex-hh-dynils')
-        implementation project(':hyflex-hh-eph')
-        implementation project(':hyflex-hh-genhive')
-        implementation project(':hyflex-hh-giss')
-        implementation project(':hyflex-hh-haea')
-        implementation project(':hyflex-hh-haha')
-        implementation project(':hyflex-hh-isea')
-        implementation project(':hyflex-hh-ksatshh')
-        implementation project(':hyflex-hh-leangihh')
-        implementation project(':hyflex-hh-mchhs')
-        implementation project(':hyflex-hh-ml')
-        implementation project(':hyflex-hh-nahh')
-        implementation project(':hyflex-hh-phunter')
-        implementation project(':hyflex-hh-sails')
-        implementation project(':hyflex-hh-selfsearch')
-        implementation project(':hyflex-hh-vnstw')
-        implementation project(':hyflex-hh-xcj')
+// Bulk configuration for all HHs
+new File("./hyflex-hyperheuristics/").listFiles().each {
+    if (it.directory && new File(it, 'build.gradle').exists()) {
+        project(":${it.name}") {
+            repositories {
+                maven {
+                    url "file://$projectDir/../../maven-repo"
+                }
+            }
+            dependencies {           
+                implementation project(':hyflex')
+                implementation project(':hyflex-ext')
+                implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
+            }
+        }
     }
 }
