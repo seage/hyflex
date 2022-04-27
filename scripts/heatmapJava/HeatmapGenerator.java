@@ -59,6 +59,14 @@ class HeatmapGenerator {
         put("XCJ", new String[] {"", ""});
     }};
 
+    private class AlgorithmResult {
+        int overall;
+        int overallColor;
+        int score;
+        // todo - colors for each problem in map
+        // score for each problem in map
+    }
+
     public static void main(String[] args) {
         HeatmapGenerator hmg = new HeatmapGenerator();
 
@@ -81,30 +89,33 @@ class HeatmapGenerator {
             // Get all the element by the tag name
             NodeList algorithmsXML = document.getElementsByTagName("algorithm");
 
+            LinkedList<String> problems = new LinkedList<String>();
+            NodeList problemsXML = ((Element)algorithmsXML.item(0)).getElementsByTagName("problem");
+            for (int i = 0; i < problemsXML.getLength(); i++) {
+                Node problem = problemsXML.item(i);
+
+                if (problem.getNodeType() == Node.ELEMENT_NODE) {
+                    Element problemElement = (Element) problem;
+                    System.out.println("Problem name: " + problemElement.getAttribute("name"));
+                    for (String problemName: supportedProblems) {
+                        if (problemName == problemElement.getAttribute("name")) {
+                            problems.add(problemName);
+                            break;
+                        }
+                    }
+                }
+            }
+
             for (int i = 0; i < algorithmsXML.getLength(); i++) {
                 Node algorithm = algorithmsXML.item(i);
 
                 if (algorithm.getNodeType() == Node.ELEMENT_NODE) {
                     Element algorithmElement = (Element) algorithm;
                     System.out.println("Algorithm name: " + algorithmElement.getAttribute("name"));
-
+                    // add each result into a new class and put it all into array or map
                 }
             }
-
-
-            //System.out.println(((Element) algorithmsXML.item(0)).getElementsByTagName("name").item(0));
-            //LinkedList<String> problems = new LinkedList<String>();
-            // for (String problemName : supportedProblems) {
-            //     for (int nodeId = 0; nodeId < problemsXML.getLength(); nodeId++) {
-            //         System.out.println(((Element) problemsXML.item(nodeId)).getElementsByTagName("name").getLength());
-            //         // String nodeProblemName = ((Element) problemsXML.item(nodeId)).getElementsByTagName("name").item(0).getTextContent();
-            //         // if (problemName == nodeProblemName) {
-            //         //     System.out.println(problemName);
-            //         //     //problems.add(nodeProblemName);
-            //         //     break;
-            //         // }
-            //     }
-            // }
+            
 
 
         } catch (Exception e) {
