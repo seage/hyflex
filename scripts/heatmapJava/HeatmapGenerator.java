@@ -71,11 +71,15 @@ class HeatmapGenerator {
     public static void main(String[] args) {
         HeatmapGenerator hmg = new HeatmapGenerator();
 
-        hmg.loadXMLFile("results/" + args[0] + "/unit-metric-scores.xml");
+        HashMap algorithmsResults = hmg.loadXMLFile("results/" + args[0] + "/unit-metric-scores.xml");
+
+        System.out.println(algorithmsResults.keySet());
     }
 
-    public void loadXMLFile(String xmlPath) {
+    public HashMap<String, AlgorithmResult> loadXMLFile(String xmlPath) {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        HashMap<String, AlgorithmResult> results = new HashMap<>();
+
         try ( InputStream is = readXmlFileIntoInputStream(xmlPath) ) {
             
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -111,7 +115,6 @@ class HeatmapGenerator {
 
 
             //LinkedList<AlgorithmResult> results = new LinkedList<>();
-            HashMap<String, AlgorithmResult> results = new HashMap<>();
             for (int i = 0; i < algorithmsXML.getLength(); i++) {
                 Node algorithm = algorithmsXML.item(i);
 
@@ -144,12 +147,11 @@ class HeatmapGenerator {
                     }
                     results.put(result.name, result);
                 }
-            }
-            System.out.println(results.keySet());
-            
+            }            
         } catch (Exception e) {
             System.out.println(e);
         }
+        return results;
     }
 
     private InputStream readXmlFileIntoInputStream(final String fileName) {
