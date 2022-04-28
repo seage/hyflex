@@ -60,11 +60,12 @@ class HeatmapGenerator {
     }};
 
     private class AlgorithmResult {
-        int overall;
+        String name;
+        double overall;
         int overallColor;
-        int score;
-        // todo - colors for each problem in map
-        // score for each problem in map
+        double score;
+        // problem instances results
+        HashMap<String, Double> problemsResults;        
     }
 
     public static void main(String[] args) {
@@ -89,7 +90,7 @@ class HeatmapGenerator {
             // Get all the element by the tag name
             NodeList algorithmsXML = document.getElementsByTagName("algorithm");
 
-            LinkedList<String> problems = new LinkedList<String>();
+            LinkedList<String> problemsList = new LinkedList<String>();
             NodeList problemsXML = ((Element)algorithmsXML.item(0)).getElementsByTagName("problem");
             for (int i = 0; i < problemsXML.getLength(); i++) {
                 Node problem = problemsXML.item(i);
@@ -99,25 +100,53 @@ class HeatmapGenerator {
                     System.out.println("Problem name: " + problemElement.getAttribute("name"));
                     for (String problemName: supportedProblems) {
                         if (problemName == problemElement.getAttribute("name")) {
-                            problems.add(problemName);
+                            problemsList.add(problemName);
                             break;
                         }
                     }
                 }
             }
 
+
+
+
+            //LinkedList<AlgorithmResult> results = new LinkedList<>();
+            HashMap<String, AlgorithmResult> results = new HashMap<>();
             for (int i = 0; i < algorithmsXML.getLength(); i++) {
                 Node algorithm = algorithmsXML.item(i);
 
                 if (algorithm.getNodeType() == Node.ELEMENT_NODE) {
                     Element algorithmElement = (Element) algorithm;
-                    System.out.println("Algorithm name: " + algorithmElement.getAttribute("name"));
+                    AlgorithmResult result = new AlgorithmResult();
+
                     // add each result into a new class and put it all into array or map
+                    result.name = algorithmElement.getAttribute("name");
+                    result.score = Double.parseDouble(String.format("%.5f", Double.parseDouble(algorithmElement.getAttribute("score"))));
+                    result.overallColor = 0;
+
+
+                    // extract the rest
+                    NodeList problems = algorithmElement.getElementsByTagName("problem");
+                    result.problemsResults = new HashMap<>();
+
+                    for (int problemId = 0; i < problems.getLength(); i++) {
+                        Node problem = problems.item(problemId);
+
+                        if (problem.getNodeType() == Node.ELEMENT_NODE) {
+                            Element problemElement = (Element) problem;
+
+                            // set the problem result parameters
+                            String problemName = problemElement.getAttribute("name");
+                            double problemAvg = Double.parseDouble(String.format("%.5f", Double.parseDouble(problemElement.getAttribute("avg"))));
+                            // add new problem results to algorithm
+                            result.problemsResults.put(problemName, problemAvg);
+                        }
+                    }
+                    results.put(result.name, result);
                 }
             }
+            System.out.println(results.keySet());
             
-
-
         } catch (Exception e) {
             System.out.println(e);
         }
