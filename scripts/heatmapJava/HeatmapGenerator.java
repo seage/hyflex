@@ -28,6 +28,8 @@ import java.io.InputStream;
 import org.w3c.dom.*;
 import javax.xml.XMLConstants;
 
+import com.hubspot.jinjava.Jinjava;
+
 
 
 class HeatmapGenerator {
@@ -94,24 +96,24 @@ class HeatmapGenerator {
             // Get all the element by the tag name
             NodeList algorithmsXML = document.getElementsByTagName("algorithm");
 
-            LinkedList<String> problemsList = new LinkedList<String>();
-            NodeList problemsXML = ((Element)algorithmsXML.item(0)).getElementsByTagName("problem");
-            for (int i = 0; i < problemsXML.getLength(); i++) {
-                Node problem = problemsXML.item(i);
+            
+            // Following code is no longer neccessary
+            // LinkedList<String> problemsList = new LinkedList<String>();
+            // NodeList problemsXML = ((Element)algorithmsXML.item(0)).getElementsByTagName("problem");
+            // for (int i = 0; i < problemsXML.getLength(); i++) {
+            //     Node problem = problemsXML.item(i);
 
-                if (problem.getNodeType() == Node.ELEMENT_NODE) {
-                    Element problemElement = (Element) problem;
-                    System.out.println("Problem name: " + problemElement.getAttribute("name"));
-                    for (String problemName: supportedProblems) {
-                        if (problemName == problemElement.getAttribute("name")) {
-                            problemsList.add(problemName);
-                            break;
-                        }
-                    }
-                }
-            }
-
-
+            //     if (problem.getNodeType() == Node.ELEMENT_NODE) {
+            //         Element problemElement = (Element) problem;
+            //         System.out.println("Problem name: " + problemElement.getAttribute("name"));
+            //         for (String problemName: supportedProblems) {
+            //             if (problemName == problemElement.getAttribute("name")) {
+            //                 problemsList.add(problemName);
+            //                 break;
+            //             }
+            //         }
+            //     }
+            // }
 
 
             //LinkedList<AlgorithmResult> results = new LinkedList<>();
@@ -159,7 +161,7 @@ class HeatmapGenerator {
     }
 
     public static void createPage(LinkedList results, LinkedList problems, String pageDest) {
-        //todo
+        
     }
 
     public static void buildResultsPage(String experimentId) {
