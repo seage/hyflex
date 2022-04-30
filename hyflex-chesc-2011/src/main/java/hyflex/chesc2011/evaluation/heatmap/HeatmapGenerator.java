@@ -5,7 +5,7 @@
  * @author David Omrai
  */
 
-package heatmap;
+package hyflex.chesc2011.evaluation.heatmap;
 
 import java.util.*;
 
@@ -27,10 +27,6 @@ import java.io.InputStream;
 
 import org.w3c.dom.*;
 import javax.xml.XMLConstants;
-
-import com.hubspot.jinjava.Jinjava;
-
-
 
 class HeatmapGenerator {
     String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
