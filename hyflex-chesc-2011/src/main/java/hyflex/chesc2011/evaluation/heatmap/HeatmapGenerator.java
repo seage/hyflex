@@ -30,7 +30,7 @@ import java.io.InputStream;
 
 import org.w3c.dom.*;
 import javax.xml.XMLConstants;
-import jinjava.*;
+import com.hubspot.jinjava.*;
 
 class HeatmapGenerator {
     String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};

@@ -14,11 +14,11 @@ repositories {
 dependencies {
     // This dependency is used by the application.
     implementation group: 'com.beust', name: 'jcommander', version: '1.78'
+    // jinjava library
+    implementation group: 'com.hubspot.jinjava', name: 'jinjava', version: '2.6.0'
     implementation project(':hyflex')
     implementation project(':hyflex-ext')
     implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
-    // jinjava library
-    implementation group: 'com.hubspot.jinjava', name: 'jinjava', version: '2.6.0'
 
     // Add dependencies to HHs
     new File("$projectDir/../hyflex-hyperheuristics/").listFiles().each {
