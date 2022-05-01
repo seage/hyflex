@@ -19,6 +19,9 @@ subprojects {
 
         // Use JUnit Jupiter Engine for testing.
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+        // jinjava library
+        implementation group: 'com.hubspot.jinjava', name: 'jinjava', version: '2.6.0'
     }
 
     tasks.named('test') {

@@ -19,6 +19,9 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
+import com.hubspot.jinjava.Jinjava;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +30,7 @@ import java.io.InputStream;
 
 import org.w3c.dom.*;
 import javax.xml.XMLConstants;
+import jinjava.*;
 
 class HeatmapGenerator {
     String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
@@ -156,8 +160,11 @@ class HeatmapGenerator {
         return HeatmapGenerator.class.getClassLoader().getResourceAsStream(fileName);
     }
 
-    public static void createPage(LinkedList results, LinkedList problems, String pageDest) {
-        
+    public static void createPage(Map<String, AlgorithmResult> results, String pageDest) throws Exception {
+        Jinjava jinjava = new Jinjava();
+
+        String template = Resources.toString(Resources.getResource("heatmap.template.svg"), Charsets.UTF_8);
+        String renderedTemplate = jinjava.render(template, results);
     }
 
     public static void buildResultsPage(String experimentId) {
