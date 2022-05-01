@@ -16,6 +16,9 @@ import java.util.*;
 // import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,6 +37,9 @@ import com.hubspot.jinjava.*;
 
 class HeatmapGenerator {
     String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
+    String[] gradientC = {"darkred", "red", "yellow", "green", "darkgreen"};
+    double[] gradientV = {0, 0.5, 0.75, 0.98, 1.0};
+    
     Map<String, String[]> hhInfo = new HashMap<String, String[]>() {{
         put("ACO-HH", new String[] {"José Luis Núñez", "Ant colony optimization"});
         put("AdapHH-GIHH", new String[] {"", ""});
@@ -165,6 +171,15 @@ class HeatmapGenerator {
 
         String template = Resources.toString(Resources.getResource("heatmap.template.svg"), Charsets.UTF_8);
         String renderedTemplate = jinjava.render(template, results);
+
+        // output the file
+        try {
+            FileWriter fileWriter = new FileWriter(pageDest);
+            fileWriter.write(renderedTemplate);
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void buildResultsPage(String experimentId) {
