@@ -53,29 +53,29 @@ public class HeatmapGenerator {
     
     Map<String, String[]> hhInfo = new HashMap<String, String[]>() {{
         put("ACO-HH", new String[] {"José Luis Núñez", "Ant colony optimization"});
-        put("AdapHH-GIHH", new String[] {"", ""});
-        put("Ant-Q", new String[] {"", ""});
-        put("AVEG-Nep", new String[] {"", ""});
-        put("BiasILS", new String[] {"", ""});
-        put("Clean", new String[] {"", ""});
-        put("Clean-2", new String[] {"", ""});
-        put("DynILS", new String[] {"", ""});
-        put("EPH", new String[] {"", ""});
-        put("GenHive", new String[] {"", ""});
-        put("GISS", new String[] {"", ""});
-        put("HAEA", new String[] {"", ""});
-        put("HAHA", new String[] {"", ""});
-        put("ISEA", new String[] {"", ""});
-        put("KSATS-HH", new String[] {"", ""});
-        put("LeanGIHH", new String[] {"", ""});
-        put("MCHH-S", new String[] {"", ""});
-        put("ML", new String[] {"", ""});
-        put("NAHH", new String[] {"", ""});
-        put("PHUNTER", new String[] {"", ""});
-        put("SA-ILS", new String[] {"", ""});
-        put("SelfSearch", new String[] {"", ""});
-        put("VNS-TW", new String[] {"", ""});
-        put("XCJ", new String[] {"", ""});
+        put("AdapHH-GIHH", new String[] {"Mustafa Misir", "Genetic Iterative Hyper-heuristic"});
+        put("Ant-Q", new String[] {"Imen Khamassi", ""});
+        put("AVEG-Nep", new String[] {"Luca Di Gaspero", ""});
+        put("BiasILS", new String[] {"Mark Johnston", ""});
+        put("Clean", new String[] {"Mohamed Bader-El-Den", ""});
+        put("Clean-2", new String[] {"Mohamed Bader-El-Den", ""});
+        put("DynILS", new String[] {"Mark Johnston", ""});
+        put("EPH", new String[] {"David Meignan", ""});
+        put("GenHive", new String[] {"Michal Frankiewicz", ""});
+        put("GISS", new String[] {"Alberto Acuna", ""});
+        put("HAEA", new String[] {"Jonatan Gómez", ""});
+        put("HAHA", new String[] {"Andreas Lehrbaum", ""});
+        put("ISEA", new String[] {"Jiří Kubalík", ""});
+        put("KSATS-HH", new String[] {"Kevin Sim", ""});
+        put("LeanGIHH", new String[] {"Steven Adriaensen", ""});
+        put("MCHH-S", new String[] {"Kent McClymont", ""});
+        put("ML", new String[] {"Mathieu Larose", ""});
+        put("NAHH", new String[] {"Franco Mascia", ""});
+        put("PHUNTER", new String[] {"Fan Xue", ""});
+        put("SA-ILS", new String[] {"He Jiang", ""});
+        put("SelfSearch", new String[] {"Jawad Elomari", ""});
+        put("VNS-TW", new String[] {"Ping-Che Hsiao", ""});
+        put("XCJ", new String[] {"Kamran Shafi", ""});
     }};
 
     private class AlgorithmResult {
