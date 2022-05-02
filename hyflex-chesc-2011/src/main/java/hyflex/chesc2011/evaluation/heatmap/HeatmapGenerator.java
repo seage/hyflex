@@ -36,8 +36,19 @@ import javax.xml.XMLConstants;
 import com.hubspot.jinjava.*;
 
 public class HeatmapGenerator {
+    // Path where the results are stored
+    String resultsPath = "./results";
+    // Path where the metadata are stored
+    String metadataPath = "/hyflex/hyflex-chesc-2011/heatmap.template.svg";
+    // Path where the file with results is stored
+    String resultsSvgFile = "./results/%s/heatmap.svg";
+    // Path where the file with results is stored
+    String resultsXmlFile = "./results/%s/unit-metric-scores.xml";
+    // Supported problems domains
     String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
+    // Gradient colors
     String[] gradientC = {"darkred", "red", "yellow", "green", "darkgreen"};
+    // Gradient color bolders
     double[] gradientV = {0, 0.5, 0.75, 0.98, 1.0};
     
     Map<String, String[]> hhInfo = new HashMap<String, String[]>() {{
@@ -166,24 +177,30 @@ public class HeatmapGenerator {
         return HeatmapGenerator.class.getClassLoader().getResourceAsStream(fileName);
     }
 
-    public static void createPage(Map<String, AlgorithmResult> results, String pageDest) throws Exception {
+    public void createPage(HashMap<String, AlgorithmResult> results, String id) throws IOException {
         Jinjava jinjava = new Jinjava();
 
-        String template = Resources.toString(Resources.getResource("heatmap.template.svg"), Charsets.UTF_8);
+        String template = Resources.toString(Resources.getResource(metadataPath), Charsets.UTF_8);
         String renderedTemplate = jinjava.render(template, results);
 
         // output the file
-        try {
-            FileWriter fileWriter = new FileWriter(pageDest);
+        String resultsSvgFilePath = String.format(resultsSvgFile, id);
+        
+        try(FileWriter fileWriter = new FileWriter(resultsSvgFilePath);) {    
             fileWriter.write(renderedTemplate);
-            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static void buildResultsPage(String experimentId) {
-        //todo
+    public void buildResultsPage(String experimentId) {
+        String xmlResultsPath = String.format(resultsSvgFile, experimentId);
+        HashMap results = loadXMLFile(xmlResultsPath);
+        try {
+            createPage(results, experimentId);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 }
 

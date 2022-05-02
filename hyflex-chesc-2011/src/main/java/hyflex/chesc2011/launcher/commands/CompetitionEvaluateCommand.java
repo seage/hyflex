@@ -59,7 +59,8 @@ public class CompetitionEvaluateCommand extends Command {
       case "UnitMetric":
         new hyflex.chesc2011.evaluation.scorecard.ScoreCardBenchmarkCalculator().run(id, metric);
         if (createHeatmap) {
-          // todo add the score card heatmap creation
+          HeatmapGenerator heatmapGenerator = new HeatmapGenerator();
+          heatmapGenerator.buildResultsPage(id);
         }
         break;
       case "F1Metric":
