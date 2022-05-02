@@ -35,6 +35,8 @@ import org.w3c.dom.*;
 import javax.xml.XMLConstants;
 import com.hubspot.jinjava.*;
 
+import net.mahdilamb.colormap.Colormaps;
+
 public class HeatmapGenerator {
     // Path where the results are stored
     String resultsPath = "./results";
@@ -83,6 +85,7 @@ public class HeatmapGenerator {
         double overall;
         int overallColor;
         double score;
+        String color;
         // problem instances results
         HashMap<String, Double> problemsResults;        
     }
