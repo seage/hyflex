@@ -35,7 +35,7 @@ import org.w3c.dom.*;
 import javax.xml.XMLConstants;
 import com.hubspot.jinjava.*;
 
-class HeatmapGenerator {
+public class HeatmapGenerator {
     String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
     String[] gradientC = {"darkred", "red", "yellow", "green", "darkgreen"};
     double[] gradientV = {0, 0.5, 0.75, 0.98, 1.0};
