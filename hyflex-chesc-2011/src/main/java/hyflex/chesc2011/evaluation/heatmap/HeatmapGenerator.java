@@ -93,53 +93,33 @@ public class HeatmapGenerator {
     public static void main(String[] args) {
         HeatmapGenerator hmg = new HeatmapGenerator();
 
-        HashMap algorithmsResults = hmg.loadXMLFile("results/" + args[0] + "/unit-metric-scores.xml");
+        HashMap algorithmsResults = hmg.loadXMLFile("results/96" + "/unit-metric-scores.xml");//hmg.loadXMLFile("results/" + args[0] + "/unit-metric-scores.xml");
 
         System.out.println(algorithmsResults.keySet());
     }
 
     public HashMap<String, AlgorithmResult> loadXMLFile(String xmlPath) {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         HashMap<String, AlgorithmResult> results = new HashMap<>();
 
-        try ( InputStream is = readXmlFileIntoInputStream(xmlPath) ) {
-            
-            DocumentBuilder db = dbf.newDocumentBuilder();
-
-            // Get document
-            Document document = db.parse(is);
+        try {
+            // Read the xml file
+            File xmlFile = new File(xmlPath);
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(xmlFile);
 
             // Normalize the xml structure
-            document.getDocumentElement().normalize();
+            doc.getDocumentElement().normalize();
 
+            // Get the algorithms elements
+            NodeList algorithmsXML = doc.getElementsByTagName("algorithm");
 
-            // Get all the element by the tag name
-            NodeList algorithmsXML = document.getElementsByTagName("algorithm");
-
-            
-            // Following code is no longer neccessary
-            // LinkedList<String> problemsList = new LinkedList<String>();
-            // NodeList problemsXML = ((Element)algorithmsXML.item(0)).getElementsByTagName("problem");
-            // for (int i = 0; i < problemsXML.getLength(); i++) {
-            //     Node problem = problemsXML.item(i);
-
-            //     if (problem.getNodeType() == Node.ELEMENT_NODE) {
-            //         Element problemElement = (Element) problem;
-            //         System.out.println("Problem name: " + problemElement.getAttribute("name"));
-            //         for (String problemName: supportedProblems) {
-            //             if (problemName == problemElement.getAttribute("name")) {
-            //                 problemsList.add(problemName);
-            //                 break;
-            //             }
-            //         }
-            //     }
-            // }
-
-
-            //LinkedList<AlgorithmResult> results = new LinkedList<>();
+            // For all algorithms results
             for (int i = 0; i < algorithmsXML.getLength(); i++) {
+                // Get the algorithm results
                 Node algorithm = algorithmsXML.item(i);
 
+                // Get the algorithm details
                 if (algorithm.getNodeType() == Node.ELEMENT_NODE) {
                     Element algorithmElement = (Element) algorithm;
                     AlgorithmResult result = new AlgorithmResult();
@@ -150,7 +130,7 @@ public class HeatmapGenerator {
                     result.overallColor = 0;
 
 
-                    // extract the rest
+                    // Extract the algorithm results of each problem domain
                     NodeList problems = algorithmElement.getElementsByTagName("problem");
                     result.problemsResults = new HashMap<>();
 
@@ -169,15 +149,13 @@ public class HeatmapGenerator {
                     }
                     results.put(result.name, result);
                 }
-            }            
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return results;
-    }
+            }  
 
-    private InputStream readXmlFileIntoInputStream(final String fileName) {
-        return HeatmapGenerator.class.getClassLoader().getResourceAsStream(fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return results;
     }
 
     public void createPage(HashMap<String, AlgorithmResult> results, String id) throws IOException {
