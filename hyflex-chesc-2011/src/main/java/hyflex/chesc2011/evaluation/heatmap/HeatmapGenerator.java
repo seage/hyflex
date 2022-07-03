@@ -36,6 +36,9 @@ import javax.xml.XMLConstants;
 import com.hubspot.jinjava.*;
 
 import net.mahdilamb.colormap.Colormaps;
+import net.mahdilamb.colormap.Colors;
+import net.mahdilamb.colormap.SequentialColormap;
+import java.awt.Color;
 
 public class HeatmapGenerator {
     // Path where the results are stored
@@ -50,6 +53,13 @@ public class HeatmapGenerator {
     String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
     // Gradient colors
     String[] gradientC = {"darkred", "red", "yellow", "green", "darkgreen"};
+    public static Color[] colors = {
+        new Color(128,0,0), // dark red
+        new Color(255,0,0), // red
+        new Color(255,255,0), // yellow
+        new Color(0,128,0), // green
+        new Color(0,100,0), // dark green
+    };
     // Gradient color bolders
     double[] gradientV = {0, 0.5, 0.75, 0.98, 1.0};
     
@@ -91,8 +101,18 @@ public class HeatmapGenerator {
     }
 
     public static void main(String[] args) {
-        HeatmapGenerator testHeatGen = new HeatmapGenerator();
-        testHeatGen.buildResultsPage("96");
+        //HeatmapGenerator testHeatGen = new HeatmapGenerator();
+        //testHeatGen.buildResultsPage("96");
+        //final FluidColormap cm = Colormaps.fluidColormap(Colormaps.get("Tarn"));
+        final SequentialColormap cm = new SequentialColormap(colors);
+
+    }
+
+    public Color getColor(Double pos) {
+        // Method creates the two color gradient and then returns the color base on
+        // the position in it
+
+        return Color.BLACK;
     }
 
     public HashMap<String, AlgorithmResult> loadXMLFile(String xmlPath) {
