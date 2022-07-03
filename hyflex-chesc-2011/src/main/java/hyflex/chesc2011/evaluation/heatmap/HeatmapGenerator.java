@@ -91,11 +91,8 @@ public class HeatmapGenerator {
     }
 
     public static void main(String[] args) {
-        HeatmapGenerator hmg = new HeatmapGenerator();
-
-        HashMap algorithmsResults = hmg.loadXMLFile("results/96" + "/unit-metric-scores.xml");//hmg.loadXMLFile("results/" + args[0] + "/unit-metric-scores.xml");
-
-        System.out.println(algorithmsResults.keySet());
+        HeatmapGenerator testHeatGen = new HeatmapGenerator();
+        testHeatGen.buildResultsPage("96");
     }
 
     public HashMap<String, AlgorithmResult> loadXMLFile(String xmlPath) {
@@ -175,7 +172,7 @@ public class HeatmapGenerator {
     }
 
     public void buildResultsPage(String experimentId) {
-        String xmlResultsPath = String.format(resultsSvgFile, experimentId);
+        String xmlResultsPath = String.format(resultsXmlFile, experimentId);
         HashMap results = loadXMLFile(xmlResultsPath);
         try {
             createPage(results, experimentId);
