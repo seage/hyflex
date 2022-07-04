@@ -64,7 +64,7 @@
                             <th id="overall_head">Score</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <!-- <tbody>
                         {% for hh in results %}
                             <tr>
                                 <td>{{loop.index}}</td>
@@ -78,7 +78,7 @@
                                 <td id="hh_overall" style="background-color:rgba({{hh.overall_color[0]*255}}, {{hh.overall_color[1]*255}}, {{hh.overall_color[2]*255}}, 1)">{{hh.overall}}</td>
                             </tr>
                         {% endfor %}
-                    </tbody>
+                    </tbody> -->
                 </table>
             </div>
         </div>

@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -49,8 +50,7 @@ public class HeatmapGenerator {
     String resultsSvgFile = "./results/%s/heatmap.svg";
     // Path where the file with results is stored
     String resultsXmlFile = "./results/%s/unit-metric-scores.xml";
-    // Supported problems domains
-    String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
+    
     // Gradient colors
     private Color[][] gradColors = {
         {new Color(128,0,0), new Color(255,0,0)}, // dark red - red
@@ -66,7 +66,8 @@ public class HeatmapGenerator {
     };
     // Gradient color bolders
     double[] gradBorders = {0.5, 0.75, 0.98, 1.0};
-    
+
+    String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
     Map<String, String[]> hhInfo = new HashMap<String, String[]>() {{
         put("ACO-HH", new String[] {"José Luis Núñez", "Ant colony optimization"});
         put("AdapHH-GIHH", new String[] {"Mustafa Misir", "Genetic Iterative Hyper-heuristic"});
@@ -105,6 +106,10 @@ public class HeatmapGenerator {
         double score;
         // problem instances results
         HashMap<String, AlgorithmProblemResult> problemsResults;        
+    }
+    private class SVGData {
+        HashMap<String, AlgorithmResult> results;
+        // Supported problems domains
     }
 
     public static void main(String[] args) {
@@ -194,11 +199,15 @@ public class HeatmapGenerator {
         return results;
     }
 
-    public void createPage(HashMap<String, AlgorithmResult> results, String id) throws IOException {
+    public void createPage(SVGData sData, String id) throws IOException {
         Jinjava jinjava = new Jinjava();
+        Map<String, Object> context = new HashMap<>();
+        context.put("results", sData.results);
+        context.put("problems", supportedProblems);
+
 
         String template = Resources.toString(Resources.getResource(metadataPath), Charsets.UTF_8);
-        String renderedTemplate = jinjava.render(template, results);
+        String renderedTemplate = jinjava.render(template, context);
 
         // output the file
         String resultsSvgFilePath = String.format(resultsSvgFile, id);
@@ -211,9 +220,11 @@ public class HeatmapGenerator {
     }
 
     public void buildResultsPage(String experimentId) {
+        SVGData sData = new SVGData();
         String xmlResultsPath = String.format(resultsXmlFile, experimentId);
-        HashMap<String, AlgorithmResult> results = loadXMLFile(xmlResultsPath);
-        System.out.println(results.get("LeanGIHH").color);
+        sData.results = loadXMLFile(xmlResultsPath);
+
+        System.out.println(sData.results.get("Clean").color);
         // try {
         //     createPage(results, experimentId);
         // } catch (IOException ioe) {
