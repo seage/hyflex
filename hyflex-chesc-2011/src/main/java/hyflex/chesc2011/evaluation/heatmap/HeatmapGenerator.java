@@ -52,16 +52,20 @@ public class HeatmapGenerator {
     // Supported problems domains
     String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
     // Gradient colors
-    String[] gradientC = {"darkred", "red", "yellow", "green", "darkgreen"};
-    public static Color[] colors = {
-        new Color(128,0,0), // dark red
-        new Color(255,0,0), // red
-        new Color(255,255,0), // yellow
-        new Color(0,128,0), // green
-        new Color(0,100,0), // dark green
+    private Color[][] gradColors = {
+        {new Color(128,0,0), new Color(255,0,0)}, // dark red - red
+        {new Color(255,0,0), new Color(255,255,0)}, // red - yellow
+        {new Color(255,255,0), new Color(0,128,0)}, // yellow - green
+        {new Color(0,128,0), new Color(0,100,0)}, // green - dark green
+    };
+    private SequentialColormap[] gradMaps = {
+        new SequentialColormap(gradColors[0]),
+        new SequentialColormap(gradColors[1]),
+        new SequentialColormap(gradColors[2]),
+        new SequentialColormap(gradColors[3])
     };
     // Gradient color bolders
-    double[] gradientV = {0, 0.5, 0.75, 0.98, 1.0};
+    double[] gradBorders = {0.5, 0.75, 0.98, 1.0};
     
     Map<String, String[]> hhInfo = new HashMap<String, String[]>() {{
         put("ACO-HH", new String[] {"José Luis Núñez", "Ant colony optimization"});
@@ -90,29 +94,41 @@ public class HeatmapGenerator {
         put("XCJ", new String[] {"Kamran Shafi", ""});
     }};
 
+    private class AlgorithmProblemResult {
+        String name;
+        double score;
+        Color color;
+    }
     private class AlgorithmResult {
         String name;
-        double overall;
-        int overallColor;
+        Color color;
         double score;
-        String color;
         // problem instances results
-        HashMap<String, Double> problemsResults;        
+        HashMap<String, AlgorithmProblemResult> problemsResults;        
     }
 
     public static void main(String[] args) {
-        //HeatmapGenerator testHeatGen = new HeatmapGenerator();
-        //testHeatGen.buildResultsPage("96");
-        //final FluidColormap cm = Colormaps.fluidColormap(Colormaps.get("Tarn"));
-        final SequentialColormap cm = new SequentialColormap(colors);
-
+        HeatmapGenerator testHeatGen = new HeatmapGenerator();
+        testHeatGen.buildResultsPage("96");
     }
 
     public Color getColor(Double pos) {
-        // Method creates the two color gradient and then returns the color base on
-        // the position in it
+        // Find appropriate gradient
+        int colPos;
+        for (colPos = 0; colPos < gradBorders.length; colPos++) {
+            if (pos <= gradBorders[colPos]) {
+                break;
+            }
+        }
 
-        return Color.BLACK;
+        // Scale old position
+        double fromPos = colPos == 0 ? 0.0 : gradBorders[colPos - 1];
+        double toPos = gradBorders[colPos];
+
+        double newPos = (pos-fromPos)/(toPos-fromPos);
+
+        // Return the color
+        return gradMaps[colPos].get(newPos);
     }
 
     public HashMap<String, AlgorithmResult> loadXMLFile(String xmlPath) {
@@ -144,7 +160,7 @@ public class HeatmapGenerator {
                     // add each result into a new class and put it all into array or map
                     result.name = algorithmElement.getAttribute("name");
                     result.score = Double.parseDouble(String.format("%.5f", Double.parseDouble(algorithmElement.getAttribute("score"))));
-                    result.overallColor = 0;
+                    result.color = getColor(result.score);
 
 
                     // Extract the algorithm results of each problem domain
@@ -157,11 +173,14 @@ public class HeatmapGenerator {
                         if (problem.getNodeType() == Node.ELEMENT_NODE) {
                             Element problemElement = (Element) problem;
 
+                            // Create new structure
+                            AlgorithmProblemResult newRes = new AlgorithmProblemResult();
                             // set the problem result parameters
-                            String problemName = problemElement.getAttribute("name");
-                            double problemAvg = Double.parseDouble(String.format("%.5f", Double.parseDouble(problemElement.getAttribute("avg"))));
+                            newRes.name = problemElement.getAttribute("name");
+                            newRes.score = Double.parseDouble(String.format("%.5f", Double.parseDouble(problemElement.getAttribute("avg"))));
+                            newRes.color = getColor(newRes.score);
                             // add new problem results to algorithm
-                            result.problemsResults.put(problemName, problemAvg);
+                            result.problemsResults.put(newRes.name, newRes);
                         }
                     }
                     results.put(result.name, result);
@@ -193,12 +212,13 @@ public class HeatmapGenerator {
 
     public void buildResultsPage(String experimentId) {
         String xmlResultsPath = String.format(resultsXmlFile, experimentId);
-        HashMap results = loadXMLFile(xmlResultsPath);
-        try {
-            createPage(results, experimentId);
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        HashMap<String, AlgorithmResult> results = loadXMLFile(xmlResultsPath);
+        System.out.println(results.get("LeanGIHH").color);
+        // try {
+        //     createPage(results, experimentId);
+        // } catch (IOException ioe) {
+        //     ioe.printStackTrace();
+        // }
     }
 }
 
