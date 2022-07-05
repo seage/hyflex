@@ -98,14 +98,20 @@ public class HeatmapGenerator {
         String name;
         double score;
         Color color;
+        int rColor;
+        int gColor;
+        int bColor;
     }
     private class AlgorithmResult {
         String name;
-        Color color;
         double score;
+        String author;
+        Color color;
+        int rColor;
+        int gColor;
+        int bColor;
         // problem instances results
         HashMap<String, AlgorithmProblemResult> problemsResults;
-        List<AlgorithmProblemResult> probResList;
     }
 
     public static void main(String[] args) {
@@ -144,36 +150,42 @@ public class HeatmapGenerator {
             Document doc = builder.parse(xmlFile);
 
             // Normalize the xml structure
-            doc.getDocumentElement().normalize();
+            //doc.getDocumentElement().normalize();
 
+            // Element
+            Element root = doc.getDocumentElement();
             // Get the algorithms elements
-            NodeList algorithmsXML = doc.getElementsByTagName("algorithm");
+            NodeList algorithmsXML = root.getElementsByTagName("algorithm");
 
             // For all algorithms results
             for (int i = 0; i < algorithmsXML.getLength(); i++) {
                 // Get the algorithm results
-                Node algorithm = algorithmsXML.item(i);
+                Node algorithmNode = algorithmsXML.item(i);
 
                 // Get the algorithm details
-                if (algorithm.getNodeType() == Node.ELEMENT_NODE) {
-                    Element algorithmElement = (Element) algorithm;
+                if (algorithmNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element algorithmElement = (Element) algorithmNode;
                     AlgorithmResult result = new AlgorithmResult();
 
                     // add each result into a new class and put it all into array or map
                     result.name = algorithmElement.getAttribute("name");
                     result.score = Double.parseDouble(String.format("%.5f", Double.parseDouble(algorithmElement.getAttribute("score"))));
+                    result.author = hhInfo.containsKey(result.name) ? hhInfo.get(result.name)[0] : "";
                     result.color = getColor(result.score);
-
+                    result.rColor = result.color.getRed();
+                    result.gColor = result.color.getGreen();
+                    result.bColor = result.color.getBlue();
 
                     // Extract the algorithm results of each problem domain
-                    NodeList problems = algorithmElement.getElementsByTagName("problem");
+                    NodeList problemsXML = algorithmElement.getElementsByTagName("problem");
+
                     result.problemsResults = new HashMap<>();
 
-                    for (int problemId = 0; i < problems.getLength(); i++) {
-                        Node problem = problems.item(problemId);
+                    for (int problemId = 0; problemId < problemsXML.getLength(); problemId++) {
+                        Node problemNode = problemsXML.item(problemId);
 
-                        if (problem.getNodeType() == Node.ELEMENT_NODE) {
-                            Element problemElement = (Element) problem;
+                        if (problemNode.getNodeType() == Node.ELEMENT_NODE) {
+                            Element problemElement = (Element) problemNode;
 
                             // Create new structure
                             AlgorithmProblemResult newRes = new AlgorithmProblemResult();
@@ -182,6 +194,9 @@ public class HeatmapGenerator {
                             newRes.name = problemElement.getAttribute("name");
                             newRes.score = Double.parseDouble(String.format("%.5f", Double.parseDouble(problemElement.getAttribute("avg"))));
                             newRes.color = getColor(newRes.score);
+                            newRes.rColor = newRes.color.getRed();
+                            newRes.gColor = newRes.color.getGreen();
+                            newRes.bColor = newRes.color.getBlue();
                             // add new problem results to algorithm
                             result.problemsResults.put(newRes.name, newRes);
                         }
@@ -233,7 +248,6 @@ public class HeatmapGenerator {
         List<String> problems = results.isEmpty() ?
             new ArrayList<>() : new ArrayList<>(results.get(0).problemsResults.keySet());
 
-        System.out.println(results.get(0).color);
         try {
             createPage(results, problems, experimentId);
         } catch (IOException ioe) {

@@ -64,21 +64,21 @@
                             <th id="overall_head">Score</th>
                         </tr>
                     </thead>
-                    <!-- <tbody>
+                    <tbody>
                         {% for hh in results %}
                             <tr>
                                 <td>{{loop.index}}</td>
                                 <td id="hh_name">{{hh.name}}</td>
-                                <td id="hh_name">{{hh_info[hh.name]["author"]}}</td>
+                                <td id="hh_name">{{hh.author}}</td>
 
                                 {% for problem in problems %}
-                                <td id="hh_score" style="background-color:rgba({{hh.color[problem][0]*255}}, {{hh.color[problem][1]*255}}, {{hh.color[problem][2]*255}}, 1)">{{hh.score[problem]}}</td>
+                                <td id="hh_score" style="background-color:rgba({{hh.problemsResults[problem].rColor}}, {{hh.problemsResults[problem].gColor}}, {{hh.problemsResults[problem].bColor}}, 1)">{{hh.score[problem]}}</td>
                                 {% endfor %}
                                 <td></td>
-                                <td id="hh_overall" style="background-color:rgba({{hh.overall_color[0]*255}}, {{hh.overall_color[1]*255}}, {{hh.overall_color[2]*255}}, 1)">{{hh.overall}}</td>
+                                <td id="hh_overall" style="background-color:rgba({{hh.rColor}}, {{hh.gColor}}, {{hh.bColor}}, 1)">{{hh.overall}}</td>
                             </tr>
                         {% endfor %}
-                    </tbody> -->
+                    </tbody>
                 </table>
             </div>
         </div>
