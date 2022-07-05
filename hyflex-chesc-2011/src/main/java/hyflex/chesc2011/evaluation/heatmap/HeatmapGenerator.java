@@ -67,7 +67,6 @@ public class HeatmapGenerator {
     // Gradient color bolders
     double[] gradBorders = {0.5, 0.75, 0.98, 1.0};
 
-    String[] supportedProblems = {"SAT", "TSP", "FSP", "QAP"};
     Map<String, String[]> hhInfo = new HashMap<String, String[]>() {{
         put("ACO-HH", new String[] {"José Luis Núñez", "Ant colony optimization"});
         put("AdapHH-GIHH", new String[] {"Mustafa Misir", "Genetic Iterative Hyper-heuristic"});
@@ -105,11 +104,8 @@ public class HeatmapGenerator {
         Color color;
         double score;
         // problem instances results
-        HashMap<String, AlgorithmProblemResult> problemsResults;        
-    }
-    private class SVGData {
-        HashMap<String, AlgorithmResult> results;
-        // Supported problems domains
+        HashMap<String, AlgorithmProblemResult> problemsResults;
+        List<AlgorithmProblemResult> probResList;
     }
 
     public static void main(String[] args) {
@@ -136,8 +132,9 @@ public class HeatmapGenerator {
         return gradMaps[colPos].get(newPos);
     }
 
-    public HashMap<String, AlgorithmResult> loadXMLFile(String xmlPath) {
-        HashMap<String, AlgorithmResult> results = new HashMap<>();
+    public List<AlgorithmResult> loadXMLFile(String xmlPath) {
+        //HashMap<String, AlgorithmResult> results = new HashMap<>();
+        List<AlgorithmResult> resList = new ArrayList<>();
 
         try {
             // Read the xml file
@@ -180,6 +177,7 @@ public class HeatmapGenerator {
 
                             // Create new structure
                             AlgorithmProblemResult newRes = new AlgorithmProblemResult();
+                            
                             // set the problem result parameters
                             newRes.name = problemElement.getAttribute("name");
                             newRes.score = Double.parseDouble(String.format("%.5f", Double.parseDouble(problemElement.getAttribute("avg"))));
@@ -188,7 +186,8 @@ public class HeatmapGenerator {
                             result.problemsResults.put(newRes.name, newRes);
                         }
                     }
-                    results.put(result.name, result);
+                    //results.put(result.name, result);
+                    resList.add(result);
                 }
             }  
 
@@ -196,14 +195,14 @@ public class HeatmapGenerator {
             e.printStackTrace();
         }
 
-        return results;
+        return resList;
     }
 
-    public void createPage(SVGData sData, String id) throws IOException {
+    public void createPage(List<AlgorithmResult> results, List<String> problems, String id) throws IOException {
         Jinjava jinjava = new Jinjava();
         Map<String, Object> context = new HashMap<>();
-        context.put("results", sData.results);
-        context.put("problems", supportedProblems);
+        context.put("results", results);
+        context.put("problems", problems);
 
 
         String template = Resources.toString(Resources.getResource(metadataPath), Charsets.UTF_8);
@@ -220,16 +219,26 @@ public class HeatmapGenerator {
     }
 
     public void buildResultsPage(String experimentId) {
-        SVGData sData = new SVGData();
         String xmlResultsPath = String.format(resultsXmlFile, experimentId);
-        sData.results = loadXMLFile(xmlResultsPath);
+        List<AlgorithmResult> results = loadXMLFile(xmlResultsPath);
+        // Sort the results by their overall score
+        Collections.sort(results, new Comparator<AlgorithmResult>() {
+            @Override
+            public int compare(AlgorithmResult lar, AlgorithmResult rar) {
+                return lar.score > rar.score ? -1: (lar.score < rar.score) ? 1 : 0;
+            }
+        });
 
-        System.out.println(sData.results.get("Clean").color);
-        // try {
-        //     createPage(results, experimentId);
-        // } catch (IOException ioe) {
-        //     ioe.printStackTrace();
-        // }
+        // Get the problems list
+        List<String> problems = results.isEmpty() ?
+            new ArrayList<>() : new ArrayList<>(results.get(0).problemsResults.keySet());
+
+        System.out.println(results.get(0).color);
+        try {
+            createPage(results, problems, experimentId);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 }
 
