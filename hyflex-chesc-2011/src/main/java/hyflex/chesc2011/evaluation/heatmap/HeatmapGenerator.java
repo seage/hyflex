@@ -10,34 +10,25 @@ package hyflex.chesc2011.evaluation.heatmap;
 import java.util.*;
 
 //xml libraries
-// import org.w3c.dom.Document;
-// import org.w3c.dom.Element;
-// import org.w3c.dom.Node;
-// import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.stream.Collectors;
-
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import com.hubspot.jinjava.Jinjava;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 
 // ---------------------------------------------------
 
 import org.w3c.dom.*;
-import javax.xml.XMLConstants;
-import com.hubspot.jinjava.*;
-
-import net.mahdilamb.colormap.Colormaps;
-import net.mahdilamb.colormap.Colors;
 import net.mahdilamb.colormap.SequentialColormap;
 import java.awt.Color;
 
@@ -139,7 +130,6 @@ public class HeatmapGenerator {
     }
 
     public List<AlgorithmResult> loadXMLFile(String xmlPath) {
-        //HashMap<String, AlgorithmResult> results = new HashMap<>();
         List<AlgorithmResult> resList = new ArrayList<>();
 
         try {
@@ -201,7 +191,6 @@ public class HeatmapGenerator {
                             result.problemsResults.put(newRes.name, newRes);
                         }
                     }
-                    //results.put(result.name, result);
                     resList.add(result);
                 }
             }  
@@ -219,8 +208,22 @@ public class HeatmapGenerator {
         context.put("results", results);
         context.put("problems", problems);
 
+        // this part is just for testing
+        InputStream inputStream = HeatmapGenerator.class.getResourceAsStream(metadataPath);
+        String svgFile = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+        System.out.println(svgFile);
 
-        String template = Resources.toString(Resources.getResource(metadataPath), Charsets.UTF_8);
+        // end of testing
+       
+
+       
+
+
+
+
+
+
+        String template = Paths.get(metadataPath).toString();
         String renderedTemplate = jinjava.render(template, context);
 
         // output the file
@@ -247,6 +250,13 @@ public class HeatmapGenerator {
         // Get the problems list
         List<String> problems = results.isEmpty() ?
             new ArrayList<>() : new ArrayList<>(results.get(0).problemsResults.keySet());
+
+
+        // File curDir = new File(".");
+        // File[] filesList = curDir.listFiles();
+        // for(File f : filesList){
+        //     System.out.println(f.getName());
+        // }
 
         try {
             createPage(results, problems, experimentId);
