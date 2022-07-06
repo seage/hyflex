@@ -211,7 +211,7 @@ public class HeatmapGenerator {
         // this part is just for testing
         InputStream inputStream = HeatmapGenerator.class.getResourceAsStream(metadataPath);
         String svgFile = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-        System.out.println(svgFile);
+        //System.out.println(svgFile);
 
         // end of testing
        
