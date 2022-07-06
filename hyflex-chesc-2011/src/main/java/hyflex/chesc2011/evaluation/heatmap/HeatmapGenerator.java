@@ -223,8 +223,8 @@ public class HeatmapGenerator {
 
 
 
-        String template = Paths.get(metadataPath).toString();
-        String renderedTemplate = jinjava.render(template, context);
+        //String template = Paths.get(metadataPath).toString();
+        String renderedTemplate = jinjava.render(svgFile, context);
 
         // output the file
         String resultsSvgFilePath = String.format(resultsSvgFile, id);
