@@ -99,6 +99,16 @@ public class HeatmapGenerator {
         HashMap<String, AlgorithmProblemResult> problemsResults;
     }
 
+    private class ResultsData {
+        List<List<String>> algsOverRes;
+        List<List<List<String>>> algsProbsRes;
+
+        ResultsData() {
+            algsOverRes = new ArrayList<>();
+            algsProbsRes = new ArrayList<>();
+        }
+    }
+
     public static void main(String[] args) {
         HeatmapGenerator testHeatGen = new HeatmapGenerator();
         testHeatGen.buildResultsPage("96");
@@ -196,10 +206,53 @@ public class HeatmapGenerator {
         return resList;
     }
 
+    public ResultsData resultsToList(List<AlgorithmResult> results, List<String> problems) {
+        // Inicialize the arrays
+        ResultsData resData = new ResultsData();
+
+        for (int i = 0; i < results.size(); i++) {
+            // Initialize list for algorithm results
+            List<String> algOverRes = new ArrayList<>();
+
+            // Store results
+            AlgorithmResult algRes = results.get(i);
+            algOverRes.add(algRes.name);
+            algOverRes.add(algRes.author);
+            algOverRes.add(String.valueOf(algRes.score));
+            algOverRes.add(String.valueOf(algRes.rColor));
+            algOverRes.add(String.valueOf(algRes.gColor));
+            algOverRes.add(String.valueOf(algRes.bColor));
+
+            // Loop over problems results
+            List<List<String>> algProbsRes = new ArrayList<>();
+            for (int j = 0; j < problems.size(); j++) {
+                List<String> algProbRes = new ArrayList<>();
+
+                AlgorithmProblemResult probRes = algRes.problemsResults.get(problems.get(j));
+                algProbRes.add(probRes.name);
+                algProbRes.add(String.valueOf(probRes.score));
+                algProbRes.add(String.valueOf(probRes.rColor));
+                algProbRes.add(String.valueOf(probRes.gColor));
+                algProbRes.add(String.valueOf(probRes.bColor));
+
+                // Add to problems results array
+                algProbsRes.add(algProbRes);
+            }
+            // Store the results
+            resData.algsOverRes.add(algOverRes);
+            resData.algsProbsRes.add(algProbsRes);
+        }
+        return resData;
+    }
+
     public void createPage(List<AlgorithmResult> results, List<String> problems, String id) throws IOException {
         Jinjava jinjava = new Jinjava();
+
+        // Get the transformed data
+        ResultsData resData = resultsToList(results, problems);
         Map<String, Object> context = new HashMap<>();
-        context.put("results", results);
+        context.put("overallResults", resData.algsOverRes);
+        context.put("problemsResults", resData.algsProbsRes);
         context.put("problems", problems);
 
         // Loead the jinja vsg template
@@ -215,10 +268,6 @@ public class HeatmapGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void resultsToList() {
-        // todo
     }
 
     public void buildResultsPage(String experimentId) {
