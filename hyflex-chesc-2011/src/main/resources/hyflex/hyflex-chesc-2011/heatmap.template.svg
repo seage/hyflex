@@ -68,7 +68,7 @@
                         {% for hh in results %}
                             <tr>
                                 <td>{{loop.index}}</td>
-                                <td id="hh_name">{{hh.name}}</td>
+                                <td id="hh_name">{{hh}}</td>
                                 <td id="hh_name">{{hh.author}}</td>
 
                                 {% for problem in problems %}

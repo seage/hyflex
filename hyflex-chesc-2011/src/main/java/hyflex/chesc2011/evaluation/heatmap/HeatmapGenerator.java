@@ -14,15 +14,9 @@ import java.util.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import com.google.common.base.Charsets;
-import com.google.common.io.Resources;
 import com.hubspot.jinjava.Jinjava;
 import java.io.File;
 
@@ -140,7 +134,7 @@ public class HeatmapGenerator {
             Document doc = builder.parse(xmlFile);
 
             // Normalize the xml structure
-            //doc.getDocumentElement().normalize();
+            doc.getDocumentElement().normalize();
 
             // Element
             Element root = doc.getDocumentElement();
@@ -208,24 +202,11 @@ public class HeatmapGenerator {
         context.put("results", results);
         context.put("problems", problems);
 
-        // this part is just for testing
+        // Loead the jinja vsg template
         InputStream inputStream = HeatmapGenerator.class.getResourceAsStream(metadataPath);
         String svgFile = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-        //System.out.println(svgFile);
-
-        // end of testing
-       
-
-       
-
-
-
-
-
-
-        //String template = Paths.get(metadataPath).toString();
+        // Render the template
         String renderedTemplate = jinjava.render(svgFile, context);
-
         // output the file
         String resultsSvgFilePath = String.format(resultsSvgFile, id);
         
@@ -234,6 +215,10 @@ public class HeatmapGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void resultsToList() {
+        // todo
     }
 
     public void buildResultsPage(String experimentId) {
@@ -250,13 +235,6 @@ public class HeatmapGenerator {
         // Get the problems list
         List<String> problems = results.isEmpty() ?
             new ArrayList<>() : new ArrayList<>(results.get(0).problemsResults.keySet());
-
-
-        // File curDir = new File(".");
-        // File[] filesList = curDir.listFiles();
-        // for(File f : filesList){
-        //     System.out.println(f.getName());
-        // }
 
         try {
             createPage(results, problems, experimentId);
