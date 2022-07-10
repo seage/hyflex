@@ -43,6 +43,7 @@ public class HeatmapGenerator {
         {new Color(255,255,0), new Color(0,128,0)}, // yellow - green
         {new Color(0,128,0), new Color(0,100,0)}, // green - dark green
     };
+    // Gradient maps - for each two colors on the spectrum
     private SequentialColormap[] gradMaps = {
         new SequentialColormap(gradColors[0]),
         new SequentialColormap(gradColors[1]),
@@ -51,7 +52,7 @@ public class HeatmapGenerator {
     };
     // Gradient color bolders
     double[] gradBorders = {0.5, 0.75, 0.98, 1.0};
-
+    // Info about each hyper-heuristic - name and author
     Map<String, String[]> hhInfo = new HashMap<String, String[]>() {{
         put("ACO-HH", new String[] {"José Luis Núñez", "Ant colony optimization"});
         put("AdapHH-GIHH", new String[] {"Mustafa Misir", "Genetic Iterative Hyper-heuristic"});
@@ -78,15 +79,25 @@ public class HeatmapGenerator {
         put("VNS-TW", new String[] {"Ping-Che Hsiao", ""});
         put("XCJ", new String[] {"Kamran Shafi", ""});
     }};
-
+    /**
+     * Class represents a structure where are data
+     * about problem results stored 
+     */
     private class AlgorithmProblemResult {
         String name;
         double score;
         Color color;
+        // Red color 0-255
         int rColor;
+        // Green color 0-255
         int gColor;
+        // Blue color 0-255
         int bColor;
     }
+    /**
+     * Class represents a structure where are data
+     * about overall algorithm stored
+     */
     private class AlgorithmResult {
         String name;
         double score;
@@ -99,6 +110,11 @@ public class HeatmapGenerator {
         HashMap<String, AlgorithmProblemResult> problemsResults;
     }
 
+    /**
+     * Class represents a strucutre where are
+     * results stored after altering them into
+     * a form that suits the jinja needs
+     */
     private class ResultsData {
         List<List<String>> algsOverRes;
         List<List<List<String>>> algsProbsRes;
@@ -109,11 +125,22 @@ public class HeatmapGenerator {
         }
     }
 
+    /**
+     * Method is meant for testing
+     * @param args Input arguments
+     */
     public static void main(String[] args) {
         HeatmapGenerator testHeatGen = new HeatmapGenerator();
         testHeatGen.buildResultsPage("96");
     }
 
+    /**
+     * Method turns the given position into a 
+     * specific color based on the location on
+     * the gradient
+     * @param pos double value in range [0,1]
+     * @return A appropriate color on the gradient
+     */
     public Color getColor(Double pos) {
         // Find appropriate gradient
         int colPos;
@@ -133,6 +160,11 @@ public class HeatmapGenerator {
         return gradMaps[colPos].get(newPos);
     }
 
+    /**
+     * Method loads the xml file
+     * @param xmlPath path to the xml file
+     * @return A list of algorithm results
+     */
     public List<AlgorithmResult> loadXMLFile(String xmlPath) {
         List<AlgorithmResult> resList = new ArrayList<>();
 
@@ -198,14 +230,19 @@ public class HeatmapGenerator {
                     resList.add(result);
                 }
             }  
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return resList;
     }
 
+    /**
+     * Method turns the structures in given lists into a 
+     * arrays, that can be read by jinja
+     * @param results list with results (structures)
+     * @param problems list of problems names
+     * @return structure with arrays for overall and each problem results
+     */
     public ResultsData resultsToList(List<AlgorithmResult> results, List<String> problems) {
         // Inicialize the arrays
         ResultsData resData = new ResultsData();
@@ -245,6 +282,13 @@ public class HeatmapGenerator {
         return resData;
     }
 
+    /**
+     * Method generates a svg file with given data
+     * @param results list of algorithms results
+     * @param problems list of problem names
+     * @param id id of the experiment
+     * @throws IOException
+     */
     public void createPage(List<AlgorithmResult> results, List<String> problems, String id) throws IOException {
         Jinjava jinjava = new Jinjava();
 
@@ -270,6 +314,12 @@ public class HeatmapGenerator {
         }
     }
 
+    /**
+     * Method builds the results page
+     * First it loads the data from experiment and
+     * then it stores them into a svg file
+     * @param experimentId id of experiment
+     */
     public void buildResultsPage(String experimentId) {
         String xmlResultsPath = String.format(resultsXmlFile, experimentId);
         List<AlgorithmResult> results = loadXMLFile(xmlResultsPath);
