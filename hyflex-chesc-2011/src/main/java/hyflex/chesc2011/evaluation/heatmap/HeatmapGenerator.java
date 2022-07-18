@@ -79,6 +79,15 @@ public class HeatmapGenerator {
         put("VNS-TW", new String[] {"Ping-Che Hsiao", ""});
         put("XCJ", new String[] {"Kamran Shafi", ""});
     }};
+    // Sorted list of hhs results
+    List<AlgorithmResult> results;
+    // List of problems
+    List<String> problems;
+    // Algorithms overall results
+    List<List<String>> algsOverRes;
+    // Algorithms problems results
+    List<List<List<String>>> algsProbsRes;
+
     /**
      * Class represents a structure where are data
      * about problem results stored 
@@ -108,21 +117,6 @@ public class HeatmapGenerator {
         int bColor;
         // problem instances results
         HashMap<String, AlgorithmProblemResult> problemsResults;
-    }
-
-    /**
-     * Class represents a strucutre where are
-     * results stored after altering them into
-     * a form that suits the jinja needs
-     */
-    private class ResultsData {
-        List<List<String>> algsOverRes;
-        List<List<List<String>>> algsProbsRes;
-
-        ResultsData() {
-            algsOverRes = new ArrayList<>();
-            algsProbsRes = new ArrayList<>();
-        }
     }
 
     /**
@@ -161,13 +155,26 @@ public class HeatmapGenerator {
     }
 
     /**
+     * Method sorts the results list using the 
+     * hhs overall scores
+     */
+    public void sortResults() {
+        // Sort the results by their overall score
+        Collections.sort(results, new Comparator<AlgorithmResult>() {
+            @Override
+            public int compare(AlgorithmResult lar, AlgorithmResult rar) {
+                return lar.score > rar.score ? -1: (lar.score < rar.score) ? 1 : 0;
+            }
+        });
+    }
+
+    /**
      * Method loads the xml file
      * @param xmlPath path to the xml file
      * @return A list of algorithm results
      */
-    public List<AlgorithmResult> loadXMLFile(String xmlPath) {
-        List<AlgorithmResult> resList = new ArrayList<>();
-
+    public void loadXMLFile(String xmlPath) {
+        results = new ArrayList<>();
         try {
             // Read the xml file
             File xmlFile = new File(xmlPath);
@@ -227,13 +234,12 @@ public class HeatmapGenerator {
                             result.problemsResults.put(newRes.name, newRes);
                         }
                     }
-                    resList.add(result);
+                    results.add(result);
                 }
             }  
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return resList;
     }
 
     /**
@@ -243,9 +249,10 @@ public class HeatmapGenerator {
      * @param problems list of problems names
      * @return structure with arrays for overall and each problem results
      */
-    public ResultsData resultsToList(List<AlgorithmResult> results, List<String> problems) {
+    public void resultsToList() {
         // Inicialize the arrays
-        ResultsData resData = new ResultsData();
+        algsOverRes = new ArrayList<>();
+        algsProbsRes = new ArrayList<>();
 
         for (int i = 0; i < results.size(); i++) {
             // Initialize list for algorithm results
@@ -276,10 +283,9 @@ public class HeatmapGenerator {
                 algProbsRes.add(algProbRes);
             }
             // Store the results
-            resData.algsOverRes.add(algOverRes);
-            resData.algsProbsRes.add(algProbsRes);
+            algsOverRes.add(algOverRes);
+            algsProbsRes.add(algProbsRes);
         }
-        return resData;
     }
 
     /**
@@ -289,14 +295,14 @@ public class HeatmapGenerator {
      * @param id id of the experiment
      * @throws IOException
      */
-    public void createPage(List<AlgorithmResult> results, List<String> problems, String id) throws IOException {
+    public void createPage(String id) throws IOException {
         Jinjava jinjava = new Jinjava();
 
         // Get the transformed data
-        ResultsData resData = resultsToList(results, problems);
+        resultsToList();
         Map<String, Object> context = new HashMap<>();
-        context.put("overallResults", resData.algsOverRes);
-        context.put("problemsResults", resData.algsProbsRes);
+        context.put("overallResults", algsOverRes);
+        context.put("problemsResults", algsProbsRes);
         context.put("problems", problems);
 
         // Loead the jinja vsg template
@@ -322,21 +328,16 @@ public class HeatmapGenerator {
      */
     public void buildResultsPage(String experimentId) {
         String xmlResultsPath = String.format(resultsXmlFile, experimentId);
-        List<AlgorithmResult> results = loadXMLFile(xmlResultsPath);
+        loadXMLFile(xmlResultsPath);
         // Sort the results by their overall score
-        Collections.sort(results, new Comparator<AlgorithmResult>() {
-            @Override
-            public int compare(AlgorithmResult lar, AlgorithmResult rar) {
-                return lar.score > rar.score ? -1: (lar.score < rar.score) ? 1 : 0;
-            }
-        });
+        sortResults();
 
         // Get the problems list
-        List<String> problems = results.isEmpty() ?
+        problems = results.isEmpty() ?
             new ArrayList<>() : new ArrayList<>(results.get(0).problemsResults.keySet());
 
         try {
-            createPage(results, problems, experimentId);
+            createPage(experimentId);
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
