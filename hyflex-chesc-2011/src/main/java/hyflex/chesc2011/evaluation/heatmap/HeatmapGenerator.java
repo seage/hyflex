@@ -92,7 +92,7 @@ public class HeatmapGenerator {
      * Class represents a structure where are data
      * about problem results stored 
      */
-    private class AlgorithmProblemResult {
+    class AlgorithmProblemResult {
         String name;
         double score;
         Color color;
@@ -107,7 +107,7 @@ public class HeatmapGenerator {
      * Class represents a structure where are data
      * about overall algorithm stored
      */
-    private class AlgorithmResult {
+    class AlgorithmResult {
         String name;
         double score;
         String author;
@@ -155,6 +155,15 @@ public class HeatmapGenerator {
     }
 
     /**
+     * Method reads the problems that appears in the results
+     * and stores them into a problem array
+     */
+    public void storeProblemsNames() {
+        problems = results.isEmpty() ?
+            new ArrayList<>() : new ArrayList<>(results.get(0).problemsResults.keySet());
+    }
+
+    /**
      * Method sorts the results list using the 
      * hhs overall scores
      */
@@ -174,6 +183,7 @@ public class HeatmapGenerator {
      * @return A list of algorithm results
      */
     public void loadXMLFile(String xmlPath) {
+        // Initialize the results
         results = new ArrayList<>();
         try {
             // Read the xml file
@@ -240,6 +250,8 @@ public class HeatmapGenerator {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        // Load the problems names
+        storeProblemsNames();
     }
 
     /**
@@ -331,10 +343,6 @@ public class HeatmapGenerator {
         loadXMLFile(xmlResultsPath);
         // Sort the results by their overall score
         sortResults();
-
-        // Get the problems list
-        problems = results.isEmpty() ?
-            new ArrayList<>() : new ArrayList<>(results.get(0).problemsResults.keySet());
 
         try {
             createPage(experimentId);

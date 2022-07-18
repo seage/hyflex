@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<results>
+    <algorithm name="Algorithm1" score="0.3">
+        <problem avg="0.1" name="problem1">
+            <instance alg1-p1-ins1="0.7"/>
+            <instance alg1-p1-ins2="0.3"/>
+            <instance alg1-p1-ins3="0.7"/>
+            <instance alg1-p1-ins4="0.1"/>
+            <instance alg1-p1-ins5="0.5"/>
+        </problem>
+        <problem avg="0.5" name="problem2">
+            <instance alg1-p2-ins1="0.9"/>
+            <instance alg1-p2-ins2="0.0"/>
+            <instance alg1-p2-ins3="0.5"/>
+            <instance alg1-p2-ins4="0.9"/>
+            <instance alg1-p2-ins5="0.7"/>
+        </problem>
+        <problem avg="0.8" name="problem3">
+            <instance alg1-p3-ins1="0.7"/>
+            <instance alg1-p3-ins2="0.8"/>
+            <instance alg1-p3-ins3="0.8"/>
+            <instance alg1-p3-ins4="0.7"/>
+            <instance alg1-p3-ins5="0.7"/>
+        </problem>
+        <problem avg="0.5" name="problem4">
+            <instance alg1-p4-ins1="0.5"/>
+            <instance alg1-p4-ins2="0.4"/>
+            <instance alg1-p4-ins3="0.6"/>
+            <instance alg1-p4-ins4="0.5"/>
+            <instance alg1-p4-ins5="0.7"/>
+        </problem>
+    </algorithm>
+    <algorithm name="Algorithm2" score="0.9">
+        <problem avg="0.1" name="problem1">
+            <instance alg2-p1-ins1="0.7"/>
+            <instance alg2-p1-ins2="0.3"/>
+            <instance alg2-p1-ins3="0.7"/>
+            <instance alg2-p1-ins4="0.1"/>
+            <instance alg2-p1-ins5="0.5"/>
+        </problem>
+        <problem avg="0.5" name="problem2">
+            <instance alg2-p2-ins1="0.9"/>
+            <instance alg2-p2-ins2="0.0"/>
+            <instance alg2-p2-ins3="0.5"/>
+            <instance alg2-p2-ins4="0.9"/>
+            <instance alg2-p2-ins5="0.7"/>
+        </problem>
+        <problem avg="0.8" name="problem3">
+            <instance alg2-p3-ins1="0.7"/>
+            <instance alg2-p3-ins2="0.8"/>
+            <instance alg2-p3-ins3="0.8"/>
+            <instance alg2-p3-ins4="0.7"/>
+            <instance alg2-p3-ins5="0.7"/>
+        </problem>
+        <problem avg="0.5" name="problem4">
+            <instance alg2-p4-ins1="0.5"/>
+            <instance alg2-p4-ins2="0.4"/>
+            <instance alg2-p4-ins3="0.6"/>
+            <instance alg2-p4-ins4="0.5"/>
+            <instance alg2-p4-ins5="0.7"/>
+        </problem>
+    </algorithm>
+    <algorithm name="Algorithm3" score="0.6">
+        <problem avg="0.1" name="problem1">
+            <instance alg3-p1-ins1="0.7"/>
+            <instance alg3-p1-ins2="0.3"/>
+            <instance alg3-p1-ins3="0.7"/>
+            <instance alg3-p1-ins4="0.1"/>
+            <instance alg3-p1-ins5="0.5"/>
+        </problem>
+        <problem avg="0.5" name="problem2">
+            <instance alg3-p2-ins1="0.9"/>
+            <instance alg3-p2-ins2="0.0"/>
+            <instance alg3-p2-ins3="0.5"/>
+            <instance alg3-p2-ins4="0.9"/>
+            <instance alg3-p2-ins5="0.7"/>
+        </problem>
+        <problem avg="0.8" name="problem3">
+            <instance alg3-p3-ins1="0.7"/>
+            <instance alg3-p3-ins2="0.8"/>
+            <instance alg3-p3-ins3="0.8"/>
+            <instance alg3-p3-ins4="0.7"/>
+            <instance alg3-p3-ins5="0.7"/>
+        </problem>
+        <problem avg="0.5" name="problem4">
+            <instance alg3-p4-ins1="0.5"/>
+            <instance alg3-p4-ins2="0.4"/>
+            <instance alg3-p4-ins3="0.6"/>
+            <instance alg3-p4-ins4="0.5"/>
+            <instance alg3-p4-ins5="0.7"/>
+        </problem>
+    </algorithm>
+</results>
