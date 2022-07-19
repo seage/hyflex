@@ -66,7 +66,7 @@ public class HeatmapGenerator {
   /**
    * Class represents a structure where are data about problem results stored.
   */
-  class AlgorithmProblemResult {
+  protected class AlgorithmProblemResult {
     String name;
     double score;
     Color color;
@@ -81,7 +81,7 @@ public class HeatmapGenerator {
   /**
    * Class represents a structure where are data about overall algorithm stored.
    */
-  class AlgorithmResult {
+  protected class AlgorithmResult {
     String name;
     double score;
     String author;
@@ -99,7 +99,7 @@ public class HeatmapGenerator {
    * @param pos double value in range [0,1]
    * @return A appropriate color on the gradient
    */
-  public Color getColor(Double pos) {
+  protected Color getColor(Double pos) {
     // Find appropriate gradient
     int colPos;
     for (colPos = 0; colPos < gradBorders.length; colPos++) {
@@ -121,7 +121,7 @@ public class HeatmapGenerator {
   /**
    * Method reads the problems that appears in the results and stores them into a problem array.
    */
-  public void storeProblemsNames() {
+  protected void storeProblemsNames() {
     problems = results.isEmpty() ? new ArrayList<>()
         : new ArrayList<>(results.get(0).problemsResults.keySet());
   }
@@ -129,20 +129,9 @@ public class HeatmapGenerator {
   /**
    * Method sorts the results list using the hhs overall scores.
    */
-  public void sortResults() {
+  protected void sortResults() {
     // Sort the results by their overall score
-    Collections.sort(results, new Comparator<AlgorithmResult>() {
-      @Override
-      public int compare(AlgorithmResult lar, AlgorithmResult rar) {
-        if (lar.score > rar.score) {
-          return -1;
-        }
-        if (lar.score < rar.score) {
-          return 1;
-        }
-        return 0;
-      }
-    });
+    Collections.sort(results, (var lar, var rar) -> Double.compare(rar.score, lar.score));
   }
 
   /**
@@ -150,7 +139,7 @@ public class HeatmapGenerator {
    * 
    * @param xmlPath path to the xml file
    */
-  public void loadXmlFile(String xmlPath, Map<String, String> algAuthors) {
+  protected void loadXmlFile(String xmlPath, Map<String, String> algAuthors) {
     // Initialize the results
     results = new ArrayList<>();
     try {
@@ -229,7 +218,7 @@ public class HeatmapGenerator {
    * Method turns the structures in given lists into a arrays, that can be read by jinja.
    * 
    */
-  public void resultsToList() {
+  protected void resultsToList() {
     // Inicialize the arrays
     algsOverRes = new ArrayList<>();
     algsProbsRes = new ArrayList<>();
@@ -274,7 +263,7 @@ public class HeatmapGenerator {
    * @param id id of the experiment
    * @throws IOException exception if the page couldn't be created
    */
-  public void createPage(String id) throws IOException {
+  protected void createPage(String id) throws IOException {
     // Get the transformed data
     resultsToList();
     Map<String, Object> context = new HashMap<>();
@@ -304,7 +293,7 @@ public class HeatmapGenerator {
    * 
    * @param experimentId id of experiment
    */
-  public void buildResultsPage(String experimentId, Map<String, String> algAuthors) {
+  protected void buildResultsPage(String experimentId, Map<String, String> algAuthors) {
     String xmlResultsPath = String.format(resultsXmlFile, experimentId);
     loadXmlFile(xmlResultsPath, algAuthors);
     // Sort the results by their overall score
@@ -315,6 +304,16 @@ public class HeatmapGenerator {
     } catch (IOException ioe) {
       ioe.printStackTrace();
     }
+  }
+
+  /**
+   * Method receives neccesary data and create the result svg file.
+   * @param experimentId id of the competition experiment
+   * @param algAuthors map of algorithm authors
+   */
+  public void createHeatmap(
+      String experimentId, Map<String, String> algAuthors) {
+    buildResultsPage(experimentId, algAuthors);
   }
 }
 
