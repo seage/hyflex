@@ -52,33 +52,6 @@ public class HeatmapGenerator {
     };
     // Gradient color bolders
     double[] gradBorders = {0.5, 0.75, 0.98, 1.0};
-    // Info about each hyper-heuristic - name and author
-    Map<String, String> hhAuthors = new HashMap<String, String>() {{
-        put("ACO-HH", "José Luis Núñez");
-        put("AdapHH-GIHH", "Mustafa Misir");
-        put("Ant-Q", "Imen Khamassi");
-        put("AVEG-Nep", "Luca Di Gaspero");
-        put("BiasILS", "Mark Johnston");
-        put("Clean", "Mohamed Bader-El-Den");
-        put("Clean-2", "Mohamed Bader-El-Den");
-        put("DynILS", "Mark Johnston");
-        put("EPH", "David Meignan");
-        put("GenHive", "Michal Frankiewicz");
-        put("GISS", "Alberto Acuna");
-        put("HAEA", "Jonatan Gómez");
-        put("HAHA", "Andreas Lehrbaum");
-        put("ISEA", "Jiří Kubalík");
-        put("KSATS-HH", "Kevin Sim");
-        put("LeanGIHH", "Steven Adriaensen");
-        put("MCHH-S", "Kent McClymont");
-        put("ML", "Mathieu Larose");
-        put("NAHH", "Franco Mascia");
-        put("PHUNTER", "Fan Xue");
-        put("SA-ILS", "He Jiang");
-        put("SelfSearch", "Jawad Elomari");
-        put("VNS-TW", "Ping-Che Hsiao");
-        put("XCJ", "Kamran Shafi");
-    }};
     // Sorted list of hhs results
     List<AlgorithmResult> results;
     // List of problems
@@ -124,8 +97,8 @@ public class HeatmapGenerator {
      * @param args Input arguments
      */
     public static void main(String[] args) {
-        HeatmapGenerator testHeatGen = new HeatmapGenerator();
-        testHeatGen.buildResultsPage("96");
+        // HeatmapGenerator testHeatGen = new HeatmapGenerator();
+        // testHeatGen.buildResultsPage("96");
     }
 
     /**
@@ -182,7 +155,7 @@ public class HeatmapGenerator {
      * @param xmlPath path to the xml file
      * @return A list of algorithm results
      */
-    public void loadXMLFile(String xmlPath) {
+    public void loadXMLFile(String xmlPath, Map<String, String> algAuthors) {
         // Initialize the results
         results = new ArrayList<>();
         try {
@@ -213,7 +186,7 @@ public class HeatmapGenerator {
                     // add each result into a new class and put it all into array or map
                     result.name = algorithmElement.getAttribute("name");
                     result.score = Double.parseDouble(String.format("%.5f", Double.parseDouble(algorithmElement.getAttribute("score"))));
-                    result.author = hhAuthors.containsKey(result.name) ? hhAuthors.get(result.name) : "";
+                    result.author = algAuthors.containsKey(result.name) ? algAuthors.get(result.name) : "";
                     result.color = getColor(result.score);
                     result.rColor = result.color.getRed();
                     result.gColor = result.color.getGreen();
@@ -338,9 +311,9 @@ public class HeatmapGenerator {
      * then it stores them into a svg file
      * @param experimentId id of experiment
      */
-    public void buildResultsPage(String experimentId) {
+    public void buildResultsPage(String experimentId, Map<String, String> algAuthors) {
         String xmlResultsPath = String.format(resultsXmlFile, experimentId);
-        loadXMLFile(xmlResultsPath);
+        loadXMLFile(xmlResultsPath, algAuthors);
         // Sort the results by their overall score
         sortResults();
 

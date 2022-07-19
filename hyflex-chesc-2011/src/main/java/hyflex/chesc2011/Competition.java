@@ -44,6 +44,33 @@ public class Competition {
     "VNS-TW",
     "XCJ",
   };
+// Info about each hyper-heuristic - name and author
+  public static final Map<String, String> algorithmAuthors = new HashMap<String, String>() {{
+      put("ACO-HH", "José Luis Núñez");
+      put("AdapHH-GIHH", "Mustafa Misir");
+      put("Ant-Q", "Imen Khamassi");
+      put("AVEG-Nep", "Luca Di Gaspero");
+      put("BiasILS", "Mark Johnston");
+      put("Clean", "Mohamed Bader-El-Den");
+      put("Clean-2", "Mohamed Bader-El-Den");
+      put("DynILS", "Mark Johnston");
+      put("EPH", "David Meignan");
+      put("GenHive", "Michal Frankiewicz");
+      put("GISS", "Alberto Acuna");
+      put("HAEA", "Jonatan Gómez");
+      put("HAHA", "Andreas Lehrbaum");
+      put("ISEA", "Jiří Kubalík");
+      put("KSATS-HH", "Kevin Sim");
+      put("LeanGIHH", "Steven Adriaensen");
+      put("MCHH-S", "Kent McClymont");
+      put("ML", "Mathieu Larose");
+      put("NAHH", "Franco Mascia");
+      put("PHUNTER", "Fan Xue");
+      put("SA-ILS", "He Jiang");
+      put("SelfSearch", "Jawad Elomari");
+      put("VNS-TW", "Ping-Che Hsiao");
+      put("XCJ", "Kamran Shafi");
+  }};
 
   public static final String[] problemIDs = {
     "SAT", "BinPacking", "PersonnelScheduling", "FSP", "TSP", "VRP", "QAP"

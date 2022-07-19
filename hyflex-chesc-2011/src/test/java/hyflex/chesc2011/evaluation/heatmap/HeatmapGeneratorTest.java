@@ -1,9 +1,11 @@
 package hyflex.chesc2011.evaluation.heatmap;
 
+import java.util.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.net.URL;
 import org.junit.jupiter.api.Test;
+import hyflex.chesc2011.Competition;
 
 public class HeatmapGeneratorTest {
     // Path where the xml with results
@@ -12,9 +14,9 @@ public class HeatmapGeneratorTest {
     @Test
     void testLoadXMLFile() throws Exception {
         HeatmapGenerator hmg = new HeatmapGenerator();
-        
+
         // Load the results
-        hmg.loadXMLFile(xmlPath);
+        hmg.loadXMLFile(xmlPath, Competition.algorithmAuthors);
 
         // test if the results isn't null
         assertNotNull(hmg.results);
@@ -36,7 +38,7 @@ public class HeatmapGeneratorTest {
         HeatmapGenerator hmg = new HeatmapGenerator();
         
         // Load the results
-        hmg.loadXMLFile(xmlPath);
+        hmg.loadXMLFile(xmlPath, Competition.algorithmAuthors);
         // Sort the results
         hmg.sortResults();
 
@@ -51,7 +53,7 @@ public class HeatmapGeneratorTest {
         HeatmapGenerator hmg = new HeatmapGenerator();
 
         // Load the results
-        hmg.loadXMLFile(xmlPath);
+        hmg.loadXMLFile(xmlPath, Competition.algorithmAuthors);
         // Sort the results
         hmg.sortResults();
         // Create list from results
