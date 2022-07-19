@@ -16,7 +16,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -157,6 +156,8 @@ public class HeatmapGenerator {
       // Get the algorithms elements
       NodeList algorithmsXml = root.getElementsByTagName("algorithm");
 
+      problems = new ArrayList<>();
+      int probsStop = 0;
       // For all algorithms results
       for (int i = 0; i < algorithmsXml.getLength(); i++) {
         // Get the algorithm results
@@ -200,18 +201,20 @@ public class HeatmapGenerator {
               newRes.redColor = newRes.color.getRed();
               newRes.greenColor = newRes.color.getGreen();
               newRes.blueColor = newRes.color.getBlue();
+              if (probsStop != 1) {
+                problems.add(newRes.name);
+              }
               // add new problem results to algorithm
               result.problemsResults.put(newRes.name, newRes);
             }
           }
+          probsStop = 1;
           results.add(result);
         }
       }
     } catch (Exception e) {
       e.printStackTrace();
     }
-    // Load the problems names
-    storeProblemsNames();
   }
 
   /**
