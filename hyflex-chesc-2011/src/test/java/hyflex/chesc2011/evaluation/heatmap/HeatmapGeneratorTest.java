@@ -16,7 +16,7 @@ public class HeatmapGeneratorTest {
         HeatmapGenerator hmg = new HeatmapGenerator();
 
         // Load the results
-        hmg.loadXMLFile(xmlPath, Competition.algorithmAuthors);
+        hmg.loadXmlFile(xmlPath, Competition.algorithmAuthors);
 
         // test if the results isn't null
         assertNotNull(hmg.results);
