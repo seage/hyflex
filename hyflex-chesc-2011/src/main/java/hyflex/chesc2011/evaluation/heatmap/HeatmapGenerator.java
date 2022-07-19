@@ -53,31 +53,31 @@ public class HeatmapGenerator {
     // Gradient color bolders
     double[] gradBorders = {0.5, 0.75, 0.98, 1.0};
     // Info about each hyper-heuristic - name and author
-    Map<String, String[]> hhInfo = new HashMap<String, String[]>() {{
-        put("ACO-HH", new String[] {"José Luis Núñez", "Ant colony optimization"});
-        put("AdapHH-GIHH", new String[] {"Mustafa Misir", "Genetic Iterative Hyper-heuristic"});
-        put("Ant-Q", new String[] {"Imen Khamassi", ""});
-        put("AVEG-Nep", new String[] {"Luca Di Gaspero", ""});
-        put("BiasILS", new String[] {"Mark Johnston", ""});
-        put("Clean", new String[] {"Mohamed Bader-El-Den", ""});
-        put("Clean-2", new String[] {"Mohamed Bader-El-Den", ""});
-        put("DynILS", new String[] {"Mark Johnston", ""});
-        put("EPH", new String[] {"David Meignan", ""});
-        put("GenHive", new String[] {"Michal Frankiewicz", ""});
-        put("GISS", new String[] {"Alberto Acuna", ""});
-        put("HAEA", new String[] {"Jonatan Gómez", ""});
-        put("HAHA", new String[] {"Andreas Lehrbaum", ""});
-        put("ISEA", new String[] {"Jiří Kubalík", ""});
-        put("KSATS-HH", new String[] {"Kevin Sim", ""});
-        put("LeanGIHH", new String[] {"Steven Adriaensen", ""});
-        put("MCHH-S", new String[] {"Kent McClymont", ""});
-        put("ML", new String[] {"Mathieu Larose", ""});
-        put("NAHH", new String[] {"Franco Mascia", ""});
-        put("PHUNTER", new String[] {"Fan Xue", ""});
-        put("SA-ILS", new String[] {"He Jiang", ""});
-        put("SelfSearch", new String[] {"Jawad Elomari", ""});
-        put("VNS-TW", new String[] {"Ping-Che Hsiao", ""});
-        put("XCJ", new String[] {"Kamran Shafi", ""});
+    Map<String, String> hhAuthors = new HashMap<String, String>() {{
+        put("ACO-HH", "José Luis Núñez");
+        put("AdapHH-GIHH", "Mustafa Misir");
+        put("Ant-Q", "Imen Khamassi");
+        put("AVEG-Nep", "Luca Di Gaspero");
+        put("BiasILS", "Mark Johnston");
+        put("Clean", "Mohamed Bader-El-Den");
+        put("Clean-2", "Mohamed Bader-El-Den");
+        put("DynILS", "Mark Johnston");
+        put("EPH", "David Meignan");
+        put("GenHive", "Michal Frankiewicz");
+        put("GISS", "Alberto Acuna");
+        put("HAEA", "Jonatan Gómez");
+        put("HAHA", "Andreas Lehrbaum");
+        put("ISEA", "Jiří Kubalík");
+        put("KSATS-HH", "Kevin Sim");
+        put("LeanGIHH", "Steven Adriaensen");
+        put("MCHH-S", "Kent McClymont");
+        put("ML", "Mathieu Larose");
+        put("NAHH", "Franco Mascia");
+        put("PHUNTER", "Fan Xue");
+        put("SA-ILS", "He Jiang");
+        put("SelfSearch", "Jawad Elomari");
+        put("VNS-TW", "Ping-Che Hsiao");
+        put("XCJ", "Kamran Shafi");
     }};
     // Sorted list of hhs results
     List<AlgorithmResult> results;
@@ -213,7 +213,7 @@ public class HeatmapGenerator {
                     // add each result into a new class and put it all into array or map
                     result.name = algorithmElement.getAttribute("name");
                     result.score = Double.parseDouble(String.format("%.5f", Double.parseDouble(algorithmElement.getAttribute("score"))));
-                    result.author = hhInfo.containsKey(result.name) ? hhInfo.get(result.name)[0] : "";
+                    result.author = hhAuthors.containsKey(result.name) ? hhAuthors.get(result.name) : "";
                     result.color = getColor(result.score);
                     result.rColor = result.color.getRed();
                     result.gColor = result.color.getGreen();
