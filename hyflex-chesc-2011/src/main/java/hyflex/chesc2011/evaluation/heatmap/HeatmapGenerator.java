@@ -30,7 +30,7 @@ public class HeatmapGenerator {
     // Path where the results are stored
     String resultsPath = "./results";
     // Path where the metadata are stored
-    String metadataPath = "/hyflex/hyflex-chesc-2011/heatmap.template.svg";
+    String templatePath = "/hyflex/hyflex-chesc-2011/heatmap.template.svg";
     // Path where the file with results is stored
     String resultsSvgFile = "./results/%s/heatmap.svg";
     // Path where the file with results is stored
@@ -318,7 +318,7 @@ public class HeatmapGenerator {
         context.put("problems", problems);
 
         // Loead the jinja vsg template
-        InputStream inputStream = HeatmapGenerator.class.getResourceAsStream(metadataPath);
+        InputStream inputStream = HeatmapGenerator.class.getResourceAsStream(templatePath);
         String svgFile = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
         // Render the template
         String renderedTemplate = jinjava.render(svgFile, context);
