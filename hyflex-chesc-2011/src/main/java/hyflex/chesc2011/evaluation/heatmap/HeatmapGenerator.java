@@ -36,7 +36,7 @@ public class HeatmapGenerator {
   // Path where the results are stored
   String resultsPath = "./results";
   // Path where the metadata are stored
-  String templatePath = "/hyflex/hyflex-chesc-2011/heatmap.template.svg";
+  String templatePath = "/hyflex/hyflex-chesc-2011/heatmap.svg.template";
   // Path where the file with results is stored
   String resultsSvgFile = "./results/%s/heatmap.svg";
   // Path where the file with results is stored
