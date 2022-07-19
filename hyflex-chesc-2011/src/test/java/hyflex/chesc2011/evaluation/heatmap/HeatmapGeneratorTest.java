@@ -7,16 +7,14 @@ import org.junit.jupiter.api.Test;
 
 public class HeatmapGeneratorTest {
     // Path where the xml with results
-    String xmlPath = "/hyflex/hyflex-chesc-2011/test-unit-metric-scores.xml";
+    String xmlPath = "src/test/resources/hyflex/hyflex-chesc-2011/test-unit-metric-scores.xml";
 
     @Test
     void testLoadXMLFile() throws Exception {
         HeatmapGenerator hmg = new HeatmapGenerator();
-        // Get the xml full path
-        URL url = HeatmapGeneratorTest.class.getResource(xmlPath);
-        String xmlFullPath = url.getPath();
+        
         // Load the results
-        hmg.loadXMLFile(xmlFullPath);
+        hmg.loadXMLFile(xmlPath);
 
         // test if the results isn't null
         assertNotNull(hmg.results);
@@ -36,11 +34,9 @@ public class HeatmapGeneratorTest {
     @Test 
     void testSortResults() {
         HeatmapGenerator hmg = new HeatmapGenerator();
-        // Get the xml full path
-        URL url = HeatmapGeneratorTest.class.getResource(xmlPath);
-        String xmlFullPath = url.getPath();
+        
         // Load the results
-        hmg.loadXMLFile(xmlFullPath);
+        hmg.loadXMLFile(xmlPath);
         // Sort the results
         hmg.sortResults();
 
@@ -53,11 +49,9 @@ public class HeatmapGeneratorTest {
     @Test
     void testResultsToList() throws Exception {
         HeatmapGenerator hmg = new HeatmapGenerator();
-        // Get the xml full path
-        URL url = HeatmapGeneratorTest.class.getResource(xmlPath);
-        String xmlFullPath = url.getPath();
+
         // Load the results
-        hmg.loadXMLFile(xmlFullPath);
+        hmg.loadXMLFile(xmlPath);
         // Sort the results
         hmg.sortResults();
         // Create list from results
