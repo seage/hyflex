@@ -1,0 +1,103 @@
+<svg viewBox="0 0 850 850" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        table {
+            border: 1px solid;
+        }
+
+        #hh_score {
+            text-align: left;
+        }
+
+        #hh_overall {
+            text-align: left;
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            #margin: 25px 0;
+            #font-size: 1.1em;
+            font-family: sans-serif;
+            #width: 800px;
+            #box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .styled-table thead tr {
+            background-color: #dddddd;
+            color: #000;
+            text-align: center;
+        }
+
+        .styled-table th, .styled-table td {
+            padding: 9px 12px;
+        }
+
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 1px solid #000;
+        }
+        th {
+            padding-right: 10px;
+        }
+        .table-info {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+        .experiment-id {
+            padding-left: 12px;
+        }
+        .created-date {
+            padding-left: 12px;
+        }
+
+    </style>
+    <!--Common use case: embed HTML text into SVG-->
+    <foreignObject x="0" y="0" width="100%" height="100%">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <div class="table">
+                <table aria-describedby="results" class="styled-table">
+                    <thead>
+                        <tr>
+                            <th id="hh_head"></th>
+                            <th id="hh_head">Hyper-heuristic</th>
+                            <th id="hh_head">Author</th>
+                            {% for problem in problems %}
+                            <th id="p_head">{{problem}}</th>
+                            {% endfor %}
+                            <th id="overall_head"></th>
+                            <th id="overall_head">Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set indexId = 0 %}
+                        {% for overRes in overallResults %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td id="hh_name">{{overRes[0]}}</td>
+                                <td id="hh_name">{{overRes[1]}}</td>
+
+                                {% for probRes in problemsResults[indexId] %}
+                                    <td id="hh_score" style="background-color:rgba({{probRes[2]}}, {{probRes[3]}}, {{probRes[4]}}, 1)">{{probRes[1]}}</td>
+                                {% endfor %}
+                                <td></td>
+                                <td id="hh_overall" style="background-color:rgba({{overRes[3]}}, {{overRes[4]}}, {{overRes[5]}}, 1)">{{overRes[2]}}</td>
+                            </tr>
+                            {% set indexId = indexId + 1 %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-info">
+                <div class="experiment-id">Experiment ID: {{ experimentId }}</div>
+                <div class="created-date">Created: {{ datetime }}</div>
+            </div>
+        </div>
+    </foreignObject>
+</svg>

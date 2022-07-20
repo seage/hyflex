@@ -3,6 +3,8 @@ package hyflex.chesc2011.launcher.commands;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
+import hyflex.chesc2011.Competition;
+import hyflex.chesc2011.evaluation.heatmap.HeatmapGenerator;
 
 /**
  * Class is used for competition evaluation.
@@ -11,6 +13,7 @@ import com.beust.jcommander.Parameters;
  */
 @Parameters(commandDescription = "Perform benchmark calculation on given results.")
 public class CompetitionEvaluateCommand extends Command {
+
 
   @Parameter(names = {"--help"},
       help = true,
@@ -27,6 +30,11 @@ public class CompetitionEvaluateCommand extends Command {
       description = "Name of the metric to be used "
       + "available values are: UnitMetric, F1Metric")
   public String metric = "UnitMetric";
+
+  @Parameter(names = {"-h", "--heatmap"},
+      required = false,
+      description = "Indicates if to create also a heatmap from results")
+  public boolean createHeatmap = false;
 
   public boolean isHelp() {
     return help;
@@ -51,6 +59,10 @@ public class CompetitionEvaluateCommand extends Command {
     switch (metric) {
       case "UnitMetric":
         new hyflex.chesc2011.evaluation.scorecard.ScoreCardBenchmarkCalculator().run(id, metric);
+        if (createHeatmap) {
+          HeatmapGenerator heatmapGenerator = new HeatmapGenerator();
+          heatmapGenerator.createHeatmap(id, Competition.algorithmAuthors);
+        }
         break;
       case "F1Metric":
         new hyflex.chesc2011.evaluation.calculators.legacy.F1MetricBenchmarkCalculator().run(id);
