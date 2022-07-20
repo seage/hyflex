@@ -121,8 +121,11 @@ public class HeatmapGenerator {
    * Method reads the problems that appears in the results and stores them into a problem array.
    */
   protected void storeProblemsNames() {
+    // Extract the problems names
     problems = results.isEmpty() ? new ArrayList<>()
         : new ArrayList<>(results.get(0).problemsResults.keySet());
+    // Sort the problem names
+    Collections.sort(problems);
   }
 
   /**
@@ -156,8 +159,6 @@ public class HeatmapGenerator {
       // Get the algorithms elements
       NodeList algorithmsXml = root.getElementsByTagName("algorithm");
 
-      problems = new ArrayList<>();
-      int probsStop = 0;
       // For all algorithms results
       for (int i = 0; i < algorithmsXml.getLength(); i++) {
         // Get the algorithm results
@@ -201,16 +202,14 @@ public class HeatmapGenerator {
               newRes.redColor = newRes.color.getRed();
               newRes.greenColor = newRes.color.getGreen();
               newRes.blueColor = newRes.color.getBlue();
-              if (probsStop != 1) {
-                problems.add(newRes.name);
-              }
+             
               // add new problem results to algorithm
               result.problemsResults.put(newRes.name, newRes);
             }
           }
-          probsStop = 1;
           results.add(result);
         }
+        storeProblemsNames();
       }
     } catch (Exception e) {
       e.printStackTrace();
