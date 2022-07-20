@@ -271,7 +271,7 @@ public class HeatmapGenerator {
     // Get the transformed data
     resultsToList();
     // Get the current time
-    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     Date date = new Date(System.currentTimeMillis());
 
     // Create context
