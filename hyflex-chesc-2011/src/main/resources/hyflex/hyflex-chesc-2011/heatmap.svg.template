@@ -45,6 +45,17 @@
         th {
             padding-right: 10px;
         }
+        .table-info {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+        .experiment-id {
+            padding-left: 12px;
+        }
+        .created-date {
+            padding-left: 12px;
+        }
 
     </style>
     <!--Common use case: embed HTML text into SVG-->
@@ -82,6 +93,10 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div class="table-info">
+                <div class="experiment-id">Experiment ID: {{ experimentId }}</div>
+                <div class="created-date">Created: {{ datetime }}</div>
             </div>
         </div>
     </foreignObject>

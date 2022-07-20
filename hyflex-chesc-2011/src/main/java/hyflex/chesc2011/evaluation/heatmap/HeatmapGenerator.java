@@ -14,6 +14,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -268,10 +270,17 @@ public class HeatmapGenerator {
   protected void createPage(String id) throws IOException {
     // Get the transformed data
     resultsToList();
+    // Get the current time
+    SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Date date = new Date(System.currentTimeMillis());
+
+    // Create context
     Map<String, Object> context = new HashMap<>();
     context.put("overallResults", algsOverRes);
     context.put("problemsResults", algsProbsRes);
     context.put("problems", problems);
+    context.put("experimentId", id);
+    context.put("datetime", formatter.format(date));
 
     // Loead the jinja vsg template
     InputStream inputStream = HeatmapGenerator.class.getResourceAsStream(templatePath);
