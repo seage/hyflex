@@ -42,10 +42,10 @@ public class HeatmapGenerator {
   String resultsXmlFile = "./results/%s/unit-metric-scores.xml";
 
   // Gradient colors
-  private Color[][] gradColors = {{new Color(139, 0, 0), new Color(255, 0, 0)}, // dark red - red
-      {new Color(255, 0, 0), new Color(255, 255, 0)}, // red - yellow
-      {new Color(255, 255, 0), new Color(0, 255, 0)}, // yellow - green
-      {new Color(0, 255, 0), new Color(1, 50, 32)}, // green - dark green
+  private Color[][] gradColors = {{new Color(140, 0, 0), new Color(255, 0, 0)}, // dark red - red
+      {new Color(255, 0, 0), new Color(255, 250, 0)}, // red - yellow
+      {new Color(255, 250, 0), new Color(1, 150, 32)}, // yellow - green
+      {new Color(1, 150, 32), new Color(1, 120, 32)}, // green - dark green
   };
   // Gradient maps - for each two colors on the spectrum
   private SequentialColormap[] gradMaps =
