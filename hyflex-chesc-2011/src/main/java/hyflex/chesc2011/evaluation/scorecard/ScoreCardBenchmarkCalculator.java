@@ -4,6 +4,7 @@ import hyflex.chesc2011.Competition;
 import hyflex.chesc2011.evaluation.calculators.UnitMetricScoreCalculator;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadataReader;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
