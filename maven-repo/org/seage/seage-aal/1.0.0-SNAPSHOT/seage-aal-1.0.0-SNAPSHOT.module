@@ -79,20 +79,6 @@
           "version": {
             "requires": "20220320"
           }
-        },
-        {
-          "group": "seage",
-          "module": "seage-metaheuristics",
-          "version": {
-            "requires": "1.0.0-SNAPSHOT"
-          }
-        },
-        {
-          "group": "seage",
-          "module": "seage-misc",
-          "version": {
-            "requires": "1.0.0-SNAPSHOT"
-          }
         }
       ],
       "files": [
@@ -166,20 +152,6 @@
           "module": "junit-jupiter-engine",
           "version": {
             "requires": "5.6.2"
-          }
-        },
-        {
-          "group": "seage",
-          "module": "seage-metaheuristics",
-          "version": {
-            "requires": "1.0.0-SNAPSHOT"
-          }
-        },
-        {
-          "group": "seage",
-          "module": "seage-misc",
-          "version": {
-            "requires": "1.0.0-SNAPSHOT"
           }
         },
         {
