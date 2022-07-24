@@ -15,7 +15,7 @@ import org.seage.score.ScoreCalculator;
  * 
  * @author David Omrai
  */
-public class UnitMetricScoreCalculator implements ScoreCalculatorInterface {
+public class UnitMetricScoreCalculator implements HyflexScoreCalculator {
   /**
    * Map represents weights for each problem domain.
    */
