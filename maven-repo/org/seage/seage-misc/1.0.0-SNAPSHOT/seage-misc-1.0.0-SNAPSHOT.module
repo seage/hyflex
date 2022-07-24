@@ -1,0 +1,104 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "org.seage",
+    "module": "seage-misc",
+    "version": "1.0.0-SNAPSHOT",
+    "attributes": {
+      "org.gradle.status": "integration"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.3"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "seage-misc-1.0.0-SNAPSHOT.jar",
+          "url": "seage-misc-1.0.0-SNAPSHOT.jar",
+          "size": 95449,
+          "sha512": "c09d9f4878837f58d40f4364bf85b66033b1522454100586caebe9e8712b1ec8d80ee24712b123ca715f0977e4e9ccfa85e2b3bf95f5127ea63412111b3aaa0e",
+          "sha256": "01e56d2c74b0c3fa61b4be38562725ccf3493dc3f739c79891fae0c2c826efa7",
+          "sha1": "cc358c1fb9f7b8879d40bbd3475c9ef7d57bd6fd",
+          "md5": "6e210209eb8fde0c8435a71cb879dba3"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "ch.qos.logback",
+          "module": "logback-classic",
+          "version": {
+            "requires": "1.3.0-alpha10"
+          }
+        },
+        {
+          "group": "com.google.guava",
+          "module": "guava",
+          "version": {
+            "requires": "30.1-jre"
+          }
+        },
+        {
+          "group": "com.google.code.gson",
+          "module": "gson",
+          "version": {
+            "requires": "2.8.6"
+          }
+        },
+        {
+          "group": "com.hubspot.jinjava",
+          "module": "jinjava",
+          "version": {
+            "requires": "2.6.0"
+          }
+        },
+        {
+          "group": "net.mahdilamb",
+          "module": "colormap",
+          "version": {
+            "requires": "0.9.61"
+          }
+        },
+        {
+          "group": "org.json",
+          "module": "json",
+          "version": {
+            "requires": "20220320"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "seage-misc-1.0.0-SNAPSHOT.jar",
+          "url": "seage-misc-1.0.0-SNAPSHOT.jar",
+          "size": 95449,
+          "sha512": "c09d9f4878837f58d40f4364bf85b66033b1522454100586caebe9e8712b1ec8d80ee24712b123ca715f0977e4e9ccfa85e2b3bf95f5127ea63412111b3aaa0e",
+          "sha256": "01e56d2c74b0c3fa61b4be38562725ccf3493dc3f739c79891fae0c2c826efa7",
+          "sha1": "cc358c1fb9f7b8879d40bbd3475c9ef7d57bd6fd",
+          "md5": "6e210209eb8fde0c8435a71cb879dba3"
+        }
+      ]
+    }
+  ]
+}

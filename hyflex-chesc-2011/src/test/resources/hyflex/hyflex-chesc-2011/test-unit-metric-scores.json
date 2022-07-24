@@ -1,0 +1,127 @@
+{
+    "results": [
+        {
+            "algorithmName": "algorithm1",
+            "totalScore": 0.5,
+            "scorePerInstance": {
+                "TSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "SAT": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "FSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "JSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                }
+            },
+            "scorePerProblem": {
+                "TSP": 0.5,
+                "SAT": 0.5,
+                "FSP": 0.5,
+                "JSP": 0.5
+            }
+
+        },
+        {
+            "algorithmName": "algorithm2",
+            "totalScore": 0.5,
+            "scorePerInstance": {
+                "TSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "SAT": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "FSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "JSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                }
+            },
+            "scorePerProblem": {
+                "TSP": 0.5,
+                "SAT": 0.5,
+                "FSP": 0.5,
+                "JSP": 0.5
+            }
+
+        },
+        {
+            "algorithmName": "algorithm3",
+            "totalScore": 0.5,
+            "scorePerInstance": {
+                "TSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "SAT": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "FSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                },
+                "JSP": {
+                    "instance1": 0.5,
+                    "instance2": 0.5,
+                    "instance3": 0.5,
+                    "instance4": 0.5,
+                    "instance5": 0.5
+                }
+            },
+            "scorePerProblem": {
+                "TSP": 0.5,
+                "SAT": 0.5,
+                "FSP": 0.5,
+                "JSP": 0.5
+            }
+
+        }
+    ]
+}

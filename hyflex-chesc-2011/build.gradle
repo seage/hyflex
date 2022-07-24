@@ -22,6 +22,8 @@ dependencies {
     implementation project(':hyflex-ext')
     implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
 
+    implementation 'org.seage:seage-misc:1.0.0-SNAPSHOT'
+
     // Add dependencies to HHs
     new File("$projectDir/../hyflex-hyperheuristics/").listFiles().each {
         if (it.directory && new File(it, 'build.gradle').exists()) {

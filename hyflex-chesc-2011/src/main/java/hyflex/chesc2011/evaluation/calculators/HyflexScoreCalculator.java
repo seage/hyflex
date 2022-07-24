@@ -9,6 +9,6 @@ import java.util.List;
  * 
  * @author David Omrai
  */
-public interface ScoreCalculator {
+public interface HyflexScoreCalculator {
   public List<ScoreCard> calculateScores(List<ScoreCard> card) throws Exception;
 }

@@ -102,8 +102,8 @@ public class ScoreCardBenchmarkCalculator {
 
       // Get algorihtm results
       List<String> implementedProblems = new ArrayList<>();
-      ScoreCard algorithmResults =
-          ScoreCardHelper.loadCard(problems, scoreCardPath, Competition.problemInstances, implementedProblems);
+      ScoreCard algorithmResults = ScoreCardHelper.loadCard(
+            problems, scoreCardPath, Competition.problemInstances, implementedProblems);
       
       UnitMetricScoreCalculator scoreCalculator =
           new UnitMetricScoreCalculator(
