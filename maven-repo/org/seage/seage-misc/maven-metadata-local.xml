@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <groupId>org.seage</groupId>
-  <artifactId>seage-aal</artifactId>
+  <artifactId>seage-misc</artifactId>
   <versioning>
     <latest>1.0.0-SNAPSHOT</latest>
     <versions>
       <version>1.0.0-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20220722210531</lastUpdated>
+    <lastUpdated>20220723223611</lastUpdated>
   </versioning>
 </metadata>

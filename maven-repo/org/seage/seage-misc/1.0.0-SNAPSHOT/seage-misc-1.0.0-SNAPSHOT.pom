@@ -8,7 +8,7 @@
   <!-- do_not_remove: published-with-gradle-metadata -->
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.seage</groupId>
-  <artifactId>seage-aal</artifactId>
+  <artifactId>seage-misc</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <dependencies>
     <dependency>
@@ -18,9 +18,15 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <groupId>com.beust</groupId>
-      <artifactId>jcommander</artifactId>
-      <version>1.78</version>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>30.1-jre</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.8.6</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
@@ -40,39 +46,6 @@
       <artifactId>json</artifactId>
       <version>20220320</version>
       <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>seage</groupId>
-      <artifactId>seage-metaheuristics</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>seage</groupId>
-      <artifactId>seage-misc</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.seage</groupId>
-      <artifactId>seage-aal</artifactId>
-      <version>1.0.0-SNAPSHOT</version>
-      <scope>compile</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>5.6.2</version>
-      <scope>compile</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.6.2</version>
-      <scope>compile</scope>
-      <optional>true</optional>
     </dependency>
   </dependencies>
 </project>
