@@ -27,11 +27,11 @@
         {
           "name": "seage-misc-1.0.0-SNAPSHOT.jar",
           "url": "seage-misc-1.0.0-SNAPSHOT.jar",
-          "size": 95464,
-          "sha512": "a0eebb1c78d5d01b4d4a7df6c2bc01c51565fe617550108e0e5df060ef838507de694b6fed6ac572a82307d1d359e7aeec5c9517454b190ab7604bd2ed93fb1e",
-          "sha256": "bab619f5ae241f9e066d183f468ae12cdc7f1e550725692d0195af6ce44b9b76",
-          "sha1": "ee68ce454f50e251e85274f9c37f458162aecf1b",
-          "md5": "8344bdfe1391cd9c682abe5d96f8870a"
+          "size": 95449,
+          "sha512": "c09d9f4878837f58d40f4364bf85b66033b1522454100586caebe9e8712b1ec8d80ee24712b123ca715f0977e4e9ccfa85e2b3bf95f5127ea63412111b3aaa0e",
+          "sha256": "01e56d2c74b0c3fa61b4be38562725ccf3493dc3f739c79891fae0c2c826efa7",
+          "sha1": "cc358c1fb9f7b8879d40bbd3475c9ef7d57bd6fd",
+          "md5": "6e210209eb8fde0c8435a71cb879dba3"
         }
       ]
     },
@@ -92,11 +92,11 @@
         {
           "name": "seage-misc-1.0.0-SNAPSHOT.jar",
           "url": "seage-misc-1.0.0-SNAPSHOT.jar",
-          "size": 95464,
-          "sha512": "a0eebb1c78d5d01b4d4a7df6c2bc01c51565fe617550108e0e5df060ef838507de694b6fed6ac572a82307d1d359e7aeec5c9517454b190ab7604bd2ed93fb1e",
-          "sha256": "bab619f5ae241f9e066d183f468ae12cdc7f1e550725692d0195af6ce44b9b76",
-          "sha1": "ee68ce454f50e251e85274f9c37f458162aecf1b",
-          "md5": "8344bdfe1391cd9c682abe5d96f8870a"
+          "size": 95449,
+          "sha512": "c09d9f4878837f58d40f4364bf85b66033b1522454100586caebe9e8712b1ec8d80ee24712b123ca715f0977e4e9ccfa85e2b3bf95f5127ea63412111b3aaa0e",
+          "sha256": "01e56d2c74b0c3fa61b4be38562725ccf3493dc3f739c79891fae0c2c826efa7",
+          "sha1": "cc358c1fb9f7b8879d40bbd3475c9ef7d57bd6fd",
+          "md5": "6e210209eb8fde0c8435a71cb879dba3"
         }
       ]
     }
