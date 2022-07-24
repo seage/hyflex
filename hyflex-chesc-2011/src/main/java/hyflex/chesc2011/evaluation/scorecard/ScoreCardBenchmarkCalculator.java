@@ -4,9 +4,6 @@ import hyflex.chesc2011.Competition;
 import hyflex.chesc2011.evaluation.calculators.UnitMetricScoreCalculator;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadataReader;
-
-import org.seage.score.ScoreCalculator;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -78,30 +75,6 @@ public class ScoreCardBenchmarkCalculator {
     }
   }
 
-  /**
-   * Method calculates the score of algorithm using unit metric.
-   * @return
-   */
-  public ScoreCard getAlgorithmScores(
-      ScoreCard algorithmResults, List<String> implementedProblems) throws Exception {
-    // Initialize results
-    Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
-        .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
-
-    UnitMetricScoreCalculator scoreCalculator =
-        new UnitMetricScoreCalculator(
-        instancesMetadata, Competition.problemInstances, 
-        implementedProblems.toArray(new String[]{}));
-
-    // Calculate algorithm scores
-    ScoreCard algorithmScores = scoreCalculator.calculateScore(algorithmResults);
-
-
-    return algorithmScores;
-  }
-
-
-
 
   /**
    * Method evaluates all algorithms and stores results into file.
@@ -116,8 +89,8 @@ public class ScoreCardBenchmarkCalculator {
       throw new Exception(String.format("Competition id '%s' does not exist", id));
     }
 
-    // Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
-    //     .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
+    Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
+        .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
 
     String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath, id));
 
@@ -129,10 +102,17 @@ public class ScoreCardBenchmarkCalculator {
 
       // Get algorihtm results
       List<String> implementedProblems = new ArrayList<>();
-      ScoreCard algorithmResults = ScoreCardHelper
-          .loadCard(problems, scoreCardPath, Competition.problemInstances, implementedProblems);
-      // Get algorithm score and store it in results
-      results.add(getAlgorithmScores(algorithmResults, implementedProblems));
+      ScoreCard algorithmResults = ScoreCardHelper.loadCard(
+            problems, scoreCardPath, Competition.problemInstances, implementedProblems);
+      
+      UnitMetricScoreCalculator scoreCalculator =
+          new UnitMetricScoreCalculator(
+          instancesMetadata, Competition.problemInstances, 
+          implementedProblems.toArray(new String[]{}));
+
+      // Calculate algorithm scores
+      ScoreCard algorithmScores = scoreCalculator.calculateScore(algorithmResults);
+      results.add(algorithmScores);
     }
 
     resultsXmlFile = String.format(resultsXmlFile, id);
