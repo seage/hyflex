@@ -78,11 +78,8 @@ public class ScoreCardBenchmarkCalculator {
     }
   }
 
-
-
-  
   /**
-   * .
+   * Method calculates the score of algorithm using unit metric.
    * @return
    */
   public ScoreCard getAlgorithmScores(
@@ -90,14 +87,6 @@ public class ScoreCardBenchmarkCalculator {
     // Initialize results
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
         .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
-    
-    
-    // New code goes here
-    
-    // todo
-
-    // New code ends here
-
 
     UnitMetricScoreCalculator scoreCalculator =
         new UnitMetricScoreCalculator(
