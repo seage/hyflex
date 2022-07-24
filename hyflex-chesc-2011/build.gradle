@@ -21,8 +21,6 @@ dependencies {
     implementation project(':hyflex')
     implementation project(':hyflex-ext')
     implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
-    implementation group: 'org.seage', name: 'seage-aal', version: '1.0.0-SNAPSHOT'
-    
 
     implementation 'org.seage:seage-misc:1.0.0-SNAPSHOT'
 

@@ -5,7 +5,7 @@ import hyflex.chesc2011.evaluation.calculators.UnitMetricScoreCalculator;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadata;
 import hyflex.chesc2011.evaluation.metadata.ProblemInstanceMetadataReader;
 
-import org.seage.aal.problem.ProblemScoreCalculator;
+import org.seage.score.ScoreCalculator;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

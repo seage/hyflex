@@ -1,8 +1,8 @@
 allprojects {
     group 'hyflex'
-    version '1.0-SNAPSHOT'    
+    version '1.0-SNAPSHOT'
 }
-   
+
 subprojects {
     apply plugin: 'java'
 
@@ -36,7 +36,7 @@ new File("./hyflex-hyperheuristics/").listFiles().each {
                     url "file://$projectDir/../../maven-repo"
                 }
             }
-            dependencies {           
+            dependencies {
                 implementation project(':hyflex')
                 implementation project(':hyflex-ext')
                 implementation group: 'hyflex', name: 'chesc-ps', version: '2019.03.17'
