@@ -48,6 +48,9 @@ public class ScoreCardBenchmarkCalculator {
   String metadataPath = "/hyflex/hyflex-chesc-2011";
   // Path where the file with results is stored
   String resultsXmlFile = "./results/%s/unit-metric-scores.xml";
+  // Template path where the files with result are stored
+  String resultsJsonlFile = "./results/%s/unit-metric-scores.json";
+
 
   // This arrays represents problems with metadata
   String[] problems = {"SAT", "TSP", "FSP", "QAP"};
@@ -91,7 +94,7 @@ public class ScoreCardBenchmarkCalculator {
     }
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
-        .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
+        .readJsonProblemsInstancesMetadata(problems, Paths.get(metadataPath));
 
     String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath, id));
 
