@@ -21,6 +21,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+// todo
 
 /**
  * Class is used for retrieving the data from score card file.
@@ -49,7 +50,7 @@ public class ScoreCardHelper {
    * @param path Path where the file is stored.
    * @return Map with algorithm results.
    */
-  public static ScoreCard loadCard(String[] problems, Path path, 
+  public static ScoreCard loadXmlCard(String[] problems, Path path, 
       Map<String, List<String>> problemInstances, List<String> implementedProblems) 
       throws Exception {
     logger.info("Loading the card...");
@@ -88,6 +89,31 @@ public class ScoreCardHelper {
       }
     }
     return result;
+  }
+
+  /**
+   * Method reads score data from json file
+   * and then stores them into a map.
+   * @param problems Names of the problem domains.
+   * @param path Path to the json file.
+   * @param problemInstances Names of the instances;
+   * @param implementedProblems Empty array where are stored implemented problems.
+   * @return Scre card with results.
+   * @throws Exception
+   */
+  public static ScoreCard loadJsonCard(
+      String[] problems, Path path,
+      Map<String, List<String>> problemInstances, List<String> implementedProblems) 
+      throws Exception {
+    logger.info("Loading the card...");
+    // Name of the file
+    String cardName = path.getFileName().toString();
+    ScoreCard result = new ScoreCard(
+        cardName.substring(0, cardName.lastIndexOf(".")), cardProblemsOrder);
+
+    
+    // todo
+    return null;
   }
 
 

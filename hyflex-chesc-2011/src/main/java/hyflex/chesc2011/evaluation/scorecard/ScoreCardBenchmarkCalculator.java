@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+// todo
 
 /**
  * Class represents benchmark calculator for each solutions card stored inside results file.
@@ -102,7 +103,7 @@ public class ScoreCardBenchmarkCalculator {
 
       // Get algorihtm results
       List<String> implementedProblems = new ArrayList<>();
-      ScoreCard algorithmResults = ScoreCardHelper.loadCard(
+      ScoreCard algorithmResults = ScoreCardHelper.loadXmlCard(
             problems, scoreCardPath, Competition.problemInstances, implementedProblems);
       
       UnitMetricScoreCalculator scoreCalculator =
