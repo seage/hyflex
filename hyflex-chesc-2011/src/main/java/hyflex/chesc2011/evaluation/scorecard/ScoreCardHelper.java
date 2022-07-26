@@ -2,7 +2,9 @@ package hyflex.chesc2011.evaluation.scorecard;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -18,6 +20,8 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -50,7 +54,7 @@ public class ScoreCardHelper {
    * @param path Path where the file is stored.
    * @return Map with algorithm results.
    */
-  public static ScoreCard loadXmlCard(String[] problems, Path path, 
+  public static ScoreCard loadCard(String[] problems, Path path, 
       Map<String, List<String>> problemInstances, List<String> implementedProblems) 
       throws Exception {
     logger.info("Loading the card...");
@@ -92,32 +96,6 @@ public class ScoreCardHelper {
   }
 
   /**
-   * Method reads score data from json file
-   * and then stores them into a map.
-   * @param problems Names of the problem domains.
-   * @param path Path to the json file.
-   * @param problemInstances Names of the instances;
-   * @param implementedProblems Empty array where are stored implemented problems.
-   * @return Scre card with results.
-   * @throws Exception
-   */
-  public static ScoreCard loadJsonCard(
-      String[] problems, Path path,
-      Map<String, List<String>> problemInstances, List<String> implementedProblems) 
-      throws Exception {
-    logger.info("Loading the card...");
-    // Name of the file
-    String cardName = path.getFileName().toString();
-    ScoreCard result = new ScoreCard(
-        cardName.substring(0, cardName.lastIndexOf(".")), cardProblemsOrder);
-
-    
-    // todo
-    return null;
-  }
-
-
-  /**
    * Method returns the array of cards names.
    * 
    * @param path Path to the results cards.
@@ -125,20 +103,63 @@ public class ScoreCardHelper {
    */
   public static String[] getCardsNames(Path path) {
     File resDir = new File(path.toString());
-
-    String[] resFiles = resDir.list(new FilenameFilter() {
+    return resDir.list(new FilenameFilter() {
       @Override
       public boolean accept(File current, String name) {
         return name.toLowerCase().endsWith(".txt");
       }
     });
-
-    return resFiles;
   }
 
+  /**
+   * Method stores the results to the json file.
+   * @param resultsJsonFile Path to the json result file.
+   * @param results List with algorithm results.
+   * @throws IOException Exception when creating the file.
+   */
+  public static void saveResultsToJsonFile(
+      String resultsJsonFile, List<ScoreCard> results
+  ) throws IOException {
+    // Create json array for results
+    JSONArray resultsArray = new JSONArray();
+    // Insert the keys and values
+    for (ScoreCard resultCard : results) {
+      JSONObject algorithm = new JSONObject();
+      // Name of the algorithm
+      algorithm.put("algorithmName", resultCard.getName());
+      // Total score of the algorithm
+      algorithm.put("totalScore", resultCard.getScore());
+
+      JSONObject instances = new JSONObject();
+      JSONObject problems = new JSONObject();
+      for (String problemId : resultCard.getProblems()) {
+        problems.put(problemId, resultCard.getProblemScore(problemId));
+
+
+        JSONObject problemInstances = new JSONObject();
+        // Store instances' scores
+        for (String instanceId : resultCard.getInstances(problemId)) {
+          problemInstances.put(instanceId, resultCard.getInstanceScore(problemId, instanceId));
+        }
+        instances.put(problemId, problemInstances);
+      }
+      algorithm.put("scorePerInstance", instances);
+      algorithm.put("scorePerProblem", problems);
+
+      resultsArray.put(algorithm);
+    }
+
+    // Create the json results file
+    JSONObject jsonResults = new JSONObject();
+    jsonResults.put("results", resultsArray);
+    // Store the file
+    try (FileWriter fw = new FileWriter(resultsJsonFile)) {
+      fw.write(jsonResults.toString());
+    }
+  }
 
   /**
-   * Method stored the results inside xml file.
+   * Method stores the results inside xml file.
    * 
    * @param results Map with results.
    */

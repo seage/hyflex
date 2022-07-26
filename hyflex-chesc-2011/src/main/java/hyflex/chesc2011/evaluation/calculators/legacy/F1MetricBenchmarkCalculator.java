@@ -322,7 +322,7 @@ public class F1MetricBenchmarkCalculator {
   private static void saveResultsToJsonFile(
       String resultsJsonFile, Map<String, Map<String, Double>> results
   ) {
-    // Create the json object
+    // Create the json array for results
     JSONArray resultsArray = new JSONArray();
     // Inserting the keys and values
     for (String algorithmName: results.keySet()) {
@@ -331,12 +331,12 @@ public class F1MetricBenchmarkCalculator {
       algorithm.put("totalScore", Double.toString(results.get(algorithmName).get("total")));
 
       JSONObject problems = new JSONObject();
-      for (String problemName: results.get(algorithmName).keySet()) {
-        if (problemName == "total") {
+      for (String problemId: results.get(algorithmName).keySet()) {
+        if ("total".equals(problemId)) {
           continue;
         }
 
-        problems.put(problemName, Double.toString(results.get(algorithmName).get(problemName)));
+        problems.put(problemId, Double.toString(results.get(algorithmName).get(problemId)));
       }
       algorithm.put("scorePerProblem", problems);
       resultsArray.put(algorithm);
