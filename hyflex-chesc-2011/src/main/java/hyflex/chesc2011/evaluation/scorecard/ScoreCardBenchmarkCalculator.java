@@ -49,7 +49,7 @@ public class ScoreCardBenchmarkCalculator {
   // Path where the file with results is stored
   String resultsXmlFile = "./results/%s/unit-metric-scores.xml";
   // Template path where the files with result are stored
-  String resultsJsonlFile = "./results/%s/unit-metric-scores.json";
+  String resultsJsonFile = "./results/%s/unit-metric-scores.json";
 
 
   // This arrays represents problems with metadata
@@ -119,8 +119,11 @@ public class ScoreCardBenchmarkCalculator {
       results.add(algorithmScores);
     }
 
-    resultsXmlFile = String.format(resultsXmlFile, id);
-    ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
-    logger.info("The score file stored to " + resultsXmlFile);
+    // resultsXmlFile = String.format(resultsXmlFile, id);
+    // ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
+    // logger.info("The score file stored to " + resultsXmlFile);
+    resultsJsonFile = String.format(resultsJsonFile, id);
+    ScoreCardHelper.saveResultsToJsonFile(resultsJsonFile, results);
+    logger.info("The score file stored to " + resultsJsonFile);
   }
 }
