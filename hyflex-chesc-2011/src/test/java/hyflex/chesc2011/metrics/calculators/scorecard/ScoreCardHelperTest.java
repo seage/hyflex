@@ -10,14 +10,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import hyflex.chesc2011.evaluation.scorecard.ScoreCard;
 import hyflex.chesc2011.evaluation.scorecard.ScoreCardHelper;
+
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.junit.jupiter.api.Test;
+import com.google.gson.JsonObject;
 
 public class ScoreCardHelperTest {
-  String jsonPath = "/test-result-card.json";
+  String jsonPath = "/hyflex/hyflex-chesc-2011/test-result-card.json";
 
   @Test
   void testEmptyScoreCardList() throws Exception {
@@ -75,8 +80,11 @@ public class ScoreCardHelperTest {
     // Test the string
     String jsonData = ScoreCardHelper.createResultsJsonString(results);
 
-    try (InputStream jsonInputStream = ScoreCardHelperTest.class.getResourceAsStream(jsonPath)) {
-      assertEquals(jsonInputStream.toString(), jsonData);
+    try (InputStream jis = ScoreCardHelperTest.class.getResourceAsStream(jsonPath)) {
+      JSONTokener tokener = new JSONTokener(jis);
+      JSONObject object = new JSONObject(tokener);
+      // Test the results
+      assertEquals(object.toString(2), jsonData);
     }
   }
 }
