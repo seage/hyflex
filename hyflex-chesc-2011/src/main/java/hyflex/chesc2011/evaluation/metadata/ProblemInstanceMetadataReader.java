@@ -45,6 +45,19 @@ public class ProblemInstanceMetadataReader {
     for (String instanceId : instances.keySet()) {
       JSONObject instance = instances.getJSONObject(instanceId);
 
+      if (isDouble(instance.getString("optimum")) == false) {
+        continue;
+      }
+      if (isDouble(instance.getString("greedy")) == false) {
+        continue;
+      }
+      if (isDouble(instance.getString("random")) == false) {
+        continue;
+      }
+      if (isDouble(instance.getString("size")) == false) {
+        continue;
+      }
+
       result.put(instanceId, "optimum", instance.getDouble("optimum"));
       result.put(instanceId, "greedy", instance.getDouble("greedy"));
       result.put(instanceId, "random", instance.getDouble("random"));
