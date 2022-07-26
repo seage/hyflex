@@ -112,14 +112,11 @@ public class ScoreCardHelper {
   }
 
   /**
-   * Method stores the results to the json file.
-   * @param resultsJsonFile Path to the json result file.
+   * Method creates the json string with results data.
    * @param results List with algorithm results.
    * @throws IOException Exception when creating the file.
    */
-  public static void saveResultsToJsonFile(
-      String resultsJsonFile, List<ScoreCard> results
-  ) throws IOException {
+  public static String createResultsJsonString(List<ScoreCard> results) {
     // Create json array for results
     JSONArray resultsArray = new JSONArray();
     // Insert the keys and values
@@ -152,9 +149,21 @@ public class ScoreCardHelper {
     // Create the json results file
     JSONObject jsonResults = new JSONObject();
     jsonResults.put("results", resultsArray);
+    return jsonResults.toString();
+  }
+
+  /**
+   * Method stores the results to the json file.
+   * @param resultsJsonFile Path to the json result file.
+   * @param results List with algorithm results.
+   * @throws IOException Exception when creating the file.
+   */
+  public static void saveResultsToJsonFile(
+      String resultsJsonFile, List<ScoreCard> results
+  ) throws IOException {
     // Store the file
     try (FileWriter fw = new FileWriter(resultsJsonFile)) {
-      fw.write(jsonResults.toString());
+      fw.write(createResultsJsonString(results));
     }
   }
 

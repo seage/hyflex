@@ -138,6 +138,8 @@ public class HeatmapGenerator {
     Collections.sort(results, (var lar, var rar) -> Double.compare(rar.score, lar.score));
   }
 
+  // todo
+
   /**
    * Method loads the xml file.
    * 

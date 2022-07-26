@@ -97,7 +97,7 @@ Evaluate the competition with id `competition1`
 ./scripts/run.sh evaluation --id competition1
 ```
 
-The final result will be stores as xml file in the `results/competiton1` folder
+The final result will be stores as json file in the `results/competiton1` folder
 
 
 ### Create a heat map of competition results
