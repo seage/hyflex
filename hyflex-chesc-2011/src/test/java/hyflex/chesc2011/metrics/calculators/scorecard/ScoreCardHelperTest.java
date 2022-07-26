@@ -12,14 +12,12 @@ import hyflex.chesc2011.evaluation.scorecard.ScoreCard;
 import hyflex.chesc2011.evaluation.scorecard.ScoreCardHelper;
 
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.junit.jupiter.api.Test;
-import com.google.gson.JsonObject;
 
 public class ScoreCardHelperTest {
   String jsonPath = "/hyflex/hyflex-chesc-2011/test-result-card.json";
