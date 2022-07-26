@@ -149,7 +149,7 @@ public class ScoreCardHelper {
     // Create the json results file
     JSONObject jsonResults = new JSONObject();
     jsonResults.put("results", resultsArray);
-    return jsonResults.toString();
+    return jsonResults.toString(2);
   }
 
   /**

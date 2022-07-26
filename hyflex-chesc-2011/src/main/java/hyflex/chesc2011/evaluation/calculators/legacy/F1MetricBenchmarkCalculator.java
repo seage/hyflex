@@ -345,7 +345,7 @@ public class F1MetricBenchmarkCalculator {
     jsonResults.put("results", resultsArray);
 
     try (FileWriter fw = new FileWriter(resultsJsonFile)) {
-      fw.write(jsonResults.toString());
+      fw.write(jsonResults.toString(2));
     } catch (IOException ioException) {
       logger.severe(ioException.toString());
     }
