@@ -81,7 +81,6 @@ import org.w3c.dom.Element;
  */
 
 public class F1MetricBenchmarkCalculator {
-  private static final String resultsCardFormat = "json";
 
   private static final Logger logger = 
       Logger.getLogger(F1MetricBenchmarkCalculator.class.getName());
@@ -307,21 +306,16 @@ public class F1MetricBenchmarkCalculator {
       }
       // out.println("------------------------------------------");
 
-      String resultsFileName = "f1-metric-scores." + resultsCardFormat;
+      String resultsFileName = "f1-metric-scores.json";
       String resultsFilePath = Paths.get(pathToSubmitted, "/" + resultsFileName).toString();
-      if (resultsCardFormat == "json") {
-        saveResultsToJsonFile(resultsFilePath, resultsMap);
-      }
-      else {
-        saveResultsToXmlFile(resultsFilePath, resultsMap);
-      }
+      saveResultsToJsonFile(resultsFilePath, resultsMap);
       logger.info("The score file stored to " + resultsFilePath);
     }
   }
 
   private static void saveResultsToJsonFile(
       String resultsJsonFile, Map<String, Map<String, Double>> results
-  ) {
+  ) throws IOException {
     // Create the json array for results
     JSONArray resultsArray = new JSONArray();
     // Inserting the keys and values
@@ -346,8 +340,6 @@ public class F1MetricBenchmarkCalculator {
 
     try (FileWriter fw = new FileWriter(resultsJsonFile)) {
       fw.write(jsonResults.toString(2));
-    } catch (IOException ioException) {
-      logger.severe(ioException.toString());
     }
   }
 
