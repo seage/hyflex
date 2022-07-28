@@ -94,7 +94,7 @@ public class ScoreCardBenchmarkCalculator {
     }
 
     Map<String, ProblemInstanceMetadata> instancesMetadata = ProblemInstanceMetadataReader
-        .readJsonProblemsInstancesMetadata(problems, Paths.get(metadataPath));
+        .readProblemsInstancesMetadata(problems, Paths.get(metadataPath));
 
     String[] resFiles = ScoreCardHelper.getCardsNames(Paths.get(resultsPath, id));
 

@@ -25,8 +25,6 @@ import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-// todo
-
 /**
  * Class is used for retrieving the data from score card file.
  * 
@@ -49,9 +47,17 @@ public class ScoreCardHelper {
   };
 
   /**
+   * Making the constructor private.
+   */
+  private ScoreCardHelper() {}
+
+  /**
    * Method reads the results file and stores the data into a map.
    * 
+   * @param problems List of problem names.
    * @param path Path where the file is stored.
+   * @param problemInstances Map of problem instances names.
+   * @param implementedProblems List of implemented problems.
    * @return Map with algorithm results.
    */
   public static ScoreCard loadCard(String[] problems, Path path, 
@@ -103,12 +109,7 @@ public class ScoreCardHelper {
    */
   public static String[] getCardsNames(Path path) {
     File resDir = new File(path.toString());
-    return resDir.list(new FilenameFilter() {
-      @Override
-      public boolean accept(File current, String name) {
-        return name.toLowerCase().endsWith(".txt");
-      }
-    });
+    return resDir.list((dir, name) -> name.toLowerCase().endsWith(".txt"));
   }
 
   /**
