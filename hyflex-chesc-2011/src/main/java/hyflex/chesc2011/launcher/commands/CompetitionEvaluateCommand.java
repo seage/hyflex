@@ -4,7 +4,7 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 import hyflex.chesc2011.Competition;
-import hyflex.chesc2011.evaluation.heatmap.HeatmapGenerator;
+import hyflex.chesc2011.evaluation.heatmap.HyflexHeatmapGenerator;
 
 /**
  * Class is used for competition evaluation.
@@ -60,8 +60,7 @@ public class CompetitionEvaluateCommand extends Command {
       case "UnitMetric":
         new hyflex.chesc2011.evaluation.scorecard.ScoreCardBenchmarkCalculator().run(id, metric);
         if (createHeatmap) {
-          HeatmapGenerator heatmapGenerator = new HeatmapGenerator();
-          heatmapGenerator.createHeatmap(id, Competition.algorithmAuthors);
+          HyflexHeatmapGenerator.createHeatmap(id, Competition.algorithmAuthors);
         }
         break;
       case "F1Metric":
