@@ -4,12 +4,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
-
+//import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -25,10 +24,6 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -81,7 +76,6 @@ import org.w3c.dom.Element;
  */
 
 public class F1MetricBenchmarkCalculator {
-
   private static final Logger logger = 
       Logger.getLogger(F1MetricBenchmarkCalculator.class.getName());
     
@@ -306,40 +300,9 @@ public class F1MetricBenchmarkCalculator {
       }
       // out.println("------------------------------------------");
 
-      String resultsFileName = "f1-metric-scores.json";
-      String resultsFilePath = Paths.get(pathToSubmitted, "/" + resultsFileName).toString();
-      saveResultsToJsonFile(resultsFilePath, resultsMap);
-      logger.info("The score file stored to " + resultsFilePath);
-    }
-  }
-
-  private static void saveResultsToJsonFile(
-      String resultsJsonFile, Map<String, Map<String, Double>> results
-  ) throws IOException {
-    // Create the json array for results
-    JSONArray resultsArray = new JSONArray();
-    // Inserting the keys and values
-    for (String algorithmName: results.keySet()) {
-      JSONObject algorithm = new JSONObject();
-      algorithm.put("algorithmName", algorithmName);
-      algorithm.put("totalScore", Double.toString(results.get(algorithmName).get("total")));
-
-      JSONObject problems = new JSONObject();
-      for (String problemId: results.get(algorithmName).keySet()) {
-        if ("total".equals(problemId)) {
-          continue;
-        }
-
-        problems.put(problemId, Double.toString(results.get(algorithmName).get(problemId)));
-      }
-      algorithm.put("scorePerProblem", problems);
-      resultsArray.put(algorithm);
-    }
-    JSONObject jsonResults = new JSONObject();
-    jsonResults.put("results", resultsArray);
-
-    try (FileWriter fw = new FileWriter(resultsJsonFile)) {
-      fw.write(jsonResults.toString(2));
+      String resultsXmlFile = Paths.get(pathToSubmitted, "/f1-metric-scores.xml").toString();
+      saveResultsToXmlFile(resultsXmlFile, resultsMap);
+      logger.info("The score file stored to " + resultsXmlFile);
     }
   }
 
