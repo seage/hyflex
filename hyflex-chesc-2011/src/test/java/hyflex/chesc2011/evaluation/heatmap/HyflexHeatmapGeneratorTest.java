@@ -20,7 +20,7 @@ public class HyflexHeatmapGeneratorTest {
   String jsonPath = "/hyflex/hyflex-chesc-2011/test-unit-metric-scores.json";
 
   @Test
-  void testLoadXmlFile() throws Exception {
+  void testLoadJsonFile() throws Exception {
     // Load the results
     try (InputStream jsonInputStream = 
         HyflexHeatmapGeneratorTest.class.getResourceAsStream(jsonPath)) {
