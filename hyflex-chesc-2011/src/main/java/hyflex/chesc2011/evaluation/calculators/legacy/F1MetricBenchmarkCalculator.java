@@ -2,12 +2,10 @@ package hyflex.chesc2011.evaluation.calculators.legacy;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Paths;
 
 import java.util.ArrayList;
@@ -18,19 +16,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 /*
  * @author Dr Matthew Hyde
@@ -341,50 +328,6 @@ public class F1MetricBenchmarkCalculator {
     try (FileWriter fw = new FileWriter(resultsJsonFile)) {
       fw.write(jsonResults.toString(2));
     }
-  }
-
-  private static void saveResultsToXmlFile(
-      String resultsXmlFile, Map<String, Map<String, Double>> results
-  ) throws Exception {
-    DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
-    Document document = documentBuilder.newDocument();
-
-    // root element
-    Element root = document.createElement("results");
-    document.appendChild(root);
-
-    for (String algorithmName: results.keySet()) {
-      Element algorithm = document.createElement("algorithm");
-      algorithm.setAttribute("name", algorithmName);
-      algorithm.setAttribute("score", Double.toString(results.get(algorithmName).get("total")));
-
-      for (String problemId: results.get(algorithmName).keySet()) {
-        if (problemId == "total") {
-          continue;
-        }
-
-        Element problem = document.createElement("problem");
-        problem.setAttribute("name", problemId);
-        problem.setAttribute("score", Double.toString(results.get(algorithmName).get(problemId)));
-
-        algorithm.appendChild(problem);
-      }
-      root.appendChild(algorithm);
-    }
-
-
-    // create the xml file
-    // transform the DOM Object to an XML File
-    TransformerFactory transformerFactory = TransformerFactory.newInstance();
-    Transformer transformer = transformerFactory.newTransformer();
-    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-    DOMSource domSource = new DOMSource(document);
-    StreamResult streamResult =
-        new StreamResult(new PrintWriter(new FileOutputStream(new File(resultsXmlFile), false)));
-
-    transformer.transform(domSource, streamResult);
-
   }
 
   public static class Score implements Comparable<Score> {
