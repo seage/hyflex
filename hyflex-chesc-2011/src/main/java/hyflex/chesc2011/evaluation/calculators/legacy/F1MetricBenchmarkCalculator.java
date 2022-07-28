@@ -344,49 +344,47 @@ public class F1MetricBenchmarkCalculator {
   }
 
   private static void saveResultsToXmlFile(
-      String resultsXmlFile, Map<String, Map<String, Double>> results) {
-    try {
-      DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-      DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
-      Document document = documentBuilder.newDocument();
-  
-      // root element
-      Element root = document.createElement("results");
-      document.appendChild(root);
+      String resultsXmlFile, Map<String, Map<String, Double>> results
+  ) throws Exception {
+    DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+    Document document = documentBuilder.newDocument();
 
-      for (String algorithmName: results.keySet()) {
-        Element algorithm = document.createElement("algorithm");
-        algorithm.setAttribute("name", algorithmName);
-        algorithm.setAttribute("score", Double.toString(results.get(algorithmName).get("total")));
+    // root element
+    Element root = document.createElement("results");
+    document.appendChild(root);
 
-        for (String problemId: results.get(algorithmName).keySet()) {
-          if (problemId == "total") {
-            continue;
-          }
+    for (String algorithmName: results.keySet()) {
+      Element algorithm = document.createElement("algorithm");
+      algorithm.setAttribute("name", algorithmName);
+      algorithm.setAttribute("score", Double.toString(results.get(algorithmName).get("total")));
 
-          Element problem = document.createElement("problem");
-          problem.setAttribute("name", problemId);
-          problem.setAttribute("score", Double.toString(results.get(algorithmName).get(problemId)));
-
-          algorithm.appendChild(problem);
+      for (String problemId: results.get(algorithmName).keySet()) {
+        if (problemId == "total") {
+          continue;
         }
-        root.appendChild(algorithm);
+
+        Element problem = document.createElement("problem");
+        problem.setAttribute("name", problemId);
+        problem.setAttribute("score", Double.toString(results.get(algorithmName).get(problemId)));
+
+        algorithm.appendChild(problem);
       }
-
-
-      // create the xml file
-      // transform the DOM Object to an XML File
-      TransformerFactory transformerFactory = TransformerFactory.newInstance();
-      Transformer transformer = transformerFactory.newTransformer();
-      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-      DOMSource domSource = new DOMSource(document);
-      StreamResult streamResult =
-          new StreamResult(new PrintWriter(new FileOutputStream(new File(resultsXmlFile), false)));
-
-      transformer.transform(domSource, streamResult);
-    } catch (Exception e) {
-      logger.severe(e.toString());
+      root.appendChild(algorithm);
     }
+
+
+    // create the xml file
+    // transform the DOM Object to an XML File
+    TransformerFactory transformerFactory = TransformerFactory.newInstance();
+    Transformer transformer = transformerFactory.newTransformer();
+    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+    DOMSource domSource = new DOMSource(document);
+    StreamResult streamResult =
+        new StreamResult(new PrintWriter(new FileOutputStream(new File(resultsXmlFile), false)));
+
+    transformer.transform(domSource, streamResult);
+
   }
 
   public static class Score implements Comparable<Score> {
