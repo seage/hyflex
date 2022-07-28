@@ -53,14 +53,14 @@ public class HyflexHeatmapGenerator {
    * @param experimentId id of the competition experiment
    * @param algAuthors map of algorithm authors
    */
-  public static void createHeatmap(String experimentId, Map<String, String> algAuthors) {
+  public static void createHeatmap(
+      String experimentId, Map<String, String> algAuthors
+  ) throws IOException {
     String jsonResultsPath = String.format(resultsJsonFile, experimentId);
 
     try (InputStream jsonInputStream = HeatmapGenerator.class.getResourceAsStream(
         jsonResultsPath)) {
       createHeatmapFile(getHeatmapString(jsonInputStream, experimentId, algAuthors), experimentId);
-    } catch (IOException e) {
-      e.printStackTrace();
     }
   }
 }
