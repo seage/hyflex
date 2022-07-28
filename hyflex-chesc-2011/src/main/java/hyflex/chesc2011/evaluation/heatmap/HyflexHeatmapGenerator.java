@@ -27,7 +27,7 @@ public class HyflexHeatmapGenerator {
 
   protected static void createHeatmapFile(
       String renderedTemplate, String experimentId) throws IOException {
-    // output the file
+    // Output the file
     String resultsSvgFilePath = String.format(resultsSvgFile, experimentId);
 
     try (FileWriter fileWriter = new FileWriter(resultsSvgFilePath);) {
@@ -36,9 +36,10 @@ public class HyflexHeatmapGenerator {
   }
 
   /**
-   * .
-   * @param jsonStream .
-   * @param algAuthors .
+   * Method returns the heatmap with given data.
+   * @param jsonStream Experiment result file input stream.
+   * @param experimentId Id of the experiment.
+   * @param algAuthors Map of algorithms authors.
    * @return
    */
   protected static String getHeatmapString(
@@ -52,15 +53,11 @@ public class HyflexHeatmapGenerator {
    * @param experimentId id of the competition experiment
    * @param algAuthors map of algorithm authors
    */
-  public static void createHeatmap(
-      String experimentId, Map<String, String> algAuthors) {
-
-
-
+  public static void createHeatmap(String experimentId, Map<String, String> algAuthors) {
     String jsonResultsPath = String.format(resultsJsonFile, experimentId);
 
-    try (InputStream jsonInputStream = 
-        HeatmapGenerator.class.getResourceAsStream(jsonResultsPath)) {
+    try (InputStream jsonInputStream = HeatmapGenerator.class.getResourceAsStream(
+        jsonResultsPath)) {
       createHeatmapFile(getHeatmapString(jsonInputStream, experimentId, algAuthors), experimentId);
     } catch (IOException e) {
       e.printStackTrace();
