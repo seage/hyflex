@@ -277,7 +277,7 @@
     "esc32f": {
       "greedy": "24",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "46",
       "size": "32"
     },
@@ -361,98 +361,98 @@
     "lipa20a": {
       "greedy": "3863",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "3939",
       "size": "20"
     },
     "lipa20b": {
       "greedy": "32247",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "35528",
       "size": "20"
     },
     "lipa30b": {
       "greedy": "182886",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "195263",
       "size": "30"
     },
     "lipa40a": {
       "greedy": "32385",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "32714",
       "size": "40"
     },
     "lipa40b": {
       "greedy": "585910",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "620493",
       "size": "40"
     },
     "lipa50b": {
       "greedy": "1471408",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "1559305",
       "size": "50"
     },
     "lipa60a": {
       "greedy": "109447",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "110103",
       "size": "60"
     },
     "lipa60b": {
       "greedy": "3081465",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "3277078",
       "size": "60"
     },
     "lipa70a": {
       "greedy": "172829",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "173762",
       "size": "70"
     },
     "lipa70b": {
       "greedy": "5688105",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "5990140",
       "size": "70"
     },
     "lipa80a": {
       "greedy": "256972",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "258531",
       "size": "80"
     },
     "lipa80b": {
       "greedy": "9620690",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "10154980",
       "size": "80"
     },
     "lipa90a": {
       "greedy": "366193",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "367473",
       "size": "90"
     },
     "lipa90b": {
       "greedy": "15490720",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "16307562",
       "size": "90"
     },
@@ -732,14 +732,14 @@
     "tai10a": {
       "greedy": "154674",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "185074",
       "size": "10"
     },
     "tai10b": {
       "greedy": "1821053",
       "id": "",
-      "optimum": "TBA",
+      "optimum": "0",
       "random": "2285432",
       "size": "10"
     },
