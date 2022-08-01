@@ -5,9 +5,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -48,22 +46,6 @@ public class ProblemInstanceMetadataReader {
     }
 
     return result;
-  }
-
-
-  /**
-   * Method tests given string if it contains double.
-   * 
-   * @param text String to test.
-   * @return True if the string can be translated to double, false otherwise.
-   */
-  private static Boolean isDouble(String text) {
-    try {
-      Double.parseDouble(text);
-      return true;
-    } catch (NumberFormatException e) {
-      return false;
-    }
   }
 
   /**
