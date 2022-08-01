@@ -1,0 +1,38 @@
+{"results": [
+    {
+      "scorePerInstance": {
+        "a1-p2": {
+          "a1-p2-i2": 0.5,
+          "a1-p2-i1": 0.5
+        },
+        "a1-p1": {
+          "a1-p1-i2": 0.5,
+          "a1-p1-i1": 0.5
+        }
+      },
+      "algorithmName": "a1",
+      "totalScore": 0.5,
+      "scorePerProblem": {
+        "a1-p2": 0.2,
+        "a1-p1": 0.5
+      }
+    },
+    {
+      "scorePerInstance": {
+        "a2-p2": {
+          "a2-p2-i1": 0.5,
+          "a2-p2-i2": 0.5
+        },
+        "a2-p1": {
+          "a2-p1-i1": 0.5,
+          "a2-p1-i2": 0.5
+        }
+      },
+      "algorithmName": "a2",
+      "totalScore": 0.6,
+      "scorePerProblem": {
+        "a2-p2": 0.2,
+        "a2-p1": 0.5
+      }
+    }
+  ]}

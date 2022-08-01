@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+// todo
 
 /**
  * Class represents benchmark calculator for each solutions card stored inside results file.
@@ -47,6 +48,9 @@ public class ScoreCardBenchmarkCalculator {
   String metadataPath = "/hyflex/hyflex-chesc-2011";
   // Path where the file with results is stored
   String resultsXmlFile = "./results/%s/unit-metric-scores.xml";
+  // Template path where the files with result are stored
+  String resultsJsonFile = "./results/%s/unit-metric-scores.json";
+
 
   // This arrays represents problems with metadata
   String[] problems = {"SAT", "TSP", "FSP", "QAP"};
@@ -115,8 +119,11 @@ public class ScoreCardBenchmarkCalculator {
       results.add(algorithmScores);
     }
 
-    resultsXmlFile = String.format(resultsXmlFile, id);
-    ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
-    logger.info("The score file stored to " + resultsXmlFile);
+    // resultsXmlFile = String.format(resultsXmlFile, id);
+    // ScoreCardHelper.saveResultsToXmlFile(resultsXmlFile, results);
+    // logger.info("The score file stored to " + resultsXmlFile);
+    resultsJsonFile = String.format(resultsJsonFile, id);
+    ScoreCardHelper.saveResultsToJsonFile(resultsJsonFile, results);
+    logger.info("The score file stored to " + resultsJsonFile);
   }
 }

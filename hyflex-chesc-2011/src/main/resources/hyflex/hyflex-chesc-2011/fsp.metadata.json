@@ -1,0 +1,205 @@
+
+{
+  "problemName": "FSP",
+  "instances": {
+    "rma03_03_01": {
+      "greedy": "8",
+      "optimum": "8",
+      "random": "9",
+      "size": "3"
+    },
+    "tai100_20_01": {
+      "greedy": "7625",
+      "optimum": "5851",
+      "random": "7812",
+      "size": "100"
+    },
+    "tai100_20_02": {
+      "greedy": "7569",
+      "optimum": "6099",
+      "random": "7871",
+      "size": "100"
+    },
+    "tai100_20_03": {
+      "greedy": "7485",
+      "optimum": "6099",
+      "random": "7890",
+      "size": "100"
+    },
+    "tai100_20_04": {
+      "greedy": "7755",
+      "optimum": "6072",
+      "random": "7907",
+      "size": "100"
+    },
+    "tai100_20_05": {
+      "greedy": "7758",
+      "optimum": "6009",
+      "random": "7935",
+      "size": "100"
+    },
+    "tai100_20_06": {
+      "greedy": "7670",
+      "optimum": "6144",
+      "random": "7853",
+      "size": "100"
+    },
+    "tai100_20_07": {
+      "greedy": "7638",
+      "optimum": "5991",
+      "random": "8065",
+      "size": "100"
+    },
+    "tai100_20_08": {
+      "greedy": "7826",
+      "optimum": "6084",
+      "random": "8073",
+      "size": "100"
+    },
+    "tai100_20_09": {
+      "greedy": "7703",
+      "optimum": "5979",
+      "random": "7875",
+      "size": "100"
+    },
+    "tai100_20_10": {
+      "greedy": "7706",
+      "optimum": "6298",
+      "random": "7785",
+      "size": "100"
+    },
+    "tai200_10_01": {
+      "greedy": "11974",
+      "optimum": "10816",
+      "random": "12342",
+      "size": "200"
+    },
+    "tai200_10_02": {
+      "greedy": "12029",
+      "optimum": "10422",
+      "random": "12429",
+      "size": "200"
+    },
+    "tai200_10_03": {
+      "greedy": "12012",
+      "optimum": "10886",
+      "random": "12604",
+      "size": "200"
+    },
+    "tai200_10_04": {
+      "greedy": "11986",
+      "optimum": "10794",
+      "random": "12274",
+      "size": "200"
+    },
+    "tai200_10_05": {
+      "greedy": "12003",
+      "optimum": "10437",
+      "random": "12223",
+      "size": "200"
+    },
+    "tai200_10_06": {
+      "greedy": "12273",
+      "optimum": "10255",
+      "random": "12007",
+      "size": "200"
+    },
+    "tai200_10_07": {
+      "greedy": "12803",
+      "optimum": "10761",
+      "random": "12523",
+      "size": "200"
+    },
+    "tai200_10_08": {
+      "greedy": "11904",
+      "optimum": "10663",
+      "random": "12433",
+      "size": "200"
+    },
+    "tai200_10_09": {
+      "greedy": "12076",
+      "optimum": "10348",
+      "random": "12135",
+      "size": "200"
+    },
+    "tai200_10_10": {
+      "greedy": "12222",
+      "optimum": "10616",
+      "random": "12215",
+      "size": "200"
+    },
+    "tai200_20_01": {
+      "greedy": "13501",
+      "optimum": "10979",
+      "random": "13591",
+      "size": "200"
+    },
+    "tai20_05_01": {
+      "greedy": "1309",
+      "optimum": "1232",
+      "random": "1416",
+      "size": "20"
+    },
+    "tai500_20_01": {
+      "greedy": "30391",
+      "optimum": "25922",
+      "random": "30235",
+      "size": "500"
+    }, 
+    "tai500_20_02": {
+      "greedy": "30483",
+      "optimum": "26353",
+      "random": "30846",
+      "size": "500"
+    },
+    "tai500_20_03": {
+      "greedy": "29924",
+      "optimum": "26320",
+      "random": "30456",
+      "size": "500"
+    },
+    "tai500_20_04": {
+      "greedy": "30346",
+      "optimum": "26424",
+      "random": "30496",
+      "size": "500"
+    },
+    "tai500_20_05": {
+      "greedy": "29805",
+      "optimum": "26181",
+      "random": "30520",
+      "size": "500"
+    },
+    "tai500_20_06": {
+      "greedy": "30334",
+      "optimum": "26401",
+      "random": "30793",
+      "size": "500"
+    },
+    "tai500_20_07": {
+      "greedy": "29939",
+      "optimum": "26300",
+      "random": "30394",
+      "size": "500"
+    },
+    "tai500_20_08": {
+      "greedy": "31128",
+      "optimum": "26429",
+      "random": "30632",
+      "size": "500"
+    },
+    "tai500_20_09": {
+      "greedy": "30045",
+      "optimum": "25891",
+      "random": "30433",
+      "size": "500"
+    },
+    "tai500_20_10": {
+      "greedy": "30173",
+      "optimum": "26315",
+      "random": "30521",
+      "size": "500"
+    }
+
+  }
+}

@@ -2,7 +2,9 @@ package hyflex.chesc2011.evaluation.scorecard;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -18,9 +20,10 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
 
 /**
  * Class is used for retrieving the data from score card file.
@@ -44,9 +47,17 @@ public class ScoreCardHelper {
   };
 
   /**
+   * Making the constructor private.
+   */
+  private ScoreCardHelper() {}
+
+  /**
    * Method reads the results file and stores the data into a map.
    * 
+   * @param problems List of problem names.
    * @param path Path where the file is stored.
+   * @param problemInstances Map of problem instances names.
+   * @param implementedProblems List of implemented problems.
    * @return Map with algorithm results.
    */
   public static ScoreCard loadCard(String[] problems, Path path, 
@@ -90,7 +101,6 @@ public class ScoreCardHelper {
     return result;
   }
 
-
   /**
    * Method returns the array of cards names.
    * 
@@ -99,20 +109,67 @@ public class ScoreCardHelper {
    */
   public static String[] getCardsNames(Path path) {
     File resDir = new File(path.toString());
-
-    String[] resFiles = resDir.list(new FilenameFilter() {
-      @Override
-      public boolean accept(File current, String name) {
-        return name.toLowerCase().endsWith(".txt");
-      }
-    });
-
-    return resFiles;
+    return resDir.list((dir, name) -> name.toLowerCase().endsWith(".txt"));
   }
 
+  /**
+   * Method creates the json string with results data.
+   * @param results List with algorithm results.
+   * @throws IOException Exception when creating the file.
+   */
+  public static String createResultsJsonString(List<ScoreCard> results) {
+    // Create json array for results
+    JSONArray resultsArray = new JSONArray();
+    // Insert the keys and values
+    for (ScoreCard resultCard : results) {
+      JSONObject algorithm = new JSONObject();
+      // Name of the algorithm
+      algorithm.put("algorithmName", resultCard.getName());
+      // Total score of the algorithm
+      algorithm.put("totalScore", resultCard.getScore());
+
+      JSONObject instances = new JSONObject();
+      JSONObject problems = new JSONObject();
+      for (String problemId : resultCard.getProblems()) {
+        problems.put(problemId, resultCard.getProblemScore(problemId));
+
+
+        JSONObject problemInstances = new JSONObject();
+        // Store instances' scores
+        for (String instanceId : resultCard.getInstances(problemId)) {
+          problemInstances.put(instanceId, resultCard.getInstanceScore(problemId, instanceId));
+        }
+        instances.put(problemId, problemInstances);
+      }
+      algorithm.put("scorePerInstance", instances);
+      algorithm.put("scorePerProblem", problems);
+
+      resultsArray.put(algorithm);
+    }
+
+    // Create the json results file
+    JSONObject jsonResults = new JSONObject();
+    jsonResults.put("results", resultsArray);
+    return jsonResults.toString(2);
+  }
 
   /**
-   * Method stored the results inside xml file.
+   * Method stores the results to the json file.
+   * @param resultsJsonFile Path to the json result file.
+   * @param results List with algorithm results.
+   * @throws IOException Exception when creating the file.
+   */
+  public static void saveResultsToJsonFile(
+      String resultsJsonFile, List<ScoreCard> results
+  ) throws IOException {
+    // Store the file
+    try (FileWriter fw = new FileWriter(resultsJsonFile)) {
+      fw.write(createResultsJsonString(results));
+    }
+  }
+
+  /**
+   * Method stores the results inside xml file.
    * 
    * @param results Map with results.
    */

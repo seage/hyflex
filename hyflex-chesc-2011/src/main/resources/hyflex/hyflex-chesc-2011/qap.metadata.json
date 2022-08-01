@@ -1,0 +1,809 @@
+{
+  "problemName": "QAP",
+  "instances": {
+    "bur26a": {
+      "greedy": "5798551",
+      "optimum": "5426670",
+      "random": "5943592",
+      "size": "26"
+    },
+    "bur26b": {
+      "greedy": "4093607",
+      "optimum": "3817852",
+      "random": "4206434",
+      "size": "26"
+    },
+    "bur26c": {
+      "greedy": "5949352",
+      "optimum": "5426795",
+      "random": "5954127",
+      "size": "26"
+    },
+    "bur26d": {
+      "greedy": "4155323",
+      "optimum": "3821225",
+      "random": "4202956",
+      "size": "26"
+    },
+    "bur26e": {
+      "greedy": "5991191",
+      "optimum": "5386879",
+      "random": "5935093",
+      "size": "26"
+    },
+    "bur26f": {
+      "greedy": "4079808",
+      "optimum": "3782044",
+      "random": "4215841",
+      "size": "26"
+    },
+    "bur26g": {
+      "greedy": "11043171",
+      "optimum": "10117172",
+      "random": "11073138",
+      "size": "26"
+    },
+    "bur26h": {
+      "greedy": "7690437",
+      "optimum": "7098658",
+      "random": "7895241",
+      "size": "26"
+    },
+    "chr12a": {
+      "greedy": "15450",
+      "optimum": "9552",
+      "random": "43606",
+      "size": "12"
+    },
+    "chr12b": {
+      "greedy": "25386",
+      "optimum": "9742",
+      "random": "41434",
+      "size": "12"
+    },
+    "chr12c": {
+      "greedy": "14968",
+      "optimum": "11156",
+      "random": "46678",
+      "size": "12"
+    },
+    "chr15a": {
+      "greedy": "22342",
+      "optimum": "9896",
+      "random": "62678",
+      "size": "15"
+    },
+    "chr15b": {
+      "greedy": "22486",
+      "optimum": "7990",
+      "random": "62008",
+      "size": "15"
+    },
+    "chr15c": {
+      "greedy": "16270",
+      "optimum": "9504",
+      "random": "57868",
+      "size": "15"
+    },
+    "chr18a": {
+      "greedy": "19878",
+      "optimum": "11098",
+      "random": "80852",
+      "size": "18"
+    },
+    "chr18b": {
+      "greedy": "1534",
+      "optimum": "1534",
+      "random": "4446",
+      "size": "18"
+    },
+    "chr20a": {
+      "greedy": "2914",
+      "optimum": "2192",
+      "random": "10636",
+      "size": "20"
+    },
+    "chr20b": {
+      "greedy": "2724",
+      "optimum": "2298",
+      "random": "10742",
+      "size": "20"
+    },
+    "chr20c": {
+      "greedy": "33652",
+      "optimum": "14142",
+      "random": "109738",
+      "size": "20"
+    },
+    "chr22a": {
+      "greedy": "7086",
+      "optimum": "6156",
+      "random": "14530",
+      "size": "22"
+    },
+    "chr22b": {
+      "greedy": "6902",
+      "optimum": "6194",
+      "random": "15346",
+      "size": "22"
+    },
+    "chr25a": {
+      "greedy": "8344",
+      "optimum": "3796",
+      "random": "20856",
+      "size": "25"
+    },
+    "els19": {
+      "greedy": "43816464",
+      "optimum": "17212548",
+      "random": "59653092",
+      "size": "19"
+    },
+    "esc128": {
+      "greedy": "112",
+      "optimum": "64",
+      "random": "326",
+      "size": "128"
+    },
+    "esc16a": {
+      "greedy": "90",
+      "optimum": "68",
+      "random": "112",
+      "size": "16"
+    },
+    "esc16b": {
+      "greedy": "294",
+      "optimum": "292",
+      "random": "318",
+      "size": "16"
+    },
+    "esc16c": {
+      "greedy": "170",
+      "optimum": "160",
+      "random": "252",
+      "size": "16"
+    },
+    "esc16d": {
+      "greedy": "36",
+      "optimum": "16",
+      "random": "56",
+      "size": "16"
+    },
+    "esc16e": {
+      "greedy": "36",
+      "optimum": "28",
+      "random": "64",
+      "size": "16"
+    },
+    "esc16f": {
+      "greedy": "0",
+      "optimum": "0",
+      "random": "0",
+      "size": "16"
+    },
+    "esc16g": {
+      "greedy": "30",
+      "optimum": "26",
+      "random": "68",
+      "size": "16"
+    },
+    "esc16h": {
+      "greedy": "1056",
+      "optimum": "996",
+      "random": "1416",
+      "size": "16"
+    },
+    "esc16i": {
+      "greedy": "20",
+      "optimum": "14",
+      "random": "54",
+      "size": "16"
+    },
+    "esc16j": {
+      "greedy": "16",
+      "optimum": "8",
+      "random": "30",
+      "size": "16"
+    },
+    "esc32a": {
+      "greedy": "182",
+      "optimum": "130",
+      "random": "426",
+      "size": "32"
+    },
+    "esc32b": {
+      "greedy": "212",
+      "optimum": "168",
+      "random": "460",
+      "size": "32"
+    },
+    "esc32c": {
+      "greedy": "672",
+      "optimum": "642",
+      "random": "932",
+      "size": "32"
+    },
+    "esc32d": {
+      "greedy": "228",
+      "optimum": "200",
+      "random": "366",
+      "size": "32"
+    },
+    "esc32e": {
+      "greedy": "24",
+      "optimum": "2",
+      "random": "60",
+      "size": "32"
+    },
+    "esc32f": {
+      "greedy": "24",
+      "optimum": "0",
+      "random": "46",
+      "size": "32"
+    },
+    "esc32g": {
+      "greedy": "16",
+      "optimum": "6",
+      "random": "46",
+      "size": "32"
+    },
+    "esc32h": {
+      "greedy": "488",
+      "optimum": "438",
+      "random": "666",
+      "size": "32"
+    },
+    "esc64a": {
+      "greedy": "134",
+      "optimum": "116",
+      "random": "290",
+      "size": "64"
+    },
+    "had12": {
+      "greedy": "1928",
+      "optimum": "1652",
+      "random": "1890",
+      "size": "12"
+    },
+    "had14": {
+      "greedy": "3214",
+      "optimum": "2724",
+      "random": "3188",
+      "size": "14"
+    },
+    "had16": {
+      "greedy": "4350",
+      "optimum": "3720",
+      "random": "4228",
+      "size": "16"
+    },
+    "had18": {
+      "greedy": "6056",
+      "optimum": "5358",
+      "random": "5994",
+      "size": "18"
+    },
+    "had20": {
+      "greedy": "7790",
+      "optimum": "6922",
+      "random": "7674",
+      "size": "20"
+    },
+    "kra30a": {
+      "greedy": "114470",
+      "optimum": "88900",
+      "random": "137000",
+      "size": "30"
+    },
+    "kra30b": {
+      "greedy": "119600",
+      "optimum": "91420",
+      "random": "134760",
+      "size": "30"
+    },
+    "kra32": {
+      "greedy": "20592",
+      "optimum": "88700",
+      "random": "27624",
+      "size": "32"
+    },
+    "lipa20a": {
+      "greedy": "3863",
+      "optimum": "0",
+      "random": "3939",
+      "size": "20"
+    },
+    "lipa20b": {
+      "greedy": "32247",
+      "optimum": "0",
+      "random": "35528",
+      "size": "20"
+    },
+    "lipa30b": {
+      "greedy": "182886",
+      "optimum": "0",
+      "random": "195263",
+      "size": "30"
+    },
+    "lipa40a": {
+      "greedy": "32385",
+      "optimum": "0",
+      "random": "32714",
+      "size": "40"
+    },
+    "lipa40b": {
+      "greedy": "585910",
+      "optimum": "0",
+      "random": "620493",
+      "size": "40"
+    },
+    "lipa50b": {
+      "greedy": "1471408",
+      "optimum": "0",
+      "random": "1559305",
+      "size": "50"
+    },
+    "lipa60a": {
+      "greedy": "109447",
+      "optimum": "0",
+      "random": "110103",
+      "size": "60"
+    },
+    "lipa60b": {
+      "greedy": "3081465",
+      "optimum": "0",
+      "random": "3277078",
+      "size": "60"
+    },
+    "lipa70a": {
+      "greedy": "172829",
+      "optimum": "0",
+      "random": "173762",
+      "size": "70"
+    },
+    "lipa70b": {
+      "greedy": "5688105",
+      "optimum": "0",
+      "random": "5990140",
+      "size": "70"
+    },
+    "lipa80a": {
+      "greedy": "256972",
+      "optimum": "0",
+      "random": "258531",
+      "size": "80"
+    },
+    "lipa80b": {
+      "greedy": "9620690",
+      "optimum": "0",
+      "random": "10154980",
+      "size": "80"
+    },
+    "lipa90a": {
+      "greedy": "366193",
+      "optimum": "0",
+      "random": "367473",
+      "size": "90"
+    },
+    "lipa90b": {
+      "greedy": "15490720",
+      "optimum": "0",
+      "random": "16307562",
+      "size": "90"
+    },
+    "nug12": {
+      "greedy": "722",
+      "optimum": "578",
+      "random": "842",
+      "size": "12"
+    },
+    "nug14": {
+      "greedy": "1322",
+      "optimum": "1014",
+      "random": "1358",
+      "size": "14"
+    },
+    "nug15": {
+      "greedy": "1452",
+      "optimum": "1150",
+      "random": "1580",
+      "size": "15"
+    },
+    "nug16a": {
+      "greedy": "2008",
+      "optimum": "1610",
+      "random": "2156",
+      "size": "16"
+    },
+    "nug16b": {
+      "greedy": "1564",
+      "optimum": "1240",
+      "random": "1710",
+      "size": "16"
+    },
+    "nug17": {
+      "greedy": "2220",
+      "optimum": "1732",
+      "random": "2314",
+      "size": "17"
+    },
+    "nug18": {
+      "greedy": "2442",
+      "optimum": "1930",
+      "random": "2544",
+      "size": "18"
+    },
+    "nug20": {
+      "greedy": "3194",
+      "optimum": "2570",
+      "random": "3420",
+      "size": "20"
+    },
+    "nug21": {
+      "greedy": "3242",
+      "optimum": "2438",
+      "random": "3460",
+      "size": "21"
+    },
+    "nug22": {
+      "greedy": "4702",
+      "optimum": "3596",
+      "random": "5234",
+      "size": "22"
+    },
+    "nug24": {
+      "greedy": "4600",
+      "optimum": "3488",
+      "random": "4782",
+      "size": "24"
+    },
+    "nug25": {
+      "greedy": "4802",
+      "optimum": "3744",
+      "random": "5004",
+      "size": "25"
+    },
+    "nug27": {
+      "greedy": "6236",
+      "optimum": "5234",
+      "random": "7172",
+      "size": "27"
+    },
+    "nug28": {
+      "greedy": "6094",
+      "optimum": "5166",
+      "random": "6948",
+      "size": "28"
+    },
+    "nug30": {
+      "greedy": "7882",
+      "optimum": "6124",
+      "random": "8110",
+      "size": "30"
+    },
+    "rou12": {
+      "greedy": "269634",
+      "optimum": "235528",
+      "random": "309130",
+      "size": "12"
+    },
+    "rou15": {
+      "greedy": "396958",
+      "optimum": "354210",
+      "random": "476294",
+      "size": "15"
+    },
+    "rou20": {
+      "greedy": "804448",
+      "optimum": "725522",
+      "random": "909630",
+      "size": "20"
+    },
+    "scr12": {
+      "greedy": "35850",
+      "optimum": "31410",
+      "random": "58772",
+      "size": "12"
+    },
+    "scr15": {
+      "greedy": "64634",
+      "optimum": "51140",
+      "random": "102028",
+      "size": "15"
+    },
+    "scr20": {
+      "greedy": "175782",
+      "optimum": "110030",
+      "random": "227458",
+      "size": "20"
+    },
+    "sko100a": {
+      "greedy": "179006",
+      "optimum": "152002",
+      "random": "178296",
+      "size": "100"
+    },
+    "sko100b": {
+      "greedy": "181420",
+      "optimum": "153890",
+      "random": "181036",
+      "size": "100"
+    },
+    "sko100c": {
+      "greedy": "174134",
+      "optimum": "147862",
+      "random": "174872",
+      "size": "100"
+    },
+    "sko100d": {
+      "greedy": "175630",
+      "optimum": "149576",
+      "random": "176028",
+      "size": "100"
+    },
+    "sko100e": {
+      "greedy": "175870",
+      "optimum": "149150",
+      "random": "176520",
+      "size": "100"
+    },
+    "sko100f": {
+      "greedy": "175070",
+      "optimum": "149036",
+      "random": "174764",
+      "size": "100"
+    },
+    "sko42": {
+      "greedy": "19686",
+      "optimum": "15812",
+      "random": "20014",
+      "size": "42"
+    },
+    "sko49": {
+      "greedy": "28752",
+      "optimum": "23386",
+      "random": "29088",
+      "size": "49"
+    },
+    "sko56": {
+      "greedy": "42200",
+      "optimum": "34458",
+      "random": "42632",
+      "size": "56"
+    },
+    "sko64": {
+      "greedy": "58870",
+      "optimum": "48498",
+      "random": "58696",
+      "size": "64"
+    },
+    "sko72": {
+      "greedy": "79100",
+      "optimum": "66256",
+      "random": "79736",
+      "size": "72"
+    },
+    "sko81": {
+      "greedy": "106842",
+      "optimum": "90998",
+      "random": "108628",
+      "size": "81"
+    },
+    "sko90": {
+      "greedy": "136744",
+      "optimum": "115534",
+      "random": "136752",
+      "size": "90"
+    },
+    "ste36a": {
+      "greedy": "16322",
+      "optimum": "9526",
+      "random": "23116",
+      "size": "36"
+    },
+    "ste36b": {
+      "greedy": "43800",
+      "optimum": "15852",
+      "random": "86932",
+      "size": "36"
+    },
+    "ste36c": {
+      "greedy": "13583868",
+      "optimum": "8239110",
+      "random": "18612912",
+      "size": "36"
+    },
+    "tai100a": {
+      "greedy": "22382372",
+      "optimum": "21052466",
+      "random": "24143166",
+      "size": "100"
+    },
+    "tai100b": {
+      "greedy": "1658469698",
+      "optimum": "1185996137",
+      "random": "1778323516",
+      "size": "100"
+    },
+    "tai10a": {
+      "greedy": "154674",
+      "optimum": "0",
+      "random": "185074",
+      "size": "10"
+    },
+    "tai10b": {
+      "greedy": "1821053",
+      "optimum": "0",
+      "random": "2285432",
+      "size": "10"
+    },
+    "tai12a": {
+      "greedy": "276960",
+      "optimum": "224416",
+      "random": "311234",
+      "size": "12"
+    },
+    "tai12b": {
+      "greedy": "67099863",
+      "optimum": "39464925",
+      "random": "86299908",
+      "size": "12"
+    },
+    "tai150b": {
+      "greedy": "646565353",
+      "optimum": "498896643",
+      "random": "653806112",
+      "size": "150"
+    },
+    "tai15a": {
+      "greedy": "433114",
+      "optimum": "388214",
+      "random": "491136",
+      "size": "15"
+    },
+    "tai15b": {
+      "greedy": "347070564",
+      "optimum": "51765268",
+      "random": "348449489",
+      "size": "15"
+    },
+    "tai17a": {
+      "greedy": "547168",
+      "optimum": "491812",
+      "random": "625452",
+      "size": "17"
+    },
+    "tai20a": {
+      "greedy": "775388",
+      "optimum": "703482",
+      "random": "907016",
+      "size": "20"
+    },
+    "tai20b": {
+      "greedy": "403476019",
+      "optimum": "122455319",
+      "random": "337946793",
+      "size": "20"
+    },
+    "tai256c": {
+      "greedy": "44951708",
+      "optimum": "44759294",
+      "random": "53944388",
+      "size": "256"
+    },
+    "tai25b": {
+      "greedy": "897615427",
+      "optimum": "344355646",
+      "random": "812138195",
+      "size": "25"
+    },
+    "tai30a": {
+      "greedy": "1994114",
+      "optimum": "1818146",
+      "random": "2206956",
+      "size": "30"
+    },
+    "tai30b": {
+      "greedy": "1074571174",
+      "optimum": "637117113",
+      "random": "1329711725",
+      "size": "30"
+    },
+    "tai35a": {
+      "greedy": "2641760",
+      "optimum": "2422002",
+      "random": "2918290",
+      "size": "35"
+    },
+    "tai35b": {
+      "greedy": "524790855",
+      "optimum": "283315445",
+      "random": "509345670",
+      "size": "35"
+    },
+    "tai40a": {
+      "greedy": "3433526",
+      "optimum": "3139370",
+      "random": "3770220",
+      "size": "40"
+    },
+    "tai40b": {
+      "greedy": "945605119",
+      "optimum": "637250948",
+      "random": "1166992484",
+      "size": "40"
+    },
+    "tai50a": {
+      "greedy": "5372382",
+      "optimum": "4938796",
+      "random": "5902932",
+      "size": "50"
+    },
+    "tai50b": {
+      "greedy": "766361781",
+      "optimum": "458821517",
+      "random": "784554372",
+      "size": "50"
+    },
+    "tai60a": {
+      "greedy": "7843016",
+      "optimum": "7205962",
+      "random": "8520150",
+      "size": "60"
+    },
+    "tai60b": {
+      "greedy": "1018609010",
+      "optimum": "608215054",
+      "random": "1027956651",
+      "size": "60"
+    },
+    "tai64c": {
+      "greedy": "1887500",
+      "optimum": "1855928",
+      "random": "3022054",
+      "size": "64"
+    },
+    "tai80a": {
+      "greedy": "14453384",
+      "optimum": "13499184",
+      "random": "15630252",
+      "size": "80"
+    },
+    "tai80b": {
+      "greedy": "1190651774",
+      "optimum": "818415043",
+      "random": "1242310772",
+      "size": "80"
+    },
+    "tho150": {
+      "greedy": "9651654",
+      "optimum": "8133398",
+      "random": "9799526",
+      "size": "150"
+    },
+    "tho30": {
+      "greedy": "200302",
+      "optimum": "149936",
+      "random": "215560",
+      "size": "30"
+    },
+    "tho40": {
+      "greedy": "327274",
+      "optimum": "240516",
+      "random": "340348",
+      "size": "40"
+    },
+    "wil100": {
+      "greedy": "300756",
+      "optimum": "273038",
+      "random": "300182",
+      "size": "100"
+    },
+    "wil50": {
+      "greedy": "53846",
+      "optimum": "48816",
+      "random": "55708",
+      "size": "50"
+    }
+  }
+}

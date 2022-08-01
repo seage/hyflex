@@ -2,13 +2,12 @@ package hyflex.chesc2011.evaluation.calculators.legacy;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Paths;
-//import java.io.Writer;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,15 +16,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Logger;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /*
  * @author Dr Matthew Hyde
@@ -76,6 +68,7 @@ import org.w3c.dom.Element;
  */
 
 public class F1MetricBenchmarkCalculator {
+
   private static final Logger logger = 
       Logger.getLogger(F1MetricBenchmarkCalculator.class.getName());
     
@@ -300,55 +293,40 @@ public class F1MetricBenchmarkCalculator {
       }
       // out.println("------------------------------------------");
 
-      String resultsXmlFile = Paths.get(pathToSubmitted, "/f1-metric-scores.xml").toString();
-      saveResultsToXmlFile(resultsXmlFile, resultsMap);
-      logger.info("The score file stored to " + resultsXmlFile);
+      String resultsFileName = "f1-metric-scores.json";
+      String resultsFilePath = Paths.get(pathToSubmitted, "/" + resultsFileName).toString();
+      saveResultsToJsonFile(resultsFilePath, resultsMap);
+      logger.info("The score file stored to " + resultsFilePath);
     }
   }
 
-  private static void saveResultsToXmlFile(
-      String resultsXmlFile, Map<String, Map<String, Double>> results) {
-    try {
-      DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
-      DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
-      Document document = documentBuilder.newDocument();
-  
-      // root element
-      Element root = document.createElement("results");
-      document.appendChild(root);
+  private static void saveResultsToJsonFile(
+      String resultsJsonFile, Map<String, Map<String, Double>> results
+  ) throws IOException {
+    // Create the json array for results
+    JSONArray resultsArray = new JSONArray();
+    // Inserting the keys and values
+    for (String algorithmName: results.keySet()) {
+      JSONObject algorithm = new JSONObject();
+      algorithm.put("algorithmName", algorithmName);
+      algorithm.put("totalScore", Double.toString(results.get(algorithmName).get("total")));
 
-      for (String algorithmName: results.keySet()) {
-        Element algorithm = document.createElement("algorithm");
-        algorithm.setAttribute("name", algorithmName);
-        algorithm.setAttribute("score", Double.toString(results.get(algorithmName).get("total")));
-
-        for (String problemId: results.get(algorithmName).keySet()) {
-          if (problemId == "total") {
-            continue;
-          }
-
-          Element problem = document.createElement("problem");
-          problem.setAttribute("name", problemId);
-          problem.setAttribute("score", Double.toString(results.get(algorithmName).get(problemId)));
-
-          algorithm.appendChild(problem);
+      JSONObject problems = new JSONObject();
+      for (String problemId: results.get(algorithmName).keySet()) {
+        if ("total".equals(problemId)) {
+          continue;
         }
-        root.appendChild(algorithm);
+
+        problems.put(problemId, Double.toString(results.get(algorithmName).get(problemId)));
       }
+      algorithm.put("scorePerProblem", problems);
+      resultsArray.put(algorithm);
+    }
+    JSONObject jsonResults = new JSONObject();
+    jsonResults.put("results", resultsArray);
 
-
-      // create the xml file
-      // transform the DOM Object to an XML File
-      TransformerFactory transformerFactory = TransformerFactory.newInstance();
-      Transformer transformer = transformerFactory.newTransformer();
-      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-      DOMSource domSource = new DOMSource(document);
-      StreamResult streamResult =
-          new StreamResult(new PrintWriter(new FileOutputStream(new File(resultsXmlFile), false)));
-
-      transformer.transform(domSource, streamResult);
-    } catch (Exception e) {
-      logger.severe(e.toString());
+    try (FileWriter fw = new FileWriter(resultsJsonFile)) {
+      fw.write(jsonResults.toString(2));
     }
   }
 

@@ -1,0 +1,485 @@
+{
+  "problemName": "TSP",
+  "instances": {
+    "a280": {
+      "greedy": "3266",
+      "optimum": "2579",
+      "random":"33694",
+      "size": "280"
+    },
+    "ar9152": {
+      "greedy": "1057540",
+      "optimum": "0",
+      "random":"73661902",
+      "size": "9152"
+    },
+    "berlin52": {
+      "greedy": "9461",
+      "optimum": "7542",
+      "random":"29766",
+      "size": "52"
+    },
+    "bier127": {
+      "greedy": "144272",
+      "optimum": "118282",
+      "random":"624570",
+      "size": "127"
+    },
+    "brd14051": {
+      "greedy": "576302",
+      "optimum": "469385",
+      "random":"41630103",
+      "size": "14051"
+    },
+    "ch130": {
+      "greedy": "7613",
+      "optimum": "6110",
+      "random":"46250",
+      "size": "130"
+    },
+    "ch150": {
+      "greedy": "7758",
+      "optimum": "6528",
+      "random":"53909",
+      "size": "150"
+    },
+    "d1291-hyflex-6": {
+      "greedy": "61204",
+      "optimum": "50801",
+      "random":"1696843",
+      "size": "1291"
+    },
+    "d15112": {
+      "greedy": "1949751",
+      "optimum": "1573084",
+      "random":"133557320",
+      "size": "15112"
+    },
+    "d1655": {
+      "greedy": "77742",
+      "optimum": "62128",
+      "random":"2136753",
+      "size": "1655"
+    },
+    "d18512-hyflex-9": {
+      "greedy": "792337",
+      "optimum": "645238",
+      "random":"58911138",
+      "size": "18512"
+    },
+    "d198": {
+      "greedy": "18435",
+      "optimum": "15780",
+      "random":"187121",
+      "size": "198"
+    },
+    "d2103": {
+      "greedy": "91497",
+      "optimum": "80450",
+      "random":"3191118",
+      "size": "2103"
+    },
+    "d493": {
+      "greedy": "43216",
+      "optimum": "35002",
+      "random":"442660",
+      "size": "493"
+    },
+    "d657": {
+      "greedy": "63467",
+      "optimum": "48912",
+      "random":"847776",
+      "size": "657"
+    },
+    "eil101": {
+      "greedy": "759",
+      "optimum": "629",
+      "random":"3381",
+      "size": "101"
+    },
+    "eil51": {
+      "greedy": "586",
+      "optimum": "426",
+      "random":"1645",
+      "size": "51"
+    },
+    "eil76": {
+      "greedy": "631",
+      "optimum": "538",
+      "random":"2511",
+      "size": "76"
+    },
+    "fl1400": {
+      "greedy": "27125",
+      "optimum": "20127",
+      "random":"1664491",
+      "size": "1400"
+    },
+    "fl1577": {
+      "greedy": "27974",
+      "optimum": "22249",
+      "random":"1328605",
+      "size": "1577"
+    },
+    "fl3795": {
+      "greedy": "35332",
+      "optimum": "28772",
+      "random":"3520839",
+      "size": "3795"
+    },
+    "fl417": {
+      "greedy": "15548",
+      "optimum": "11861",
+      "random":"487055",
+      "size": "417"
+    },
+    "fnl4461": {
+      "greedy": "226861",
+      "optimum": "182566",
+      "random":"8285829",
+      "size": "4461"
+    },
+    "gil262": {
+      "greedy": "3089",
+      "optimum": "2378",
+      "random":"26836",
+      "size": "262"
+    },
+    "kroA100": {
+      "greedy": "27030",
+      "optimum": "21282",
+      "random":"171806",
+      "size": "100"
+    },
+    "kroA150": {
+      "greedy": "34316",
+      "optimum": "26524",
+      "random":"258708",
+      "size": "150"
+    },
+    "kroA200": {
+      "greedy": "38037",
+      "optimum": "29368",
+      "random":"340367",
+      "size": "200"
+    },
+    "kroB100": {
+      "greedy": "29047",
+      "optimum": "22141",
+      "random":"168865",
+      "size": "100"
+    },
+    "kroB150": {
+      "greedy": "34280",
+      "optimum": "26130",
+      "random":"257643",
+      "size": "150"
+    },
+    "kroB200": {
+      "greedy": "37528",
+      "optimum": "29437",
+      "random":"335664",
+      "size": "200"
+    },
+    "kroC100": {
+      "greedy": "25903",
+      "optimum": "20749",
+      "random":"171814",
+      "size": "100"
+    },
+    "kroD100": {
+      "greedy": "28148",
+      "optimum": "21294",
+      "random":"165061",
+      "size": "100"
+    },
+    "kroE100": {
+      "greedy": "27572",
+      "optimum": "22068",
+      "random":"174307",
+      "size": "100"
+    },
+    "lin105": {
+      "greedy": "20068",
+      "optimum": "14379",
+      "random":"120452",
+      "size": "105"
+    },
+    "lin318": {
+      "greedy": "52680",
+      "optimum": "42029",
+      "random":"577605",
+      "size": "318"
+    },
+    "linhp318": {
+      "greedy": "52761",
+      "optimum": "41345",
+      "random":"577314",
+      "size": "318"
+    },
+    "mona-lisa100K": {
+      "greedy": "6880108",
+      "optimum": "5757084",
+      "random":"990898853",
+      "size": "100000"
+    },
+    "nrw1379": {
+      "greedy": "70235",
+      "optimum": "56638",
+      "random":"1407026",
+      "size": "1379"
+    },
+    "p654": {
+      "greedy": "44760",
+      "optimum": "34643",
+      "random":"1999602",
+      "size": "654"
+    },
+    "pcb1173-hyflex-5": {
+      "greedy": "72488",
+      "optimum": "56892",
+      "random":"1383077",
+      "size": "1173"
+    },
+    "pcb3038": {
+      "greedy": "172777",
+      "optimum": "137694",
+      "random":"5317480",
+      "size": "3038"
+    },
+    "pcb442": {
+      "greedy": "62430",
+      "optimum": "50778",
+      "random":"759474",
+      "size": "442"
+    },
+    "pr1002": {
+      "greedy": "330164",
+      "optimum": "259045",
+      "random":"6325971",
+      "size": "1002"
+    },
+    "pr107": {
+      "greedy": "47623",
+      "optimum": "44303",
+      "random":"573323",
+      "size": "107"
+    },
+    "pr124": {
+      "greedy": "73008",
+      "optimum": "59030",
+      "random":"690205",
+      "size": "124"
+    },
+    "pr136": {
+      "greedy": "121134",
+      "optimum": "96772",
+      "random":"817430",
+      "size": "136"
+    },
+    "pr144": {
+      "greedy": "61359",
+      "optimum": "58537",
+      "random":"793381",
+      "size": "144"
+    },
+    "pr152": {
+      "greedy": "87728",
+      "optimum": "73682",
+      "random":"1032978",
+      "size": "152"
+    },
+    "pr226": {
+      "greedy": "98856",
+      "optimum": "80369",
+      "random":"1670400",
+      "size": "226"
+    },
+    "pr2392": {
+      "greedy": "473093",
+      "optimum": "378032",
+      "random":"14983146",
+      "size": "2392"
+    },
+    "pr264": {
+      "greedy": "58888",
+      "optimum": "49135",
+      "random":"1104365",
+      "size": "264"
+    },
+    "pr299-hyflex-0": {
+      "greedy": "65166",
+      "optimum": "48191",
+      "random":"750788",
+      "size": "299"
+    },
+    "pr439-hyflex-1": {
+      "greedy": "136905",
+      "optimum": "107217",
+      "random":"1876495",
+      "size": "439"
+    },
+    "pr76": {
+      "greedy": "138644",
+      "optimum": "108159",
+      "random":"567850",
+      "size": "76"
+    },
+    "rat195": {
+      "greedy": "2749",
+      "optimum": "2323",
+      "random":"22417",
+      "size": "195"
+    },
+    "rat575-hyflex-2": {
+      "greedy": "8255",
+      "optimum": "6773",
+      "random":"111456",
+      "size": "575"
+    },
+    "rat783-hyflex-4": {
+      "greedy": "11210",
+      "optimum": "8806",
+      "random":"177352",
+      "size": "783"
+    },
+    "rat99": {
+      "greedy": "1427",
+      "optimum": "1211",
+      "random":"8313",
+      "size": "99"
+    },
+    "rd100": {
+      "greedy": "9938",
+      "optimum": "7910",
+      "random":"55872",
+      "size": "100"
+    },
+    "rd400": {
+      "greedy": "19400",
+      "optimum": "15281",
+      "random":"211795",
+      "size": "400"
+    },
+    "rl11849": {
+      "greedy": "1130434",
+      "optimum": "923288",
+      "random":"87005419",
+      "size": "11849"
+    },
+    "rl1304": {
+      "greedy": "320652",
+      "optimum": "252948",
+      "random":"9262739",
+      "size": "1304"
+    },
+    "rl1323": {
+      "greedy": "333413",
+      "optimum": "270199",
+      "random":"9668069",
+      "size": "1323"
+    },
+    "rl1889": {
+      "greedy": "397804",
+      "optimum": "316536",
+      "random":"14657124",
+      "size": "1889"
+    },
+    "rl5915": {
+      "greedy": "693150",
+      "optimum": "565530",
+      "random":"42025222",
+      "size": "5915"
+    },
+    "rl5934": {
+      "greedy": "683334",
+      "optimum": "556045",
+      "random":"41628944",
+      "size": "5934"
+    },
+    "st70": {
+      "greedy": "799",
+      "optimum": "675",
+      "random":"3644",
+      "size": "70"
+    },
+    "ts225": {
+      "greedy": "144500",
+      "optimum": "126643",
+      "random":"1574143",
+      "size": "225"
+    },
+    "tsp225": {
+      "greedy": "5207",
+      "optimum": "3916",
+      "random":"41054",
+      "size": "225"
+    },
+    "u1060": {
+      "greedy": "290495",
+      "optimum": "224094",
+      "random":"6619757",
+      "size": "1060"
+    },
+    "u1432": {
+      "greedy": "193636",
+      "optimum": "152970",
+      "random":"3873632",
+      "size": "1432"
+    },
+    "u159": {
+      "greedy": "53630",
+      "optimum": "42080",
+      "random":"444159",
+      "size": "159"
+    },
+    "u1817": {
+      "greedy": "69558",
+      "optimum": "57201",
+      "random":"2081701",
+      "size": "1817"
+    },
+    "u2152-hyflex-7": {
+      "greedy": "78482",
+      "optimum": "64253",
+      "random":"2489341",
+      "size": "2152"
+    },
+    "u2319": {
+      "greedy": "277354",
+      "optimum": "234256",
+      "random":"5902233",
+      "size": "2319"
+    },
+    "u574": {
+      "greedy": "46968",
+      "optimum": "36905",
+      "random":"666884",
+      "size": "574"
+    },
+    "u724-hyflex-3": {
+      "greedy": "53531",
+      "optimum": "41910",
+      "random":"857912",
+      "size": "724"
+    },
+    "usa13509-hyflex-8": {
+      "greedy": "25086666",
+      "optimum": "19982859",
+      "random":"2143600251",
+      "size": "13509"
+    },
+    "vm1084": {
+      "greedy": "303116",
+      "optimum": "239297",
+      "random":"8512403",
+      "size": "1084"
+    },
+    "vm1748": {
+      "greedy": "429581",
+      "optimum": "336556",
+      "random":"14844628",
+      "size": "1748"
+    }
+  }
+}
