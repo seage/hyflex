@@ -7,7 +7,7 @@ import com.beust.jcommander.ParameterException;
 import hyflex.chesc2011.launcher.commands.Command;
 import hyflex.chesc2011.launcher.commands.CompetitionComputationCommand;
 import hyflex.chesc2011.launcher.commands.CompetitionEvaluateCommand;
-
+import hyflex.chesc2011.launcher.commands.CompetitionCreateHeatmapCommand;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
@@ -35,6 +35,7 @@ public class Launcher {
       HashMap<String, Command> commands = new LinkedHashMap<>();
       commands.put("competition", new CompetitionComputationCommand());
       commands.put("evaluation", new CompetitionEvaluateCommand());
+      commands.put("create-heatmap", new CompetitionCreateHeatmapCommand());
 
       Launcher launcher = new Launcher();
       JCommander jc = new JCommander(launcher);
