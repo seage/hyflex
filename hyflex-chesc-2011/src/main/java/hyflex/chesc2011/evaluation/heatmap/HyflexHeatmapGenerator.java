@@ -6,6 +6,7 @@
 
 package hyflex.chesc2011.evaluation.heatmap;
 
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +19,7 @@ public class HyflexHeatmapGenerator {
   // Path where the file with results is stored
   protected static String resultsSvgFile = "./results/%s/heatmap.svg";
   // Path where the file with results is stored
-  protected static String resultsJsonFile = "./results/%s/unit-metric-scores.xml";
+  protected static String resultsJsonFile = "./results/%s/unit-metric-scores.json";
 
   /**
    * Protecting the class.
@@ -58,8 +59,7 @@ public class HyflexHeatmapGenerator {
   ) throws IOException {
     String jsonResultsPath = String.format(resultsJsonFile, experimentId);
 
-    try (InputStream jsonInputStream = HeatmapGenerator.class.getResourceAsStream(
-        jsonResultsPath)) {
+    try (InputStream jsonInputStream = new FileInputStream(jsonResultsPath)) {
       createHeatmapFile(getHeatmapString(jsonInputStream, experimentId, algAuthors), experimentId);
     }
   }
