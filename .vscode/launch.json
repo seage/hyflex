@@ -30,6 +30,23 @@
     },
     {
       "type": "java",
+      "name": "Debug Competiton TSP",
+      "request": "launch",
+      "mainClass": "hyflex.chesc2011.launcher.Launcher",
+      "args": [
+        "competition",
+        "-h",
+        "LeanGIHH",
+        "-n",
+        "1",
+        "-t",
+        "10",
+        "-p",
+        "TSP"
+      ]
+    },
+    {
+      "type": "java",
       "name": "Debud Evaluation",
       "request": "launch",
       "mainClass": "hyflex.chesc2011.launcher.Launcher",
